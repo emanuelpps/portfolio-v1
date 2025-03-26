@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavBar } from "./NavBarFactory";
-interface NavLinksRightProps {
-  hashSection: string;
-  setHashSection: (hash: string) => string;
-}
-const NavLinksRight = ({ hashSection, setHashSection }: NavLinksRightProps) => {
+import { NavLinkProp } from "../types/NavLinkProp";
+
+const NavLinksRight = ({ hashSection, setHashSection }: NavLinkProp) => {
   const [navBar] = useState(new NavBar());
 
   if (Object.keys(navBar.links).length === 0) {
