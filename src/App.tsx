@@ -8,8 +8,8 @@ import Skills from "./sections/Skills/Skills";
 function App() {
   return (
     <>
-      <Header />
       <body>
+        <Header />
         <main>
           <Hero />
           <Skills />
