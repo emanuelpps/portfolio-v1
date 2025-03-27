@@ -1,1 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --background-image-circle-bg-image: url("/assets/images/circleBG.svg")
+}
+
+html {
+    background-color: aliceblue;
+    font-family: "Urbanist", "sans-serif";
+    font-optical-sizing: auto;
+    font-style: normal;
+}
