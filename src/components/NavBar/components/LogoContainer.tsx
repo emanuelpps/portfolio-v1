@@ -1,4 +1,4 @@
-import LogoImage from "../../../../public/assets/images/epLogo.png";
+import LogoImage from "/assets/images/epLogo.png";
 const LogoContainer = () => {
   return (
     <div className="flex w-full justify-center items-center">
