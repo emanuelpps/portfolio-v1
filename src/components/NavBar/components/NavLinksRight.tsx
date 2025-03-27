@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavBar } from "./NavBarFactory";
 import { NavLinkProp } from "../types/NavLinkProp";
+import NavBarButton from "./NavBarButton";
 
 const NavLinksRight = ({ hashSection, setHashSection }: NavLinkProp) => {
   const [navBar] = useState(new NavBar());
@@ -12,22 +13,17 @@ const NavLinksRight = ({ hashSection, setHashSection }: NavLinkProp) => {
   }
 
   useEffect(() => {
-    console.log("Hash section changed:", hashSection); // ✅ Ahora useEffect está bien escrito
+    console.log("Hash section changed:", hashSection);
   }, [hashSection]);
   return (
     <div className="flex w-full justify-evenly items-center h-[100%]">
       {Object.entries(navBar.getLinks()).map(([key, link]) => (
-        <button
+        <NavBarButton
           key={key}
-          className={`hover:bg-[#fd853abb] w-full h-[100%] rounded-4xl ${
-            hashSection === link.hash ? "bg-[#FD853A]" : ""
-          }`}
-          onClick={() => setHashSection(link.label)}
-        >
-          <a href={link.hash} className="text-white">
-            {link.label}
-          </a>
-        </button>
+          state={hashSection}
+          link={link}
+          setHashSection={setHashSection}
+        />
       ))}
     </div>
   );
