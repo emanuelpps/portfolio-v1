@@ -8,7 +8,7 @@ const LogoContainer = () => {
         </div>
         <div>
           <h3 className="font-semibold text-[0.8rem] leading-3">
-            Emanuel Pages
+            Emanuel Pagés
             <br />
             <span className="font-extralight">Frontend Developer</span>
           </h3>
