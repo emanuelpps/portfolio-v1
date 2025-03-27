@@ -4,8 +4,7 @@ export interface NavLinkProp {
 }
 
 export interface NavBarButtonProp {
-  key: number;
-  link: NavLinkProp;
-  label: string;
+  link: { hash: string; label: string };
   state: string;
+  setHashSection: (hash: string) => void;
 }
