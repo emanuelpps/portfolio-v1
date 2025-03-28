@@ -21,7 +21,7 @@ export class SelectorButton implements Button {
 
   render() {
     return (
-      <div className="flex items-center bg-gradient-to-r from-orange-200 to-orange-200 rounded-full p-1 w-[260px] h-[60px] shadow-md bg-opacity-50 backdrop-blur-lg border-gray-100 border-b-2">
+      <div className="flex items-center bg-gradient-to-r from-orange-200 to-orange-200 rounded-full p-1 w-[280px] min-w-[280px] h-[60px] shadow-md bg-opacity-50 backdrop-blur-lg border-gray-100 border-b-2">
         <button
           className={`${
             this.titleSelection !== "title"
