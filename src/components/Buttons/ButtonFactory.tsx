@@ -4,7 +4,13 @@ import { SecondaryButton } from "./SecondaryButton";
 import { SelectorButton } from "./SelectorButton";
 
 export class ButtonFactory {
-  static createButton(type: string, label: string, labelTwo?: string): Button {
+  static createButton(
+    type: string,
+    label: string,
+    labelTwo?: string,
+    setTitleSelection?: (value: string) => void,
+    titleSelection?: string
+  ): Button {
     switch (type) {
       case "primary":
         return new PrimaryButton(label);
@@ -16,7 +22,12 @@ export class ButtonFactory {
             "Both labelOne and labelTwo must be provided for 'selector' buttons."
           );
         }
-        return new SelectorButton(label, labelTwo);
+        return new SelectorButton(
+          label,
+          labelTwo,
+          setTitleSelection,
+          titleSelection
+        );
       default:
         throw new Error("Button type not supported");
     }
