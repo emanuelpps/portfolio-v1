@@ -2,11 +2,17 @@ import { useEffect, useState } from "react";
 //import Available from "./components/Available";
 import Title from "./components/Title";
 import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
+<<<<<<< HEAD
 import TitleText from "./components/TitleText";
 
 export const Hero = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [titleSelection, setTitleSelection] = useState("title");
+=======
+
+export const Hero = () => {
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+>>>>>>> 1e8b8c8ac1901f459458fda3471d549af4a36459
 
   useEffect(() => {
     const updateHeight = () => setScreenHeight(window.innerHeight);
