@@ -9,10 +9,11 @@ const SkillsContainer = () => {
   );
   return (
     <div className="w-[100vw] flex justify-center items-center flex-col">
-      <SkillsTabs />
-      <div className="bg-black-waves w-[90%] h-[90vh] rounded-2xl bg-cover bg-no-repeat">
-        <div>{SkillsTitle.render()}</div>
+      <div className="flex flex-col justify-start w-[90vw]">
+        {SkillsTitle.render()}
       </div>
+      <SkillsTabs />
+      <div className="bg-black-waves w-[90%] h-[90vh] rounded-4xl bg-cover bg-no-repeat"></div>
     </div>
   );
 };
