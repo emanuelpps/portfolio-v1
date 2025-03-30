@@ -1,8 +1,5 @@
-
 const SkillCard = () => {
-  return (
-    <div>SkillCard</div>
-  )
-}
+  return <div>SkillCard</div>;
+};
 
-export default SkillCard
+export default SkillCard;
