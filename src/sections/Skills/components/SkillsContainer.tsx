@@ -20,7 +20,7 @@ const SkillsContainer = () => {
   return (
     <div className="w-[100vw] flex justify-center items-center flex-col">
       <SkillsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="bg-black-waves w-[100%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
+      <div className="bg-[#222222] from-orange-900 to-orange-300 w-[100%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
         <div className="flex justify-center items-center w-full">
           <div className="flex flex-col justify-center text-start items-center w-full">
             <div>{SkillsTitle.render()}</div>
