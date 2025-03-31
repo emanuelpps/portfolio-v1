@@ -8,7 +8,10 @@ export class TabButton implements Button {
 
   render() {
     return (
-      <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-gray-200 transition font-semibold cursor-pointer" onClick={() => "do something"}>
+      <button
+        className="px-6 py-3 bg-white text-black rounded-t-3xl hover:bg-gray-200 transition font-semibold cursor-pointer"
+        onClick={() => "do something"}
+      >
         {this.label}
       </button>
     );

@@ -1,6 +1,11 @@
 import { ButtonFactory } from "../../../components/Buttons/ButtonFactory";
 
-const SkillsTabs = () => {
+interface SkillsProps {
+  activeTab: string;
+  setActiveTab: (value: string) => void;
+}
+
+const SkillsTabs = ({ activeTab, setActiveTab }: SkillsProps) => {
   const TabFrontend = ButtonFactory.createButton("tab", "Frontend");
   const TabNative = ButtonFactory.createButton("tab", "Native");
   const TabTesting = ButtonFactory.createButton("tab", "Testing");
