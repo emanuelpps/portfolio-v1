@@ -2,6 +2,7 @@ import { Button } from "./Types";
 import { PrimaryButton } from "./PrimaryButton";
 import { SecondaryButton } from "./SecondaryButton";
 import { SelectorButton } from "./SelectorButton";
+import { TabButton } from "./TabButton";
 
 export class ButtonFactory {
   static createButton(
@@ -28,6 +29,8 @@ export class ButtonFactory {
           setTitleSelection,
           titleSelection
         );
+      case "tab":
+        return new TabButton(label);
       default:
         throw new Error("Button type not supported");
     }

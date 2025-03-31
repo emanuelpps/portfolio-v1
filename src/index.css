@@ -2,7 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-    --background-image-circle-bg-image: url("/assets/images/circleBG.svg")
+    --background-image-circle-bg-image: url("/assets/images/circleBG.svg");
+    --background-image-black-waves: url("/assets/images/bg-black.webp")
 }
 
 html {
