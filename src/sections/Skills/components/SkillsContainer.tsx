@@ -23,7 +23,7 @@ const SkillsContainer = () => {
         {SkillsTitle.render()}
       </div>
       <SkillsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="bg-black-waves w-[90%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
+      <div className="bg-black-waves w-[100%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
         <div>
           <h3 className="text-white text-4xl">{activeTab}</h3>
         </div>
