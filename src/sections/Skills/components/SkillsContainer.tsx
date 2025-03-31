@@ -25,7 +25,7 @@ const SkillsContainer = () => {
           <div className="flex flex-col justify-center text-start items-center w-full">
             <div>{SkillsTitle.render()}</div>
           </div>
-          <h3 className="flex flex-col justify-center items-center w-full text-white text-4xl">
+          <h3 className="flex flex-col justify-center items-center w-full text-white font-medium text-4xl">
             {activeTab}
           </h3>
         </div>
