@@ -7,7 +7,7 @@ interface SkillCardProp {
 
 const SkillCard = ({ name, icon }: SkillCardProp) => {
   return (
-    <div className="bg-gray w-full flex bg-[#2d2e30] rounded-3xl p-4 gap-5 justify-center items-center text-white shadow-black shadow-md">
+    <div className="bg-gray w-full flex bg-[#2d2e30] rounded-3xl p-4 gap-5 justify-center items-center text-white shadow-black shadow-2xs">
       <div>{icon}</div>
       <div>
         <h4 className="font-semibold text-lg">{name}</h4>
