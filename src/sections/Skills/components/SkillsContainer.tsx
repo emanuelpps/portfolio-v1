@@ -11,7 +11,7 @@ const SkillsContainer = () => {
   const SkillsTitle = TitlesFactory.createTitle(
     "secondary",
     "Skills",
-    "My journey so far"
+    "What I can do"
   );
 
   /*   const handleTabChange = (tab: Category) => {
@@ -19,13 +19,15 @@ const SkillsContainer = () => {
   }; */
   return (
     <div className="w-[100vw] flex justify-center items-center flex-col">
-      <div className="flex flex-col justify-start w-[90vw]">
-        {SkillsTitle.render()}
-      </div>
       <SkillsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="bg-black-waves w-[90%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
-        <div>
-          <h3 className="text-white text-4xl">{activeTab}</h3>
+      <div className="bg-[#161616] w-[100%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
+        <div className="flex justify-center items-center w-full">
+          <div className="flex flex-col justify-center text-start items-center w-full">
+            <div>{SkillsTitle.render()}</div>
+          </div>
+          <h3 className="flex flex-col justify-center items-center w-full text-white font-medium text-4xl">
+            {activeTab}
+          </h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 place-items-center">
           {icons[activeTab].map(({ name, icon }) => (
