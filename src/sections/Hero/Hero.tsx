@@ -28,12 +28,16 @@ export const Hero = () => {
       className="flex justify-center items-center w-full overflow-hidden"
       style={{ height: `${screenHeight}px` }}
     >
-      <div className="w-full flex justify-center items-center min-h-screen pt-10">
-        <div className="bg-circle-bg-image w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col gap-14">
-          {/*<Available />*/}
-          {titleSelection === "title" ? <Title /> : <TitleText />}
-          {ContactMeButton.render()}
-          {SelectorButton.render()}
+      <div className="w-full flex justify-center items-center min-h-screen pt-14">
+        <div className="bg-eclipse-c w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
+          <div className="bg-eclipse-b w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
+            <div className="bg-eclipse-a w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col gap-10 mt-4">
+              {/*<Available />*/}
+              {titleSelection === "title" ? <Title /> : <TitleText />}
+              {ContactMeButton.render()}
+              {SelectorButton.render()}
+            </div>
+          </div>
         </div>
       </div>
     </section>
