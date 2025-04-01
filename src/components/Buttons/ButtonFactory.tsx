@@ -9,7 +9,6 @@ export class ButtonFactory {
     type: string,
     label: string,
     labelTwo?: string,
-    activeLabel?: string,
     setTitleSelection?: (value: string) => void,
     titleSelection?: string
   ): Button {
@@ -31,7 +30,7 @@ export class ButtonFactory {
           titleSelection
         );
       case "tab":
-        return new TabButton(label, activeLabel, setTitleSelection);
+        return new TabButton(label);
       default:
         throw new Error("Button type not supported");
     }
