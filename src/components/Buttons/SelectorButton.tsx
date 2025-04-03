@@ -1,5 +1,4 @@
 import { Button } from "./Types";
-import { FiArrowUpRight } from "react-icons/fi";
 
 export class SelectorButton implements Button {
   label: string;
@@ -21,32 +20,27 @@ export class SelectorButton implements Button {
 
   render() {
     return (
-      <div className="flex items-center bg-gradient-to-r from-orange-200 to-orange-200 rounded-full p-1 w-[280px] min-w-[280px] h-[60px] shadow-md bg-opacity-50 backdrop-blur-lg border-gray-100 border-b-2">
+      <div className="flex items-center bg-gray-800 rounded-full p-1 w-40 min-w-[150px] h-10 shadow-lg border border-gray-700 bg-opacity-80 backdrop-blur-md">
         <button
-          className={`${
-            this.titleSelection !== "title"
-              ? "flex-1 text-orange-900 font-medium text-lg hover:text-orange-700 transition cursor-pointer"
-              : "flex items-center justify-center bg-orange-400 text-white font-semibold rounded-full w-[55%] h-full hover:bg-orange-500 transition cursor-pointer"
+          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1 ${
+            this.titleSelection === "title"
+              ? "bg-gray-600 text-white shadow-md"
+              : "text-gray-300 hover:text-white"
           }`}
           onClick={() => this.setTitleSelection?.("title")}
         >
           {this.label}
-          {this.titleSelection === "title" && (
-            <FiArrowUpRight className="ml-2" />
-          )}
         </button>
+
         <button
-          className={`${
-            this.titleSelection !== "about"
-              ? "flex-1 text-orange-900 font-medium text-lg hover:text-orange-700 transition cursor-pointer"
-              : "flex items-center justify-center bg-orange-400 text-white font-semibold rounded-full w-[55%] h-full hover:bg-orange-500 transition cursor-pointer"
+          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1 ${
+            this.titleSelection === "about"
+              ? "bg-gray-600 text-white shadow-md"
+              : "text-gray-300 hover:text-white"
           }`}
           onClick={() => this.setTitleSelection?.("about")}
         >
           {this.labelTwo}
-          {this.titleSelection === "about" && (
-            <FiArrowUpRight className="ml-2" />
-          )}
         </button>
       </div>
     );

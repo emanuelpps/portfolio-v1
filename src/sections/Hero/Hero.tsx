@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-//import Available from "./components/Available";
 import Title from "./components/Title";
-import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
 import TitleText from "./components/TitleText";
+import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
 
 export const Hero = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -18,28 +17,21 @@ export const Hero = () => {
   const SelectorButton = ButtonFactory.createButton(
     "selector",
     "Title",
-    "About Me",
+    "About",
     setTitleSelection,
     titleSelection
   );
 
   return (
     <section
-      className="flex justify-center items-center w-full overflow-hidden"
+      className="flex flex-col justify-center items-center w-full overflow-hidden bg-gray-900 text-white relative"
       style={{ height: `${screenHeight}px` }}
     >
-      <div className="w-full flex justify-center items-center min-h-screen pt-14">
-        <div className="bg-eclipse-c w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
-          <div className="bg-eclipse-b w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
-            <div className="bg-eclipse-a w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col gap-10 mt-4">
-              {/*<Available />*/}
-              {titleSelection === "title" ? <Title /> : <TitleText />}
-              {ContactMeButton.render()}
-              {SelectorButton.render()}
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col justify-center items-center flex-1 gap-10">
+        {titleSelection === "title" ? <Title /> : <TitleText />}
+        {ContactMeButton.render()}
       </div>
+      <div className="absolute bottom-10">{SelectorButton.render()}</div>
     </section>
   );
 };
