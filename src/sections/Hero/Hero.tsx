@@ -24,7 +24,7 @@ export const Hero = () => {
 
   return (
     <section
-      className="flex flex-col justify-center items-center w-full overflow-hidden bg-gray-900 text-white relative"
+      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative"
       style={{ height: `${screenHeight}px` }}
     >
       <div className="flex flex-col justify-center items-center flex-1 gap-10">

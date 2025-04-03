@@ -4,8 +4,6 @@ import SkillsTabs from "./SkillsTabs";
 import icons from "../../../components/Icons/IconsConfig";
 import SkillCard from "./SkillCard";
 
-//type Category = keyof typeof icons;
-
 const SkillsContainer = () => {
   const [activeTab, setActiveTab] = useState<string>("Frontend");
   const SkillsTitle = TitlesFactory.createTitle(
@@ -14,18 +12,13 @@ const SkillsContainer = () => {
     "What I can do"
   );
 
-  /*   const handleTabChange = (tab: Category) => {
-    setActiveTab(tab);
-  }; */
   return (
-    <div className="w-[100vw] flex justify-center items-center flex-col">
+    <div className="flex flex-col items-center w-full">
       <SkillsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="bg-[#242424] w-[100%] h-[90vh] rounded-4xl bg-cover bg-no-repeat justify-center flex items-center flex-col gap-5">
-        <div className="flex justify-center items-center w-full">
-          <div className="flex flex-col justify-center text-start items-center w-full">
-            <div>{SkillsTitle.render()}</div>
-          </div>
-          <h3 className="flex flex-col justify-center items-center w-full text-white font-medium text-4xl">
+      <div className=" bg-gray-900/50 backdrop-blur-lg shadow-lg w-full max-w-7xl min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800">
+        <div className="text-center flex w-[90%] justify-between items-center">
+          {SkillsTitle.render()}
+          <h3 className="text-white font-semibold text-4xl mt-4 drop-shadow-lg">
             {activeTab}
           </h3>
         </div>
@@ -40,5 +33,3 @@ const SkillsContainer = () => {
 };
 
 export default SkillsContainer;
-
-///Deberia armar un estado tipo objeto
