@@ -2,10 +2,8 @@ import SkillsContainer from "./components/SkillsContainer";
 
 const Skills = () => {
   return (
-    <section>
-      <div className="relative bg-[#FCB173] w-full min-h-[100vh] flex justify-center items-center">
-        <SkillsContainer />
-      </div>
+    <section className="w-full min-h-screen flex justify-center items-center bg-[#0F1621] text-white">
+      <SkillsContainer />
     </section>
   );
 };

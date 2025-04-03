@@ -7,14 +7,12 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
 }) => {
   return (
     <button
-      className={`hover:bg-[#fd853abb] w-full h-[100%] rounded-4xl ml-1 mr-1 ${
-        state === link.hash ? "bg-[#FD853A]" : ""
+      className={`hover:bg-[#FF4D7D] w-full h-[100%] rounded-2xl ml-1 mr-1 ${
+        state === link.hash ? "bg-[#FF4D7D]" : ""
       }`}
       onClick={() => setHashSection(link.hash)}
     >
-      <a href={link.hash} className="text-white">
-        {link.label}
-      </a>
+      <a href={link.hash}>{link.label}</a>
     </button>
   );
 };
