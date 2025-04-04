@@ -1,19 +1,49 @@
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import LogoImage from "/assets/images/epLogo.png";
+
 const LogoContainer = () => {
+  const [isCentered, setIsCentered] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsCentered((prev) => !prev);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="flex w-full justify-center items-center">
-      <div className="flex justify-center items-center w-full gap-1">
-        <div>
-          <img src={LogoImage} className="w-[50px] rounded-2xl p-1" />
-        </div>
-        <div>
+    <div className="flex w-full justify-center items-center relative h-[60px]">
+      <motion.div
+        className="flex justify-center items-center gap-2 absolute"
+        animate={{
+          x: isCentered ? 0 : 0,
+          y: isCentered ? 0 : 0,
+        }}
+      >
+        <motion.img
+          src={LogoImage}
+          className="border border-gray-800 w-[50px] rounded-2xl"
+          animate={{
+            x: isCentered ? 60 : 0,
+            y: isCentered ? 0 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+        />
+        <motion.div
+          animate={{
+            opacity: isCentered ? 0 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+        >
           <h3 className="font-semibold text-[0.8rem] leading-3">
             Emanuel Pagés
             <br />
             <span className="font-extralight">Frontend Developer</span>
           </h3>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

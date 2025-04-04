@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Title from "./components/Title";
 import TitleText from "./components/TitleText";
 import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
@@ -28,7 +29,29 @@ export const Hero = () => {
       style={{ height: `${screenHeight}px` }}
     >
       <div className="flex flex-col justify-center items-center flex-1 gap-10">
-        {titleSelection === "title" ? <Title /> : <TitleText />}
+        <AnimatePresence mode="wait">
+          {titleSelection === "title" ? (
+            <motion.div
+              key="title"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <Title />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="titleText"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <TitleText />
+            </motion.div>
+          )}
+        </AnimatePresence>
         {ContactMeButton.render()}
       </div>
       <div className="absolute bottom-10">{SelectorButton.render()}</div>
