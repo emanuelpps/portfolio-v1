@@ -20,7 +20,7 @@ const ExperienceContainer = () => {
     },
     {
       CompanyName: "Justina.io",
-      JobTitle: "Frontend Developer - Hackathon Participation",
+      JobTitle: "Frontend Developer - Hackathon",
       Period: "2024 - July",
       ItemType: ItemTypes.Secondary,
     },
