@@ -26,7 +26,7 @@ const LogoContainer = () => {
           src={LogoImage}
           className="border border-gray-800 w-[50px] rounded-2xl"
           animate={{
-            x: isCentered ? 55 : 0,
+            x: isCentered ? 60 : 0,
             y: isCentered ? 0 : 0,
           }}
           transition={{ duration: 0.3 }}
