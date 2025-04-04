@@ -22,7 +22,7 @@ const SkillsContainer = () => {
             {activeTab}
           </h3>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 place-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 place-items-center">
           {icons[activeTab].map(({ name, icon }) => (
             <SkillCard key={name} name={name} icon={icon} />
           ))}
