@@ -1,10 +1,12 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
 import SkillsTabs from "./SkillsTabs";
 import icons from "../../../components/Icons/IconsConfig";
 import SkillCard from "./SkillCard";
 
-const SkillsContainer = () => {
+export const SkillsContainer = () => {
   const [activeTab, setActiveTab] = useState<string>("Frontend");
   const SkillsTitle = TitlesFactory.createTitle(
     "secondary",
@@ -12,11 +14,22 @@ const SkillsContainer = () => {
     "What I can do"
   );
 
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <div className="flex flex-col items-center w-full">
       <SkillsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className=" bg-gray-900/50 backdrop-blur-lg shadow-lg w-full max-w-7xl min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800">
-        <div className="text-center  flex w-[80%] justify-between items-center">
+      <motion.div
+        ref={ref}
+        className="bg-gray-900/50 backdrop-blur-lg shadow-lg w-full max-w-7xl min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800"
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="text-center flex w-[80%] justify-between items-center">
           <div className="flex w-full justify-start text-start items-center">
             {SkillsTitle.render()}
           </div>
@@ -31,9 +44,7 @@ const SkillsContainer = () => {
             <SkillCard key={name} name={name} icon={icon} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
-
-export default SkillsContainer;
