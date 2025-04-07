@@ -21,7 +21,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ title, image, link }) => {
       <img
         src={image}
         alt={title}
-        className="absolute top-16 left-0 w-full h-[260px] object-cover rounded-[20px] px-4"
+        className="absolute top-16 left-0 w-full h-full object-cover rounded-[20px]"
       />
       <a
         href={link}
