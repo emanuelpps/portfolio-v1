@@ -1,6 +1,6 @@
 import { Button } from "./Types";
 
-export class SelectorButton implements Button {
+export class SelectorButton implements Omit<Button, "isActive"> {
   label: string;
   labelTwo: string;
   setTitleSelection?: (value: string) => void;
