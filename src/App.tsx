@@ -10,7 +10,7 @@ function App() {
     <>
       <div className="container">
         <Header />
-        <main>
+        <main className="gap-10 flex flex-col">
           <Hero />
           <Skills />
           <Experience />

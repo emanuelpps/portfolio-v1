@@ -8,6 +8,8 @@ export class ButtonFactory {
   static createButton(
     type: string,
     label: string,
+    isActive?: boolean,
+    setActiveTab?: (value: string) => void,
     labelTwo?: string,
     setTitleSelection?: (value: string) => void,
     titleSelection?: string
@@ -30,7 +32,10 @@ export class ButtonFactory {
           titleSelection
         );
       case "tab":
-        return new TabButton(label);
+        if (!setActiveTab) {
+          throw new Error("setActiveTab must be provided for 'tab' buttons.");
+        }
+        return new TabButton(label, Boolean(isActive), setActiveTab);
       default:
         throw new Error("Button type not supported");
     }
