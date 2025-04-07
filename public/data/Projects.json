@@ -6,7 +6,7 @@
     "description": "A reusable component library built in React with full Storybook documentation. It includes a design system of UI elements to speed up development across multiple projects, ensuring consistency and scalability.",
     "code": "https://github.com/your-username/react-ui-library",
     "deploy": "https://react-ui-library-demo.vercel.app",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   },
   {
     "title": "React Hooks Utility Library",
@@ -15,7 +15,7 @@
     "description": "A collection of reusable React hooks for handling local storage, responsive breakpoints, fetching data, and more. Designed for high performance and easy testing.",
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   },
   {
     "title": "ts-helpers-kit",
@@ -24,7 +24,7 @@
     "description": "Framework-agnostic TypeScript utility library offering common helpers (like deepClone, debounce, slugify, etc.). Useful across any frontend or backend project.",
     "code": "https://github.com/your-username/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   },
   {
     "title": "The Coffee Roastery",
@@ -39,7 +39,7 @@
     "description": "A coffee website with elegance and simplicity. The design is clean and uncluttered, allowing the beauty of our high-quality coffee to take center stage. Stunning, high-resolution images capture the essence of our coffee beans, brewing process, and final aromatic cups. Each image is meticulously chosen to evoke the rich textures and inviting warmth of a perfect coffee moment. The color palette is muted, with a focus on natural tones that complement the rich browns of freshly roasted beans.",
     "code": "https://github.com/your-username/coffee-roastery",
     "deploy": "https://coffee-roastery.vercel.app",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   },
   {
     "title": "The CodeMaker Lab",
@@ -53,7 +53,7 @@
     ],
     "description": "I was responsible for both the design and development of The CodeMaker Lab website, which initially had an outdated and unattractive format. I proposed a complete redesign, implementing a modern and professional look. Using a color palette of deep blue, vibrant teal, and soft aqua, I created a fresh and dynamic interface. The new layout focuses on simplicity, with clear navigation and bold typography. This redesign not only made the website look better but also enhanced the overall user experience, making the website more engaging and aligned with the agency's goals.",
     "deploy": "https://thecodemakerlab.com",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   },
   {
     "title": "Actor Portfolio",
@@ -61,6 +61,6 @@
     "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
     "description": "I designed and developed this actor's portfolio as a project assigned to me by The CodeMaker Lab. The website showcases the actor's professional experience in theater with a simple, easy-to-navigate structure. It features the actor's biography, performances, and images from past plays. I used a clean layout with bold typography to highlight key details. The color palette of white, black, and soft grays gives the site a professional and elegant look. This project allowed me to create a modern, personal website that reflects the actor’s work and career.",
     "deploy": "https://actor-portfolio.vercel.app",
-    "image": "path-to-image"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
   }
 ]
