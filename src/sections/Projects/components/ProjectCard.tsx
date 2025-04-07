@@ -16,12 +16,14 @@ const ProjectCard: FC<ProjectCardProps> = ({ title, image, link }) => {
       className="relative w-80 h-[420px] rounded-[24px] border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl overflow-hidden group"
     >
       <div className="absolute top-4 pl-4 z-20 border-b-[1px] w-full border-white pb-3">
-        <h3 className="text-white text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
       </div>
+      <div className="absolute w-full h-[320px] bottom-0 bg-amber-100 rounded-t-[40px]"></div>
+      <div className="absolute w-full h-[310px] bottom-0 bg-amber-500 rounded-t-[40px]"></div>
       <img
         src={image}
         alt={title}
-        className="absolute top-16 left-0 w-full h-full object-cover rounded-[20px]"
+        className="absolute bottom-0 left-0 w-full h-[300px] object-cover rounded-t-[40px]"
       />
       <a
         href={link}
