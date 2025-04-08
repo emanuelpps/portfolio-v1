@@ -1,47 +1,72 @@
 [
   {
+    "id": 1,
     "title": "React UI Component Library",
     "type": "Library",
     "stack": ["React", "TypeScript", "Tailwindcss", "Storybook"],
-    "description": "A reusable component library built in React with full Storybook documentation. It includes a design system of UI elements to speed up development across multiple projects, ensuring consistency and scalability.",
+    "description": "Reusable React UI component library with a custom design system and full Storybook documentation.",
+    "longDescription": "This is a reusable UI component library built with React and TypeScript. It includes a full design system and is documented using Storybook, making it easy to scale and maintain across multiple projects. Components are styled with TailwindCSS for responsiveness and consistency. It helps teams build faster by offering pre-built, accessible, and customizable UI blocks.",
     "code": "https://github.com/your-username/react-ui-library",
     "deploy": "https://react-ui-library-demo.vercel.app",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "image": "https://storybook.js.org/docs-assets/8.6/get-started/example-onboarding-wizard.png",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Doc"
   },
   {
+    "id": 2,
     "title": "React Hooks Utility Library",
     "type": "Library",
     "stack": ["React", "TypeScript", "Jest"],
-    "description": "A collection of reusable React hooks for handling local storage, responsive breakpoints, fetching data, and more. Designed for high performance and easy testing.",
+    "description": "A set of custom React hooks to simplify state handling, local storage, data fetching, and more.",
+    "longDescription": "This utility library provides a collection of reusable React hooks developed in TypeScript. It includes useful hooks for working with localStorage, media queries, breakpoints, async data fetching, and more. The library is designed for performance and testability, using Jest for unit testing. It helps developers reduce boilerplate code and build React apps more efficiently.",
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xdnx0nl9uyz2gwg10say",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Doc"
   },
   {
-    "title": "ts-helpers-kit",
+    "id": 3,
+    "title": "Helpers Kit Utility Library",
     "type": "Library",
-    "stack": ["TypeScript"],
-    "description": "Framework-agnostic TypeScript utility library offering common helpers (like deepClone, debounce, slugify, etc.). Useful across any frontend or backend project.",
+    "stack": ["TypeScript", "Vitest"],
+    "description": "Framework-agnostic TypeScript helper functions like deepClone, debounce, slugify, and more.",
+    "longDescription": "A utility library built entirely in TypeScript, designed to be framework-agnostic. It includes helper functions commonly used in both frontend and backend development, such as deep cloning, debouncing, string manipulation (slugify), and more. Ideal for use in any TypeScript project that needs reliable, well-typed utilities.",
     "code": "https://github.com/your-username/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Doc"
   },
   {
+    "id": 4,
     "title": "The Coffee Roastery",
     "type": "Project",
     "stack": [
       "React",
       "Tailwindcss",
-      "React-Router-DOM",
+      "ReactRouter",
       "Firebase",
       "Framer Motion"
     ],
-    "description": "A coffee website with elegance and simplicity. The design is clean and uncluttered, allowing the beauty of our high-quality coffee to take center stage. Stunning, high-resolution images capture the essence of our coffee beans, brewing process, and final aromatic cups. Each image is meticulously chosen to evoke the rich textures and inviting warmth of a perfect coffee moment. The color palette is muted, with a focus on natural tones that complement the rich browns of freshly roasted beans.",
-    "code": "https://github.com/your-username/coffee-roastery",
-    "deploy": "https://coffee-roastery.vercel.app",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "description": "A coffee shop website focused on clean UI and visual storytelling. Built with React and Firebase.",
+    "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach. The site aims to convey warmth and quality through high-resolution imagery and a clean user interface. Built using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication. Smooth animations powered by Framer Motion enhance user experience. The natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
+    "code": "https://github.com/emanuelpps/the-coffee-roastery",
+    "deploy": "https://the-coffee-roastery.vercel.app/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Deploy"
   },
   {
+    "id": 5,
     "title": "The CodeMaker Lab",
     "type": "Project",
     "stack": [
@@ -51,16 +76,29 @@
       "Zustand",
       "Framer Motion"
     ],
-    "description": "I was responsible for both the design and development of The CodeMaker Lab website, which initially had an outdated and unattractive format. I proposed a complete redesign, implementing a modern and professional look. Using a color palette of deep blue, vibrant teal, and soft aqua, I created a fresh and dynamic interface. The new layout focuses on simplicity, with clear navigation and bold typography. This redesign not only made the website look better but also enhanced the overall user experience, making the website more engaging and aligned with the agency's goals.",
-    "deploy": "https://thecodemakerlab.com",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "description": "Redesign and development of a software agency website using modern technologies and animations.",
+    "longDescription": "I was in charge of the complete redesign and development of The CodeMaker Lab's website, a software development agency. The original site had an outdated and unattractive look. I proposed a full visual overhaul, focusing on delivering a modern and professional experience. The site was built with Next.js and TypeScript, using Tailwindcss for styling, Zustand for global state management, and Framer Motion for smooth, engaging animations. The new design features bold typography, a vibrant and modern color palette, and intuitive navigation. The result is a visually impactful, user-friendly website aligned with the brand’s identity and goals.",
+    "code": "",
+    "deploy": "https://codemakerlab.vercel.app/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Deploy"
   },
   {
+    "id": 6,
     "title": "Actor Portfolio",
     "type": "Project",
     "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
-    "description": "I designed and developed this actor's portfolio as a project assigned to me by The CodeMaker Lab. The website showcases the actor's professional experience in theater with a simple, easy-to-navigate structure. It features the actor's biography, performances, and images from past plays. I used a clean layout with bold typography to highlight key details. The color palette of white, black, and soft grays gives the site a professional and elegant look. This project allowed me to create a modern, personal website that reflects the actor’s work and career.",
-    "deploy": "https://actor-portfolio.vercel.app",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    "description": "A personal website for an actor showcasing biography, performances, and photos.",
+    "longDescription": "This portfolio website was developed for a theater actor as part of a project at The CodeMaker Lab. The site includes the actor’s biography, a list of past performances, and a gallery of stage photos. Built with Next.js and TypeScript for performance and scalability, the layout was designed with Tailwindcss for a modern and responsive experience. The visual structure is minimal yet bold, using large, elegant typography and a monochrome palette to convey a professional and artistic presence. The website’s goal is to clearly highlight the actor’s career while maintaining a stylish and personal presentation.",
+    "code": "",
+    "deploy": "https://mng-actor.vercel.app/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
+    "buttonText": "Deploy"
   }
 ]

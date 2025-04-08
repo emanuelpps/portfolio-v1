@@ -4,38 +4,45 @@ import { SecondaryButton } from "./SecondaryButton";
 import { SelectorButton } from "./SelectorButton";
 import { TabButton } from "./TabButton";
 
+type ButtonFactoryOptions =
+  | {
+      type: "primary" | "secondary";
+      label: string;
+    }
+  | {
+      type: "selector";
+      label: string;
+      labelTwo: string;
+      setTitleSelection?: (value: string) => void;
+      titleSelection?: string;
+    }
+  | {
+      type: "tab";
+      label: string;
+      isActive?: boolean;
+      setActiveTab: (value: string) => void;
+    };
+
 export class ButtonFactory {
-  static createButton(
-    type: string,
-    label: string,
-    isActive?: boolean,
-    setActiveTab?: (value: string) => void,
-    labelTwo?: string,
-    setTitleSelection?: (value: string) => void,
-    titleSelection?: string
-  ): Button {
-    switch (type) {
+  static createButton(options: ButtonFactoryOptions): Button {
+    switch (options.type) {
       case "primary":
-        return new PrimaryButton(label);
+        return new PrimaryButton(options.label);
       case "secondary":
-        return new SecondaryButton(label);
+        return new SecondaryButton(options.label);
       case "selector":
-        if (!labelTwo) {
-          throw new Error(
-            "Both labelOne and labelTwo must be provided for 'selector' buttons."
-          );
-        }
         return new SelectorButton(
-          label,
-          labelTwo,
-          setTitleSelection,
-          titleSelection
+          options.label,
+          options.labelTwo,
+          options.setTitleSelection,
+          options.titleSelection
         );
       case "tab":
-        if (!setActiveTab) {
-          throw new Error("setActiveTab must be provided for 'tab' buttons.");
-        }
-        return new TabButton(label, Boolean(isActive), setActiveTab);
+        return new TabButton(
+          options.label,
+          Boolean(options.isActive),
+          options.setActiveTab
+        );
       default:
         throw new Error("Button type not supported");
     }

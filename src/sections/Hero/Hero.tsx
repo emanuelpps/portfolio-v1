@@ -13,22 +13,26 @@ export const Hero = () => {
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
-
-  const ContactMeButton = ButtonFactory.createButton("primary", "Contact Me");
-  const SelectorButton = ButtonFactory.createButton(
-    "selector",
-    "Title",
-    "About",
+  const ContactMeButton = ButtonFactory.createButton({
+    type: "primary",
+    label: "Contact Me"
+  });
+  
+  const SelectorButton = ButtonFactory.createButton({
+    type: "selector",
+    label: "Title",
+    labelTwo: "About",
     setTitleSelection,
-    titleSelection
-  );
+    titleSelection,
+  });
+  
 
   return (
     <section
       className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative"
       style={{ height: `${screenHeight}px` }}
     >
-      <div className="flex flex-col justify-center items-center flex-1 gap-10">
+      <div className="flex flex-col items-center justify-center flex-1 gap-10">
         <AnimatePresence mode="wait">
           {titleSelection === "title" ? (
             <motion.div
