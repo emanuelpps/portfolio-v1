@@ -2,6 +2,9 @@ import { useState } from "react";
 import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
 import ProjectCard from "./ProjectCard";
 import Projects from "../../../../public/data/Projects.json";
+import { RiArrowRightSFill } from "react-icons/ri";
+import { RiArrowLeftSFill } from "react-icons/ri";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const ProjectsContainer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,7 +25,10 @@ export const ProjectsContainer = () => {
   );
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    const lastIndex = totalSlides - 1;
+    if (index < 0) setCurrentIndex(lastIndex);
+    else if (index > lastIndex) setCurrentIndex(0);
+    else setCurrentIndex(index);
   };
 
   const ProjectHoverFilter = (id: number | null) => {
@@ -47,33 +53,55 @@ export const ProjectsContainer = () => {
         <div className="relative flex items-center justify-center w-full overflow-hidden">
           <div className="flex transition-transform duration-500 ease-in-out">
             {currentProjects.map((project) => (
-              <div
-                key={project.id}
-                className="w-full px-4"
-                onMouseEnter={() => ProjectHoverFilter(project.id)}
-                onMouseLeave={() => ProjectHoverFilter(null)}
-              >
-                <ProjectCard
-                  title={project.title}
-                  image={project.image}
-                  link={project.deploy}
-                />
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  key={project.id}
+                  className="w-full px-4"
+                  onMouseEnter={() => ProjectHoverFilter(project.id)}
+                  onMouseLeave={() => ProjectHoverFilter(null)}
+                >
+                  <ProjectCard
+                    title={project.title}
+                    image={project.image}
+                    link={project.deploy}
+                    buttonText={project.buttonText}
+                    stack={project.stack}
+                  />
+                </motion.div>
+              </AnimatePresence>
             ))}
           </div>
         </div>
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-4 justify-center items-center">
+          <button
+            onClick={() => goToSlide(currentIndex - 1)}
+            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
+            aria-label="Anterior"
+          >
+            <RiArrowLeftSFill className="text-4xl" />
+          </button>
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
               className={`w-3 h-3 rounded-full transition-all ${
                 currentIndex === index
-                  ? "bg-orange-500 scale-110"
+                  ? "bg-[#FF4D7D] scale-150"
                   : "bg-gray-500"
               }`}
               onClick={() => goToSlide(index)}
             />
           ))}
+          <button
+            onClick={() => goToSlide(currentIndex + 1)}
+            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
+            aria-label="Siguiente"
+          >
+            <RiArrowRightSFill className="text-4xl" />
+          </button>
         </div>
       </div>
     </div>
