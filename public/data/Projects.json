@@ -23,7 +23,7 @@
     "longDescription": "This utility library provides a collection of reusable React hooks developed in TypeScript. It includes useful hooks for working with localStorage, media queries, breakpoints, async data fetching, and more. The library is designed for performance and testability, using Jest for unit testing. It helps developers reduce boilerplate code and build React apps more efficiently.",
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xdnx0nl9uyz2gwg10say",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/k414voypcrwjgxyog3p7",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
