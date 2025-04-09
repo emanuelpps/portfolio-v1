@@ -18,7 +18,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   stack,
 }) => {
   return (
-    <div className="relative w-85 h-[420px] rounded-[40px] border-[1px] border-r-transparent border-t-white/10 border-b-transparent border-l-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl hover:bg-[#FF4D7D] transition-colors duration-500 cursor-pointer hover:text-stroke-[1px]">
+    <div className="relative w-85 h-[420px] rounded-[40px] border-[1px] border-r-transparent border-t-white/10 border-b-transparent border-l-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl hover:bg-[#FF4D7D] transition-colors duration-500 cursor-pointer">
       <div className="absolute top-4 pl-4 z-20 border-b-[1px] w-full border-white pb-3">
         <h3 className="text-lg font-semibold text-white">{title}</h3>
         <div className="flex gap-2 text-white text-[0.7rem] font-extralight">
