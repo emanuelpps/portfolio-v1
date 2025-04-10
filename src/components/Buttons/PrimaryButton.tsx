@@ -1,14 +1,20 @@
 import { Button } from "./Types";
+
 export class PrimaryButton implements Button {
   label: string;
+  onClick?: () => void;
 
-  constructor(label: string) {
+  constructor(label: string, onClick?: () => void) {
     this.label = label;
+    this.onClick = onClick;
   }
 
   render() {
     return (
-      <button className="px-6 py-3 bg-white text-black rounded-3xl hover:bg-gray-200 transition font-semibold cursor-pointer" onClick={() => "do something"}>
+      <button
+        className="px-8 py-2 bg-[#FF4D7D] text-white rounded-full font-medium shadow-lg hover:bg-[#ff4d7cce] transition-all duration-300 ease-in-out transform hover:scale-105"
+        onClick={this.onClick}
+      >
         {this.label}
       </button>
     );

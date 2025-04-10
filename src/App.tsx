@@ -8,14 +8,16 @@ import Skills from "./sections/Skills/Skills";
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Hero />
-        <Skills />
-        <Experience />
-        <Projects />
-      </main>
-      <Footer />
+      <div className="container">
+        <Header />
+        <main className="gap-10 flex flex-col">
+          <Hero />
+          <Skills />
+          <Experience />
+          <Projects />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

@@ -6,8 +6,8 @@ import { useState } from "react";
 const NavBar: React.FC = () => {
   const [hashSection, setHashSection] = useState<string>("");
   return (
-    <nav className="w-[100%] flex justify-center items-center h-[9vh]">
-      <div className="flex w-[80%] bg-black items-center text-white justify-between h-[100%] rounded-4xl p-2">
+    <nav className="fixed top-5 left-0 w-full flex justify-center items-center h-[10vh] z-50">
+      <div className="flex w-[85%] bg-gray-900/50 backdrop-blur-lg shadow-lg items-center justify-between h-full rounded-2xl px-6 py-3 text-white border border-gray-800">
         <NavLinksLeft
           hashSection={hashSection}
           setHashSection={setHashSection}

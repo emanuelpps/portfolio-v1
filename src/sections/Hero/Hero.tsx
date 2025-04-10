@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-//import Available from "./components/Available";
+import { AnimatePresence, motion } from "framer-motion";
 import Title from "./components/Title";
-import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
 import TitleText from "./components/TitleText";
+import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
 
 export const Hero = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -13,33 +13,52 @@ export const Hero = () => {
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
-
-  const ContactMeButton = ButtonFactory.createButton("primary", "Contact Me");
-  const SelectorButton = ButtonFactory.createButton(
-    "selector",
-    "Title",
-    "About Me",
+  const ContactMeButton = ButtonFactory.createButton({
+    type: "primary",
+    label: "Contact Me"
+  });
+  
+  const SelectorButton = ButtonFactory.createButton({
+    type: "selector",
+    label: "Title",
+    labelTwo: "About",
     setTitleSelection,
-    titleSelection
-  );
+    titleSelection,
+  });
+  
 
   return (
     <section
-      className="flex justify-center items-center w-full overflow-hidden"
+      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative"
       style={{ height: `${screenHeight}px` }}
     >
-      <div className="w-full flex justify-center items-center min-h-screen pt-14">
-        <div className="bg-eclipse-c w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
-          <div className="bg-eclipse-b w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col mt-4">
-            <div className="bg-eclipse-a w-full min-h-screen flex justify-center items-center bg-cover bg-no-repeat bg-top flex-col gap-10 mt-4">
-              {/*<Available />*/}
-              {titleSelection === "title" ? <Title /> : <TitleText />}
-              {ContactMeButton.render()}
-              {SelectorButton.render()}
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col items-center justify-center flex-1 gap-10">
+        <AnimatePresence mode="wait">
+          {titleSelection === "title" ? (
+            <motion.div
+              key="title"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <Title />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="titleText"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <TitleText />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {ContactMeButton.render()}
       </div>
+      <div className="absolute bottom-10">{SelectorButton.render()}</div>
     </section>
   );
 };

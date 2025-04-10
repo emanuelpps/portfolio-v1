@@ -1,11 +1,9 @@
-import SkillsContainer from "./components/SkillsContainer";
+import { SkillsContainer } from "./components/SkillsContainer";
 
 const Skills = () => {
   return (
-    <section>
-      <div className="relative bg-[#FCB173] w-full min-h-[100vh] flex justify-center items-center">
-        <SkillsContainer />
-      </div>
+    <section id="skills" className="w-full min-h-screen flex justify-center items-center bg-[#0F1621] text-white">
+      <SkillsContainer />
     </section>
   );
 };
