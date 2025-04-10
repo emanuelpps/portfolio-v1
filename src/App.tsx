@@ -1,3 +1,4 @@
+import { Contact } from "./sections/Contact/Contact";
 import Experience from "./sections/Experience/Experience";
 import Footer from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
@@ -15,6 +16,7 @@ function App() {
           <Skills />
           <Experience />
           <Projects />
+          <Contact />
         </main>
         <Footer />
       </div>
