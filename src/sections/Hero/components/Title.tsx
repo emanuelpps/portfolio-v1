@@ -5,7 +5,7 @@ const Title = () => {
       <h1 className="text-7xl font-normal">
         I'm <span className="text-white">Emanuel</span>,
         <br />
-        <span className="font-semibold text-[#FF4D7D]">Frontend Developer</span>
+        <span className="font-semibold text-[#FF4D7D] text-shadow-lg">Frontend Developer</span>
       </h1>
     </div>
   );
