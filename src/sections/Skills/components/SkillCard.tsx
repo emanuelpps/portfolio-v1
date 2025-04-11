@@ -9,10 +9,11 @@ interface SkillCardProp {
 const SkillCard = ({ name, icon }: SkillCardProp) => {
   return (
     <motion.div
-      className="bg-gray-900 w-full max-w-[250px] flex justify-center items-center gap-5 p-6 rounded-3xl text-white shadow-md hover:shadow-lg hover:scale-105 transition-all"
-      initial={{ opacity: 0, scale: 0.5, y: 30 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-gray-900 w-full max-w-[250px] flex justify-center items-center gap-5 p-6 rounded-3xl text-white shadow-md hover:shadow-lg transition-all"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="text-4xl text-[#FF4D7D]">{icon}</div>
