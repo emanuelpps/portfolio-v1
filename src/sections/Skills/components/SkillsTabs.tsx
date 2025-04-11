@@ -5,7 +5,7 @@ interface SkillsProps {
   setActiveTab: (value: string) => void;
 }
 
-const tabs = ["Frontend", "Native", "Testing", "Backend"];
+const tabs = ["Frontend", "Native", "Testing", "Backend", "Tools"];
 
 const SkillsTabs = ({ activeTab, setActiveTab }: SkillsProps) => {
   return (

@@ -9,9 +9,9 @@ import Skills from "./sections/Skills/Skills";
 function App() {
   return (
     <>
-      <div className="container">
+      <div className="container w-[100%] flex flex-col justify-center items-center">
         <Header />
-        <main className="gap-10 flex flex-col">
+        <main className="gap-10 flex flex-col justify-center items-center w-[100%]">
           <Hero />
           <Skills />
           <Experience />
