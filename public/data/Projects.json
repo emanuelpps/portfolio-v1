@@ -3,7 +3,7 @@
     "id": 1,
     "title": "React UI Component Library",
     "type": "Library",
-    "stack": ["React", "TypeScript", "Tailwindcss", "Storybook"],
+    "stack": ["React", "TypeScript", "Storybook", "Tailwindcss"],
     "description": "Reusable React UI component library with a custom design system and full Storybook documentation.",
     "longDescription": "This is a reusable UI component library built with React and TypeScript. It includes a full design system and is documented using Storybook, making it easy to scale and maintain across multiple projects. Components are styled with TailwindCSS for responsiveness and consistency. It helps teams build faster by offering pre-built, accessible, and customizable UI blocks.",
     "code": "https://github.com/your-username/react-ui-library",
@@ -50,9 +50,9 @@
     "type": "Project",
     "stack": [
       "React",
+      "Firebase",
       "Tailwindcss",
       "ReactRouter",
-      "Firebase",
       "Framer Motion"
     ],
     "description": "A coffee shop website focused on clean UI and visual storytelling. Built with React and Firebase.",
@@ -99,6 +99,65 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
+    "buttonText": "Deploy"
+  },
+  {
+    "id": 7,
+    "title": "Personal Portfolio 2024",
+    "type": "Project",
+    "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
+    "description": "Mi portfolio anterior, desarrollado en 2023. Rediseñado anualmente para reflejar mi crecimiento profesional.",
+    "longDescription": "Este fue mi portfolio personal durante 2024. Cada año desarrollo un nuevo portfolio con una estética y estructura renovadas, como ejercicio de mejora continua. Esta versión fue construida con Next.js, TailwindCSS y TypeScript, con un diseño centrado en la simplicidad, la legibilidad y una presentación clara de mis proyectos y experiencia.",
+    "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
+    "deploy": "https://emanuelp-portfolio.vercel.app/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
+    "gallery": [],
+    "buttonText": "Deploy"
+  },
+  {
+    "id": 8,
+    "title": "EP Weather App",
+    "type": "Project",
+    "stack": ["React Js", "JavaScript", "Fetch API", "Bootstrap", "CSS"],
+    "description": "Aplicación del clima simple desarrollada en JavaScript puro con datos en tiempo real.",
+    "longDescription": "Una aplicación web para consultar el clima actual de cualquier ciudad usando la API de OpenWeatherMap. Desarrollada como práctica de consumo de APIs con JavaScript puro, la interfaz es sencilla, responsive y muestra temperatura, condiciones climáticas y otros detalles útiles.",
+    "code": "https://github.com/emanuelpps/EP-WeatherAPP",
+    "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/yuxe7vmfbx78qmownrjx",
+    "gallery": [],
+    "buttonText": "Deploy"
+  },
+  {
+    "id": 9,
+    "title": "Don Remolo Pizza",
+    "type": "Project",
+    "stack": [
+      "React Js",
+      "Firebase",
+      "Framer Motion",
+      "Bootstrap",
+      "JavaScript",
+      "CSS"
+    ],
+    "description": "Landing page ficticia para una pizzería, enfocada en diseño visual y experiencia de usuario.",
+    "longDescription": "Don Remolo Pizza es una landing page diseñada para una marca ficticia de pizzería artesanal. El objetivo fue practicar diseño responsivo, organización de componentes, consumo de base de datos y experiencia visual animada para captar la atención del usuario.",
+    "code": "https://github.com/emanuelpps/donremolo",
+    "deploy": "https://donremolo.vercel.app/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/oyv76xau2xt9erpuh2lv",
+    "gallery": [],
+    "buttonText": "Deploy"
+  },
+  {
+    "id": 10,
+    "title": "Falcon Aviation Shop",
+    "type": "Project",
+    "stack": ["HTML", "CSS", "Vanilla JavaScript", "Bootstrap"],
+    "description": "Ecommerce ficticio para una tienda de productos de aviación, desarrollado como práctica de maquetado.",
+    "longDescription": "Falcon Aviation Shop es un sitio ecommerce ficticio creado como ejercicio de maquetado web. Diseñado con HTML, CSS y JavaScript, este proyecto incluye secciones de productos, carrito y navegación responsiva. Ideal para mostrar conocimientos básicos en estructuras de ecommerce visualmente atractivas.",
+    "code": "https://github.com/emanuelpps/Falcon-Aviation-Shop",
+    "deploy": "https://emanuelpps.github.io/Falcon-Aviation-Shop/",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sv38khxiemhe8bg9i6q6",
+    "gallery": [],
     "buttonText": "Deploy"
   }
 ]
