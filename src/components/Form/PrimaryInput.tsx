@@ -3,7 +3,7 @@ import { InputTypes } from "./Types";
 export class PrimaryInput implements InputTypes {
   type: string;
   label: string;
-<category: string;
+  category: string;
 
   constructor(type: string, label: string, category: string) {
     this.label = label;
