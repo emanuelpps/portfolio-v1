@@ -3,15 +3,12 @@ import { PrimaryInput } from "./PrimaryInput";
 import { SecondaryInput } from "./SecondaryInput";
 
 export class InputFactory {
-  static createInput(options: InputTypes): InputTypes {
-    switch (options.type) {
+  static createInput(type: string, label: string, category?: string): InputTypes {
+    switch (type) {
       case "primary":
-        return new PrimaryInput(options.type, options.label, options.category ?? "" );
+        return new PrimaryInput(type, label, category ?? "");
       case "secondary":
-        return new SecondaryInput(
-          options.type,
-          options.label
-        );
+        return new SecondaryInput(type, label);
       default:
         throw new Error("Input type not supported");
     }
