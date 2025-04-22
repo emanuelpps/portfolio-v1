@@ -8,7 +8,7 @@ export const FormContainer = () => {
     "Have an Awsome Project Idea?"
   );
   return (
-    <div className="flex flex-col justify-center items-center w-[100%] text-center gap-10">
+<div className="flex flex-col justify-center items-center w-[100%] text-center gap-10">
       {ContactTitle.render()}
       <Form />
     </div>

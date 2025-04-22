@@ -11,7 +11,7 @@ export class SecondaryInput implements InputTypes {
 
   render() {
     return (
-      <div className="flex items-center justify-center w-[100%] gap-0 h-full text-white">
+<div className="flex items-center justify-center w-[100%] gap-0 h-full text-white">
         <div className="relative w-40 text-start mb-4">
           <label>{this.label}</label>
         </div>

@@ -3,7 +3,7 @@ import { PrimaryInput } from "./PrimaryInput";
 import { SecondaryInput } from "./SecondaryInput";
 
 export class InputFactory {
-  static createInput(type: string, label: string, category?: string): InputTypes {
+static createInput(type: string, label: string, category?: string): InputTypes {
     switch (type) {
       case "primary":
         return new PrimaryInput(type, label, category ?? "");

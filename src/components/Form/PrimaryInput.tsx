@@ -3,7 +3,7 @@ import { InputTypes } from "./Types";
 export class PrimaryInput implements InputTypes {
   type: string;
   label: string;
-  category: string;
+<category: string;
 
   constructor(type: string, label: string, category: string) {
     this.label = label;
@@ -13,7 +13,7 @@ export class PrimaryInput implements InputTypes {
 
   render() {
     return (
-      <div className="flex items-center justify-center w-[100%] gap-0 h-full text-white">
+<div className="flex items-center justify-center w-[100%] gap-0 h-full text-white">
         <div className="relative w-40 text-start mb-4">
           <label>{this.label}</label>
         </div>
