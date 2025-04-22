@@ -1,4 +1,5 @@
 import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
+import { Form } from "./Form";
 
 export const FormContainer = () => {
   const ContactTitle = TitlesFactory.createTitle(
@@ -7,8 +8,9 @@ export const FormContainer = () => {
     "Have an Awsome Project Idea?"
   );
   return (
-    <div className="flex justify-center items-center w-full text-center">
+<div className="flex flex-col justify-center items-center w-[100%] text-center gap-10">
       {ContactTitle.render()}
+      <Form />
     </div>
   );
 };

@@ -11,9 +11,12 @@ export class SecondaryInput implements InputTypes {
 
   render() {
     return (
-      <button className="px-8 py-2 bg-[#FF4D7D] text-white rounded-full font-medium shadow-lg hover:bg-[#ff4d7cce] transition-all duration-300 ease-in-out transform hover:scale-105">
-        {this.label}
-      </button>
+<div className="flex items-center justify-center w-[100%] gap-0 h-full text-white">
+        <div className="relative w-40 text-start mb-4">
+          <label>{this.label}</label>
+        </div>
+        <textarea className="bg-white h-40 w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md" />
+      </div>
     );
   }
 }
