@@ -20,7 +20,7 @@ export const Hero = () => {
   
   const SelectorButton = ButtonFactory.createButton({
     type: "selector",
-    label: "Title",
+    label: "Hello!",
     labelTwo: "About",
     setTitleSelection,
     titleSelection,
