@@ -1,4 +1,6 @@
 import { Button } from "./Types";
+import { FaArrowUp } from "react-icons/fa";
+
 export class SecondaryButton implements Button {
   label: string;
 
@@ -9,10 +11,16 @@ export class SecondaryButton implements Button {
   render() {
     return (
       <button
-        className="px-6 py-3 bg-[#FD853A] text-black rounded-3xl hover:bg-[#fd853ad8] transition font-semibold"
-        onClick={() => "do Something"}
+        onClick={() => {
+          const contactSection = document.getElementById("contact");
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+        className="flex items-center gap-2 px-6 py-3 border border-[#FF4D7D] text-white rounded-3xl bg-white/10 backdrop-blur-md shadow-lg hover:bg-white/20 transition-all duration-300 font-semibold"
       >
         {this.label}
+        <FaArrowUp className="text-sm text-white transition-transform group-hover:-translate-y-1" />
       </button>
     );
   }
