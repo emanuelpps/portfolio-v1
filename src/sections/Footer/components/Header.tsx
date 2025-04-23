@@ -3,7 +3,7 @@ import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
 const Header = () => {
   const FooterTitle = TitlesFactory.createTitle("secondary", "Lets Connect");
   const ConnectButton = ButtonFactory.createButton({
-    type: "primary",
+    type: "secondary",
     label: "Connect with me",
   });
   return (
