@@ -5,14 +5,26 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
   state,
   setHashSection,
 }) => {
+  const isActive = state === link.hash;
+
   return (
     <button
-      className={`hover:bg-[#FF4D7D] w-full h-[100%] rounded-2xl ml-1 mr-1 ${
-        state === link.hash ? "bg-[#FF4D7D]" : ""
-      }`}
       onClick={() => setHashSection(link.hash)}
+      className="relative px-2 py-1 font-medium transition-colors duration-300 text-md group"
     >
-      <a href={link.hash}>{link.label}</a>
+      <a
+        href={link.hash}
+        className={`text-white transition-colors duration-300 ${
+          isActive ? "text-[#FF4D7D]" : "hover:text-[#FF4D7D]"
+        }`}
+      >
+        {link.label}
+        <span
+          className={`block h-[1px] mt-[2px] bg-[#FF4D7D] transition-all duration-300 ${
+            isActive ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+        />
+      </a>
     </button>
   );
 };
