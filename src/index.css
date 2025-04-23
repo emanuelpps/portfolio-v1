@@ -11,6 +11,7 @@
 }
 
 html {
+    height: 100%;
     background-color:  #0F1621;
     font-family: "Urbanist", "sans-serif";
     font-optical-sizing: auto;
