@@ -1,10 +1,6 @@
-import { Contact } from "./sections/Contact/Contact";
-import Experience from "./sections/Experience/Experience";
+import Home from "./pages/Home";
 import Footer from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
-import { Hero } from "./sections/Hero/Hero";
-import Projects from "./sections/Projects/Projects";
-import Skills from "./sections/Skills/Skills";
 
 function App() {
   return (
@@ -12,11 +8,7 @@ function App() {
       <div className="container w-[100%] flex flex-col justify-center items-center">
         <Header />
         <main className="gap-10 flex flex-col justify-center items-center w-[100%]">
-          <Hero />
-          <Skills />
-          <Experience />
-          <Projects />
-          <Contact />
+          <Home />
         </main>
         <Footer />
       </div>
