@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import AppRoutes from "./routes/Router";
 import Footer from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
 
@@ -8,7 +8,7 @@ function App() {
       <div className="container w-[100%] flex flex-col justify-center items-center">
         <Header />
         <main className="gap-10 flex flex-col justify-center items-center w-[100%]">
-          <Home />
+          <AppRoutes />
         </main>
         <Footer />
       </div>

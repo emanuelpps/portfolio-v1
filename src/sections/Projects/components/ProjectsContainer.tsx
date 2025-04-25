@@ -64,19 +64,13 @@ export const ProjectsContainer = () => {
                   onMouseEnter={() => ProjectHoverFilter(project.id)}
                   onMouseLeave={() => ProjectHoverFilter(null)}
                 >
-                  <ProjectCard
-                    title={project.title}
-                    image={project.image}
-                    link={project.deploy}
-                    buttonText={project.buttonText}
-                    stack={project.stack}
-                  />
+                  <ProjectCard project={project} />
                 </motion.div>
               </AnimatePresence>
             ))}
           </div>
         </div>
-        <div className="flex gap-2 mt-4 justify-center items-center">
+        <div className="flex items-center justify-center gap-2 mt-4">
           <button
             onClick={() => goToSlide(currentIndex - 1)}
             className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"

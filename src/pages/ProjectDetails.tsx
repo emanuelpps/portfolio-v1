@@ -1,6 +1,12 @@
+import ProjectDetailContainer from "../sections/ProjectDetails/ProjectDetailContainer";
+
 const ProjectDetails = () => {
-    return <div>Project</div>;
-  };
-  
-  export default ProjectDetails;
-  
+
+  return (
+    <>
+      <ProjectDetailContainer />
+    </>
+  );
+};
+
+export default ProjectDetails;
