@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "./sections/Header/Header";
 import { ProjectTypes } from "../../types/ProjectTypes";
-import { HeroSection } from "./components/HeroSection";
+import { HeroSection } from "./sections/HeroSection/HeroSection";
 
 const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
   project,

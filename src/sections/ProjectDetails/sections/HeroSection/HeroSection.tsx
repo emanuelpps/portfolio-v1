@@ -19,7 +19,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <img src={mainImageTwo} className="w-[80%] rounded-2xl" />
       </div>
       <div className="flex items-center justify-center w-full">
-        <p className="w-[80%] text-balance">
+        <p className="w-[80%] text-pretty flex flex-col gap-5">
           {description.map((line, i) => <p key={i}>{line}</p>) ||
             "No description available"}
         </p>
