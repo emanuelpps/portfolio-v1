@@ -12,7 +12,7 @@ export class TertiaryButton implements Button {
 
   render() {
     return (
-      <button className="flex items-center gap-2 px-6 py-3 bg-gray-400 border-[1px] border-gray text-black hover:text-white rounded-2xl backdrop-blur-md shadow-lg hover:bg-gray-800 transition-all duration-300 font-semibold cursor-pointer">
+      <button className="flex items-center gap-2 px-10 py-3 bg-gray-400 border-[1px] border-gray text-black hover:text-white rounded-2xl backdrop-blur-md shadow-lg hover:bg-gray-800 transition-all duration-300 font-semibold cursor-pointer">
         {this.icon}
         {this.label}
       </button>

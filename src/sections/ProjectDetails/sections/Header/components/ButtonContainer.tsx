@@ -11,7 +11,7 @@ interface ButtonProps {
 export const ButtonContainer = ({ code, deploy, buttonText }: ButtonProps) => {
   const GithubButton = ButtonFactory.createButton({
     type: "tertiary",
-    label: `${buttonText}`,
+    label: "Repository",
     icon: <FaGithub className="text-xl" />,
   });
   const DeployButton = ButtonFactory.createButton({
