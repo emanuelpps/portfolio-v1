@@ -66,6 +66,14 @@ const Header = ({
           </span>
         ))}
       </div>
+ <div className="flex text-white gap-40">
+        <a href={code}>
+          <button className="bg-gray-300">Code</button>
+        </a>
+        <a href={deploy}>
+          <button className="bg-gray-300">Deploy</button>
+        </a>
+      </div>
     </div>
   );
 };
