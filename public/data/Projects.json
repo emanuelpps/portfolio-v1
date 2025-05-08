@@ -7,13 +7,26 @@
     "description": "Reusable React UI component library with a custom design system and full Storybook documentation.",
     "longDescription": "This is a reusable UI component library built with React and TypeScript. It includes a full design system and is documented using Storybook, making it easy to scale and maintain across multiple projects. Components are styled with TailwindCSS for responsiveness and consistency. It helps teams build faster by offering pre-built, accessible, and customizable UI blocks.",
     "insights": {
-      "purpose": "The goal was to create a scalable, maintainable, and well-documented UI component system for consistent design and development across multiple React projects.",
-      "designApproach": "The library follows an atomic design methodology, with a custom design system implemented using TailwindCSS. Each component was built with reusability and accessibility in mind, and documented using Storybook for better developer experience.",
-      "challenges": "One of the main challenges was achieving full accessibility (a11y) across all components while keeping them customizable. Ensuring design consistency across different projects and use cases also required rigorous testing and iteration."
+      "purpose": {
+        "text": "The goal was to create a scalable, maintainable, and well-documented UI component system for consistent design and development across multiple React projects.",
+        "image1": "https://example.com/purpose1-image1.jpg",
+        "image2": "https://example.com/purpose1-image2.jpg"
+      },
+      "designApproach": {
+        "text": "The library follows an atomic design methodology, with a custom design system implemented using TailwindCSS. Each component was built with reusability and accessibility in mind, and documented using Storybook for better developer experience.",
+        "image1": "https://example.com/design1-image1.jpg",
+        "image2": "https://example.com/design1-image2.jpg"
+      },
+      "challenges": {
+        "text": "One of the main challenges was achieving full accessibility (a11y) across all components while keeping them customizable. Ensuring design consistency across different projects and use cases also required rigorous testing and iteration.",
+        "image1": "https://example.com/challenges1-image1.jpg",
+        "image2": "https://example.com/challenges1-image2.jpg"
+      }
     },
     "code": "https://github.com/your-username/react-ui-library",
     "deploy": "https://react-ui-library-demo.vercel.app",
     "image": "https://storybook.js.org/docs-assets/8.6/get-started/example-onboarding-wizard.png",
+    "image2": "https://storybook.js.org/docs-assets/8.6/get-started/example-onboarding-wizard.png",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -27,13 +40,32 @@
     "description": "A set of custom React hooks to simplify state handling, local storage, data fetching, and more.",
     "longDescription": "This utility library provides a collection of reusable React hooks developed in TypeScript. It includes useful hooks for working with localStorage, media queries, breakpoints, async data fetching, and more. The library is designed for performance and testability, using Jest for unit testing. It helps developers reduce boilerplate code and build React apps more efficiently.",
     "insights": {
-      "purpose": "The goal of this library was to encapsulate common logic used across many React apps into reusable and testable custom hooks, improving productivity and reducing repetitive code.",
-      "designApproach": "Each hook was designed with simplicity and reusability in mind. TypeScript ensures type safety, and Jest provides a solid testing framework. Hooks are modular, follow single responsibility, and are documented with clear usage examples.",
-      "challenges": "A key challenge was balancing abstraction with flexibility — making hooks that are generic enough to reuse, yet specific enough to be truly helpful. Testing asynchronous behavior and browser APIs like localStorage also required thoughtful mocking and coverage strategies."
+      "purpose": {
+        "text": "The goal of this library was to encapsulate common logic used across many React apps into reusable and testable custom hooks, improving productivity and reducing repetitive code.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-hooks-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-hooks-2"
+        ]
+      },
+      "designApproach": {
+        "text": "Each hook was designed with simplicity and reusability in mind. TypeScript ensures type safety, and Jest provides a solid testing framework. Hooks are modular, follow single responsibility, and are documented with clear usage examples.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-hooks-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-hooks-2"
+        ]
+      },
+      "challenges": {
+        "text": "A key challenge was balancing abstraction with flexibility — making hooks that are generic enough to reuse, yet specific enough to be truly helpful. Testing asynchronous behavior and browser APIs like localStorage also required thoughtful mocking and coverage strategies.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-hooks-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-hooks-2"
+        ]
+      }
     },
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/hooks-library-main-2",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -47,13 +79,32 @@
     "description": "Framework-agnostic TypeScript helper functions like deepClone, debounce, slugify, and more.",
     "longDescription": "A utility library built entirely in TypeScript, designed to be framework-agnostic. It includes helper functions commonly used in both frontend and backend development, such as deep cloning, debouncing, string manipulation (slugify), and more. Ideal for use in any TypeScript project that needs reliable, well-typed utilities.",
     "insights": {
-      "purpose": "The goal was to create a lightweight, framework-agnostic set of TypeScript utilities to speed up development and reduce duplication of basic logic across multiple projects.",
-      "designApproach": "The library was developed with strong typing and functional purity in mind. Each helper was written to be independent, reusable, and easy to test. Documentation and examples were added to improve clarity and usability across environments.",
-      "challenges": "One challenge was ensuring compatibility across different JavaScript runtimes (Node.js, browser, etc.) without relying on external dependencies. Writing fully type-safe utilities that work generically yet intuitively also required a lot of trial and error with TypeScript’s advanced types."
+      "purpose": {
+        "text": "The goal was to create a lightweight, framework-agnostic set of TypeScript utilities to speed up development and reduce duplication of basic logic across multiple projects.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-helpers-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-helpers-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The library was developed with strong typing and functional purity in mind. Each helper was written to be independent, reusable, and easy to test. Documentation and examples were added to improve clarity and usability across environments.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-helpers-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-helpers-2"
+        ]
+      },
+      "challenges": {
+        "text": "One challenge was ensuring compatibility across different JavaScript runtimes (Node.js, browser, etc.) without relying on external dependencies. Writing fully type-safe utilities that work generically yet intuitively also required a lot of trial and error with TypeScript’s advanced types.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-helpers-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-helpers-2"
+        ]
+      }
     },
     "code": "https://github.com/your-username/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/helpers-kit-main-2",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -71,15 +122,34 @@
       "Framer Motion"
     ],
     "description": "A coffee shop website focused on clean UI and visual storytelling. Built with React and Firebase.",
-    "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach. The site aims to convey warmth and quality through high-resolution imagery and a clean user interface. Built using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication. Smooth animations powered by Framer Motion enhance user experience. The natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
+    "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach.\nThe site aims to convey warmth and quality through high-resolution imagery and a clean user interface.\nBuilt using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication.\nSmooth animations powered by Framer Motion enhance user experience.\nThe natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
     "insights": {
-      "purpose": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level.",
-      "designApproach": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user. Firebase handled authentication and data storage, allowing for dynamic and secure content management.",
-      "challenges": "Balancing performance with high-quality imagery was a key challenge. I had to optimize assets carefully to maintain fast load times while preserving the premium feel. Integrating smooth animations with route transitions also required fine-tuning with Framer Motion and React Router."
+      "purpose": {
+        "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-coffee-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-coffee-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user. Firebase handled authentication and data storage, allowing for dynamic and secure content management.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-coffee-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-coffee-2"
+        ]
+      },
+      "challenges": {
+        "text": "Balancing performance with high-quality imagery was a key challenge. I had to optimize assets carefully to maintain fast load times while preserving the premium feel. Integrating smooth animations with route transitions also required fine-tuning with Framer Motion and React Router.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-coffee-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-coffee-2"
+        ]
+      }
     },
     "code": "https://github.com/emanuelpps/the-coffee-roastery",
     "deploy": "https://the-coffee-roastery.vercel.app/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mvdtci98okwpouw7upcu",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -98,14 +168,33 @@
     ],
     "description": "Redesign and development of a software agency website using modern technologies and animations.",
     "longDescription": "I was in charge of the complete redesign and development of The CodeMaker Lab's website, a software development agency. The original site had an outdated and unattractive look. I proposed a full visual overhaul, focusing on delivering a modern and professional experience. The site was built with Next.js and TypeScript, using Tailwindcss for styling, Zustand for global state management, and Framer Motion for smooth, engaging animations. The new design features bold typography, a vibrant and modern color palette, and intuitive navigation. The result is a visually impactful, user-friendly website aligned with the brand’s identity and goals.",
-    "code": "",
     "insights": {
-      "purpose": "This project was aimed at redefining the digital presence of The CodeMaker Lab by providing a modern, professional, and conversion-oriented website. The goal was to establish credibility and clearly communicate the services and expertise of the agency.",
-      "designApproach": "The new design was centered around strong visual hierarchy, impactful headlines, and vibrant color contrast to highlight key sections. The user interface was structured with responsiveness in mind, and animations were integrated to enrich user interaction without hindering performance.",
-      "challenges": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully."
+      "purpose": {
+        "text": "This project was aimed at redefining the digital presence of The CodeMaker Lab by providing a modern, professional, and conversion-oriented website. The goal was to establish credibility and clearly communicate the services and expertise of the agency.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-codemakerlab-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-codemakerlab-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The new design was centered around strong visual hierarchy, impactful headlines, and vibrant color contrast to highlight key sections. The user interface was structured with responsiveness in mind, and animations were integrated to enrich user interaction without hindering performance.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-codemakerlab-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-codemakerlab-2"
+        ]
+      },
+      "challenges": {
+        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-codemakerlab-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-codemakerlab-2"
+        ]
+      }
     },
+    "code": "",
     "deploy": "https://codemakerlab.vercel.app/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/codemakerlab-main-2",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -118,9 +207,33 @@
     "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
     "description": "A personal website for an actor showcasing biography, performances, and photos.",
     "longDescription": "This portfolio website was developed for a theater actor as part of a project at The CodeMaker Lab. The site includes the actor’s biography, a list of past performances, and a gallery of stage photos. Built with Next.js and TypeScript for performance and scalability, the layout was designed with Tailwindcss for a modern and responsive experience. The visual structure is minimal yet bold, using large, elegant typography and a monochrome palette to convey a professional and artistic presence. The website’s goal is to clearly highlight the actor’s career while maintaining a stylish and personal presentation.",
+    "insights": {
+      "purpose": {
+        "text": "This project aimed to create a digital portfolio that showcases the actor’s career and artistic identity, combining modern web technologies to present the content in an engaging, easy-to-navigate format.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-actorportfolio-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-actorportfolio-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The design emphasized bold typography and a clean, minimalist layout to highlight the actor’s work. The monochrome color scheme and large imagery were used to create a refined and professional look, while Tailwindcss enabled rapid development of responsive and scalable components.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-actorportfolio-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-actorportfolio-2"
+        ]
+      },
+      "challenges": {
+        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-actorportfolio-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-actorportfolio-2"
+        ]
+      }
+    },
     "code": "",
     "deploy": "https://mng-actor.vercel.app/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/actorportfolio-main-2",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
@@ -131,11 +244,35 @@
     "title": "Personal Portfolio 2024",
     "type": "Project",
     "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
-    "description": "Mi portfolio anterior, desarrollado en 2023. Rediseñado anualmente para reflejar mi crecimiento profesional.",
-    "longDescription": "Este fue mi portfolio personal durante 2024. Cada año desarrollo un nuevo portfolio con una estética y estructura renovadas, como ejercicio de mejora continua. Esta versión fue construida con Next.js, TailwindCSS y TypeScript, con un diseño centrado en la simplicidad, la legibilidad y una presentación clara de mis proyectos y experiencia.",
+    "description": "My previous portfolio, developed in 2023. Redesigned annually to reflect my professional growth.",
+    "longDescription": "This was my personal portfolio for 2024. Every year I develop a new portfolio with renewed aesthetics and structure as part of my continuous improvement exercise. This version was built with Next.js, TailwindCSS, and TypeScript, focusing on simplicity, readability, and a clear presentation of my projects and experience.",
+    "insights": {
+      "purpose": {
+        "text": "This project was developed to maintain an up-to-date portfolio that reflects my progress and skills over time. Additionally, it serves as an opportunity to experiment with new technologies and design approaches.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-portfolio2024-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-portfolio2024-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The main idea behind this portfolio’s design was to maintain a clean and professional aesthetic, with a focus on readability and clear visualization of projects. I used TailwindCSS to achieve a responsive and agile design, and Framer Motion to add smooth interactivity and animations.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-portfolio2024-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-portfolio2024-2"
+        ]
+      },
+      "challenges": {
+        "text": "One of the biggest challenges was balancing the simplicity of the design with interactivity, ensuring that the animations did not distract from key content. Also, since this is an annual version of the portfolio, I had to make sure not to overload the design with too many visual updates, maintaining consistency with previous versions.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-portfolio2024-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-portfolio2024-2"
+        ]
+      }
+    },
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
     "deploy": "https://emanuelp-portfolio.vercel.app/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/portfolio-main-2",
     "gallery": [],
     "buttonText": "Deploy"
   },
@@ -144,12 +281,38 @@
     "title": "EP Weather App",
     "type": "Project",
     "stack": ["React Js", "JavaScript", "Fetch API", "Bootstrap", "CSS"],
-    "description": "Aplicación del clima simple desarrollada en JavaScript puro con datos en tiempo real.",
-    "longDescription": "Una aplicación web para consultar el clima actual de cualquier ciudad usando la API de OpenWeatherMap. Desarrollada como práctica de consumo de APIs con JavaScript puro, la interfaz es sencilla, responsive y muestra temperatura, condiciones climáticas y otros detalles útiles.",
+    "description": "Simple weather app developed in vanilla JavaScript with real-time data.",
+    "longDescription": "This web application allows users to check the current weather of any city using the OpenWeatherMap API. Developed as an exercise in API consumption with vanilla JavaScript, the interface is simple, responsive, and displays temperature, weather conditions, and other useful details.",
+    "insights": {
+      "purpose": {
+        "text": "The aim of this project was to create a functional web app to check the weather of any city worldwide, utilizing real-time data from the OpenWeatherMap API. It also served as a practice for improving skills in API consumption using vanilla JavaScript.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-epweatherapp-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-epweatherapp-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The app’s design is straightforward, focusing on clarity of information. It was built using Bootstrap to ensure the app is responsive and easy to use across both mobile and desktop devices.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-epweatherapp-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-epweatherapp-2"
+        ]
+      },
+      "challenges": {
+        "text": "A key challenge was ensuring the app functioned properly across various devices, especially when displaying large images and real-time data. Another challenge was optimizing performance while maintaining high-quality visuals for a smooth user experience.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-epweatherapp-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-epweatherapp-2"
+        ]
+      }
+    },
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
     "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/yuxe7vmfbx78qmownrjx",
-    "gallery": [],
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/epweatherapp-main-2",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
     "buttonText": "Deploy"
   },
   {
@@ -164,12 +327,38 @@
       "JavaScript",
       "CSS"
     ],
-    "description": "Landing page ficticia para una pizzería, enfocada en diseño visual y experiencia de usuario.",
-    "longDescription": "Don Remolo Pizza es una landing page diseñada para una marca ficticia de pizzería artesanal. El objetivo fue practicar diseño responsivo, organización de componentes, consumo de base de datos y experiencia visual animada para captar la atención del usuario.",
+    "description": "Landing page for a fictional pizzeria, focused on visual design and user experience.",
+    "longDescription": "Don Remolo Pizza is a landing page designed for a fictional artisanal pizzeria brand. The goal was to practice responsive design, component organization, database consumption, and animated visual experiences to capture user attention.",
+    "insights": {
+      "purpose": {
+        "text": "This project aimed to create a visually appealing and user-friendly landing page for a fictional pizzeria. It focused on integrating animations, responsive design, and Firebase database integration to give the site an interactive and engaging experience.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-donremolo-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-donremolo-2"
+        ]
+      },
+      "designApproach": {
+        "text": "The design approach focused on creating an engaging user experience with smooth animations using Framer Motion. The use of Bootstrap ensured a responsive layout across all devices. The aesthetic was tailored to evoke a warm and inviting atmosphere typical of an artisanal pizzeria.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-donremolo-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-donremolo-2"
+        ]
+      },
+      "challenges": {
+        "text": "A significant challenge was creating a smooth, animated experience while ensuring the site performed well across different devices. Another challenge was ensuring that the Firebase integration worked seamlessly, delivering dynamic content with minimal latency.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-donremolo-1",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-donremolo-2"
+        ]
+      }
+    },
     "code": "https://github.com/emanuelpps/donremolo",
     "deploy": "https://donremolo.vercel.app/",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/oyv76xau2xt9erpuh2lv",
-    "gallery": [],
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/donremolo-main-2",
+    "gallery": [
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+    ],
     "buttonText": "Deploy"
   }
 ]

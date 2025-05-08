@@ -1,26 +1,16 @@
 import { motion } from "framer-motion";
 import { GoArrowUpRight } from "react-icons/go";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ProjectType } from "./Types";
-import { useProjectStore } from "../../../store/useProjectStore";
 
 interface ProjectCardProps {
   project: ProjectType;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const navigate = useNavigate();
-  const setSelectedProject = useProjectStore(
-    (state) => state.setSelectedProject
-  );
-
-  const NavigateProject = () => {
-    setSelectedProject(project);
-    navigate(`/project/${project.id}`);
-  };
   return (
     <div className="relative w-85 h-[420px] rounded-[40px] border-[1px] border-r-transparent border-t-white/10 border-b-transparent border-l-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl hover:bg-[#FF4D7D] transition-colors duration-500 cursor-pointer">
-      <div onClick={NavigateProject}>
+      <Link to={`/project/${project.id}`} state={project}>
         <div className="absolute top-4 pl-4 z-20 border-b-[1px] w-full border-white pb-3">
           <h3 className="text-lg font-semibold text-white">{project.title}</h3>
           <div className="flex gap-2 text-white text-[0.7rem] font-extralight">
@@ -65,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           id="curve-one"
           className="absolute bottom-[-12px] right-37 z-50 flex after:content-[''] w-8 h-10 rounded-br-[50px] after:bg-[#0F1724]"
         ></div>
-      </div>
+      </Link>
     </div>
   );
 };

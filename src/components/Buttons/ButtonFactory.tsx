@@ -3,11 +3,14 @@ import { PrimaryButton } from "./PrimaryButton";
 import { SecondaryButton } from "./SecondaryButton";
 import { SelectorButton } from "./SelectorButton";
 import { TabButton } from "./TabButton";
+import { TertiaryButton } from "./TertiaryButton";
+import { JSX } from "react";
 
 type ButtonFactoryOptions =
   | {
-      type: "primary" | "secondary";
+      type: "primary" | "secondary" | "tertiary";
       label: string;
+      icon?: JSX.Element;
     }
   | {
       type: "selector";
@@ -30,6 +33,8 @@ export class ButtonFactory {
         return new PrimaryButton(options.label);
       case "secondary":
         return new SecondaryButton(options.label);
+      case "tertiary":
+        return new TertiaryButton(options.label, options.icon);
       case "selector":
         return new SelectorButton(
           options.label,
@@ -40,11 +45,11 @@ export class ButtonFactory {
       case "tab":
         return new TabButton(
           options.label,
-          Boolean(options.isActive),
+          options.isActive ?? false,
           options.setActiveTab
         );
       default:
-        throw new Error("Button type not supported");
+        throw new Error("Unsupported button type");
     }
   }
 }

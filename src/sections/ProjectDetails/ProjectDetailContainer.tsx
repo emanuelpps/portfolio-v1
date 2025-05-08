@@ -1,27 +1,32 @@
 import React from "react";
 import Header from "./components/Header";
-import { useProjectStore } from "../../store/useProjectStore";
+import { ProjectTypes } from "../../types/ProjectTypes";
+import { HeroSection } from "./components/HeroSection";
 
-const ProjectDetailContainer: React.FC = () => {
-  const project = useProjectStore((state) => state.selectedProject);
-
-/// refactorizar y cambiar el uso de store en zustand a transpaso de props entre componentes
-
+const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
+  project,
+}) => {
   if (!project) {
     return (
-      <p className="text-center flex w-full h-screen justify-center items-center">
+      <p className="flex items-center justify-center w-full h-screen text-center">
         Project Not Found
       </p>
     );
   }
   return (
-    <div className="flex w-full min-h-screen justify-center items-center">
+    <div className="flex flex-col w-[100%] min-h-screen gap-10">
       <Header
         title={project.title}
         subtitle={project.description}
         code={project.code}
         deploy={project.deploy}
         stack={project.stack}
+        buttonText={project.buttonText}
+      />
+      <HeroSection
+        longDescription={project.longDescription}
+        mainImage={project.image}
+        mainImageTwo={project.image2}
       />
     </div>
   );
