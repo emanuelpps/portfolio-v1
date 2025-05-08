@@ -11,14 +11,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   mainImage,
   mainImageTwo,
 }) => {
+  const description = longDescription.split("\n");
+
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full gap-20 text-white">
+    <div className="flex flex-col items-center justify-center w-full h-full gap-20 text-lg leading-8 text-white">
       <div className="flex items-center justify-center w-full">
         <img src={mainImageTwo} className="w-[80%] rounded-2xl" />
       </div>
       <div className="flex items-center justify-center w-full">
-        <p className="w-[80%]">
-          {longDescription || "No description available"}
+        <p className="w-[80%] text-balance">
+          {description.map((line, i) => <p key={i}>{line}</p>) ||
+            "No description available"}
         </p>
       </div>
       <div className="flex items-center justify-center w-full">

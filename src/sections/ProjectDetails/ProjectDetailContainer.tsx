@@ -21,6 +21,7 @@ const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
         code={project.code}
         deploy={project.deploy}
         stack={project.stack}
+        buttonText={project.buttonText}
       />
       <HeroSection
         longDescription={project.longDescription}
