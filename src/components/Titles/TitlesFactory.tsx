@@ -1,6 +1,7 @@
 import { TitlesProp } from "./Types";
 import { PrimaryTitle } from "./PrimaryTitle";
 import { SecondaryTitle } from "./SecondaryTitle";
+import { TertiaryTitle } from "./TertiaryTitle";
 
 export class TitlesFactory {
   static createTitle(
@@ -13,6 +14,8 @@ export class TitlesFactory {
         return new PrimaryTitle(title, subtitle);
       case "secondary":
         return new SecondaryTitle(title, subtitle);
+      case "tertiary":
+        return new TertiaryTitle(title);
       default:
         throw new Error("Title type not supported");
     }

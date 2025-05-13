@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./sections/Header/Header";
 import { ProjectTypes } from "../../types/ProjectTypes";
 import { HeroSection } from "./sections/HeroSection/HeroSection";
+import { Purpose } from "./sections/Purpose/Purpose";
 
 const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
   project,
@@ -14,7 +15,7 @@ const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
     );
   }
   return (
-    <div className="flex flex-col w-[100%] min-h-screen gap-10">
+    <div className="flex flex-col w-[100%] min-h-screen gap-20">
       <Header
         title={project.title}
         subtitle={project.description}
@@ -27,6 +28,10 @@ const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
         longDescription={project.longDescription}
         mainImage={project.image}
         mainImageTwo={project.image2}
+      />
+      <Purpose
+        text={project.insights.purpose.text}
+        images={project.insights.purpose.images}
       />
     </div>
   );
