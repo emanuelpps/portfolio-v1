@@ -4,7 +4,7 @@ import { SectionProps } from "../Types/SectionTypes";
 
 export const Purpose: React.FC<SectionProps> = ({ text, images }) => {
   return (
-    <div className="flex flex-col w-full h-screen gap-5 items-center">
+    <div className="flex flex-col w-full gap-5 items-center">
       <Title />
       <SectionContainer text={text} images={images} />
     </div>
