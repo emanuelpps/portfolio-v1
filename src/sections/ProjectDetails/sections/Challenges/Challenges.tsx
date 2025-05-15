@@ -1,12 +1,14 @@
+import { SectionProps } from "../Types/SectionTypes";
 import { SectionContainer } from "./components/SectionContainer";
 import { Title } from "./components/Title";
-import { SectionProps } from "../Types/SectionTypes";
 
-export const DesignApproach: React.FC<SectionProps> = ({ text, images }) => {
+const Challenges: React.FC<SectionProps> = ({ text, images }) => {
   return (
-    <div className="flex flex-col w-full gap-5 items-center">
+    <div>
       <Title />
       <SectionContainer text={text} images={images} />
     </div>
   );
 };
+
+export default Challenges;
