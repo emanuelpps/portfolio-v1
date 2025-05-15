@@ -19,9 +19,9 @@ const ExperienceContainer = () => {
       ItemType: ItemTypes.Primary,
     },
     {
-      CompanyName: "Justina.io",
-      JobTitle: "Frontend Developer - Hackathon",
-      Period: "2024 - July",
+      CompanyName: "Hackathon - Justina.io",
+      JobTitle: "Frontend Developer",
+      Period: "July 2024",
       ItemType: ItemTypes.Secondary,
     },
     {

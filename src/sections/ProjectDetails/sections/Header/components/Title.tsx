@@ -11,7 +11,7 @@ export const Title = ({ title, subtitle }: TitleProps) => {
     <>
       <div className="flex w-[80%] items-center">{ProjectTitle.render()}</div>
       <div className="flex w-[80%] items-center">
-        <p className="text-xl">{subtitle}</p>
+        <p className="text-[0.9lh]">{subtitle}</p>
       </div>
     </>
   );

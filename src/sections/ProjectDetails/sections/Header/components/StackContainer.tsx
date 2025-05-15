@@ -8,7 +8,7 @@ export const StackContainer = ({ stack }: StackProps) => {
       {stack.map((tech, i) => (
         <span
           key={i}
-          className="px-3 py-1 text-sm text-white rounded-lg bg-white/10"
+          className="px-3 py-1 text-md text-white rounded-lg bg-white/10"
         >
           {tech}
         </span>
