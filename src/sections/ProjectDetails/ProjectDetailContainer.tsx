@@ -3,6 +3,7 @@ import Header from "./sections/Header/Header";
 import { ProjectTypes } from "../../types/ProjectTypes";
 import { HeroSection } from "./sections/HeroSection/HeroSection";
 import { Purpose } from "./sections/Purpose/Purpose";
+import { DesignApproach } from "./sections/DesignApproach/DesignApproach";
 
 const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
   project,
@@ -32,6 +33,10 @@ const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
       <Purpose
         text={project.insights.purpose.text}
         images={project.insights.purpose.images}
+      />
+      <DesignApproach
+        text={project.insights.designApproach.text}
+        images={project.insights.designApproach.images}
       />
     </div>
   );

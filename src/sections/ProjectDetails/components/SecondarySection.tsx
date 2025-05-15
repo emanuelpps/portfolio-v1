@@ -1,12 +1,10 @@
 import { SectionTypes } from "./Types";
 
 export class SecondarySection implements SectionTypes {
-  title: string | null;
   text: string;
   images: string | string[];
 
-  constructor(title: string | null, text: string, images: string | string[]) {
-    this.title = title;
+  constructor(text: string, images: string | string[]) {
     this.text = text;
     this.images = images;
   }
@@ -14,7 +12,6 @@ export class SecondarySection implements SectionTypes {
   render() {
     return (
       <section className="secondary-section">
-        {this.title && <h2>{this.title}</h2>}
         <p>{this.text}</p>
         <div className="grid grid-cols-2 gap-4">
           {(Array.isArray(this.images) ? this.images : [this.images]).map(

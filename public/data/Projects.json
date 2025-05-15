@@ -127,21 +127,19 @@
       "purpose": {
         "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xos4twnjiqba1fozyzee",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/iisdmpk0b15xad4hgmpo",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/b4qyxlaxwbbjypubruhy"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/b4qyxlaxwbbjypubruhy",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mlxualspsyhcxjseirgc",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/bnfsrlgk92ywhz34kjpt",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e"
         ]
       },
       "designApproach": {
-        "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user. Firebase handled authentication and data storage, allowing for dynamic and secure content management.",
+        "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xos4twnjiqba1fozyzee",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/iisdmpk0b15xad4hgmpo",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/b4qyxlaxwbbjypubruhy"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e"
         ]
       },
       "challenges": {
