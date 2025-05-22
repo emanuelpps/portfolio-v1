@@ -5,9 +5,16 @@ import { HeroSection } from "./sections/HeroSection/HeroSection";
 import { Purpose } from "./sections/Purpose/Purpose";
 import { DesignApproach } from "./sections/DesignApproach/DesignApproach";
 import Challenges from "./sections/Challenges/Challenges";
+import { GoUp } from "./components/GoUp";
 
-const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
+interface ProjectDetailContainerProps {
+  project: ProjectTypes;
+  scrollContainerRef: React.RefObject<HTMLDivElement>;
+}
+
+const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
   project,
+  scrollContainerRef,
 }) => {
   if (!project) {
     return (
@@ -43,6 +50,7 @@ const ProjectDetailContainer: React.FC<{ project: ProjectTypes }> = ({
         text={project.insights.challenges.text}
         images={project.insights.challenges.images}
       />
+      <GoUp scrollContainerRef={scrollContainerRef} />
     </div>
   );
 };
