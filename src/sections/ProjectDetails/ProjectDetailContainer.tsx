@@ -6,6 +6,7 @@ import { Purpose } from "./sections/Purpose/Purpose";
 import { DesignApproach } from "./sections/DesignApproach/DesignApproach";
 import Challenges from "./sections/Challenges/Challenges";
 import { GoUp } from "./components/GoUp";
+
 interface ProjectDetailContainerProps {
   project: ProjectTypes;
   scrollContainerRef: React.RefObject<HTMLDivElement>;
