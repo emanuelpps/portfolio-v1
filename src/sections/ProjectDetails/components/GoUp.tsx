@@ -12,7 +12,7 @@ export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {
 
   return (
     <motion.div
-      className="fixed bottom-5 right-5 z-[9999] cursor-pointer"
+      className="fixed bottom-5 right-10 z-[9999] cursor-pointer"
       animate={{ y: [0, -8, 0] }}
       transition={{
         duration: 2,

@@ -20,7 +20,7 @@ export class SecondarySection implements SectionTypes {
                 key={i}
                 src={img}
                 alt={`Secondary image ${i}`}
-                className="w-full h-[200px] object-cover"
+                className="w-full h-[200px] object-cover rounded-2xl"
               />
             )
           )}

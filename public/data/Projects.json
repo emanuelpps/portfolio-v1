@@ -127,10 +127,10 @@
       "purpose": {
         "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/b4qyxlaxwbbjypubruhy",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mlxualspsyhcxjseirgc",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/bnfsrlgk92ywhz34kjpt",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/woycqq1o4tsnvjpyyodd",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sjvzn4yv4vg8tto1aulu",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/axefmihr8z14fosivxcw",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dy1cttspj3ajqq7igbj1"
         ]
       },
       "designApproach": {
@@ -151,8 +151,8 @@
     },
     "code": "https://github.com/emanuelpps/the-coffee-roastery",
     "deploy": "https://the-coffee-roastery.vercel.app/",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mvdtci98okwpouw7upcu",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dkwdyjqxsgc3sv1if1da",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/eqazboqimi07hp0fv72h",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
