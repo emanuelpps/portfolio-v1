@@ -12,7 +12,7 @@ export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {
 
   return (
     <motion.div
-      className="fixed bottom-5 right-5 z-[9999] cursor-pointer"
+      className="fixed bottom-5 right-10 z-[9999] cursor-pointer"
       animate={{ y: [0, -8, 0] }}
       transition={{
         duration: 2,
@@ -22,7 +22,7 @@ export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {
       }}
       onClick={scrollToTop}
     >
-      <TfiArrowCircleUp className="text-white/90 text-3xl" />
+      <TfiArrowCircleUp className="text-3xl text-white/90 hover:text-black hover:bg-white hover:rounded-full" />
     </motion.div>
   );
 };

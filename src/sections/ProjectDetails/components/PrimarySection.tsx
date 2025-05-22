@@ -23,7 +23,7 @@ export class PrimarySection implements SectionTypes {
                   key={i}
                   src={img}
                   alt={`Primary image ${i}`}
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[320px] object-co"
                 />
               </div>
             )
