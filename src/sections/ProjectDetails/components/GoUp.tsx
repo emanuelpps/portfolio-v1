@@ -22,7 +22,7 @@ export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {
       }}
       onClick={scrollToTop}
     >
-      <TfiArrowCircleUp className="text-white/90 text-3xl" />
+      <TfiArrowCircleUp className="text-3xl text-white/90 hover:text-black hover:bg-white hover:rounded-full" />
     </motion.div>
   );
 };
