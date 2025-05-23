@@ -1,4 +1,4 @@
 export interface SectionProps {
   text: string;
-  images: string[];
+  images?: string[];
 }
