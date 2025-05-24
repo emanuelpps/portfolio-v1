@@ -1,8 +1,8 @@
-import { SectionTypes } from "./Types";
+/* import { SectionTypes } from "./Types";
 
 export class SecondarySection implements SectionTypes {
   text: string;
-  images: string | string[];
+  images?: string | string[];
 
   constructor(text: string, images: string | string[]) {
     this.text = text;
@@ -29,3 +29,4 @@ export class SecondarySection implements SectionTypes {
     );
   }
 }
+ */

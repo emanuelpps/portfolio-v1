@@ -125,21 +125,15 @@
     "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach. The site aims to convey warmth and quality through high-resolution imagery and a clean user interface.\nBuilt using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication.  Smooth animations powered by Framer Motion enhance user experience. The natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
     "insights": {
       "purpose": {
-        "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/woycqq1o4tsnvjpyyodd",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sjvzn4yv4vg8tto1aulu",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/axefmihr8z14fosivxcw",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dy1cttspj3ajqq7igbj1"
-        ]
+"text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level."
       },
       "designApproach": {
         "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xos4twnjiqba1fozyzee",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/iisdmpk0b15xad4hgmpo",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rxdqf25irs9gni1lax8e"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/l2bhytxrzmmdvaqr5tpu",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rss0lqrqfp5zyhusa7do",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
         ]
       },
       "challenges": {
@@ -173,31 +167,25 @@
     "longDescription": "I was in charge of the complete redesign and development of The CodeMaker Lab's website, a software development agency. The original site had an outdated and unattractive look. I proposed a full visual overhaul, focusing on delivering a modern and professional experience. The site was built with Next.js and TypeScript, using Tailwindcss for styling, Zustand for global state management, and Framer Motion for smooth, engaging animations. The new design features bold typography, a vibrant and modern color palette, and intuitive navigation. The result is a visually impactful, user-friendly website aligned with the brand’s identity and goals.",
     "insights": {
       "purpose": {
-        "text": "This project was aimed at redefining the digital presence of The CodeMaker Lab by providing a modern, professional, and conversion-oriented website. The goal was to establish credibility and clearly communicate the services and expertise of the agency.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-codemakerlab-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-codemakerlab-2"
-        ]
+        "text": "This project was aimed at redefining the digital presence of The CodeMaker Lab by providing a modern, professional, and conversion-oriented website. The goal was to establish credibility and clearly communicate the services and expertise of the agency."
       },
       "designApproach": {
         "text": "The new design was centered around strong visual hierarchy, impactful headlines, and vibrant color contrast to highlight key sections. The user interface was structured with responsiveness in mind, and animations were integrated to enrich user interaction without hindering performance.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-codemakerlab-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-codemakerlab-2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jzpsksrspnrjb3wdtwim",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
         ]
       },
       "challenges": {
-        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-codemakerlab-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-codemakerlab-2"
-        ]
+        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully."
       }
     },
     "code": "",
     "deploy": "https://codemakerlab.vercel.app/",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/codemakerlab-main-2",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zocvox7fvk8bm6scyn6a",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dinkt6juwmjj0zebtkzn",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
