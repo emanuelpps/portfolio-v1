@@ -200,31 +200,26 @@
     "longDescription": "This portfolio website was developed for a theater actor as part of a project at The CodeMaker Lab. The site includes the actor’s biography, a list of past performances, and a gallery of stage photos. Built with Next.js and TypeScript for performance and scalability, the layout was designed with Tailwindcss for a modern and responsive experience. The visual structure is minimal yet bold, using large, elegant typography and a monochrome palette to convey a professional and artistic presence. The website’s goal is to clearly highlight the actor’s career while maintaining a stylish and personal presentation.",
     "insights": {
       "purpose": {
-        "text": "This project aimed to create a digital portfolio that showcases the actor’s career and artistic identity, combining modern web technologies to present the content in an engaging, easy-to-navigate format.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-actorportfolio-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-actorportfolio-2"
-        ]
+        "text": "This project aimed to create a digital portfolio that showcases the actor’s career and artistic identity, combining modern web technologies to present the content in an engaging, easy-to-navigate format."
       },
       "designApproach": {
         "text": "The design emphasized bold typography and a clean, minimalist layout to highlight the actor’s work. The monochrome color scheme and large imagery were used to create a refined and professional look, while Tailwindcss enabled rapid development of responsive and scalable components.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-actorportfolio-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-actorportfolio-2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nodxju0bvlzcccow6qfz",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
         ]
       },
       "challenges": {
-        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-actorportfolio-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-actorportfolio-2"
-        ]
+        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users."
       }
     },
     "code": "",
     "deploy": "https://mng-actor.vercel.app/",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/actorportfolio-main-2",
+    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/actorportfolio-main-2",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cafega86gxbpp8mcpi7b",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjtttgvtivnpvvedtiuh",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
