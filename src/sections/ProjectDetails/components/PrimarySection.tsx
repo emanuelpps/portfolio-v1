@@ -24,8 +24,7 @@ export class PrimarySection implements SectionTypes {
               >
                 <img
                   src={img}
-                  alt={`Primary image ${i}`}
-                  className="w-full h-[350px] rounded-2xl"
+                  alt={`Primary image ${i}`} className="w-full h-[350px] rounded-2xl"
                 />
               </div>
             ))}
