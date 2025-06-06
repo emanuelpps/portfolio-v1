@@ -27,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <div className="absolute bottom-0 w-[75%] h-[325px] bg-[#31343a79] rounded-t-[40px] left-1/2 -translate-x-1/2 z-10" />
           <div className="absolute bottom-0 w-[85%] h-[315px] bg-[#31343ad0] rounded-t-[40px] left-1/2 -translate-x-1/2 z-20" />
           <img
-            src={project.image}
+            src={project.frontImage}
             alt={project.title}
             className="absolute bottom-0 left-0 w-full h-[300px] object-cover rounded-[40px] z-[30]"
           />

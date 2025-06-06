@@ -8,11 +8,7 @@
     "longDescription": "This utility library provides a collection of reusable React hooks developed in TypeScript. It includes useful hooks for working with localStorage, media queries, breakpoints, async data fetching, and more. The library is designed for performance and testability, using Jest for unit testing. It helps developers reduce boilerplate code and build React apps more efficiently.",
     "insights": {
       "purpose": {
-        "text": "The goal of this library was to encapsulate common logic used across many React apps into reusable and testable custom hooks, improving productivity and reducing repetitive code.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-hooks-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-hooks-2"
-        ]
+        "text": "The goal of this library was to encapsulate common logic used across many React apps into reusable and testable custom hooks, improving productivity and reducing repetitive code."
       },
       "designApproach": {
         "text": "Each hook was designed with simplicity and reusability in mind. TypeScript ensures type safety, and Jest provides a solid testing framework. Hooks are modular, follow single responsibility, and are documented with clear usage examples.",
@@ -22,15 +18,12 @@
         ]
       },
       "challenges": {
-        "text": "A key challenge was balancing abstraction with flexibility — making hooks that are generic enough to reuse, yet specific enough to be truly helpful. Testing asynchronous behavior and browser APIs like localStorage also required thoughtful mocking and coverage strategies.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-hooks-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-hooks-2"
-        ]
+        "text": "A key challenge was balancing abstraction with flexibility — making hooks that are generic enough to reuse, yet specific enough to be truly helpful. Testing asynchronous behavior and browser APIs like localStorage also required thoughtful mocking and coverage strategies."
       }
     },
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/hooks-library-main-2",
     "gallery": [
@@ -47,11 +40,7 @@
     "longDescription": "A utility library built entirely in TypeScript, designed to be framework-agnostic. It includes helper functions commonly used in both frontend and backend development, such as deep cloning, debouncing, string manipulation (slugify), and more. Ideal for use in any TypeScript project that needs reliable, well-typed utilities.",
     "insights": {
       "purpose": {
-        "text": "The goal was to create a lightweight, framework-agnostic set of TypeScript utilities to speed up development and reduce duplication of basic logic across multiple projects.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-helpers-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-helpers-2"
-        ]
+        "text": "The goal was to create a lightweight, framework-agnostic set of TypeScript utilities to speed up development and reduce duplication of basic logic across multiple projects."
       },
       "designApproach": {
         "text": "The library was developed with strong typing and functional purity in mind. Each helper was written to be independent, reusable, and easy to test. Documentation and examples were added to improve clarity and usability across environments.",
@@ -61,15 +50,12 @@
         ]
       },
       "challenges": {
-        "text": "One challenge was ensuring compatibility across different JavaScript runtimes (Node.js, browser, etc.) without relying on external dependencies. Writing fully type-safe utilities that work generically yet intuitively also required a lot of trial and error with TypeScript’s advanced types.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-helpers-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-helpers-2"
-        ]
+        "text": "One challenge was ensuring compatibility across different JavaScript runtimes (Node.js, browser, etc.) without relying on external dependencies. Writing fully type-safe utilities that work generically yet intuitively also required a lot of trial and error with TypeScript’s advanced types."
       }
     },
     "code": "https://github.com/your-username/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/helpers-kit-main-2",
     "gallery": [
@@ -92,7 +78,7 @@
     "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach. The site aims to convey warmth and quality through high-resolution imagery and a clean user interface.\nBuilt using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication.  Smooth animations powered by Framer Motion enhance user experience. The natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
     "insights": {
       "purpose": {
-"text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level."
+        "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level."
       },
       "designApproach": {
         "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user.",
@@ -112,6 +98,7 @@
     },
     "code": "https://github.com/emanuelpps/the-coffee-roastery",
     "deploy": "https://the-coffee-roastery.vercel.app/",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dkwdyjqxsgc3sv1if1da",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/eqazboqimi07hp0fv72h",
     "gallery": [
@@ -151,6 +138,7 @@
     },
     "code": "",
     "deploy": "https://codemakerlab.vercel.app/",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zocvox7fvk8bm6scyn6a",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dinkt6juwmjj0zebtkzn",
     "gallery": [
@@ -184,7 +172,7 @@
     },
     "code": "",
     "deploy": "https://mng-actor.vercel.app/",
-    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/actorportfolio-main-2",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cafega86gxbpp8mcpi7b",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zune0zn1hghyvezjsgpq",
     "gallery": [
@@ -218,7 +206,7 @@
     },
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
     "deploy": "https://emanuelp-portfolio.vercel.app/",
-    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/qmuvw5jaltr25eopbain",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zune0zn1hghyvezjsgpq",
     "gallery": [],
@@ -250,7 +238,7 @@
     },
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
     "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
-    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kj00eyjoeubhg63wqxws",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/klhlhrrisjagablm2knp",
     "gallery": [
@@ -281,8 +269,8 @@
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
         ]
       },
       "challenges": {
@@ -291,7 +279,7 @@
     },
     "code": "https://github.com/emanuelpps/donremolo",
     "deploy": "https://donremolo.vercel.app/",
-    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/suxicowfis1gnjnkbjx4",
+    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/suxicowfis1gnjnkbjx4",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gqiv70jm8fjonkkg4wqj",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z8nn7dxelpcyezl8jd6y",
     "gallery": [
