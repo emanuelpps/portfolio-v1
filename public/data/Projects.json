@@ -250,6 +250,7 @@
     },
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
     "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
+    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kj00eyjoeubhg63wqxws",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/klhlhrrisjagablm2knp",
     "gallery": [
@@ -273,31 +274,26 @@
     "longDescription": "Don Remolo Pizza is a landing page designed for a fictional artisanal pizzeria brand. The goal was to practice responsive design, component organization, database consumption, and animated visual experiences to capture user attention.",
     "insights": {
       "purpose": {
-        "text": "This project aimed to create a visually appealing and user-friendly landing page for a fictional pizzeria. It focused on integrating animations, responsive design, and Firebase database integration to give the site an interactive and engaging experience.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-donremolo-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/purpose-donremolo-2"
-        ]
+        "text": "This project aimed to create a visually appealing and user-friendly landing page for a fictional pizzeria. It focused on integrating animations, responsive design, and Firebase database integration to give the site an interactive and engaging experience."
       },
       "designApproach": {
         "text": "The design approach focused on creating an engaging user experience with smooth animations using Framer Motion. The use of Bootstrap ensured a responsive layout across all devices. The aesthetic was tailored to evoke a warm and inviting atmosphere typical of an artisanal pizzeria.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-donremolo-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-donremolo-2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m"
         ]
       },
       "challenges": {
-        "text": "A significant challenge was creating a smooth, animated experience while ensuring the site performed well across different devices. Another challenge was ensuring that the Firebase integration worked seamlessly, delivering dynamic content with minimal latency.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-donremolo-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/challenges-donremolo-2"
-        ]
+        "text": "A significant challenge was creating a smooth, animated experience while ensuring the site performed well across different devices. Another challenge was ensuring that the Firebase integration worked seamlessly, delivering dynamic content with minimal latency."
       }
     },
     "code": "https://github.com/emanuelpps/donremolo",
     "deploy": "https://donremolo.vercel.app/",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/oyv76xau2xt9erpuh2lv",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/donremolo-main-2",
+    "front-image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/suxicowfis1gnjnkbjx4",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gqiv70jm8fjonkkg4wqj",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z8nn7dxelpcyezl8jd6y",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
