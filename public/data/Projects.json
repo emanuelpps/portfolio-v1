@@ -45,8 +45,10 @@
       "designApproach": {
         "text": "The library was developed with strong typing and functional purity in mind. Each helper was written to be independent, reusable, and easy to test. Documentation and examples were added to improve clarity and usability across environments.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-helpers-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-helpers-2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
         ]
       },
       "challenges": {
@@ -56,7 +58,7 @@
     "code": "https://github.com/your-username/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wybgoxopaxtyjeawqzwl",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
