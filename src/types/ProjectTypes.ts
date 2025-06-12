@@ -1,6 +1,11 @@
+export enum TypeOfProject {
+  LIBRARY = "Library",
+  PROJECT = "Project",
+}
 export interface ProjectTypes {
   id: number;
   title: string;
+  type: TypeOfProject;
   stack: string[];
   description: string;
   longDescription: string;
@@ -12,7 +17,6 @@ export interface ProjectTypes {
   gallery: string[];
   buttonText: string;
 }
-
 export interface InsightTypes {
   purpose: {
     text: string;
