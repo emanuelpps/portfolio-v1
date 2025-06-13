@@ -13,8 +13,10 @@
       "designApproach": {
         "text": "Each hook was designed with simplicity and reusability in mind. TypeScript ensures type safety, and Jest provides a solid testing framework. Hooks are modular, follow single responsibility, and are documented with clear usage examples.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-hooks-1",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/design-approach-hooks-2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trqkhpjdlgujhwrqfflp",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
         ]
       },
       "challenges": {
@@ -24,8 +26,8 @@
     "code": "https://github.com/your-username/react-hooks-library",
     "deploy": "https://www.npmjs.com/package/react-hooks-library",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1/hooks-library-main-2",
+    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/t8fb7shotvwv8tgxtygf",
+    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
