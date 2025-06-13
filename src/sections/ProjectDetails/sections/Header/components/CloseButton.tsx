@@ -6,7 +6,7 @@ export const CloseButton = () => {
     <>
       <Link
         to="/"
-        className="absolute text-white transition-colors duration-200 top-5 right-5 hover:text-gray-400"
+        className="absolute text-white transition-colors duration-200 top-5 justify-end items-center flex w-[95vw] hover:text-gray-400"
         aria-label="Close project view"
       >
         <RiCloseLargeLine size={24} className="cursor-pointer" />
