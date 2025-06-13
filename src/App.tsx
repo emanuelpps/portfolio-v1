@@ -7,7 +7,7 @@ function App() {
     <>
       <div className="container w-[100%] flex flex-col justify-center items-center">
         <Header />
-        <main className="gap-10 flex flex-col justify-center items-center w-[100%]">
+        <main className="gap-10 flex flex-col justify-center items-center">
           <AppRoutes />
         </main>
         <Footer />
