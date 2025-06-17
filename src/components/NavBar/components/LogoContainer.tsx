@@ -14,9 +14,9 @@ const LogoContainer = () => {
   }, []);
 
   return (
-    <div className="flex w-full justify-center items-center relative h-[60px]">
+    <div className="flex w-full justify-center items-center relative h-[60px] text-white">
       <motion.div
-        className="flex justify-center items-center gap-2 absolute"
+        className="absolute flex items-center justify-center gap-2"
         animate={{
           x: isCentered ? 0 : 0,
           y: isCentered ? 0 : 0,
