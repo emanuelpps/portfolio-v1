@@ -13,7 +13,7 @@ const NavBarMobile: React.FC<NavLinkProp> = ({
     setDropDownVisible(!dropDownVisible);
   };
   return (
-    <div className="relative flex items-center justify-end w-full px-4">
+    <div className="relative flex items-center justify-end w-full px-5">
       <CgMenuRightAlt
         className="text-3xl text-white cursor-pointer"
         onClick={MenuHandler}
