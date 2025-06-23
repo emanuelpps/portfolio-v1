@@ -29,11 +29,11 @@ export const SkillsContainer = () => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="text-center flex w-[80%] justify-between items-center h-[100px]">
-          <div className="flex items-center justify-start w-full text-start">
+        <div className="text-center flex flex-col md:flex-row md:w-[80%] justify-center md:justify-between items-center h-[100px]">
+          <div className="flex items-center justify-center md:justify-start w-full md:text-start">
             {SkillsTitle.render()}
           </div>
-          <div className="flex items-end justify-end w-full">
+          <div className="flex justify-center md:items-end md:justify-end w-full">
             <h3 className="mt-4 text-4xl font-semibold text-white drop-shadow-lg">
               {activeTab}
             </h3>
