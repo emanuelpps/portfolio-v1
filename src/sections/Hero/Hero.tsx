@@ -5,19 +5,19 @@ import TitleText from "./components/TitleText";
 import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
 
 export const Hero = () => {
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  /*   const [screenHeight, setScreenHeight] = useState(window.innerHeight); */
   const [titleSelection, setTitleSelection] = useState("title");
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const updateHeight = () => setScreenHeight(window.innerHeight);
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
-  }, []);
+  }, []); */
   const ContactMeButton = ButtonFactory.createButton({
     type: "primary",
-    label: "Contact Me"
+    label: "Contact Me",
   });
-  
+
   const SelectorButton = ButtonFactory.createButton({
     type: "selector",
     label: "Hello!",
@@ -25,12 +25,11 @@ export const Hero = () => {
     setTitleSelection,
     titleSelection,
   });
-  
 
   return (
     <section
-      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative"
-      style={{ height: `${screenHeight}px` }}
+      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative h-[600px] md:h-[100vh]"
+      /* style={{ height: `${screenHeight}px` }} */
     >
       <div className="flex flex-col items-center justify-center flex-1 gap-10">
         <AnimatePresence mode="wait">
@@ -58,7 +57,9 @@ export const Hero = () => {
         </AnimatePresence>
         {ContactMeButton.render()}
       </div>
-      <div className="absolute bottom-10">{SelectorButton.render()}</div>
+      <div className="absolute bottom-20 md:bottom-10">
+        {SelectorButton.render()}
+      </div>
     </section>
   );
 };

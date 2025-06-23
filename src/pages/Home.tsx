@@ -6,7 +6,7 @@ import Skills from "../sections/Skills/Skills";
 
 const Home = () => {
   return (
-    <main className="gap-10 flex flex-col justify-center items-center w-[100%] bg-amber-300">
+    <main className="md:gap-10 flex flex-col justify-center items-center w-[100%]">
       <Hero />
       <Skills />
       <Experience />
