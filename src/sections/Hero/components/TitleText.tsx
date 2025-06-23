@@ -1,6 +1,6 @@
 const TitleText = () => {
   return (
-    <div className="text-center flex flex-col justify-center items-center gap-6 h-[220px] text-gray-200">
+    <div className="text-center flex flex-col justify-center items-center gap-6 md:h-[220px] text-gray-200">
       <h4 className="text-3xl text-[#FF4D7D] font-bold">
         Emanuel Pagés
         <br />
