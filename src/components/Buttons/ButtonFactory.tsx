@@ -5,6 +5,7 @@ import { SelectorButton } from "./SelectorButton";
 import { TabButton } from "./TabButton";
 import { TertiaryButton } from "./TertiaryButton";
 import { JSX } from "react";
+import { SelectionToggle } from "./SelectionToggle";
 
 type ButtonFactoryOptions =
   | {
@@ -18,6 +19,12 @@ type ButtonFactoryOptions =
       labelTwo: string;
       setTitleSelection?: (value: string) => void;
       titleSelection?: string;
+    }
+  | {
+      type: "selectionToggler";
+      label: string;
+      isActive?: boolean;
+      setActiveTab: (value: string) => void;
     }
   | {
       type: "tab";
@@ -44,6 +51,12 @@ export class ButtonFactory {
         );
       case "tab":
         return new TabButton(
+          options.label,
+          options.isActive ?? false,
+          options.setActiveTab
+        );
+      case "selectionToggler":
+        return new SelectionToggle(
           options.label,
           options.isActive ?? false,
           options.setActiveTab
