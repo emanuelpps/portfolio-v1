@@ -54,10 +54,10 @@ export const Hero = () => {
               <TitleText />
             </motion.div>
           )}
+          {ContactMeButton.render()}
         </AnimatePresence>
-        {ContactMeButton.render()}
       </div>
-      <div className="absolute bottom-20 md:bottom-10">
+      <div className="md:absolute bottom-20 md:bottom-10">
         {SelectorButton.render()}
       </div>
     </section>
