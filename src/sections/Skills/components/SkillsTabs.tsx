@@ -23,6 +23,7 @@ const SkillsTabs = ({ activeTab, setActiveTab }: SkillsProps) => {
   const isMobile = screenWidth <= 1023;
 
   return isMobile ? (
+
     <section className="flex flex-col items-center justify-center w-[90vw] gap-4 pb-20 md:pb-0 pt-20 flex-wrap">
       <div
         className="relative flex flex-col justify-between p-3.5 rounded-4xl items-center w-full bg-[#FF4D7D] text-white shadow-inner translate-y-[1px] scale-[0.98] z-[50]"
