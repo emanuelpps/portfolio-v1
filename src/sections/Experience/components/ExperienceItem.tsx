@@ -23,21 +23,21 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
 }) => {
   return (
     <motion.div
-      className="flex items-center gap-4 text-white justify-between relative"
+      className="relative flex text-white md:items-center md:justify-between"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <div className="text-left w-full">
-        <h3 className="font-semibold text-xl">{CompanyName}</h3>
-        <p className="text-gray-400 text-lg">{Period}</p>
+      <div className="w-full text-left">
+        <h3 className="text-xl font-semibold">{CompanyName}</h3>
+        <p className="text-lg text-gray-400">{Period}</p>
       </div>
-      <div className="relative z-10 w-full flex justify-center">
+      <div className="relative z-10 justify-center hidden w-full md:flex">
         <CircleSeparator itemType={ItemType} />
       </div>
-      <div className="text-left w-full">
-        <h3 className="font-semibold text-xl">{JobTitle}</h3>
+      <div className="w-full text-left">
+        <h3 className="text-xl font-semibold">{JobTitle}</h3>
       </div>
     </motion.div>
   );

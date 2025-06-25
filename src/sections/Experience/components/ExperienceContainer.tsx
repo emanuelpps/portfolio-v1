@@ -7,7 +7,7 @@ import { ItemTypes } from "./ExperienceItem";
 const ExperienceContainer = () => {
   const [experiences] = useState([
     {
-      CompanyName: "Vates Software an EPAM Company",
+      CompanyName: "EPAM Systems",
       JobTitle: "Associate Project Administrator",
       Period: "2025 - Present",
       ItemType: ItemTypes.Primary,
@@ -59,7 +59,7 @@ const ExperienceContainer = () => {
           className="absolute left-1/2 transform -translate-x-1/2 top-0 w-[2px] bg-gray-600"
           style={{ height: lineHeight }}
         ></motion.div>
-        <div className="mt-8 flex flex-col gap-12 relative">
+        <div className="relative flex flex-col mt-8 md:gap-12">
           {experiences.map((exp, index) => (
             <ExperienceItem
               key={index}
