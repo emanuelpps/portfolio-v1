@@ -35,13 +35,13 @@ export const SkillsContainer = () => {
     <div className="flex flex-col items-center w-full">
       <motion.div
         ref={ref}
-        className="backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl h-[700px] flex flex-col items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10 bg-gray-900/50"
+        className="backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl md:h-[700px] min-h-[500px] flex flex-col items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10 bg-gray-900/50"
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center w-full md:w-[80%] h-[100px] gap-4">
-          <div className="flex justify-center w-full md:justify-start">
+        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center w-full md:w-[80%] md:h-[100px] gap-4">
+          <div className="flex justify-center items-center text-center md:text-start w-full md:justify-start">
             {SkillsTitle.render()}
           </div>
           <div className="relative flex flex-col items-center w-full max-w-[250px] z-[50] md:items-end">
