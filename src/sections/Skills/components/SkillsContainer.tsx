@@ -40,7 +40,7 @@ export const SkillsContainer = () => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center w-full md:w-[80%] md:h-[100px] gap-4">
+        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center w-[95vw] md:w-[80%] md:h-[100px] gap-4">
           <div className="flex justify-center items-center text-center md:text-start w-full md:justify-start">
             {SkillsTitle.render()}
           </div>
