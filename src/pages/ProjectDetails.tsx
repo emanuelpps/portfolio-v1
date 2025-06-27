@@ -25,7 +25,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
       transition={{ type: "tween", duration: 0.6 }}
       className="fixed inset-0 z-50 bg-[#0F1724] overflow-x-hidden overflow-y-auto"
     >
-      <ProjectDetailContainer project={project} scrollContainerRef={containerRef} />
+      <ProjectDetailContainer
+        project={project}
+        scrollContainerRef={containerRef}
+      />
     </motion.div>
   );
 };
