@@ -2,8 +2,7 @@ import { useState } from "react";
 import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
 import ProjectCard from "./ProjectCard";
 import Projects from "../../../../public/data/Projects.json";
-import { RiArrowRightSFill } from "react-icons/ri";
-import { RiArrowLeftSFill } from "react-icons/ri";
+import { RiArrowRightSFill, RiArrowLeftSFill } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
 
 export const ProjectsContainer = () => {
@@ -40,20 +39,22 @@ export const ProjectsContainer = () => {
   );
 
   return (
-    <div className="flex flex-col items-center w-full">
-      <div className="bg-gray-900/50 backdrop-blur-lg shadow-lg w-full max-w-7xl min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10">
-        <div className="text-center flex w-[80%] justify-between items-center h-[200px]">
+    <div className="flex flex-col items-center md:w-full">
+      <div className="bg-gray-900/50 backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl h-full md:min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10">
+        <div className="text-center flex w-[80%] justify-between items-center h-full md:h-[200px]">
           <div className="flex items-start justify-start w-full text-start">
             {ProjectsTitle.render()}
           </div>
-          <div className="flex items-center justify-center max-w-md text-sm text-gray-300 text-end">
+          <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 md:flex text-end">
             {hoveredProject ? hoveredProject.description : ""}
           </div>
         </div>
-        <div className="relative flex items-center justify-center w-full overflow-hidden">
+
+        {/* DESKTOP VIEW - 3 cards por slide */}
+        <div className="relative items-center justify-center hidden w-full overflow-hidden md:flex">
           <div className="flex transition-transform duration-500 ease-in-out">
             {currentProjects.map((project) => (
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" key={project.id}>
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -70,7 +71,23 @@ export const ProjectsContainer = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-center gap-2 mt-4">
+
+        {/* MOBILE VIEW - scroll horizontal de una en una */}
+        <div className="flex w-[95vw] min-h-full gap-20 overflow-x-auto overflow-y-hidden md:hidden scroll-smooth snap-x snap-mandatory">
+          {Projects.map((project) => (
+            <div
+              key={project.id}
+              className="min-w-full px-2 snap-start"
+              onMouseEnter={() => ProjectHoverFilter(project.id)}
+              onMouseLeave={() => ProjectHoverFilter(null)}
+            >
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+
+        {/* DESKTOP NAVIGATION ONLY */}
+        <div className="items-center justify-center hidden gap-2 mt-4 md:flex">
           <button
             onClick={() => goToSlide(currentIndex - 1)}
             className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
