@@ -29,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <img
             src={project.frontImage}
             alt={project.title}
-            className="absolute bottom-0 left-0 md:w-full md:h-[300px] object-cover rounded-[40px] z-[30]"
+            className="absolute bottom-0 left-0 w-full h-[300px] object-cover rounded-[40px] z-[30]"
           />
           <div className="absolute right-[0px] top-[298px] w-[20px] md:w-[40px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
           <div className="absolute left-[165.5px] md:left-[166px] bottom-[1px] md:w-[40px] w-[20px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
