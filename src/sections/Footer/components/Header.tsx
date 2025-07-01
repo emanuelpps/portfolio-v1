@@ -7,7 +7,7 @@ const Header = () => {
     label: "Connect with me",
   });
   return (
-    <div className="flex justify-between w-full">
+    <div className="flex flex-col md:flex-row gap-10 md:gap-0 justify-between w-full">
       {FooterTitle.render()}
       {ConnectButton.render()}
     </div>

@@ -1,6 +1,6 @@
 const Bottom = () => {
   return (
-    <footer className="flex flex-col items-center justify-between w-full px-4 text-sm text-gray-300 md:flex-row">
+    <footer className="flex flex-col text-center md:text-start items-center justify-between w-full px-4 text-sm text-gray-300 md:flex-row">
       <div>© 2025 Emanuel Pagés.</div>
       <div>
         Built with <span className="font-semibold text-white">Vite</span>,{" "}

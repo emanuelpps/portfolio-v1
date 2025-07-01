@@ -2,7 +2,7 @@ import FooterContainer from "./components/FooterContainer";
 
 const Footer = () => {
   return (
-    <footer className="w-full flex justify-center items-center bg-[#0F1621] text-white mt-20">
+    <footer className="w-[95vw] md:w-full flex justify-center items-center bg-[#0F1621] text-white mt-20">
       <FooterContainer />
     </footer>
   );

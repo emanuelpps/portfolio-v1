@@ -3,8 +3,8 @@ import LogoEP from "../../../../public/assets/images/epLogo.png";
 
 const Main = () => {
   return (
-    <div className="flex">
-      <div className="flex items-center justify-center w-full gap-5">
+    <>
+      <div className="flex flex-col items-center justify-center w-full gap-5 md:flex-row">
         <div className="flex items-center justify-center w-[50%]">
           <img
             src={LogoEP}
@@ -19,7 +19,7 @@ const Main = () => {
           perspective, creating solutions that are not just functional but truly
           impactful.
         </div>
-        <div className="flex items-center justify-center w-[50%] gap-4 text-2xl text-gray-400">
+        <div className="flex  items-center justify-center w-[50%] md:gap-4 gap-20 text-2xl text-gray-400">
           <a
             href="https://github.com/emanuelpps"
             target="_blank"
@@ -36,7 +36,7 @@ const Main = () => {
           </a>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
