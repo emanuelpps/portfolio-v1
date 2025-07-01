@@ -41,8 +41,8 @@ export const ProjectsContainer = () => {
   return (
     <div className="flex flex-col items-center md:w-full">
       <div className="bg-gray-900/50 backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl h-full md:min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10">
-        <div className="text-center flex w-[80%] justify-between items-center h-full md:h-[200px]">
-          <div className="flex items-start justify-start w-full text-start">
+        <div className="text-center flex md:w-[80%] justify-between items-center h-full md:h-[200px]">
+          <div className="flex w-full md:items-start md:justify-start md:text-start">
             {ProjectsTitle.render()}
           </div>
           <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 md:flex text-end">
