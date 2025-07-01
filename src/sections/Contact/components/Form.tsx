@@ -9,7 +9,7 @@ export const Form = () => {
     label: "Send",
   });
   return (
-    <form className="flex flex-col w-[40%] justify-center items-center gap-10">
+    <form className="flex flex-col w-[95vw] md:w-[40%] justify-center items-center gap-10">
       {NameInput.render()}
       {EmailInput.render()}
       {MessageInput.render()}
@@ -18,4 +18,4 @@ export const Form = () => {
       </div>
     </form>
   );
-}
+};
