@@ -24,7 +24,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
     );
   }
   return (
-    <div className="flex flex-col w-[90%] justify-center items-center min-h-screen gap-20 mx-auto">
+    <div className="flex flex-col w-[95vw] md:w-[90%] justify-center items-center min-h-screen gap-20 mx-auto">
       <Header
         title={project.title}
         subtitle={project.description}

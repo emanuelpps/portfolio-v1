@@ -21,7 +21,7 @@ export const ButtonContainer = ({ code, deploy, buttonText }: ButtonProps) => {
   });
   return (
     <>
-      <div className="flex gap-20 mt-4 text-white">
+      <div className="flex flex-row justify-center w-full gap-5 text-white md:gap-20 md:mt-4">
         {code && GithubButton.render()}
         {deploy && DeployButton.render()}
       </div>
