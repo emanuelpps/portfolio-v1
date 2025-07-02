@@ -11,20 +11,21 @@ export class PrimarySection implements SectionTypes {
 
   render() {
     return (
-      <section className="primary-section flex flex-col gap-10">
-        <div className="flex w-full justify-center">
-          <p className="w-[80%] text-white text-[0.8lh]">{this.text}</p>
+      <section className="flex flex-col gap-10 primary-section">
+        <div className="flex justify-center w-full">
+          <p className="w-[95vw] md:w-[80%] text-white text-[0.8lh]">{this.text}</p>
         </div>
         {this.images && (
-          <div className="grid grid-cols-2 gap-4 w-[80%] mx-auto">
+          <div className="flex flex-col md:grid md:grid-cols-2 md:gap-4 gap-10 md:w-[80%] w-[95vw] mx-auto">
             {this.images.map((img, i) => (
               <div
                 key={i}
-                className="w-full rounded-2xl overflow-hidden object-contain"
+                className="object-contain w-full overflow-hidden rounded-2xl"
               >
                 <img
                   src={img}
-                  alt={`Primary image ${i}`} className="w-full h-[350px] rounded-2xl"
+                  alt={`Primary image ${i}`}
+                  className="w-full h-[350px] rounded-2xl"
                 />
               </div>
             ))}
