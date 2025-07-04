@@ -7,13 +7,13 @@ interface MainImageTwoProps {
 
 export const MainImageTwo = ({ image, type }: MainImageTwoProps) => {
   return (
-    <div className="relative flex items-center justify-center w-full mt-2 rounded-2xl overflow-hidden bg-[#0F1724] ">
+    <div className="relative flex items-center justify-center md:w-full w-[95vw] mt-2 rounded-2xl overflow-hidden bg-[#0F1724] ">
       <img
         src={image}
         className={
           type === TypeOfProject.PROJECT
-            ? "w-[90%] rounded-2xl"
-            : "w-[50%] object-contain rounded-2xl"
+            ? "md:w-[90%] w-[95vw] rounded-2xl"
+            : "md:w-[50%] w-[95vw] object-contain rounded-2xl"
         }
         alt="Main visual"
       />
