@@ -20,9 +20,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <div className="flex flex-col items-center justify-center w-full h-full gap-20 text-lg leading-8 text-white">
       <div
-        className={`flex sm:flex-col md:flex-row ${
-          type == TypeOfProject.PROJECT && "flex-col gap-20"
-        }  items-center justify-center w-[90%] h-full text-lg leading-8 text-white`}
+        className={`flex flex-col gap-20 items-center justify-center w-[90%] h-full text-lg leading-8 text-white
+    ${
+      type === TypeOfProject.PROJECT
+        ? "md:flex-col md:gap-20"
+        : "md:flex-row md:gap-0"
+    }`}
       >
         <MainImageTwo image={mainImageTwo} type={type} />
         <Description description={longDescription} />
