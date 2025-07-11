@@ -12,6 +12,8 @@ const MenuMobile: React.FC<NavLinkProp> = ({ hashSection, setHashSection }) => {
       instance.addLink("home", "Home", "#home");
       instance.addLink("skills", "Skills", "#skills");
       instance.addLink("experience", "Experience", "#experience");
+      instance.addLink("projects", "Projects", "#projects");
+      instance.addLink("contact", "Contact", "#contact");
     }
 
     return instance;
