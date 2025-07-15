@@ -20,10 +20,10 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
   }, [isMobile]);
 
   return (
-    <div className="flex w-full justify-center items-center relative h-[60px] text-white overflow-hidden">
+    <div className="flex w-full md:justify-center items-center relative h-[60px] text-white overflow-hidden">
       <motion.div
-        className={`absolute flex items-center gap-2 ${
-          isMobile ? "left-4" : ""
+        className={`absolute flex items-center gap-2 z-50 ${
+          isMobile ? "pl-4 bg-[#0f1621] " : ""
         }`}
         animate={{
           x: isMobile ? 0 : isCentered ? 0 : 0,
@@ -32,7 +32,7 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
       >
         <motion.img
           src={LogoImage}
-          className="border border-gray-800 w-[50px] rounded-2xl z-10"
+          className="relative border border-gray-800 w-[50px] rounded-2xl z-20"
           animate={{
             x: isMobile ? 0 : isCentered ? 60 : 0,
             y: 0,
@@ -42,7 +42,7 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
 
         {isMobile ? (
           <motion.div
-            className="absolute left-[40px]"
+            className="absolute left-[40px]  z-10"
             initial={{ x: -80, opacity: 0 }}
             animate={{
               x: [-80, 10, 10, -80],
@@ -56,7 +56,7 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
               times: [0, 0.3, 0.7, 1],
             }}
           >
-            <h3 className="font-semibold text-[0.8rem] leading-3 whitespace-nowrap">
+            <h3 className="font-semibold text-[0.8rem] leading-3 whitespace-nowrap relative z-10">
               Emanuel Pagés
               <br />
               <span className="font-extralight">Frontend Developer</span>
