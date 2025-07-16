@@ -20,10 +20,10 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
   }, [isMobile]);
 
   return (
-    <div className="flex w-full md:justify-center items-center relative h-[60px] text-white overflow-hidden">
+    <div className="flex w-full md:justify-center items-center relative h-[60px] text-white overflow-hidden ml-3 md:ml-0">
       <motion.div
         className={`absolute flex items-center gap-2 z-50 ${
-          isMobile ? "pl-4 bg-[#0f1621] " : ""
+          isMobile ? " bg-[#0f1621] " : ""
         }`}
         animate={{
           x: isMobile ? 0 : isCentered ? 0 : 0,
