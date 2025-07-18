@@ -4,11 +4,21 @@ export class PrimaryInput implements InputTypes {
   type: string;
   label: string;
   category: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
-  constructor(type: string, label: string, category: string) {
+  constructor(
+    type: string,
+    label: string,
+    category: string,
+    value?: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  ) {
     this.label = label;
     this.type = type;
     this.category = category;
+    this.value = value;
+    this.onChange = onChange;
   }
 
   render() {
@@ -19,6 +29,8 @@ export class PrimaryInput implements InputTypes {
         </div>
         <input
           type={this.category}
+          value={this.value}
+          onChange={this.onChange}
           className="bg-white h-10 w-[95vw] md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md"
         />
       </div>
