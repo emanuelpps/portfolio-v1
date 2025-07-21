@@ -5,6 +5,7 @@ export class PrimaryInput implements InputTypes {
   label: string;
   category: string;
   name?: string;
+  value?: string;
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -14,12 +15,14 @@ export class PrimaryInput implements InputTypes {
     label: string,
     category: string,
     name?: string,
+    value?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   ) {
     this.label = label;
     this.type = type;
     this.category = category;
     this.name = name;
+    this.value = value;
     this.onChange = onChange;
   }
 
@@ -32,6 +35,7 @@ export class PrimaryInput implements InputTypes {
         <input
           type={this.category}
           name={this.name}
+          value={this.value}
           onChange={this.onChange}
           className="bg-white h-10 w-[95vw] md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md"
         />

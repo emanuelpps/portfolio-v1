@@ -3,6 +3,7 @@ import { InputFactory } from "../../../components/Form/InputFactory";
 import { useState, useRef, JSX } from "react";
 import emailjs from "@emailjs/browser";
 import { LoadingDots } from "./LoadingDots";
+import PopUp from "./PopUp";
 
 export const Form = () => {
   const [buttonText, setButtonText] = useState<JSX.Element | string>("Send");
@@ -25,6 +26,7 @@ export const Form = () => {
     "Name",
     "text",
     "from_name",
+    fullName,
     (e) => setFullName(e.target.value)
   );
 
@@ -33,6 +35,7 @@ export const Form = () => {
     "Email",
     "email",
     "reply_to",
+    email,
     (e) => setEmail(e.target.value)
   );
 
@@ -41,6 +44,7 @@ export const Form = () => {
     "Message",
     "text",
     "message",
+    message,
     (e) => setMessage(e.target.value)
   );
 
@@ -111,11 +115,13 @@ export const Form = () => {
       ref={form}
       onSubmit={handleSubmit}
     >
-      {formErrors && (
-        <div className="absolute flex justify-center items-center bg-amber-400 w-[100vw] h-[100vh]">
-          <h1>ERROR</h1>
-          <p>{errorManagement}</p>
-        </div>
+      {formErrors && errorManagement && (
+        <PopUp
+          message={errorManagement}
+          type={
+            errorManagement === errorManager.formDeliverOk ? "success" : "error"
+          }
+        />
       )}
       {NameInput.render()}
       {EmailInput.render()}
