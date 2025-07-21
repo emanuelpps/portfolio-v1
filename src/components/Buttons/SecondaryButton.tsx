@@ -1,10 +1,11 @@
 import { Button } from "./Types";
 import { FaArrowUp } from "react-icons/fa";
+import { JSX } from "react";
 
 export class SecondaryButton implements Button {
-  label: string;
+  label: string | JSX.Element;
 
-  constructor(label: string) {
+  constructor(label: string | JSX.Element) {
     this.label = label;
   }
 

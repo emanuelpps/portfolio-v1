@@ -1,11 +1,11 @@
 import { ButtonFactory } from "../../../components/Buttons/ButtonFactory";
 import { InputFactory } from "../../../components/Form/InputFactory";
-import { useState, useRef } from "react";
-//import { checkForm } from "../../../utils/FormValidation";
+import { useState, useRef, JSX } from "react";
 import emailjs from "@emailjs/browser";
+import { LoadingDots } from "./LoadingDots";
 
 export const Form = () => {
-  const [buttonText, setButtonText] = useState<string>("Send");
+  const [buttonText, setButtonText] = useState<JSX.Element | string>("Send");
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -19,6 +19,7 @@ export const Form = () => {
     formDeliverOk:
       "The message has been successfully sent. I will get in touch with you shortly.",
   };
+
   const NameInput = InputFactory.createInput(
     "primary",
     "Name",
@@ -26,6 +27,7 @@ export const Form = () => {
     "from_name",
     (e) => setFullName(e.target.value)
   );
+
   const EmailInput = InputFactory.createInput(
     "primary",
     "Email",
@@ -33,6 +35,7 @@ export const Form = () => {
     "reply_to",
     (e) => setEmail(e.target.value)
   );
+
   const MessageInput = InputFactory.createInput(
     "secondary",
     "Message",
@@ -40,9 +43,10 @@ export const Form = () => {
     "message",
     (e) => setMessage(e.target.value)
   );
+
   const SubmitButton = ButtonFactory.createButton({
     type: "primary",
-    label: `${buttonText}`,
+    label: buttonText,
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,12 +61,12 @@ export const Form = () => {
       setTimeout(() => {
         setFormErrors(false);
         setErrorManagement(undefined);
-      }, 3000);
+      }, 3500);
       return;
     }
 
     setFormErrors(false);
-    setButtonText("Sending...");
+    setButtonText(<LoadingDots />);
     sendEmail();
   };
 
@@ -100,6 +104,7 @@ export const Form = () => {
         }
       );
   };
+
   return (
     <form
       className="flex flex-col w-[95vw] md:w-[40%] justify-center items-center gap-10"

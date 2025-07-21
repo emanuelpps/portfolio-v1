@@ -2,10 +2,10 @@ import { JSX } from "react";
 import { Button } from "./Types";
 
 export class TertiaryButton implements Button {
-  label: string;
+  label: string | JSX.Element;
   icon?: JSX.Element | undefined;
 
-  constructor(label: string, icon?: JSX.Element) {
+  constructor(label: string | JSX.Element, icon?: JSX.Element) {
     this.label = label;
     this.icon = icon;
   }
