@@ -3,10 +3,22 @@ import { InputTypes } from "./Types";
 export class SecondaryInput implements InputTypes {
   type: string;
   label: string;
-
-  constructor(type: string, label: string) {
+  name?: string;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  constructor(
+    type: string,
+    label: string,
+    name?: string,
+    onChange?: (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => void
+  ) {
     this.label = label;
     this.type = type;
+    this.name = name;
+    this.onChange = onChange;
   }
 
   render() {
@@ -15,7 +27,11 @@ export class SecondaryInput implements InputTypes {
         <div className="relative w-[95vw] mb-4 md:w-40 text-start">
           <label>{this.label}</label>
         </div>
-        <textarea className="bg-white h-40 w-[95vw] md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md" />
+        <textarea
+          name={this.name}
+          onChange={this.onChange}
+          className="bg-white h-40 w-[95vw] md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md"
+        />
       </div>
     );
   }

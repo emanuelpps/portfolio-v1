@@ -23,21 +23,21 @@ export const Form = () => {
     "primary",
     "Name",
     "text",
-    fullName,
+    "from_name",
     (e) => setFullName(e.target.value)
   );
   const EmailInput = InputFactory.createInput(
     "primary",
     "Email",
     "email",
-    email,
+    "reply_to",
     (e) => setEmail(e.target.value)
   );
   const MessageInput = InputFactory.createInput(
     "secondary",
     "Message",
     "text",
-    message,
+    "message",
     (e) => setMessage(e.target.value)
   );
   const SubmitButton = ButtonFactory.createButton({
@@ -100,13 +100,18 @@ export const Form = () => {
         }
       );
   };
-
   return (
     <form
       className="flex flex-col w-[95vw] md:w-[40%] justify-center items-center gap-10"
       ref={form}
       onSubmit={handleSubmit}
     >
+      {formErrors && (
+        <div className="absolute flex justify-center items-center bg-amber-400 w-[100vw] h-[100vh]">
+          <h1>ERROR</h1>
+          <p>{errorManagement}</p>
+        </div>
+      )}
       {NameInput.render()}
       {EmailInput.render()}
       {MessageInput.render()}

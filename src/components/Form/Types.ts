@@ -2,8 +2,11 @@ import { JSX } from "react";
 export interface InputTypes {
   type: string;
   label: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   category?: string;
+  name?: string;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   render: () => JSX.Element;
 }
+

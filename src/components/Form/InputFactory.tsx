@@ -7,14 +7,16 @@ export class InputFactory {
     type: string,
     label: string,
     category?: string,
-    value?: string,
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    name?: string,
+    onChange?: (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => void
   ): InputTypes {
     switch (type) {
       case "primary":
-        return new PrimaryInput(type, label, category ?? "", value, onChange);
+        return new PrimaryInput(type, label, category ?? "", name, onChange);
       case "secondary":
-        return new SecondaryInput(type, label);
+        return new SecondaryInput(type, label, name, onChange);
       default:
         throw new Error("Input type not supported");
     }
