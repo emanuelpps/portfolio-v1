@@ -1,10 +1,11 @@
 import { Button } from "./Types";
+import { JSX } from "react";
 
 export class PrimaryButton implements Button {
-  label: string;
+  label: string | JSX.Element;
   onClick?: () => void;
 
-  constructor(label: string, onClick?: () => void) {
+  constructor(label: string | JSX.Element, onClick?: () => void) {
     this.label = label;
     this.onClick = onClick;
   }

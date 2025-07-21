@@ -10,7 +10,7 @@ import { SelectionToggle } from "./SelectionToggle";
 type ButtonFactoryOptions =
   | {
       type: "primary" | "secondary" | "tertiary";
-      label: string;
+      label: string | JSX.Element;
       icon?: JSX.Element;
     }
   | {
