@@ -10,7 +10,7 @@ export const Description = ({ description }: DescriptionProps) => {
       <div className="md:w-[90%] w-full text-[0.6lh] flex flex-col gap-2 leading-relaxed">
         {splitDescription.length > 0 ? (
           splitDescription.map((line, i) => (
-            <p key={i} className="text-white text-balance">
+            <p key={i} className="text-white text-pretty">
               {line}
             </p>
           ))

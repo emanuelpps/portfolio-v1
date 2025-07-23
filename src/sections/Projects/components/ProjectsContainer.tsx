@@ -45,13 +45,12 @@ export const ProjectsContainer = () => {
           <div className="flex w-full md:items-start md:justify-start md:text-start">
             {ProjectsTitle.render()}
           </div>
-          <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 md:flex text-end">
+          <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 lg:flex text-end">
             {hoveredProject ? hoveredProject.description : ""}
           </div>
         </div>
-
         {/* DESKTOP VIEW - 3 cards por slide */}
-        <div className="relative items-center justify-center hidden w-full overflow-hidden md:flex">
+        <div className="relative items-center justify-center hidden w-full overflow-hidden lg:flex">
           <div className="flex transition-transform duration-500 ease-in-out">
             {currentProjects.map((project) => (
               <AnimatePresence mode="wait" key={project.id}>
@@ -71,13 +70,12 @@ export const ProjectsContainer = () => {
             ))}
           </div>
         </div>
-
         {/* MOBILE VIEW - scroll horizontal de una en una */}
-        <div className="flex w-[95vw] min-h-full gap-20 overflow-x-auto overflow-y-hidden md:hidden scroll-smooth snap-x snap-mandatory">
+        <div className="flex w-[95vw] min-h-full gap-20 overflow-x-auto overflow-y-hidden lg:hidden scroll-smooth snap-x snap-mandatory pb-20">
           {Projects.map((project) => (
             <div
               key={project.id}
-              className="min-w-full px-2 snap-start"
+              className="min-w-full px-2 snap-start md:flex md:justify-center md:items-center"
               onMouseEnter={() => ProjectHoverFilter(project.id)}
               onMouseLeave={() => ProjectHoverFilter(null)}
             >

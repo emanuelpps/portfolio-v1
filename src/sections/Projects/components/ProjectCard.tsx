@@ -9,7 +9,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="relative w-[90vw] md:w-85 h-full md:h-[420px] rounded-[40px] border-[1px] border-r-transparent border-t-white/10 border-b-transparent border-l-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl hover:bg-[#FF4D7D] transition-colors duration-500 cursor-pointer">
+    <div className="relative w-[90vw] lg:w-85 h-full lg:h-[420px] rounded-[40px] border-[1px] border-r-transparent border-t-white/10 border-b-transparent border-l-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md shadow-xl hover:bg-[#FF4D7D] transition-colors duration-500 cursor-pointer">
       <Link to={`/project/${project.id}`} state={project}>
         <div className="absolute top-4 pl-4 z-20 border-b-[1px] w-full border-white pb-3">
           <h3 className="text-lg font-semibold text-white">{project.title}</h3>
@@ -20,19 +20,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
         <motion.div
-          className="relative w-full md:w-85 h-[420px] overflow-hidden rounded-[40px]"
+          className="relative w-full lg:w-85 h-[420px] overflow-hidden rounded-[40px]"
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 100 }}
         >
-          <div className="absolute bottom-0 md:w-[75%] md:h-[325px] bg-[#31343a79] rounded-t-[40px] left-1/2 -translate-x-1/2 z-10" />
-          <div className="absolute bottom-0 md:w-[85%] md:h-[315px] bg-[#31343ad0] rounded-t-[40px] left-1/2 -translate-x-1/2 z-20" />
+          <div className="absolute bottom-0 lg:w-[75%] lg:h-[325px] bg-[#31343a79] rounded-t-[40px] left-1/2 -translate-x-1/2 z-10" />
+          <div className="absolute bottom-0 lg:w-[85%] lg:h-[315px] bg-[#31343ad0] rounded-t-[40px] left-1/2 -translate-x-1/2 z-20" />
           <img
             src={project.frontImage}
             alt={project.title}
             className="absolute bottom-0 left-0 w-full h-[300px] object-cover rounded-[40px] z-[30]"
           />
-          <div className="hidden md:flex absolute right-[0px] top-[298px] w-[20px] md:w-[40px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
-          <div className="hidden md:flex absolute left-[165.5px] md:left-[166px] bottom-[1px] md:w-[40px] w-[20px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
+          <div className="hidden lg:flex absolute right-[0px] top-[298px] w-[20px] lg:w-[40px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
+          <div className="hidden lg:flex absolute left-[165.5px] lg:left-[166px] bottom-[1px] lg:w-[40px] w-[20px] h-[40px] z-[95] bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
         </motion.div>
         <div
           id="tab-curve"
