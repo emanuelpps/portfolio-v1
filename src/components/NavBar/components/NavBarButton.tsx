@@ -6,6 +6,7 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
   setHashSection,
 }) => {
   const isActive = state === link.hash;
+  const isExternal = link.hash.startsWith("http");
 
   return (
     <button
@@ -14,6 +15,8 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
     >
       <a
         href={link.hash}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
         className={`text-white transition-colors duration-300 ${
           isActive ? "text-[#FF4D7D]" : "hover:text-[#FF4D7D]"
         }`}

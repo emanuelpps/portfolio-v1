@@ -8,7 +8,11 @@ const NavLinksRight = ({ hashSection, setHashSection }: NavLinkProp) => {
 
   if (Object.keys(navBar.links).length === 0) {
     navBar.addLink("projects", "Projects", "#projects");
-    navBar.addLink("resume", "Resume", "#resume");
+    navBar.addLink(
+      "resume",
+      "Resume",
+      "https://res.cloudinary.com/dkgoszhfr/image/upload/v1753211550/EmanuelPagesResume_notc_hpqsml.pdf"
+    );
     navBar.addLink("contact", "Contact", "#contact");
   }
 
