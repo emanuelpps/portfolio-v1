@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
+import { TitlesFactory } from "@/components/Titles/TitlesFactory";
 import ProjectCard from "./ProjectCard";
-import Projects from "../../../../public/data/Projects.json";
+import Projects from "@/data/Projects.json";
 import { RiArrowRightSFill, RiArrowLeftSFill } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
 

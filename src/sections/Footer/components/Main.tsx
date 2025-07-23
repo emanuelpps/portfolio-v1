@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import LogoEP from "../../../../public/assets/images/epLogo.png";
+import LogoEP from "@/assets/images/epLogo.png";
 
 const Main = () => {
   return (

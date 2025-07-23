@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import LogoImage from "/assets/images/epLogo.png";
+import LogoImage from "@/assets/images/epLogo.png";
 
 interface LogoContainerProps {
   screenWidth?: number;

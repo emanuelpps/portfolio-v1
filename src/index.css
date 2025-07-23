@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-@theme {
-    --background-image-circle-bg-image: url("/assets/images/circleBG.svg");
-    --background-image-black-waves: url("/assets/images/bg-black.webp");
-    --background-image-eclipse-c: url("/assets/images/Ellipse-C.svg");
-    --background-image-eclipse-b: url("/assets/images/Ellipse-B.svg");
-    --background-image-eclipse-a: url("/assets/images/Ellipse-A.svg");
-    --background-image-bg-dark: url("/assets/images/bg-dark.webp");
-}
-
 html {
     height: 100%;
     background-color: #0F1621;
