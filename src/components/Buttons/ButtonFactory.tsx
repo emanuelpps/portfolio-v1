@@ -12,6 +12,7 @@ type ButtonFactoryOptions =
       type: "primary" | "secondary" | "tertiary";
       label: string | JSX.Element;
       icon?: JSX.Element;
+      link?: string;
     }
   | {
       type: "selector";
@@ -41,7 +42,7 @@ export class ButtonFactory {
       case "secondary":
         return new SecondaryButton(options.label);
       case "tertiary":
-        return new TertiaryButton(options.label, options.icon);
+        return new TertiaryButton(options.label, options.icon, options.link);
       case "selector":
         return new SelectorButton(
           options.label,

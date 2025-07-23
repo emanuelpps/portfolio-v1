@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./sections/Header/Header";
 import { ProjectTypes } from "../../types/ProjectTypes";
 import { HeroSection } from "./sections/HeroSection/HeroSection";
-import { Purpose } from "./sections/Purpose/Purpose";
+//import { Purpose } from "./sections/Purpose/Purpose";
 import { DesignApproach } from "./sections/DesignApproach/DesignApproach";
 import Challenges from "./sections/Challenges/Challenges";
 import { GoUp } from "./components/GoUp";
@@ -39,10 +39,10 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
         mainImageTwo={project.image2}
         type={project.type}
       />
-      <Purpose
+      {/* <Purpose
         text={project.insights.purpose.text}
         images={project.insights.purpose.images}
-      />
+      /> */}
       <DesignApproach
         text={project.insights.designApproach.text}
         images={project.insights.designApproach.images}

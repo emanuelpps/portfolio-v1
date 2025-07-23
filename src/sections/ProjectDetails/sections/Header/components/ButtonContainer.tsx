@@ -6,6 +6,7 @@ interface ButtonProps {
   code: string | undefined;
   deploy: string | undefined;
   buttonText: string;
+  link: string;
 }
 
 export const ButtonContainer = ({ code, deploy, buttonText }: ButtonProps) => {
@@ -13,11 +14,13 @@ export const ButtonContainer = ({ code, deploy, buttonText }: ButtonProps) => {
     type: "tertiary",
     label: "Repository",
     icon: <FaGithub className="text-xl" />,
+    link: code,
   });
   const DeployButton = ButtonFactory.createButton({
     type: "tertiary",
     label: `${buttonText}`,
     icon: <GoBrowser className="text-xl" />,
+    link: deploy,
   });
   return (
     <>
