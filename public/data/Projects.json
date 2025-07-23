@@ -3,7 +3,7 @@
     "id": 2,
     "title": "React Smart Hooks",
     "type": "Library",
-    "stack": ["React", "TypeScript", "Vitest"],
+    "stack": ["React", "TypeScript", "React Testing Library"],
     "description": "A lightweight, dependency-free library of custom React hooks with TypeScript support.",
     "longDescription": "This library provides a set of useful and minimal custom hooks for React, written in TypeScript. It helps developers save time by reusing common logic like debouncing, localStorage handling, and toggling values. All hooks are tested with Vitest, tree-shakable, and free of dependencies. Built for performance and easy use in any React app.",
     "insights": {
@@ -38,14 +38,14 @@
     "title": "Helpers Kit Utility Library",
     "type": "Library",
     "stack": ["TypeScript", "Vitest"],
-    "description": "Framework-agnostic TypeScript helper functions like deepClone, debounce, slugify, and more.",
-    "longDescription": "A utility library built entirely in TypeScript, designed to be framework-agnostic. It includes helper functions commonly used in both frontend and backend development, such as deep cloning, debouncing, string manipulation (slugify), and more. Ideal for use in any TypeScript project that needs reliable, well-typed utilities.",
+    "description": "Lightweight TypeScript helper functions like deepClone, debounce, slugify, and more.",
+    "longDescription": "Helpers Kit is a small and fast utility library written in TypeScript. It includes useful helper functions like deepClone, debounce, getUniqueValues, and slugify. These tools help developers avoid writing the same logic many times. It works in both frontend and backend projects, and does not need any extra libraries.",
     "insights": {
       "purpose": {
-        "text": "The goal was to create a lightweight, framework-agnostic set of TypeScript utilities to speed up development and reduce duplication of basic logic across multiple projects."
+        "text": "The goal was to create a simple and reusable set of TypeScript functions that help developers solve common problems in any project."
       },
       "designApproach": {
-        "text": "The library was developed with strong typing and functional purity in mind. Each helper was written to be independent, reusable, and easy to test. Documentation and examples were added to improve clarity and usability across environments.",
+        "text": "All functions are written in TypeScript with strong typing. Each helper is made to be independent, easy to understand, and ready to test. The library does not use any external dependencies, which keeps it fast and clean.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3",
@@ -54,10 +54,10 @@
         ]
       },
       "challenges": {
-        "text": "One challenge was ensuring compatibility across different JavaScript runtimes (Node.js, browser, etc.) without relying on external dependencies. Writing fully type-safe utilities that work generically yet intuitively also required a lot of trial and error with TypeScript’s advanced types."
+        "text": "One of the main challenges was making sure the library works in different environments, like the browser and Node.js. Also, writing helpers that are both generic and fully type-safe took careful work with TypeScript’s advanced types."
       }
     },
-    "code": "https://github.com/your-username/ts-helpers-kit",
+    "code": "https://github.com/emanuelpps/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wybgoxopaxtyjeawqzwl",
@@ -65,7 +65,7 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Doc"
+    "buttonText": "Docs"
   },
   {
     "id": 4,

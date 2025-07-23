@@ -19,12 +19,14 @@ import {
   SiFirebase,
   SiPython,
   SiVitest,
-  SiJest,
   SiFigma,
   SiJirasoftware,
   SiNotion,
   SiTrello,
   SiRetool,
+  SiTestinglibrary,
+  SiGraphql,
+  SiPostgresql,
 } from "react-icons/si";
 import { TbBrandCss3 } from "react-icons/tb";
 import { GiBearFace } from "react-icons/gi";
@@ -128,6 +130,18 @@ const icons: IconsConfig = {
       name: "Firebase",
       Icon: ({ size }) => <SiFirebase size={size} color="#FFCA28" />,
     },
+    {
+      name: "Python",
+      Icon: ({ size }) => <SiPython size={size} color="#3776AB" />,
+    },
+    {
+      name: "GraphQL",
+      Icon: ({ size }) => <SiGraphql size={size} color="#E10098" />,
+    },
+    {
+      name: "PostgreSQL",
+      Icon: ({ size }) => <SiPostgresql size={size} color="#336791" />,
+    },
   ],
   Testing: [
     {
@@ -135,8 +149,8 @@ const icons: IconsConfig = {
       Icon: ({ size }) => <SiVitest size={size} color="#6E9F18" />,
     },
     {
-      name: "Jest",
-      Icon: ({ size }) => <SiJest size={size} color="#C21325" />,
+      name: "React Testing Library",
+      Icon: ({ size }) => <SiTestinglibrary size={size} color="#E33332" />,
     },
   ],
   Tools: [
