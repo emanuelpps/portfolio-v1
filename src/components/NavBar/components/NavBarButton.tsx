@@ -1,22 +1,37 @@
 import { NavBarButtonProp } from "../types/NavLinkProp";
+import { useScroll } from "@/hooks/UseScroll";
 
 const NavBarButton: React.FC<NavBarButtonProp> = ({
   link,
   state,
   setHashSection,
 }) => {
+  const { scrollTo } = useScroll();
+
   const isActive = state === link.hash;
   const isExternal = link.hash.startsWith("http");
 
+  const handleClick = () => {
+    if (isExternal) {
+      window.open(link.hash, "_blank");
+    } else {
+      const sectionName = link.hash.replace("#", "") as
+        | "home"
+        | "skills"
+        | "experience"
+        | "projects"
+        | "contact";
+      scrollTo(sectionName);
+      setHashSection(link.hash);
+    }
+  };
+
   return (
     <button
-      onClick={() => setHashSection(link.hash)}
+      onClick={handleClick}
       className="relative px-2 py-1 font-medium transition-colors duration-300 text-md group"
     >
-      <a
-        href={link.hash}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
+      <div
         className={`text-white transition-colors duration-300 ${
           isActive ? "text-[#FF4D7D]" : "hover:text-[#FF4D7D]"
         }`}
@@ -27,7 +42,7 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
             isActive ? "w-full" : "w-0 group-hover:w-full"
           }`}
         />
-      </a>
+      </div>
     </button>
   );
 };

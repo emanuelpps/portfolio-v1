@@ -3,8 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Title from "./components/Title";
 import TitleText from "./components/TitleText";
 import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
+import { useScroll } from "@/hooks/UseScroll";
 
 export const Hero = () => {
+  const { refs } = useScroll();
   /*   const [screenHeight, setScreenHeight] = useState(window.innerHeight); */
   const [titleSelection, setTitleSelection] = useState("title");
 
@@ -28,6 +30,7 @@ export const Hero = () => {
 
   return (
     <section
+      ref={refs.refHome}
       className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative h-[600px] md:h-[100vh]"
       /* style={{ height: `${screenHeight}px` }} */
     >

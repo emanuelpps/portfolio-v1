@@ -1,17 +1,12 @@
-import { useRef } from "react";
+import { useContext } from "react";
+import { ScrollContext } from "@/context/ScrollContext";
 
 export const useScroll = () => {
-  const refHome = useRef<HTMLElement | null>(null);
-  const refSkills = useRef<HTMLElement | null>(null);
-  const refExperience = useRef<HTMLElement | null>(null);
-  const refProjects = useRef<HTMLElement | null>(null);
-  const refContact = useRef<HTMLElement | null>(null);
+  const context = useContext(ScrollContext);
 
-  return {
-    refHome,
-    refSkills,
-    refExperience,
-    refProjects,
-    refContact,
-  };
+  if (!context) {
+    throw new Error("useScroll must be used within a ScrollProvider");
+  }
+
+  return context;
 };
