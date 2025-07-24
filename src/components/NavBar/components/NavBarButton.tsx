@@ -29,7 +29,7 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
   return (
     <button
       onClick={handleClick}
-      className="relative px-2 py-1 font-medium transition-colors duration-300 text-md group"
+      className="relative px-2 py-1 font-medium transition-colors duration-300 text-md group cursor-pointer"
     >
       <div
         className={`text-white transition-colors duration-300 ${
