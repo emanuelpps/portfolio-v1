@@ -12,6 +12,7 @@ export interface ProjectTypes {
   insights: InsightTypes;
   code: string;
   deploy: string;
+  frontImage: string;
   image: string;
   image2: string;
   gallery: string[];

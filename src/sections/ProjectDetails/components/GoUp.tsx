@@ -2,7 +2,7 @@ import { TfiArrowCircleUp } from "react-icons/tfi";
 import { motion } from "framer-motion";
 
 interface GoUpProps {
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {

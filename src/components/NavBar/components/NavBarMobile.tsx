@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CgMenuRightAlt } from "react-icons/cg";
 import MenuMobile from "./MenuMobile";
 import { NavLinkProp } from "../types/NavLinkProp";

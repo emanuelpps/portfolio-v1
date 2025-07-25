@@ -7,7 +7,7 @@ interface ProjectDetailsProps {
   project: ProjectTypes;
 }
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

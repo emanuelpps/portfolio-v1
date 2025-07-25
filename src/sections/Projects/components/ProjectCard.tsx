@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { GoArrowUpRight } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { ProjectType } from "./Types";
+import { ProjectTypes } from "@/types/ProjectTypes";
 
 interface ProjectCardProps {
-  project: ProjectType;
+  project: ProjectTypes;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {

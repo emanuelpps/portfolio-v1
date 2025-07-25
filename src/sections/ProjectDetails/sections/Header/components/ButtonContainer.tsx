@@ -6,7 +6,7 @@ interface ButtonProps {
   code: string | undefined;
   deploy: string | undefined;
   buttonText: string;
-  link: string;
+  link?: string;
 }
 
 export const ButtonContainer = ({ code, deploy, buttonText }: ButtonProps) => {

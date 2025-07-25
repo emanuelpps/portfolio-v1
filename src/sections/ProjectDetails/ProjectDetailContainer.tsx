@@ -9,7 +9,7 @@ import { GoUp } from "./components/GoUp";
 
 interface ProjectDetailContainerProps {
   project: ProjectTypes;
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({

@@ -20,6 +20,7 @@ export const SkillsContainer = () => {
 
   useEffect(() => {
     const updateWidth = () => setScreenWidth(window.innerWidth);
+    console.log(screenWidth)
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
@@ -41,7 +42,7 @@ export const SkillsContainer = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center w-[95vw] md:w-[80%] md:h-[100px] gap-4">
-          <div className="flex justify-center items-center text-center md:text-start w-full md:justify-start">
+          <div className="flex items-center justify-center w-full text-center md:text-start md:justify-start">
             {SkillsTitle.render()}
           </div>
           <div className="relative flex flex-col items-center w-full max-w-[250px] z-[50] md:items-end">
