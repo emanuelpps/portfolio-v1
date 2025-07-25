@@ -1,5 +1,5 @@
 import React from "react";
-import { TypeOfProject } from "../../../types/ProjectTypes";
+import { TypeOfProject } from "@/types/ProjectTypes";
 
 interface HeroSectionProps {
   longDescription: string;
@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <img
           src={mainImage}
           className={
-            type === TypeOfProject.PROJECT
+            type === "Project"
               ? "w-[80%]"
               : "w-[10%] object-contain"
           }

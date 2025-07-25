@@ -1,7 +1,4 @@
-export enum TypeOfProject {
-  LIBRARY = "Library",
-  PROJECT = "Project",
-}
+export type TypeOfProject = "Library" | "Project";
 export interface ProjectTypes {
   id: number;
   title: string;

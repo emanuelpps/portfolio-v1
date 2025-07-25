@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { TitlesFactory } from "@/components/Titles/TitlesFactory";
 import ProjectCard from "./ProjectCard";
-import Projects from "@/data/Projects.json";
+import rawProjects from "@/data/Projects.json";
+import { ProjectTypes } from "@/types/ProjectTypes";
 import { RiArrowRightSFill, RiArrowLeftSFill } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
 
 export const ProjectsContainer = () => {
+  const Projects = rawProjects as ProjectTypes[];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentCardHover, setCurrentCardHover] = useState<number | null>(null);
 
