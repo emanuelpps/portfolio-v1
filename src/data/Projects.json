@@ -209,7 +209,7 @@
       }
     },
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
-    "deploy": "https://emanuelp-portfolio.vercel.app/",
+    "deploy": "https://emanuelpps2024.vercel.app/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/qmuvw5jaltr25eopbain",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zune0zn1hghyvezjsgpq",
@@ -296,14 +296,14 @@
     "title": "Falcon Aviation Shop",
     "type": "Project",
     "stack": ["HTML", "CSS", "Vanilla JavaScript", "Bootstrap"],
-    "description": "Landing page for a fictional pizzeria, focused on visual design and user experience.",
-    "longDescription": "Don Remolo Pizza is a landing page designed for a fictional artisanal pizzeria brand. The goal was to practice responsive design, component organization, database consumption, and animated visual experiences to capture user attention.",
+    "description": "Frontend e-commerce for a fictional aviation store. Users can explore products and simulate shopping actions in a responsive interface.",
+    "longDescription": "Falcon Aviation Shop is a demo e-commerce website created for a fictional aviation gear store. The main goal was to practice building a complete shopping interface using HTML, CSS, Bootstrap, and Vanilla JavaScript. The site allows users to browse aviation-related products and simulate basic shopping behavior. The design is responsive and works well on both desktop and mobile",
     "insights": {
       "purpose": {
-        "text": "This project aimed to create a visually appealing and user-friendly landing page for a fictional pizzeria. It focused on integrating animations, responsive design, and Firebase database integration to give the site an interactive and engaging experience."
+        "text": "This project was developed to simulate an e-commerce experience for an aviation-themed shop. It helped improve skills in building product grids, working with UI/UX structure, and adding interactivity with JavaScript—without using any backend or database."
       },
       "designApproach": {
-        "text": "The design approach focused on creating an engaging user experience with smooth animations using Framer Motion. The use of Bootstrap ensured a responsive layout across all devices. The aesthetic was tailored to evoke a warm and inviting atmosphere typical of an artisanal pizzeria.",
+        "text": "The design is clean and professional, using Bootstrap for a responsive layout. Products are shown with images, names, and prices. The interface includes a navigation bar, a hero section, product listing cards, and a contact form. The visuals are inspired by aviation style to create a strong identity.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xiamibyaoflycone8pc5",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rp3cr4musyul8uob6zm4",
@@ -312,10 +312,11 @@
         ]
       },
       "challenges": {
-        "text": "A significant challenge was creating a smooth, animated experience while ensuring the site performed well across different devices. Another challenge was ensuring that the Firebase integration worked seamlessly, delivering dynamic content with minimal latency."
+        "text": "One of the main challenges was building product interactions (like buttons, sections, and layout logic) using only Vanilla JavaScript. Another was creating a mobile-friendly design that adapts well to different screen sizes using only frontend tools."
       }
     },
     "code": "https://github.com/emanuelpps/Falcon-Aviation-Shop",
+    "deploy": "https://emanuelpps.github.io/Falcon-Aviation-Shop/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/oauqgxlvfj6nkornm9t5",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nsgyva6fmmsdivlgul4v",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/splniqwqaujowqj1czuo",
