@@ -1,8 +1,7 @@
-export type TypeOfProject = "Library" | "Project";
 export interface ProjectTypes {
   id: number;
   title: string;
-  type: TypeOfProject;
+  type: string;
   stack: string[];
   description: string;
   longDescription: string;

@@ -1,11 +1,10 @@
 import React from "react";
-import { TypeOfProject } from "@/types/ProjectTypes";
 
 interface HeroSectionProps {
   longDescription: string;
   mainImage: string;
   mainImageTwo: string;
-  type: TypeOfProject;
+  type: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
