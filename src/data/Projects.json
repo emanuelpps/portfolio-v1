@@ -262,14 +262,14 @@
       "JavaScript",
       "CSS"
     ],
-    "description": "Landing page for a fictional pizzeria, focused on visual design and user experience.",
-    "longDescription": "Don Remolo Pizza is a landing page designed for a fictional artisanal pizzeria brand. The goal was to practice responsive design, component organization, database consumption, and animated visual experiences to capture user attention.",
+    "description": "Simple web app for a fictional pizza restaurant. Users can choose pizzas and make orders online.",
+    "longDescription": "Don Remolo Pizza is a small pizza ordering web app made for a fictional artisanal pizzeria. This project was a way to practice responsive design, reusable components, using a real-time database, and adding smooth animations to improve user experience. The menu and pizza data are stored in Firebase, and users can send their orders using a form connected to the same database.",
     "insights": {
       "purpose": {
-        "text": "This project aimed to create a visually appealing and user-friendly landing page for a fictional pizzeria. It focused on integrating animations, responsive design, and Firebase database integration to give the site an interactive and engaging experience."
+        "text": "This project was built to learn how to create an online pizza ordering experience. It uses a Firebase database to store the pizza products and the customer orders. The site also includes smooth animations and works well on mobile devices."
       },
       "designApproach": {
-        "text": "The design approach focused on creating an engaging user experience with smooth animations using Framer Motion. The use of Bootstrap ensured a responsive layout across all devices. The aesthetic was tailored to evoke a warm and inviting atmosphere typical of an artisanal pizzeria.",
+        "text": "The design is clean, modern, and focused on a good user experience. Framer Motion was used for smooth animations, and Bootstrap helped make the layout responsive. The look and feel were made to feel like a cozy, handmade pizza shop.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za",
@@ -278,7 +278,7 @@
         ]
       },
       "challenges": {
-        "text": "A significant challenge was creating a smooth, animated experience while ensuring the site performed well across different devices. Another challenge was ensuring that the Firebase integration worked seamlessly, delivering dynamic content with minimal latency."
+        "text": "One challenge was to keep the animations smooth without making the site slow, especially on phones. Another important task was to make sure Firebase worked well both for showing pizza data and for saving customer orders, all in real-time."
       }
     },
     "code": "https://github.com/emanuelpps/donremolo",
