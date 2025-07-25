@@ -221,11 +221,11 @@
     "title": "EP Weather App",
     "type": "Project",
     "stack": ["React Js", "JavaScript", "Fetch API", "Bootstrap", "CSS"],
-    "description": "Simple weather app developed in vanilla JavaScript with real-time data.",
-    "longDescription": "This web application allows users to check the current weather of any city using the OpenWeatherMap API. Developed as an exercise in API consumption with vanilla JavaScript, the interface is simple, responsive, and displays temperature, weather conditions, and other useful details.",
+    "description": "Simple weather app developed in ReactJS with real-time data.",
+    "longDescription": "This web application allows users to check the current weather of any city using the OpenWeatherMap API. Developed as an exercise in API consumption with ReactJS, the interface is simple, responsive, and displays temperature, weather conditions, and other useful details.",
     "insights": {
       "purpose": {
-        "text": "The aim of this project was to create a functional web app to check the weather of any city worldwide, utilizing real-time data from the OpenWeatherMap API. It also served as a practice for improving skills in API consumption using vanilla JavaScript."
+        "text": "The aim of this project was to create a functional web app to check the weather of any city worldwide, utilizing real-time data from the OpenWeatherMap API. It also served as a practice for improving skills in API consumption using ReactJS."
       },
       "designApproach": {
         "text": "The app’s design is straightforward, focusing on clarity of information. It was built using Bootstrap to ensure the app is responsive and easy to use across both mobile and desktop devices.",
