@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </motion.div>
         <div
           id="tab-curve"
-          className="absolute overflow-visible bottom-0 right-0 z-40 flex items-center justify-center after:bg-[#0F1724] rounded-l-[50px] p-[1rem] after:w-[240px] after:h-[127px] after:content-[''] after:absolute after:top-[-5] after:rounded-tl-[40px] after:rounded-r-none"
+          className="absolute overflow-visible bottom-0 right-0 z-[100] flex items-center justify-center after:bg-[#0F1724] rounded-l-[50px] p-[1rem] after:w-[240px] after:h-[127px] after:content-[''] after:absolute after:top-[-5] after:rounded-tl-[40px] after:rounded-r-none"
         >
           <p>
             <span></span>
@@ -46,14 +46,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           onClick={() =>
             window.open(project.deploy, "_blank", "noopener,noreferrer")
           }
-          className="group absolute bottom-0 right-0 z-[90] w-30 h-16 rounded-[20px] bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md text-white flex items-center justify-center transition hover:bg-[#1f2937] text-[0.8rem] gap-2 border border-gray-800 cursor-pointer"
+          className="group absolute bottom-0 right-0 z-[100] w-30 h-16 rounded-[20px] bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md text-white flex items-center justify-center transition hover:bg-[#1f2937] text-[0.8rem] gap-2 border border-gray-800 cursor-pointer"
         >
           {project.buttonText}
           <GoArrowUpRight className="transition-transform duration-300 ease-in-out group-hover:rotate-45" />
         </button>
         <div
           id="curve-one"
-          className="absolute bottom-[-12px] right-37 z-50 flex after:content-[''] w-8 h-10 rounded-br-[50px] after:bg-[#0F1724]"
+          className="absolute bottom-[-12px] right-37 z-[90] flex after:content-[''] w-8 h-10 rounded-br-[50px] after:bg-[#0F1724]"
         ></div>
       </Link>
     </div>
