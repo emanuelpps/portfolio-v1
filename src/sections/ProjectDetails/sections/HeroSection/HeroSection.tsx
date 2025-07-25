@@ -2,13 +2,12 @@ import React from "react";
 import { MainImageTwo } from "./components/MainImageTwo";
 import { MainImage } from "./components/MainImage";
 import { Description } from "./components/Description";
-import { TypeOfProject } from "../../../../types/ProjectTypes";
 
 interface HeroSectionProps {
   longDescription: string;
   mainImage: string;
   mainImageTwo: string;
-  type: TypeOfProject;
+  type: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -22,7 +21,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div
         className={`flex flex-col gap-20 items-center justify-center w-[90%] h-full text-lg leading-8 text-white
     ${
-      type === TypeOfProject.PROJECT
+      type === "Project"
         ? "md:flex-col md:gap-20"
         : "md:flex-row md:gap-0"
     }`}

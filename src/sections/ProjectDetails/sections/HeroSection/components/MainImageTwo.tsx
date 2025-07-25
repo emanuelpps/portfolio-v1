@@ -1,8 +1,6 @@
-import { TypeOfProject } from "../../../../../types/ProjectTypes";
-
 interface MainImageTwoProps {
   image: string;
-  type: TypeOfProject;
+  type: string;
 }
 
 export const MainImageTwo = ({ image, type }: MainImageTwoProps) => {
@@ -11,7 +9,7 @@ export const MainImageTwo = ({ image, type }: MainImageTwoProps) => {
       <img
         src={image}
         className={
-          type === TypeOfProject.PROJECT
+          type === "Project"
             ? "md:w-[90%] w-[95vw] rounded-2xl h-full"
             : "md:w-[50%] w-[95vw] object-contain rounded-2xl"
         }
@@ -19,7 +17,7 @@ export const MainImageTwo = ({ image, type }: MainImageTwoProps) => {
       />
       <div
         className={`pointer-events-none ${
-          type === TypeOfProject.PROJECT
+          type === "Project"
             ? "absolute bottom-0 md:w-[90%] w-full md:h-40 h-20 bg-gradient-to-b from-transparent to-[#0F1724]"
             : ""
         }`}
