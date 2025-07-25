@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "types": ["node"],
     "composite": true,
-    "noEmit": false,
+    "noEmit": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
