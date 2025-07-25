@@ -13,6 +13,7 @@ type ButtonFactoryOptions =
       label: string | JSX.Element;
       icon?: JSX.Element;
       link?: string;
+      onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     }
   | {
       type: "selector";
@@ -38,7 +39,7 @@ export class ButtonFactory {
   static createButton(options: ButtonFactoryOptions): Button {
     switch (options.type) {
       case "primary":
-        return new PrimaryButton(options.label);
+        return new PrimaryButton(options.label, options.onClick);
       case "secondary":
         return new SecondaryButton(options.label);
       case "tertiary":
