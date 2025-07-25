@@ -3,9 +3,12 @@ import { JSX } from "react";
 
 export class PrimaryButton implements Button {
   label: string | JSX.Element;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
-  constructor(label: string | JSX.Element, onClick?: () => void) {
+  constructor(
+    label: string | JSX.Element,
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  ) {
     this.label = label;
     this.onClick = onClick;
   }

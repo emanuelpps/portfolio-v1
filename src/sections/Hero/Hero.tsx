@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Title from "./components/Title";
 import TitleText from "./components/TitleText";
-import { ButtonFactory } from "../../components/Buttons/ButtonFactory";
+import { ButtonFactory } from "@/components/Buttons/ButtonFactory";
 import { useScroll } from "@/hooks/UseScroll";
 
 export const Hero = () => {
   const { refs } = useScroll();
+  const { scrollTo } = useScroll()
   /*   const [screenHeight, setScreenHeight] = useState(window.innerHeight); */
   const [titleSelection, setTitleSelection] = useState("title");
 
@@ -18,6 +19,7 @@ export const Hero = () => {
   const ContactMeButton = ButtonFactory.createButton({
     type: "primary",
     label: "Contact Me",
+    onClick: () => scrollTo("contact")
   });
 
   const SelectorButton = ButtonFactory.createButton({
