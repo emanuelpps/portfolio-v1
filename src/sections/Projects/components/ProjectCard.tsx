@@ -31,8 +31,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             alt={project.title}
             className="absolute bottom-0 left-0 w-full h-[300px] object-cover rounded-[40px] z-[20]"
           />
-          <div className="hidden lg:flex absolute right-[0px] top-[298px] w-[20px] lg:w-[40px] h-[40px] z-50 bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
-          <div className="hidden lg:flex absolute left-[165.5px] lg:left-[166px] bottom-[1px] lg:w-[40px] w-[20px] h-[40px] z-50 bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
+          <div className="hidden lg:flex absolute right-[0px] top-[298px] w-[20px] lg:w-[40px] h-[40px] z-30 bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
+          <div className="hidden lg:flex absolute left-[165.5px] lg:left-[166px] bottom-[1px] lg:w-[40px] w-[20px] h-[40px] z-30 bg-transparent rounded-br-[40px] shadow-[8px_12px_0px_4px_#0F1724]" />
         </motion.div>
         <div
           id="tab-curve"
