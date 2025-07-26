@@ -24,8 +24,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 100 }}
         >
-          <div className="absolute bottom-0 lg:w-[75%] lg:h-[325px] bg-[#31343a79] rounded-t-[40px] left-1/2 -translate-x-1/2 z-10" />
-          <div className="absolute bottom-0 lg:w-[85%] lg:h-[315px] bg-[#31343ad0] rounded-t-[40px] left-1/2 -translate-x-1/2 z-20" />
+          <div className="absolute bottom-0 lg:w-[75%] lg:h-[325px] bg-[#31343a79] rounded-t-[40px] left-1/2 -translate-x-1/2 z-[10]" />
+          <div className="absolute bottom-0 lg:w-[85%] lg:h-[315px] bg-[#31343ad0] rounded-t-[40px] left-1/2 -translate-x-1/2 z-[12]" />
           <img
             src={project.frontImage}
             alt={project.title}
