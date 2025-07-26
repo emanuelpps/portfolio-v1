@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
         <motion.div
-          className="relative w-full lg:w-85 h-[420px] overflow-hidden rounded-[40px]"
+          className="relative w-full lg:w-85 h-[420px]  rounded-[40px]"
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 100 }}
         >
