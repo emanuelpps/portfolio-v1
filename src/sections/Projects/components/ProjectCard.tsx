@@ -51,11 +51,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.buttonText}
           <GoArrowUpRight className="transition-transform duration-300 ease-in-out group-hover:rotate-45" />
         </button>
+      </Link>
         <div
           id="curve-one"
-          className="absolute bottom-[-12px] right-37 z-[90] flex after:content-[''] w-8 h-10 rounded-br-[50px] after:bg-[#0F1724]"
+          className="absolute bottom-[-12px] right-37 z-[100] flex after:content-[''] w-8 h-10 rounded-br-[50px] after:bg-[#0F1724]"
         ></div>
-      </Link>
     </div>
   );
 };
