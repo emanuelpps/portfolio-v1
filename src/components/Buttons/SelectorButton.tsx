@@ -22,7 +22,7 @@ export class SelectorButton implements Omit<Button, "isActive"> {
     return (
       <div className="flex items-center bg-gray-800 rounded-full p-1 w-40 min-w-[150px] h-10 shadow-lg border border-gray-700 bg-opacity-80 backdrop-blur-md">
         <button
-          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1 ${
+          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1  cursor-pointer ${
             this.titleSelection === "title"
               ? "bg-gray-600 text-white shadow-md"
               : "text-gray-300 hover:text-white"
@@ -33,7 +33,7 @@ export class SelectorButton implements Omit<Button, "isActive"> {
         </button>
 
         <button
-          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1 ${
+          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1  cursor-pointer ${
             this.titleSelection === "about"
               ? "bg-gray-600 text-white shadow-md"
               : "text-gray-300 hover:text-white"
