@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
   }, []);
 
   return screenWidth <= 1023 ? (
-    <nav className="flex items-center justify-between w-full bg-transparent border-none">
+    <nav className="fixed flex items-center justify-between w-full border-none top-0 min-h-[10vh] z-100 bg-[#0f1621]">
       <LogoContainer screenWidth={screenWidth} />
       <NavBarMobile hashSection={hashSection} setHashSection={setHashSection} />
     </nav>

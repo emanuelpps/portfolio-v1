@@ -31,7 +31,7 @@ const MenuMobile: React.FC<NavLinkProp> = ({ hashSection, setHashSection }) => {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="p-4 space-y-2 text-white border border-gray-800 shadow-lg bg-gray-900/50 backdrop-blur-lg rounded-2xl flex flex-col justify-center items-start">
+      <div className="flex flex-col items-start justify-center p-4 space-y-2 text-white border border-gray-800 shadow-lg bg-gray-900/50 backdrop-blur-lg rounded-2xl">
         {Object.entries(navBar.getLinks()).map(([key, link]) => (
           <NavBarButton
             key={key}
