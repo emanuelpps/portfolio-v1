@@ -20,7 +20,7 @@ export const SkillsContainer = () => {
 
   useEffect(() => {
     const updateWidth = () => setScreenWidth(window.innerWidth);
-    console.log(screenWidth)
+    console.log(screenWidth);
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
@@ -36,7 +36,7 @@ export const SkillsContainer = () => {
     <div className="flex flex-col items-center w-full">
       <motion.div
         ref={ref}
-        className="backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl md:h-[700px] min-h-[500px] flex flex-col items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10 bg-gray-900/50"
+        className="backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl flex flex-col items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_95%,transparent)] bg-gray-900/50"
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}

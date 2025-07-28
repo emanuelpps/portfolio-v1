@@ -6,7 +6,7 @@ import Skills from "@/sections/Skills/Skills";
 
 const Home = () => {
   return (
-    <main className="md:gap-10 flex flex-col justify-center items-center w-[100%]">
+    <main className="md:gap-20 flex flex-col justify-center items-center w-[100%]">
       <Hero />
       <Skills />
       <Experience />
