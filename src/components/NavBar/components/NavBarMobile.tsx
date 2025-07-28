@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { CgMenuRightAlt } from "react-icons/cg";
 import MenuMobile from "./MenuMobile";
-import { NavLinkProp } from "../types/NavLinkProp";
 
-const NavBarMobile: React.FC<NavLinkProp> = ({
+interface NavBarMobileProps {
+  hashSection: string;
+  setHashSection: (hash: string) => void;
+}
+
+const NavBarMobile: React.FC<NavBarMobileProps> = ({
   hashSection,
   setHashSection,
 }) => {
@@ -12,6 +16,7 @@ const NavBarMobile: React.FC<NavLinkProp> = ({
   const MenuHandler = () => {
     setDropDownVisible(!dropDownVisible);
   };
+
   return (
     <div className="relative flex items-center justify-end w-full px-5">
       <CgMenuRightAlt
@@ -22,7 +27,7 @@ const NavBarMobile: React.FC<NavLinkProp> = ({
         <MenuMobile
           hashSection={hashSection}
           setHashSection={setHashSection}
-          showDropDown={MenuHandler}
+          showDropDown={setDropDownVisible}
           showDropDownVisible={dropDownVisible}
         />
       )}

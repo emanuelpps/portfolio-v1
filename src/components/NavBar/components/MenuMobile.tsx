@@ -4,7 +4,12 @@ import { NavLinkProp } from "../types/NavLinkProp";
 import { motion } from "framer-motion";
 import NavBarButton from "./NavBarButton";
 
-const MenuMobile: React.FC<NavLinkProp> = ({ hashSection, setHashSection }) => {
+const MenuMobile: React.FC<NavLinkProp> = ({
+  hashSection,
+  setHashSection,
+  showDropDown,
+  showDropDownVisible,
+}) => {
   const navBar = useMemo(() => {
     const instance = new NavBar();
 
@@ -38,6 +43,8 @@ const MenuMobile: React.FC<NavLinkProp> = ({ hashSection, setHashSection }) => {
             state={hashSection}
             link={link}
             setHashSection={setHashSection}
+            showDropDown={showDropDown}
+            showDropDownVisible={showDropDownVisible}
           />
         ))}
       </div>

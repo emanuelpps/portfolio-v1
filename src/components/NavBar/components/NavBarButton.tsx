@@ -5,6 +5,8 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
   link,
   state,
   setHashSection,
+  showDropDown,
+  showDropDownVisible,
 }) => {
   const { scrollTo } = useScroll();
 
@@ -23,6 +25,9 @@ const NavBarButton: React.FC<NavBarButtonProp> = ({
         | "contact";
       scrollTo(sectionName);
       setHashSection(link.hash);
+      if (showDropDown && showDropDownVisible) {
+        showDropDown(false);
+      }
     }
   };
 
