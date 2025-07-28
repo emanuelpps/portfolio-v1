@@ -19,7 +19,12 @@ const NavBarMobile: React.FC<NavLinkProp> = ({
         onClick={MenuHandler}
       />
       {dropDownVisible && (
-        <MenuMobile hashSection={hashSection} setHashSection={setHashSection} />
+        <MenuMobile
+          hashSection={hashSection}
+          setHashSection={setHashSection}
+          showDropDown={MenuHandler}
+          showDropDownVisible={dropDownVisible}
+        />
       )}
     </div>
   );
