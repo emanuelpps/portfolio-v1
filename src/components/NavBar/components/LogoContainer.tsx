@@ -38,6 +38,8 @@ const LogoContainer: React.FC<LogoContainerProps> = ({ screenWidth }) => {
             y: 0,
           }}
           transition={{ duration: 0.3 }}
+          width={50}
+          height={50}
         />
 
         {isMobile ? (
