@@ -26,6 +26,9 @@ export class SelectionToggle implements Button {
           }
         `}
         onClick={() => this.setActiveTab(this.label)}
+        aria-label={
+          typeof this.label === "string" ? this.label : "Selection Toggle"
+        }
       >
         <span>{this.label}</span>
       </button>

@@ -18,6 +18,9 @@ export class TertiaryButton implements Button {
         href={this.link}
         target="_blank"
         className="flex items-center justify-center gap-2 px-5 md:px-10 py-3 bg-gray-400 border border-gray text-black hover:text-white rounded-2xl backdrop-blur-md shadow-lg hover:bg-gray-800 transition-all duration-300 font-semibold cursor-pointer w-[45%] md:w-[15%]"
+        aria-label={
+          typeof this.label === "string" ? this.label : "tertiary button"
+        }
       >
         {this.icon}
         {this.label}

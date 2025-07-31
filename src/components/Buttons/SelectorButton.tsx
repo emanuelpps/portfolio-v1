@@ -28,6 +28,9 @@ export class SelectorButton implements Omit<Button, "isActive"> {
               : "text-gray-300 hover:text-white"
           }`}
           onClick={() => this.setTitleSelection?.("title")}
+          aria-label={
+            typeof this.label === "string" ? this.label : "selector button"
+          }
         >
           {this.label}
         </button>

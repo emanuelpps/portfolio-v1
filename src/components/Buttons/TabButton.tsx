@@ -24,6 +24,7 @@ export class TabButton implements Button {
             : "bg-gray-800 text-gray-300 hover:bg-[#FF4D7D] hover:text-white hover:shadow-lg"
         }`}
         onClick={() => this.setActiveTab(this.label)}
+        aria-label={typeof this.label === "string" ? this.label : "tab button"}
       >
         {this.label}
       </button>
