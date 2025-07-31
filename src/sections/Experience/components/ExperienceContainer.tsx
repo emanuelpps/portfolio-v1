@@ -41,7 +41,7 @@ const ExperienceContainer = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ["start start", "end end"],
   });
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
@@ -56,8 +56,12 @@ const ExperienceContainer = () => {
       <div className="text-center">{ExperienceTitle.render()}</div>
       <div ref={ref} className="relative flex md:block w-[95vw] md:w-[70%]">
         <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-[2px] bg-gray-600"
-          style={{ height: lineHeight }}
+          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-[2px] h-[300px]"
+          style={{
+            height: lineHeight,
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, #4B5563 0px, #4B5563 6px, transparent 6px, transparent 12px)",
+          }}
         ></motion.div>
         <div className="relative flex flex-col gap-10 mt-8 md:gap-12">
           {experiences.map((exp, index) => (
