@@ -33,7 +33,7 @@ export const Hero = () => {
   return (
     <section
       ref={refs.refHome}
-      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative h-[600px] md:h-[100vh]"
+      className="flex flex-col justify-center items-center w-full overflow-hidden bg-[#0F1621] text-white relative h-[600px] md:h-[95vh]"
       /* style={{ height: `${screenHeight}px` }} */
     >
       <div className="flex flex-col items-center justify-center flex-1 gap-10">
@@ -44,7 +44,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
             >
               <Title />
             </motion.div>
