@@ -22,8 +22,8 @@ export class TertiaryButton implements Button {
           typeof this.label === "string" ? this.label : "tertiary button"
         }
       >
-        {this.icon}
-        {this.label}
+        <div>{this.icon}</div>
+        <div>{this.label}</div>
       </a>
     );
   }
