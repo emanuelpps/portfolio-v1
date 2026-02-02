@@ -7,16 +7,16 @@ import { ItemTypes } from "./ExperienceItem";
 const ExperienceContainer = () => {
   const [experiences] = useState([
     {
-      CompanyName: "EPAM Systems",
-      JobTitle: "Associate Project Administrator",
-      Period: "2025 - Present",
-      ItemType: ItemTypes.Primary,
-    },
-    {
       CompanyName: "The CodeMaker Lab",
       JobTitle: "Frontend Developer",
       Period: "2024 - Present",
       ItemType: ItemTypes.Primary,
+    },
+    {
+      CompanyName: "EPAM Systems",
+      JobTitle: "Associate Project Administrator",
+      Period: "jan 2025 - dic 2025",
+      ItemType: ItemTypes.Secondary,
     },
     {
       CompanyName: "Hackathon - Justina.io",
