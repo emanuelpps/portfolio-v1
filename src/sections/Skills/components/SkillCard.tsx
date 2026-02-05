@@ -21,7 +21,7 @@ const SkillCard = ({ name, Icon }: SkillCardProp) => {
 
   return (
     <motion.div
-      className="bg-gray-900 w-full max-w-[250px] flex justify-center items-center gap-2 md:gap-5 p-2 md:p-6 rounded-3xl text-white shadow-md hover:shadow-lg transition-all"
+      className="bg-gray-900 w-full max-w-[250px] flex justify-center items-center gap-2 md:gap-5 p-2 md:p-6 rounded-xl text-white"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.03 }}

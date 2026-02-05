@@ -29,7 +29,7 @@ export const SkillsContainer = () => {
   const SkillsTitle = TitlesFactory.createTitle(
     "secondary",
     "Skills",
-    "What I can do"
+    "What I can do",
   );
 
   return (
@@ -47,10 +47,10 @@ export const SkillsContainer = () => {
           </div>
           <div className="relative flex flex-col items-center w-full max-w-[250px] z-[50] md:items-end">
             <div
-              className="relative flex justify-between items-center p-4 rounded-3xl w-full bg-[#FF4D7D] bg-opacity-90 backdrop-blur-md text-white shadow-lg cursor-pointer select-none"
+              className="relative flex justify-between items-center p-2 rounded-xl w-full bg-[#FF4D7D] bg-opacity-90 backdrop-blur-md text-white shadow-lg cursor-pointer select-none"
               onClick={() => setShowDropDown(!showDropDown)}
             >
-              <span className="text-xl font-semibold tracking-wide">
+              <span className="text-lg font-medium tracking-wide">
                 {activeTab}
               </span>
               <motion.div
