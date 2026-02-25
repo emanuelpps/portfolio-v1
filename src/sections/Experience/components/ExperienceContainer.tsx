@@ -1,10 +1,22 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import ExperienceItem, { ItemTypes } from "./ExperienceItem";
 import { TitlesFactory } from "../../../components/Titles/TitlesFactory";
-import { useState, useRef } from "react";
-import ExperienceItem from "./ExperienceItem";
-import { ItemTypes } from "./ExperienceItem";
 
 const ExperienceContainer = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 80%", "end 20%"],
+  });
+
+  const pathHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const ExperienceTitle = TitlesFactory.createTitle(
+    "secondary",
+    "Experience",
+    "My professional path",
+  );
+
   const [experiences] = useState([
     {
       CompanyName: "The CodeMaker Lab",
@@ -38,35 +50,28 @@ const ExperienceContainer = () => {
     },
   ]);
 
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
-  const ExperienceTitle = TitlesFactory.createTitle(
-    "secondary",
-    "Experience",
-    "My journey so far"
-  );
-
   return (
-    <>
-      <div className="text-center">{ExperienceTitle.render()}</div>
-      <div ref={ref} className="relative flex md:block w-[95vw] md:w-[70%]">
+    <div className="w-full max-w-6xl mx-auto px-4 py-24" ref={containerRef}>
+      <div className="mb-20">{ExperienceTitle.render()}</div>
+
+      <div className="relative">
+        {/* Línea de fondo (Vía muerta) */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] h-full bg-gray-800/50 hidden md:block" />
+
+        {/* Línea de progreso (Vía activa con Glow) */}
         <motion.div
-          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-[2px] h-[300px]"
-          style={{
-            height: lineHeight,
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, #4B5563 0px, #4B5563 6px, transparent 6px, transparent 12px)",
-          }}
-        ></motion.div>
-        <div className="relative flex flex-col gap-10 mt-8 md:gap-12">
+          className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-[#FF4D7D] to-purple-600 shadow-[0_0_15px_rgba(255,77,125,0.5)] z-10 hidden md:block"
+          style={{ height: pathHeight }}
+        />
+
+        {/* Línea Mobile (Ajustada a la izquierda) */}
+        <div className="absolute left-6 top-0 w-[2px] h-full bg-gray-800 md:hidden" />
+
+        <div className="relative flex flex-col">
           {experiences.map((exp, index) => (
             <ExperienceItem
               key={index}
+              index={index}
               CompanyName={exp.CompanyName}
               JobTitle={exp.JobTitle}
               ItemType={exp.ItemType}
@@ -75,7 +80,7 @@ const ExperienceContainer = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

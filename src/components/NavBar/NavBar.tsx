@@ -5,37 +5,51 @@ import NavLinksRight from "./components/NavLinksRight";
 import NavBarMobile from "./components/NavBarMobile";
 
 const NavBar: React.FC = () => {
-  const [hashSection, setHashSection] = useState<string>("");
-  const [screenWidth, setScreenWidth] = useState<number>(0);
+  const [hashSection, setHashSection] = useState<string>("#home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const updateWidth = () => setScreenWidth(window.innerWidth);
-
-    updateWidth();
-
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return screenWidth <= 1023 ? (
-    <nav className="fixed flex items-center justify-between w-full border-none top-0 min-h-[10vh] z-50 bg-[#0f1621]">
-      <LogoContainer screenWidth={screenWidth} />
-      <NavBarMobile hashSection={hashSection} setHashSection={setHashSection} />
-    </nav>
-  ) : (
-    <nav className="fixed top-5 left-0 w-full flex justify-center items-center h-[10vh] z-50">
-      <div className="flex w-[85%] bg-gray-900/50 backdrop-blur-lg shadow-lg items-center justify-between h-full rounded-2xl px-6 py-3 text-white border border-gray-800">
-        <NavLinksLeft
-          hashSection={hashSection}
-          setHashSection={setHashSection}
-        />
-        <LogoContainer />
-        <NavLinksRight
-          hashSection={hashSection}
-          setHashSection={setHashSection}
-        />
-      </div>
-    </nav>
+  return (
+    <header className="fixed top-0 left-0 w-full flex justify-center z-[100] transition-all duration-500 py-4 md:py-6">
+      <nav
+        className={`
+          flex items-center justify-between px-4 md:px-8 py-2
+          transition-all duration-500 ease-in-out
+          ${
+            scrolled
+              ? "w-[95%] md:w-[80%] bg-gray-950/60 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] rounded-full"
+              : "w-full md:w-[90%] bg-transparent border-border-transparent rounded-2xl"
+          }
+        `}
+      >
+        <div className="hidden lg:flex flex-1 justify-start">
+          <NavLinksLeft
+            hashSection={hashSection}
+            setHashSection={setHashSection}
+          />
+        </div>
+        <div className="flex-shrink-0 z-[110]">
+          <LogoContainer />
+        </div>
+        <div className="hidden lg:flex flex-1 justify-end">
+          <NavLinksRight
+            hashSection={hashSection}
+            setHashSection={setHashSection}
+          />
+        </div>
+        <div className="lg:hidden">
+          <NavBarMobile
+            hashSection={hashSection}
+            setHashSection={setHashSection}
+          />
+        </div>
+      </nav>
+    </header>
   );
 };
 

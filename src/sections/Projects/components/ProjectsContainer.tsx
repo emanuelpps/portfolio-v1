@@ -1,119 +1,95 @@
 import { useState } from "react";
-import { TitlesFactory } from "@/components/Titles/TitlesFactory";
+import { motion, AnimatePresence } from "framer-motion";
+import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri";
 import ProjectCard from "./ProjectCard";
 import rawProjects from "@/data/Projects.json";
 import { ProjectTypes } from "@/types/ProjectTypes";
-import { RiArrowRightSFill, RiArrowLeftSFill } from "react-icons/ri";
-import { AnimatePresence, motion } from "framer-motion";
+import { TitlesFactory } from "@/components/Titles/TitlesFactory";
 
 export const ProjectsContainer = () => {
   const Projects = rawProjects as ProjectTypes[];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentCardHover, setCurrentCardHover] = useState<number | null>(null);
+  const [direction, setDirection] = useState(0);
 
   const ProjectsTitle = TitlesFactory.createTitle(
     "secondary",
     "Projects",
-    "I've been working on these"
+    "I've been working on these",
   );
 
   const projectsPerPage = 3;
   const totalSlides = Math.ceil(Projects.length / projectsPerPage);
 
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    const nextIndex = currentIndex + newDirection;
+    if (nextIndex >= 0 && nextIndex < totalSlides) {
+      setCurrentIndex(nextIndex);
+    } else if (nextIndex < 0) {
+      setCurrentIndex(totalSlides - 1);
+    } else {
+      setCurrentIndex(0);
+    }
+  };
+
   const currentProjects = Projects.slice(
     currentIndex * projectsPerPage,
-    (currentIndex + 1) * projectsPerPage
-  );
-
-  const goToSlide = (index: number) => {
-    const lastIndex = totalSlides - 1;
-    if (index < 0) setCurrentIndex(lastIndex);
-    else if (index > lastIndex) setCurrentIndex(0);
-    else setCurrentIndex(index);
-  };
-
-  const ProjectHoverFilter = (id: number | null) => {
-    setCurrentCardHover(id);
-  };
-
-  const hoveredProject = Projects.find(
-    (project) => project.id === currentCardHover
+    (currentIndex + 1) * projectsPerPage,
   );
 
   return (
-    <div className="flex flex-col items-center md:w-full">
-      <div className="bg-gray-900/50 backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl h-full md:min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10">
-        <div className="text-center flex md:w-[80%] justify-between items-center h-full md:h-[200px]">
+    <div className="w-full max-w-7xl mx-auto px-6 py-20 flex flex-col gap-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-12">
+        <div className="space-y-2">
           <div className="flex w-full md:items-start md:justify-start md:text-start">
             {ProjectsTitle.render()}
           </div>
-          <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 lg:flex text-end">
-            {hoveredProject ? hoveredProject.description : ""}
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex flex-col text-right mr-4">
+            <span className="text-white text-xl font-bold">
+              0{currentIndex + 1}
+            </span>
+            <span className="text-gray-500 text-xs uppercase tracking-widest">
+              de 0{totalSlides}
+            </span>
           </div>
-        </div>
-        {/* DESKTOP VIEW - 3 cards por slide */}
-        <div className="relative items-center justify-center hidden w-full overflow-hidden lg:flex">
-          <div className="flex transition-transform duration-500 ease-in-out">
-            {currentProjects.map((project) => (
-              <AnimatePresence mode="wait" key={project.id}>
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  key={project.id}
-                  className="w-full px-4"
-                  onMouseEnter={() => ProjectHoverFilter(project.id)}
-                  onMouseLeave={() => ProjectHoverFilter(null)}
-                >
-                  <ProjectCard project={project} />
-                </motion.div>
-              </AnimatePresence>
-            ))}
-          </div>
-        </div>
-        {/* MOBILE VIEW - scroll horizontal de una en una */}
-        <div className="flex w-[95vw] min-h-full gap-20 overflow-x-auto overflow-y-hidden lg:hidden scroll-smooth snap-x snap-mandatory pb-20">
-          {Projects.map((project) => (
-            <div
-              key={project.id}
-              className="min-w-full px-2 snap-start md:flex md:justify-center md:items-center"
-              onMouseEnter={() => ProjectHoverFilter(project.id)}
-              onMouseLeave={() => ProjectHoverFilter(null)}
-            >
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
-
-        {/* DESKTOP NAVIGATION ONLY */}
-        <div className="items-center justify-center hidden gap-2 mt-4 md:flex">
           <button
-            onClick={() => goToSlide(currentIndex - 1)}
-            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
-            aria-label="Anterior"
+            onClick={() => paginate(-1)}
+            className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#FF4D7D] hover:border-[#FF4D7D] transition-all group cursor-pointer"
           >
-            <RiArrowLeftSFill className="text-4xl" />
-          </button>
-          {Array.from({ length: totalSlides }).map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full transition-all ${
-                currentIndex === index
-                  ? "bg-[#FF4D7D] scale-150"
-                  : "bg-gray-500"
-              }`}
-              onClick={() => goToSlide(index)}
+            <RiArrowLeftLine
+              size={24}
+              className="group-hover:-translate-x-1 transition-transform"
             />
-          ))}
+          </button>
           <button
-            onClick={() => goToSlide(currentIndex + 1)}
-            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
-            aria-label="Siguiente"
+            onClick={() => paginate(1)}
+            className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#FF4D7D] hover:border-[#FF4D7D] transition-all group cursor-pointer"
           >
-            <RiArrowRightSFill className="text-4xl" />
+            <RiArrowRightLine
+              size={24}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </button>
         </div>
+      </div>
+      <div className="relative overflow-hidden min-h-[500px]">
+        <AnimatePresence initial={false} mode="wait" custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+            transition={{ duration: 0.5, ease: "circOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {currentProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
