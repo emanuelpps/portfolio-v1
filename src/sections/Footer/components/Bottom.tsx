@@ -1,14 +1,20 @@
 const Bottom = () => {
   return (
-    <footer className="flex flex-col text-center md:text-start items-center justify-between w-full px-4 text-sm text-gray-300 md:flex-row">
-      <div>© 2025 Emanuel Pagés.</div>
+    <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4  text-[10px] tracking-[0.2em] text-gray-500 uppercase">
       <div>
-        Built with <span className="font-semibold text-white">Vite</span>,{" "}
-        <span className="font-semibold text-white">TypeScript</span>,{" "}
-        <span className="font-semibold text-white">React</span> &{" "}
-        <span className="font-semibold text-white">React Router DOM</span>
+        © 2025 <span className="font-bold text-white">EMANUEL PAGÉS</span>
       </div>
-    </footer>
+      <div className="flex gap-4">
+        <span>Vite</span>
+        <span className="text-[#FF4D7D]">•</span>
+        <span>TypeScript</span>
+        <span className="text-[#FF4D7D]">•</span>
+        <span>React</span>
+        <span className="text-[#FF4D7D]">•</span>
+        <span>Framer Motion</span>
+      </div>
+      <div className="opacity-50">Rio Negro, ARG</div>
+    </div>
   );
 };
 

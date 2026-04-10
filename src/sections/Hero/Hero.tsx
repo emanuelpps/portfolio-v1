@@ -18,7 +18,7 @@ export const Hero = () => {
   return (
     <section
       ref={refs.refHome}
-      className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 overflow-hidden"
+      className="relative flex flex-col items-center justify-center w-full min-h-screen px-6 overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -31,7 +31,11 @@ export const Hero = () => {
         </span>
       </motion.div>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center gap-12">
+      <motion.div
+        layout
+        transition={{ layout: { duration: 0.5, ease: "easeInOut" } }}
+        className="relative z-10 flex flex-col items-center w-full max-w-5xl gap-12 mx-auto"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={titleSelection}
@@ -44,7 +48,7 @@ export const Hero = () => {
             {titleSelection === "title" ? <Title /> : <TitleText />}
           </motion.div>
         </AnimatePresence>
-        <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="flex flex-col items-center h-auto gap-6 md:flex-row">
           {ContactMeButton.render()}
           <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 flex gap-2">
             {["title", "about"].map((tab) => (
@@ -62,11 +66,11 @@ export const Hero = () => {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1"
+        className="absolute flex justify-center w-6 h-10 p-1 border-2 rounded-full bottom-10 border-white/20"
       >
         <div className="w-1 h-2 bg-[#FF4D7D] rounded-full" />
       </motion.div>

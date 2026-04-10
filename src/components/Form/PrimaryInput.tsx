@@ -28,7 +28,7 @@ export class PrimaryInput implements InputTypes {
 
   render() {
     return (
-      <div className="flex flex-col md:flex-row items-center justify-center w-[95vw] md:w-[100%] gap-0 h-full text-white">
+      <div className="flex text-white">
         <div className="relative w-[95vw] mb-4 md:w-40 text-start">
           <label>{this.label}</label>
         </div>

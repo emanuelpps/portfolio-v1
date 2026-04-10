@@ -10,7 +10,7 @@ export class SelectorButton implements Omit<Button, "isActive"> {
     label: string,
     labelTwo: string,
     setTitleSelection?: (value: string) => void,
-    titleSelection?: string
+    titleSelection?: string,
   ) {
     this.label = label;
     this.labelTwo = labelTwo;
@@ -20,26 +20,32 @@ export class SelectorButton implements Omit<Button, "isActive"> {
 
   render() {
     return (
-      <div className="flex items-center bg-gray-800 rounded-full p-1 w-40 min-w-[150px] h-10 shadow-lg border border-gray-700 bg-opacity-80 backdrop-blur-md">
+      <div className="relative flex items-center bg-black/40 rounded-full p-1.5 w-44 h-12 border border-white/5 backdrop-blur-2xl shadow-2xl">
+        {/* Fondo animado que se mueve (Píldora activa) */}
+        <div
+          className={`absolute h-8 w-[calc(50%-6px)] bg-[#FF4D7D] rounded-full transition-all duration-500 ease-out shadow-[0_0_15px_rgba(255,77,125,0.4)] ${
+            this.titleSelection === "about"
+              ? "translate-x-full"
+              : "translate-x-0"
+          }`}
+        />
+
         <button
-          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1  cursor-pointer ${
+          className={`relative z-10 flex-1 text-[10px] uppercase tracking-[0.2em] font-bold transition-colors duration-500 ${
             this.titleSelection === "title"
-              ? "bg-gray-600 text-white shadow-md"
-              : "text-gray-300 hover:text-white"
+              ? "text-white"
+              : "text-gray-500 hover:text-gray-300"
           }`}
           onClick={() => this.setTitleSelection?.("title")}
-          aria-label={
-            typeof this.label === "string" ? this.label : "selector button"
-          }
         >
           {this.label}
         </button>
 
         <button
-          className={`flex-1 text-sm font-medium transition-all duration-300 rounded-full px-3 py-1  cursor-pointer ${
+          className={`relative z-10 flex-1 text-[10px] uppercase tracking-[0.2em] font-bold transition-colors duration-500 ${
             this.titleSelection === "about"
-              ? "bg-gray-600 text-white shadow-md"
-              : "text-gray-300 hover:text-white"
+              ? "text-white"
+              : "text-gray-500 hover:text-gray-300"
           }`}
           onClick={() => this.setTitleSelection?.("about")}
         >

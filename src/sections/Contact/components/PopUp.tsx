@@ -7,17 +7,23 @@ interface PopUpProps {
 }
 
 const PopUp: React.FC<PopUpProps> = ({ message, type }) => {
-  const bgColor = type === "error" ? "bg-red-500" : "bg-green-500";
-  const borderColor = type === "error" ? "border-red-400" : "border-green-400";
+  const isSuccess = type === "success";
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      className={`fixed top-8 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-xl shadow-xl border-2 ${bgColor} ${borderColor} text-white font-semibold`}
+      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      className={`fixed bottom-10 right-10 z-[100] px-8 py-4 rounded-2xl border backdrop-blur-2xl shadow-2xl flex items-center gap-4 ${
+        isSuccess
+          ? "bg-green-500/10 border-green-500/50 text-green-200"
+          : "bg-red-500/10 border-red-500/50 text-red-200"
+      }`}
     >
-      {message}
+      <div
+        className={`w-2 h-2 rounded-full animate-pulse ${isSuccess ? "bg-green-500" : "bg-red-500"}`}
+      />
+      <span className="text-sm font-medium tracking-wide">{message}</span>
     </motion.div>
   );
 };

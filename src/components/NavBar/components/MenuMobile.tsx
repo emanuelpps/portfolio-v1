@@ -7,8 +7,6 @@ import NavBarButton from "./NavBarButton";
 const MenuMobile: React.FC<NavLinkProp> = ({
   hashSection,
   setHashSection,
-  showDropDown,
-  showDropDownVisible,
 }) => {
   const navBar = useMemo(() => {
     const instance = new NavBar();
@@ -43,8 +41,6 @@ const MenuMobile: React.FC<NavLinkProp> = ({
             state={hashSection}
             link={link}
             setHashSection={setHashSection}
-            showDropDown={showDropDown}
-            showDropDownVisible={showDropDownVisible}
           />
         ))}
       </div>
