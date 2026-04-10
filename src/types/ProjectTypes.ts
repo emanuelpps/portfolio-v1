@@ -1,4 +1,6 @@
 export interface ProjectTypes {
+  text: string;
+  images: string[] | undefined;
   id: number;
   title: string;
   type: string;

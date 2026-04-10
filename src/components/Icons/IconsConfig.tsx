@@ -28,6 +28,8 @@ import {
   SiGraphql,
   SiPostgresql,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import { VscAzureDevops } from "react-icons/vsc";
 import { TbBrandCss3 } from "react-icons/tb";
 import { GiBearFace } from "react-icons/gi";
 
@@ -151,6 +153,16 @@ const icons: IconsConfig = {
     {
       name: "React Testing Library",
       Icon: ({ size }) => <SiTestinglibrary size={size} color="#E33332" />,
+    },
+  ],
+  Cloud: [
+    {
+      name: "AWS",
+      Icon: ({ size }) => <FaAws size={size} color="#FF9900" />,
+    },
+    {
+      name: "Azure DevOps",
+      Icon: ({ size }) => <VscAzureDevops size={size} color="#0078D4" />,
     },
   ],
   Tools: [

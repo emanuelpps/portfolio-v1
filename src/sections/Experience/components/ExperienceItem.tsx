@@ -28,9 +28,9 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center w-full mb-24 md:mb-32">
+    <div className="relative flex flex-col md:flex-row items-center justify-center w-full mb-12 md:mb-10 px-4 md:px-0">
       <motion.div
-        className={`flex w-full md:w-1/2 px-4 md:px-12 mb-4 md:mb-0 ${
+        className={`flex w-full md:w-1/2 px-2 sm:px-4 md:px-12 mb-6 md:mb-0 ${
           isEven
             ? "md:justify-end md:text-right"
             : "md:order-last md:justify-start md:text-left"
@@ -49,14 +49,14 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
           </h4>
         </div>
       </motion.div>
-      <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center z-10">
+      <div className="absolute left-2 sm:left-4 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center z-10">
         <motion.div
           whileInView={{ scale: [0, 1.2, 1] }}
           className="w-4 h-4 rounded-full bg-[#FF4D7D] shadow-[0_0_15px_rgba(255,77,125,0.6)] border-4 border-[#0a0f18]"
         />
       </div>
       <motion.div
-        className={`w-full md:w-1/2 px-4 md:px-12 ${
+        className={`w-full md:w-1/2 px-2 sm:px-4 md:px-12 ${
           isEven ? "md:justify-start" : "md:justify-end"
         }`}
         initial={{ opacity: 0, x: isEven ? 30 : -30 }}
@@ -64,19 +64,18 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "circOut" }}
       >
-        <div className="group relative bg-white/[0.03] border border-white/10 backdrop-blur-xl p-6 md:p-8 rounded-[2rem] hover:bg-white/[0.05] hover:border-[#FF4D7D]/40 transition-all duration-500 shadow-2xl">
+        <div className="group relative bg-white/[0.03] border border-white/10 backdrop-blur-xl p-5 sm:p-6 md:p-8 rounded-[1.5rem] sm:rounded-[2rem] hover:bg-white/[0.05] hover:border-[#FF4D7D]/40 transition-all duration-500 shadow-2xl">
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#FF4D7D]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
           <div className="relative z-10">
-            <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-none mb-4">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-none mb-4">
               {JobTitle}
             </h3>
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light mb-6">
+            <p className="text-gray-400 text-sm sm:text-sm md:text-base leading-relaxed font-light mb-6">
               {Description}
             </p>
             {Technologies && (
               <div
-                className={`flex flex-wrap gap-2 ${!isEven && "md:justify-start"}`}
+                className={`flex flex-wrap gap-2 mt-2 ${!isEven && "md:justify-start"}`}
               >
                 {Technologies.map((tech) => (
                   <span

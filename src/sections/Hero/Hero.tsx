@@ -18,14 +18,14 @@ export const Hero = () => {
   return (
     <section
       ref={refs.refHome}
-      className="relative flex flex-col items-center justify-center w-full min-h-screen px-6 overflow-hidden"
+      className="relative flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-6 overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8 px-4 py-1.5 rounded-full border border-[#FF4D7D]/30 bg-[#FF4D7D]/10 backdrop-blur-md"
+        className="mb-6 sm:mb-8 px-3 sm:px-4 py-1 rounded-full border border-[#FF4D7D]/30 bg-[#FF4D7D]/10 backdrop-blur-md"
       >
-        <span className="text-[#FF4D7D] text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+        <span className="text-[#FF4D7D] text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-[#FF4D7D] rounded-full animate-pulse" />
           Available for new projects
         </span>
@@ -55,7 +55,7 @@ export const Hero = () => {
               <button
                 key={tab}
                 onClick={() => setTitleSelection(tab)}
-                className={`px-6 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
+                className={`px-4 sm:px-6 py-2 text-[10px] sm:text-xs rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
                   titleSelection === tab
                     ? "bg-[#FF4D7D] text-white shadow-[0_0_20px_rgba(255,77,125,0.4)]"
                     : "text-gray-400 hover:text-white"
@@ -70,9 +70,9 @@ export const Hero = () => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute flex justify-center w-6 h-10 p-1 border-2 rounded-full bottom-10 border-white/20"
+        className="absolute hidden md:block flex justify-center w-6 h-10 p-1 border-2 rounded-full bottom-10 border-white/20"
       >
-        <div className="w-1 h-2 bg-[#FF4D7D] rounded-full" />
+        <div className="w-1 h-2 bg-[#FF4D7D] rounded-full mx-auto" />
       </motion.div>
     </section>
   );

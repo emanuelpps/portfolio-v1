@@ -112,7 +112,7 @@ export const Form = () => {
 
   return (
     <form
-      className="flex flex-col w-full gap-6"
+      className="flex flex-col w-full gap-5 sm:gap-6"
       ref={form}
       onSubmit={handleSubmit}
     >
@@ -124,12 +124,12 @@ export const Form = () => {
           }
         />
       )}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
         <div className="text-left">{NameInput.render()}</div>
         <div className="text-left">{EmailInput.render()}</div>
       </div>
       <div className="w-full text-left">{MessageInput.render()}</div>
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-stretch sm:justify-end mt-6 sm:mt-4">
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

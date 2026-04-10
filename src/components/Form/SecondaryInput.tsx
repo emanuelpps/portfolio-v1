@@ -6,7 +6,7 @@ export class SecondaryInput implements InputTypes {
   name?: string;
   value?: string;
   onChange?: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   constructor(
     type: string,
@@ -14,8 +14,8 @@ export class SecondaryInput implements InputTypes {
     name?: string,
     value?: string,
     onChange?: (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => void
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void,
   ) {
     this.label = label;
     this.type = type;
@@ -26,15 +26,15 @@ export class SecondaryInput implements InputTypes {
 
   render() {
     return (
-      <div className="flex items-center justify-center w-[95vw] md:w-[100%] gap-0 h-full text-white">
-        <div className="relative w-[95vw] mb-4 md:w-40 text-start">
+      <div className="flex flex-col w-full md:w-[100%] gap-0 h-full text-white">
+        <div className="relative w-full mb-4 md:w-40 text-start">
           <label>{this.label}</label>
         </div>
         <textarea
           name={this.name}
           value={this.value}
           onChange={this.onChange}
-          className="bg-white h-40 w-[95vw] md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md"
+          className="bg-white h-40 w-full md:w-[100%] text-black rounded-xl font-medium shadow-lg hover:bg-gray-200 transition-all duration-300 ease-in-out transform text-md"
         />
       </div>
     );

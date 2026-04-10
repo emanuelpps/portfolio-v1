@@ -14,13 +14,15 @@
         "text": "Hooks are simple, reusable, and fully typed with TypeScript. They follow good design principles like single responsibility and modularity. Vitest is used to ensure 100% test coverage.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trqkhpjdlgujhwrqfflp",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0"
         ]
       },
       "challenges": {
-        "text": "Balancing flexibility and simplicity was key. Also, testing hooks that interact with browser APIs like localStorage required good mocking strategies."
+        "text": "Balancing flexibility and simplicity was key. Also, testing hooks that interact with browser APIs like localStorage required good mocking strategies.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/react-smart-hooks",
@@ -35,7 +37,7 @@
   },
   {
     "id": 3,
-    "title": "Helpers Kit Utility Library",
+    "title": "Helpers Utility Library",
     "type": "Library",
     "stack": ["TypeScript", "Vitest"],
     "description": "Lightweight TypeScript helper functions like deepClone, debounce, slugify, and more.",
@@ -48,13 +50,15 @@
         "text": "All functions are written in TypeScript with strong typing. Each helper is made to be independent, easy to understand, and ready to test. The library does not use any external dependencies, which keeps it fast and clean.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3"
         ]
       },
       "challenges": {
-        "text": "One of the main challenges was making sure the library works in different environments, like the browser and Node.js. Also, writing helpers that are both generic and fully type-safe took careful work with TypeScript’s advanced types."
+        "text": "One of the main challenges was making sure the library works in different environments, like the browser and Node.js. Also, writing helpers that are both generic and fully type-safe took careful work with TypeScript’s advanced types.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/ts-helpers-kit",
@@ -89,14 +93,14 @@
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/l2bhytxrzmmdvaqr5tpu",
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rss0lqrqfp5zyhusa7do",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj"
         ]
       },
       "challenges": {
         "text": "Balancing performance with high-quality imagery was a key challenge. I had to optimize assets carefully to maintain fast load times while preserving the premium feel. Integrating smooth animations with route transitions also required fine-tuning with Framer Motion and React Router.",
         "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
         ]
       }
     },
@@ -131,13 +135,15 @@
         "text": "The new design was centered around strong visual hierarchy, impactful headlines, and vibrant color contrast to highlight key sections. The user interface was structured with responsiveness in mind, and animations were integrated to enrich user interaction without hindering performance.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jzpsksrspnrjb3wdtwim",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g"
         ]
       },
       "challenges": {
-        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully."
+        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
+        ]
       }
     },
     "code": "",
@@ -165,13 +171,15 @@
         "text": "The design emphasized bold typography and a clean, minimalist layout to highlight the actor’s work. The monochrome color scheme and large imagery were used to create a refined and professional look, while Tailwindcss enabled rapid development of responsive and scalable components.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nodxju0bvlzcccow6qfz",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky"
         ]
       },
       "challenges": {
-        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users."
+        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
+        ]
       }
     },
     "code": "",
@@ -199,13 +207,15 @@
         "text": "The main idea behind this portfolio’s design was to maintain a clean and professional aesthetic, with a focus on readability and clear visualization of projects. I used TailwindCSS to achieve a responsive and agile design, and Framer Motion to add smooth interactivity and animations.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dupo8uwbjrejweobghvj",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kd3mcpimfoaygdmgnxdm",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zhl0f6j3tczgcuzedyfv",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kz9qraewc6xhfhbee39m"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kd3mcpimfoaygdmgnxdm"
         ]
       },
       "challenges": {
-        "text": "One of the biggest challenges was balancing the simplicity of the design with interactivity, ensuring that the animations did not distract from key content. Also, since this is an annual version of the portfolio, I had to make sure not to overload the design with too many visual updates, maintaining consistency with previous versions."
+        "text": "One of the biggest challenges was balancing the simplicity of the design with interactivity, ensuring that the animations did not distract from key content. Also, since this is an annual version of the portfolio, I had to make sure not to overload the design with too many visual updates, maintaining consistency with previous versions.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zhl0f6j3tczgcuzedyfv",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kz9qraewc6xhfhbee39m"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
@@ -231,13 +241,15 @@
         "text": "The app’s design is straightforward, focusing on clarity of information. It was built using Bootstrap to ensure the app is responsive and easy to use across both mobile and desktop devices.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wwpo6ufmy5mkfxbfljsh",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trcnsgqwtienkrwtx4ht",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/pqjszoozaxsej9pdxcmn",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dfijhbvfo9jrwdfuvgbo"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trcnsgqwtienkrwtx4ht"
         ]
       },
       "challenges": {
-        "text": "A key challenge was ensuring the app functioned properly across various devices, especially when displaying large images and real-time data. Another challenge was optimizing performance while maintaining high-quality visuals for a smooth user experience."
+        "text": "A key challenge was ensuring the app functioned properly across various devices, especially when displaying large images and real-time data. Another challenge was optimizing performance while maintaining high-quality visuals for a smooth user experience.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/pqjszoozaxsej9pdxcmn",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dfijhbvfo9jrwdfuvgbo"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
@@ -272,13 +284,15 @@
         "text": "The design is clean, modern, and focused on a good user experience. Framer Motion was used for smooth animations, and Bootstrap helped make the layout responsive. The look and feel were made to feel like a cozy, handmade pizza shop.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za"
         ]
       },
       "challenges": {
-        "text": "One challenge was to keep the animations smooth without making the site slow, especially on phones. Another important task was to make sure Firebase worked well both for showing pizza data and for saving customer orders, all in real-time."
+        "text": "One challenge was to keep the animations smooth without making the site slow, especially on phones. Another important task was to make sure Firebase worked well both for showing pizza data and for saving customer orders, all in real-time.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/donremolo",
@@ -306,13 +320,15 @@
         "text": "The design is clean and professional, using Bootstrap for a responsive layout. Products are shown with images, names, and prices. The interface includes a navigation bar, a hero section, product listing cards, and a contact form. The visuals are inspired by aviation style to create a strong identity.",
         "images": [
           "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xiamibyaoflycone8pc5",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rp3cr4musyul8uob6zm4",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hn6ngm23ilvn1pe41hby",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/yhcl0n97g1mzoej5karc"
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rp3cr4musyul8uob6zm4"
         ]
       },
       "challenges": {
-        "text": "One of the main challenges was building product interactions (like buttons, sections, and layout logic) using only Vanilla JavaScript. Another was creating a mobile-friendly design that adapts well to different screen sizes using only frontend tools."
+        "text": "One of the main challenges was building product interactions (like buttons, sections, and layout logic) using only Vanilla JavaScript. Another was creating a mobile-friendly design that adapts well to different screen sizes using only frontend tools.",
+        "images": [
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hn6ngm23ilvn1pe41hby",
+          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/yhcl0n97g1mzoej5karc"
+        ]
       }
     },
     "code": "https://github.com/emanuelpps/Falcon-Aviation-Shop",

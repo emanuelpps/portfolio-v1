@@ -29,7 +29,7 @@ const NavBarButton = ({ link, state, setHashSection }: NavBarButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      className="relative px-5 py-2 text-sm font-medium transition-colors duration-300 group outline-none"
+      className="relative px-5 py-2 text-sm font-medium transition-colors duration-300 group outline-none cursor-pointer"
     >
       <span
         className={`relative z-10 transition-colors duration-300 ${

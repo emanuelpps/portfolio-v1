@@ -4,7 +4,7 @@ const Bottom = () => {
       <div>
         © 2025 <span className="font-bold text-white">EMANUEL PAGÉS</span>
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-2 md:gap-4">
         <span>Vite</span>
         <span className="text-[#FF4D7D]">•</span>
         <span>TypeScript</span>

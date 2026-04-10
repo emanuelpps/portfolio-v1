@@ -19,6 +19,14 @@ const ExperienceContainer = () => {
 
   const [experiences] = useState([
     {
+      CompanyName: "Dizizid",
+      JobTitle: "Frontend Developer",
+      Period: "2026 - Present",
+      ItemType: ItemTypes.Primary,
+      description:
+        "Adapting and improving the platform to be fully responsive across multiple devices, ensuring consistency and usability. Developing and refining UI components using React and Tailwindcss, optimizing layouts, handling edge cases across breakpoints, and collaborating with design and product teams to enhance user experience and interface scalability.",
+    },
+    {
       CompanyName: "The CodeMaker Lab",
       JobTitle: "Frontend Developer",
       Period: "2024 - Present",
@@ -77,7 +85,7 @@ const ExperienceContainer = () => {
   ]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-24" ref={containerRef}>
+    <div className="w-full max-w-6xl mx-auto px-4 md:py-24" ref={containerRef}>
       <div className="mb-20">{ExperienceTitle.render()}</div>
       <div className="relative">
         <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] h-full bg-gray-800/50 hidden md:block" />
@@ -85,8 +93,7 @@ const ExperienceContainer = () => {
           className="absolute left-1/2 -translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-[#FF4D7D] to-purple-600 shadow-[0_0_15px_rgba(255,77,125,0.5)] z-10 hidden md:block"
           style={{ height: pathHeight }}
         />
-        <div className="absolute left-6 top-0 w-[2px] h-full bg-gray-800 md:hidden" />
-
+        <div className="absolute left-3.5 md:left-6 top-0 w-[2px] h-full bg-gray-800 md:hidden" />
         <div className="relative flex flex-col">
           {experiences.map((exp, index) => (
             <ExperienceItem

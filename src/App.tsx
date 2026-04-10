@@ -6,9 +6,9 @@ import { Header } from "./sections/Header/Header";
 function App() {
   return (
     <>
-      <div className="container max-w-[100vw] md:w-[100%] flex flex-col justify-center items-center overflow-x-hidden">
+      <div className="container flex flex-col items-center justify-center overflow-x-hidden">
         <Header />
-        <main className="flex flex-col items-center justify-center gap-10">
+        <main className="flex flex-col items-center justify-center gap-10 max-w-7xl w-full">
           <AnimatedBackground />
           <AppRoutes />
         </main>

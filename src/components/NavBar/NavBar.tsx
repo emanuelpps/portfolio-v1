@@ -15,7 +15,7 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full flex justify-center z-[100] transition-all duration-500 py-4 md:py-6">
+    <header className="fixed top-0 left-0 w-full flex justify-center z-50 transition-all duration-500 py-4 md:py-6">
       <nav
         className={`
           flex items-center justify-between px-4 md:px-8 py-2
