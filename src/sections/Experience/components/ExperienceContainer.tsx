@@ -43,12 +43,6 @@ const ExperienceContainer = () => {
         "Managed data flows by uploading and validating JSON files in Retool to optimize backoffice and mobile app synchronization, debugged GraphQL queries to resolve data inconsistencies, reported and tracked platform bugs, and coordinated with US-based client teams to validate endpoints and ensure accurate data propagation.",
     },
     {
-      CompanyName: "EPAM Systems",
-      JobTitle: "Associate Project Administrator",
-      Period: "jan 2025 - dic 2025",
-      ItemType: ItemTypes.Secondary,
-    },
-    {
       CompanyName: "Hackathon - Justina.io",
       JobTitle: "Frontend Developer",
       Period: "July 2024",
