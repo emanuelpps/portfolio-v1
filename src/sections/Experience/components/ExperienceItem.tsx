@@ -24,6 +24,7 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
   Description,
   Technologies,
   index,
+  
 }) => {
   const isEven = index % 2 === 0;
 
