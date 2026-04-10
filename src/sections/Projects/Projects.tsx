@@ -3,7 +3,7 @@ import { useScroll } from "@/hooks/UseScroll";
 const Projects = () => {
   const { refs } = useScroll();
   return (
-    <section ref={refs.refProjects} className="mt-20 md:mt-0">
+    <section ref={refs.refProjects} className="w-full flex justify-center">
       <ProjectsContainer />
     </section>
   );

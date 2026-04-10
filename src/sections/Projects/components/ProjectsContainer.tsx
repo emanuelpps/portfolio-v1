@@ -1,119 +1,221 @@
-import { useState } from "react";
-import { TitlesFactory } from "@/components/Titles/TitlesFactory";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri";
 import ProjectCard from "./ProjectCard";
 import rawProjects from "@/data/Projects.json";
 import { ProjectTypes } from "@/types/ProjectTypes";
-import { RiArrowRightSFill, RiArrowLeftSFill } from "react-icons/ri";
-import { AnimatePresence, motion } from "framer-motion";
+import { TitlesFactory } from "@/components/Titles/TitlesFactory";
 
 export const ProjectsContainer = () => {
   const Projects = rawProjects as ProjectTypes[];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentCardHover, setCurrentCardHover] = useState<number | null>(null);
+  const [direction, setDirection] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const ProjectsTitle = TitlesFactory.createTitle(
     "secondary",
     "Projects",
-    "I've been working on these"
+    "I've been working on these",
   );
 
   const projectsPerPage = 3;
   const totalSlides = Math.ceil(Projects.length / projectsPerPage);
 
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prev) => {
+      const next = prev + newDirection;
+      if (next < 0) return totalSlides - 1;
+      if (next >= totalSlides) return 0;
+      return next;
+    });
+  };
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "5%" : "-5%", opacity: 0 }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? "-5%" : "5%",
+      opacity: 0,
+      transition: { duration: 0.35, ease: [0.4, 0, 1, 1] },
+    }),
+  };
+
   const currentProjects = Projects.slice(
     currentIndex * projectsPerPage,
-    (currentIndex + 1) * projectsPerPage
+    (currentIndex + 1) * projectsPerPage,
   );
 
-  const goToSlide = (index: number) => {
-    const lastIndex = totalSlides - 1;
-    if (index < 0) setCurrentIndex(lastIndex);
-    else if (index > lastIndex) setCurrentIndex(0);
-    else setCurrentIndex(index);
-  };
-
-  const ProjectHoverFilter = (id: number | null) => {
-    setCurrentCardHover(id);
-  };
-
-  const hoveredProject = Projects.find(
-    (project) => project.id === currentCardHover
-  );
+  const displayIndex = isDesktop ? currentIndex + 1 : mobileIndex + 1;
+  const displayTotal = isDesktop ? totalSlides : Projects.length;
 
   return (
-    <div className="flex flex-col items-center md:w-full">
-      <div className="bg-gray-900/50 backdrop-blur-lg shadow-lg max-w-[95vw] md:w-full md:max-w-7xl h-full md:min-h-[80vh] flex flex-col justify-center items-center rounded-2xl px-6 py-3 gap-8 p-8 shadow-gray-900 border border-gray-800 [mask-image:linear-gradient(to_bottom,white_80%,transparent)] pb-10">
-        <div className="text-center flex md:w-[80%] justify-between items-center h-full md:h-[200px]">
-          <div className="flex w-full md:items-start md:justify-start md:text-start">
-            {ProjectsTitle.render()}
+    <div className="flex flex-col w-full gap-8 sm:gap-14 py-14 sm:py-24">
+      {/* Header — con padding lateral */}
+      <div className="px-4 sm:px-8 lg:px-12 xl:px-16 mx-auto w-full max-w-[1600px] flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="flex-1">{ProjectsTitle.render()}</div>
+
+        <div className="flex items-center gap-5 sm:gap-8">
+          <div className="flex flex-col items-start sm:items-end">
+            <div className="flex items-baseline gap-1">
+              <motion.span
+                key={displayIndex}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-2xl sm:text-3xl font-black text-white tabular-nums"
+              >
+                {String(displayIndex).padStart(2, "0")}
+              </motion.span>
+              <span className="text-[#FF4D7D] text-base sm:text-lg mx-0.5">
+                /
+              </span>
+              <span className="text-sm text-gray-500 tabular-nums">
+                {String(displayTotal).padStart(2, "0")}
+              </span>
+            </div>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-gray-600">
+              Projects
+            </span>
           </div>
-          <div className="items-center justify-center hidden max-w-md text-sm text-gray-300 lg:flex text-end">
-            {hoveredProject ? hoveredProject.description : ""}
+
+          <div className="hidden lg:flex gap-2">
+            {[
+              {
+                dir: -1,
+                Icon: RiArrowLeftLine,
+                cls: "group-hover:-translate-x-0.5",
+              },
+              {
+                dir: 1,
+                Icon: RiArrowRightLine,
+                cls: "group-hover:translate-x-0.5",
+              },
+            ].map(({ dir, Icon, cls }) => (
+              <button
+                key={dir}
+                onClick={() => paginate(dir)}
+                className="group w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center text-white/60 hover:text-white hover:bg-[#FF4D7D] hover:border-[#FF4D7D] transition-all duration-300 cursor-pointer active:scale-95"
+              >
+                <Icon
+                  size={20}
+                  className={`transition-transform duration-200 ${cls}`}
+                />
+              </button>
+            ))}
           </div>
-        </div>
-        {/* DESKTOP VIEW - 3 cards por slide */}
-        <div className="relative items-center justify-center hidden w-full overflow-hidden lg:flex">
-          <div className="flex transition-transform duration-500 ease-in-out">
-            {currentProjects.map((project) => (
-              <AnimatePresence mode="wait" key={project.id}>
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  key={project.id}
-                  className="w-full px-4"
-                  onMouseEnter={() => ProjectHoverFilter(project.id)}
-                  onMouseLeave={() => ProjectHoverFilter(null)}
-                >
-                  <ProjectCard project={project} />
-                </motion.div>
-              </AnimatePresence>
+
+          <div className="flex lg:hidden gap-2">
+            {[
+              { dir: -1, Icon: RiArrowLeftLine },
+              { dir: 1, Icon: RiArrowRightLine },
+            ].map(({ dir, Icon }) => (
+              <button
+                key={dir}
+                onClick={() => {
+                  const el = scrollRef.current;
+                  if (!el) return;
+                  el.scrollBy({
+                    left: dir * (el.offsetWidth * 0.82 + 16),
+                    behavior: "smooth",
+                  });
+                }}
+                className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.04] flex items-center justify-center text-white/50 active:scale-95 active:bg-[#FF4D7D] active:text-white transition-all duration-200"
+              >
+                <Icon size={17} />
+              </button>
             ))}
           </div>
         </div>
-        {/* MOBILE VIEW - scroll horizontal de una en una */}
-        <div className="flex w-[95vw] min-h-full gap-20 overflow-x-auto overflow-y-hidden lg:hidden scroll-smooth snap-x snap-mandatory pb-20">
-          {Projects.map((project) => (
-            <div
-              key={project.id}
-              className="min-w-full px-2 snap-start md:flex md:justify-center md:items-center"
-              onMouseEnter={() => ProjectHoverFilter(project.id)}
-              onMouseLeave={() => ProjectHoverFilter(null)}
-            >
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
+      </div>
 
-        {/* DESKTOP NAVIGATION ONLY */}
-        <div className="items-center justify-center hidden gap-2 mt-4 md:flex">
-          <button
-            onClick={() => goToSlide(currentIndex - 1)}
-            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
-            aria-label="Anterior"
-          >
-            <RiArrowLeftSFill className="text-4xl" />
-          </button>
-          {Array.from({ length: totalSlides }).map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full transition-all ${
-                currentIndex === index
-                  ? "bg-[#FF4D7D] scale-150"
-                  : "bg-gray-500"
-              }`}
-              onClick={() => goToSlide(index)}
-            />
-          ))}
-          <button
-            onClick={() => goToSlide(currentIndex + 1)}
-            className="text-white p-2 rounded-full transition hover:scale-110 hover:text-[#FF4D7D] cursor-pointer"
-            aria-label="Siguiente"
-          >
-            <RiArrowRightSFill className="text-4xl" />
-          </button>
-        </div>
+      {/* Contenedor de Cards */}
+      <div className="w-full">
+        {isDesktop ? (
+          /* NUEVO CONTENEDOR ESCRITORIO CONTROLADO */
+          /* Eliminamos el truco de '-ml-[50vw]' */
+          /* Usamos px-8 para un respiro lateral mínimo y mx-auto para centrar */
+          <div className="w-full max-w-[1800px] mx-auto px-8 md:px-12">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                /* Mantenemos las 3 columnas y el gap */
+                className="grid grid-cols-3 gap-6 w-full"
+              >
+                {currentProjects.map((project, i) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={currentIndex * projectsPerPage + i}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        ) : (
+          /* SECCIÓN MOBILE: Se mantiene intacta como pediste */
+          <>
+            <div
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 scrollbar-hide -mx-4 px-4"
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                const idx = Math.round(
+                  el.scrollLeft / (el.offsetWidth * 0.82 + 16),
+                );
+                setMobileIndex(Math.min(idx, Projects.length - 1));
+              }}
+            >
+              {Projects.map((project, i) => (
+                <div
+                  key={project.id}
+                  className="w-[82%] flex-shrink-0 snap-center"
+                >
+                  <ProjectCard project={project} index={i} />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 flex gap-1 justify-center">
+              {Projects.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    const el = scrollRef.current;
+                    if (!el) return;
+                    el.scrollTo({
+                      left: i * (el.offsetWidth * 0.82 + 16),
+                      behavior: "smooth",
+                    });
+                  }}
+                  className={`h-[3px] rounded-full transition-all duration-300 cursor-pointer ${
+                    i === mobileIndex
+                      ? "w-8 bg-[#FF4D7D]"
+                      : "w-2 bg-white/15 hover:bg-white/30"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

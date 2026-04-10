@@ -1,53 +1,52 @@
-import { NavBarButtonProp } from "../types/NavLinkProp";
+import { motion } from "framer-motion";
 import { useScroll } from "@/hooks/UseScroll";
 
-const NavBarButton: React.FC<NavBarButtonProp> = ({
-  link,
-  state,
-  setHashSection,
-  showDropDown,
-  showDropDownVisible,
-}) => {
-  const { scrollTo } = useScroll();
+interface NavBarButtonProps {
+  link: { hash: string; label: string };
+  state: string;
+  setHashSection: (hash: string) => void;
+}
 
+const NavBarButton = ({ link, state, setHashSection }: NavBarButtonProps) => {
+  const { scrollTo } = useScroll();
   const isActive = state === link.hash;
-  const isExternal = link.hash.startsWith("http");
 
   const handleClick = () => {
-    if (isExternal) {
+    if (link.hash.startsWith("http")) {
       window.open(link.hash, "_blank");
     } else {
-      const sectionName = link.hash.replace("#", "") as
+      const section = link.hash.replace("#", "") as
         | "home"
         | "skills"
         | "experience"
         | "projects"
         | "contact";
-      scrollTo(sectionName);
+      scrollTo(section);
       setHashSection(link.hash);
-      if (showDropDown && showDropDownVisible) {
-        showDropDown(false);
-      }
     }
   };
 
   return (
     <button
       onClick={handleClick}
-      className="relative px-2 py-1 font-medium transition-colors duration-300 text-md group cursor-pointer"
+      className="relative px-5 py-2 text-sm font-medium transition-colors duration-300 group outline-none cursor-pointer"
     >
-      <div
-        className={`text-white transition-colors duration-300 ${
-          isActive ? "text-[#FF4D7D]" : "hover:text-[#FF4D7D]"
+      <span
+        className={`relative z-10 transition-colors duration-300 ${
+          isActive ? "text-white" : "text-gray-400 group-hover:text-gray-200"
         }`}
       >
         {link.label}
-        <span
-          className={`block h-[1px] mt-[2px] bg-[#FF4D7D] transition-all duration-300 ${
-            isActive ? "w-full" : "w-0 group-hover:w-full"
-          }`}
+      </span>
+
+      {isActive && (
+        <motion.div
+          layoutId="nav-pill"
+          className="absolute inset-0 bg-gradient-to-r from-[#FF4D7D] to-[#ff759b] shadow-[0_0_15px_rgba(255,77,125,0.4)]"
+          style={{ borderRadius: 9999 }}
+          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
         />
-      </div>
+      )}
     </button>
   );
 };

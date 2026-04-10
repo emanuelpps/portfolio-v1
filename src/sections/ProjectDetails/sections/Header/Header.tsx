@@ -1,6 +1,4 @@
-import { Title } from "./components/Title";
 import { ButtonContainer } from "./components/ButtonContainer";
-import { CloseButton } from "./components/CloseButton";
 import { StackContainer } from "./components/StackContainer";
 
 interface HeaderProps {
@@ -15,18 +13,35 @@ interface HeaderProps {
 const Header = ({
   title,
   subtitle,
-  code,
-  deploy,
   stack,
+  deploy,
+  code,
   buttonText,
 }: HeaderProps) => {
   return (
-    <div className="relative flex flex-col items-center w-full gap-5 pt-10 text-white">
-      <CloseButton />
-      <Title title={title} subtitle={subtitle} />
-      <ButtonContainer code={code} deploy={deploy} buttonText={buttonText} />
-      <StackContainer stack={stack} />
-    </div>
+    <header className="pt-20 md:pt-32 flex flex-col gap-10">
+      <div className="space-y-4">
+        <div className="opacity-50 tracking-[0.5em] text-[10px] uppercase font-mono">
+          Project Showcase
+        </div>
+        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white">
+          {title.toUpperCase()}
+        </h1>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 border-t border-white/10 pt-10">
+        <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
+          {subtitle}
+        </p>
+        <div className="flex flex-col gap-6 items-start md:items-end">
+          <StackContainer stack={stack} />
+          <ButtonContainer
+            code={code}
+            deploy={deploy}
+            buttonText={buttonText}
+          />
+        </div>
+      </div>
+    </header>
   );
 };
 

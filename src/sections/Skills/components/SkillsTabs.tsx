@@ -1,61 +1,39 @@
-import { useState, useEffect } from "react";
-import { ButtonFactory } from "../../../components/Buttons/ButtonFactory";
-import { FiChevronDown } from "react-icons/fi";
+import { motion } from "framer-motion";
 
-interface SkillsProps {
+const tabs = ["Frontend", "Native", "Testing", "Backend", "Cloud", "Tools"];
+
+const SkillsTabs = ({
+  activeTab,
+  setActiveTab,
+}: {
   activeTab: string;
-  setActiveTab: (value: string) => void;
-}
-
-const tabs = ["Frontend", "Native", "Testing", "Backend", "Tools"];
-
-const SkillsTabs = ({ activeTab, setActiveTab }: SkillsProps) => {
-  const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  const [screenWidth, setScreenWidth] = useState<number>(0);
-
-  useEffect(() => {
-    const updateWidth = () => setScreenWidth(window.innerWidth);
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
-
-  const isMobile = screenWidth <= 1023;
-
-  return isMobile ? (
-
-    <section className="flex flex-col items-center justify-center w-[90vw] gap-4 flex-wrap">
-      <div
-        className="relative flex flex-col justify-between p-3.5 rounded-4xl items-center w-full bg-[#FF4D7D] text-white shadow-inner translate-y-[1px] scale-[0.98] z-[50]"
-        onClick={() => setShowDropDown(!showDropDown)}
-      >
-        <div className="flex justify-between w-full">
-          {activeTab}
-          <FiChevronDown size={25} className="text-white" />
-        </div>
-        {showDropDown && (
-          <ul className="absolute p-3.5 rounded-b-4xl w-full bg-[#FF4D7D] text-white shadow-inner translate-y-[1px] scale-[0.98] top-10">
-            {tabs.map((tab) => (
-              <li className="flex pt-5" onClick={() => setActiveTab(tab)}>
-                {tab}
-              </li>
-            ))}
-          </ul>
-        )}
+  setActiveTab: (tab: string) => void;
+}) => {
+  return (
+    <div className="p-1 bg-black/40 border border-white/5 rounded-[1.2rem] sm:rounded-[1.5rem] backdrop-blur-2xl shadow-2xl">
+      <div className="flex flex-wrap gap-1 justify-center sm:flex-nowrap">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`relative px-4 py-2 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] font-black transition-all duration-500 rounded-[1rem] cursor-pointer flex-shrink-0 ${
+              activeTab === tab
+                ? "text-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            {activeTab === tab && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-[#FF4D7D] shadow-[0_0_25px_rgba(255,77,125,0.4)] rounded-[1rem]"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10">{tab}</span>
+          </button>
+        ))}
       </div>
-    </section>
-  ) : (
-    <section className="flex justify-center md:justify-end w-[80vw] gap-5 pt-10">
-      {tabs.map((tab) => {
-        const button = ButtonFactory.createButton({
-          type: "tab",
-          label: tab,
-          isActive: tab === activeTab,
-          setActiveTab,
-        });
-        return <div key={tab}>{button.render()}</div>;
-      })}
-    </section>
+    </div>
   );
 };
 

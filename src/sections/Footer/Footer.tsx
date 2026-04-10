@@ -2,7 +2,8 @@ import FooterContainer from "./components/FooterContainer";
 
 const Footer = () => {
   return (
-    <footer className="w-[95vw] md:w-full flex justify-center items-center bg-[#0F1621] text-white mt-20">
+    <footer className="relative flex items-center justify-center w-full pt-32 pb-10 overflow-hidden">
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <FooterContainer />
     </footer>
   );

@@ -7,7 +7,7 @@ export class PrimaryButton implements Button {
 
   constructor(
     label: string | JSX.Element,
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
   ) {
     this.label = label;
     this.onClick = onClick;
@@ -16,11 +16,10 @@ export class PrimaryButton implements Button {
   render() {
     return (
       <button
-        className="px-8 py-2 bg-[#FF4D7D] text-white rounded-full font-medium shadow-lg hover:bg-[#ff4d7cce] transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+        className="px-8 py-3 bg-[#FF4D7D] text-white rounded-full font-bold uppercase tracking-widest text-xs 
+                   shadow-[0_0_20px_rgba(255,77,125,0.3)] hover:shadow-[0_0_30px_rgba(255,77,125,0.6)] 
+                   transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
         onClick={this.onClick}
-        aria-label={
-          typeof this.label === "string" ? this.label : "primary button"
-        }
       >
         {this.label}
       </button>

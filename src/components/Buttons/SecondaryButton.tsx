@@ -12,19 +12,17 @@ export class SecondaryButton implements Button {
   render() {
     return (
       <button
-        onClick={() => {
-          const contactSection = document.getElementById("contact");
-          if (contactSection) {
-            contactSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }}
-        className="flex items-center gap-2 px-6 py-3 border-[1px] border-gray text-white rounded-3xl backdrop-blur-md shadow-lg hover:bg-gray-800 transition-all duration-300 font-semibold cursor-pointer"
-        aria-label={
-          typeof this.label === "string" ? this.label : "secondary button"
+        onClick={() =>
+          document
+            .getElementById("contact")
+            ?.scrollIntoView({ behavior: "smooth" })
         }
+        className="group flex items-center gap-3 px-7 py-3 border border-white/10 text-white rounded-full 
+                   bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-[#FF4D7D]/50 
+                   transition-all duration-500 font-medium tracking-wide cursor-pointer"
       >
-        {this.label}
-        <FaArrowUp className="text-sm text-white transition-transform group-hover:-translate-y-1" />
+        <span className="opacity-80 group-hover:opacity-100">{this.label}</span>
+        <FaArrowUp className="text-xs text-[#FF4D7D] transition-transform group-hover:-translate-y-1" />
       </button>
     );
   }

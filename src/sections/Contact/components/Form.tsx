@@ -4,6 +4,7 @@ import { useState, useRef, JSX } from "react";
 import emailjs from "@emailjs/browser";
 import { LoadingDots } from "./LoadingDots";
 import PopUp from "./PopUp";
+import { motion } from "framer-motion";
 
 export const Form = () => {
   const [buttonText, setButtonText] = useState<JSX.Element | string>("Send");
@@ -27,7 +28,7 @@ export const Form = () => {
     "text",
     "from_name",
     fullName,
-    (e) => setFullName(e.target.value)
+    (e) => setFullName(e.target.value),
   );
 
   const EmailInput = InputFactory.createInput(
@@ -36,7 +37,7 @@ export const Form = () => {
     "email",
     "reply_to",
     email,
-    (e) => setEmail(e.target.value)
+    (e) => setEmail(e.target.value),
   );
 
   const MessageInput = InputFactory.createInput(
@@ -45,7 +46,7 @@ export const Form = () => {
     "text",
     "message",
     message,
-    (e) => setMessage(e.target.value)
+    (e) => setMessage(e.target.value),
   );
 
   const SubmitButton = ButtonFactory.createButton({
@@ -82,7 +83,7 @@ export const Form = () => {
         import.meta.env.VITE_EMAIL_SERVICE_ID,
         import.meta.env.VITE_PORTFOLIO_TEMPLATE_ID,
         form.current,
-        import.meta.env.VITE_EMAILJS_API_KEY
+        import.meta.env.VITE_EMAILJS_API_KEY,
       )
       .then(
         (response) => {
@@ -105,13 +106,13 @@ export const Form = () => {
             setFormErrors(false);
           }, 4000);
           setButtonText("Send");
-        }
+        },
       );
   };
 
   return (
     <form
-      className="flex flex-col w-[95vw] md:w-[40%] justify-center items-center gap-10"
+      className="flex flex-col w-full gap-5 sm:gap-6"
       ref={form}
       onSubmit={handleSubmit}
     >
@@ -123,11 +124,19 @@ export const Form = () => {
           }
         />
       )}
-      {NameInput.render()}
-      {EmailInput.render()}
-      {MessageInput.render()}
-      <div className="w-[100%] flex justify-end items-center">
-        {SubmitButton.render()}
+      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
+        <div className="text-left">{NameInput.render()}</div>
+        <div className="text-left">{EmailInput.render()}</div>
+      </div>
+      <div className="w-full text-left">{MessageInput.render()}</div>
+      <div className="flex justify-stretch sm:justify-end mt-6 sm:mt-4">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full md:w-auto"
+        >
+          {SubmitButton.render()}
+        </motion.div>
       </div>
     </form>
   );

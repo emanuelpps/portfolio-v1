@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { JSX, useEffect, useState } from "react";
+import { JSX } from "react";
 
 interface SkillCardProp {
   name: string;
@@ -7,31 +7,23 @@ interface SkillCardProp {
 }
 
 const SkillCard = ({ name, Icon }: SkillCardProp) => {
-  const [iconSize, setIconSize] = useState(32);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIconSize(window.innerWidth < 768 ? 24 : 32);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <motion.div
-      className="bg-gray-900 w-full max-w-[250px] flex justify-center items-center gap-2 md:gap-5 p-2 md:p-6 rounded-xl text-white"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.03 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-      viewport={{ once: true, amount: 0.3 }}
+      layout
+      initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+      transition={{ duration: 0.4 }}
+      whileHover={{ y: -5 }}
+      className="relative group flex flex-col items-center justify-center p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md transition-all duration-500 hover:border-[#FF4D7D]/30"
     >
-      <div className="text-[#FF4D7D]">
-        <Icon size={iconSize} />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl bg-[#FF4D7D] rounded-full" />
+      <div className="relative scale-90 sm:scale-100 z-10 text-white/50 group-hover:text-[#FF4D7D] mb-2 sm:mb-3 transition-all duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_15px_rgba(255,77,125,0.5)]">
+        <Icon size={28} />
       </div>
-      <h4 className="text-xs font-normal md:text-md drop-shadow-sm">{name}</h4>
+      <h4 className="relative z-10 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] font-bold text-gray-500 group-hover:text-white transition-colors duration-500 text-center">
+        {name}
+      </h4>
     </motion.div>
   );
 };
