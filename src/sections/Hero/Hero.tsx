@@ -15,6 +15,39 @@ export const Hero = () => {
     onClick: () => scrollTo("contact"),
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const lines = [
+    {
+      d: "M-200,150 Q100,50 400,150 T1000,150 Q1300,50 1600,150",
+      color: "#FF006E",
+      duration: 15,
+      delay: 0,
+    },
+    {
+      d: "M-200,200 Q100,300 400,200 T1000,200 Q1300,300 1600,200",
+      color: "#FF1B8D",
+      duration: 18,
+      delay: 0.5,
+    },
+    {
+      d: "M-200,250 Q100,150 400,250 T1000,250 Q1300,150 1600,250",
+      color: "#8B3DFF",
+      duration: 20,
+      delay: 1.5,
+    },
+    {
+      d: "M-200,300 Q100,400 400,300 T1000,300 Q1300,400 1600,300",
+      color: "#3DBFFF",
+      duration: 16,
+      delay: 0.3,
+    },
+    {
+      d: "M-200,350 Q100,250 400,350 T1000,350 Q1300,250 1600,350",
+      color: "#5C8EFF",
+      duration: 22,
+      delay: 0.5,
+    },
+  ];
   return (
     <section
       ref={refs.refHome}
