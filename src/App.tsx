@@ -1,20 +1,20 @@
-import { AnimatedBackground } from "./components/Background/AnimatedBackground";
 import AppRoutes from "./routes/Router";
 import Footer from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
+import { Atmosphere } from "@/components/layout/Atmosphere";
+import { CustomCursor } from "@/components/motion/CustomCursor";
 
 function App() {
   return (
-    <>
-      <div className="container flex flex-col items-center justify-center overflow-x-hidden">
-        <Header />
-        <main className="flex flex-col items-center justify-center gap-10 max-w-7xl w-full">
-          <AnimatedBackground />
-          <AppRoutes />
-        </main>
+    <div className="grain relative min-h-screen w-full overflow-x-hidden bg-[color:var(--bg)]">
+      <Atmosphere />
+      <CustomCursor />
+      <Header />
+      <div className="relative z-10">
+        <AppRoutes />
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 
