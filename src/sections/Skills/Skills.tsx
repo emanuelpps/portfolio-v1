@@ -6,8 +6,8 @@ const Skills = () => {
   return (
     <section
       ref={refs.refSkills}
-      id="skills"
-      className="flex items-center justify-center min-h-screen mt-16 sm:mt-20 text-white md:mt-0 md:w-full lg:min-h-min px-2 sm:px-0"
+      id="stack"
+      className="w-full py-24 text-white sm:py-32"
     >
       <SkillsContainer />
     </section>

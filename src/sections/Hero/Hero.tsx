@@ -1,111 +1,138 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ButtonFactory } from "@/components/Buttons/ButtonFactory";
+import { motion } from "framer-motion";
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
-import Title from "./components/Title";
-import TitleText from "./components/TitleText";
+import { MagneticButton } from "@/components/motion/MagneticButton";
+import { EASE } from "@/lib/motion";
+
+const HEADLINE: { t: string; accent?: boolean }[] = [
+  { t: "I" },
+  { t: "build" },
+  { t: "frontends" },
+  { t: "that" },
+  { t: "convert.", accent: true },
+];
 
 export const Hero = () => {
   const { refs, scrollTo } = useAppScroll();
-  const [titleSelection, setTitleSelection] = useState("title");
 
-  const ContactMeButton = ButtonFactory.createButton({
-    type: "primary",
-    label: "Let's Talk",
-    onClick: () => scrollTo("contact"),
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const lines = [
-    {
-      d: "M-200,150 Q100,50 400,150 T1000,150 Q1300,50 1600,150",
-      color: "#FF006E",
-      duration: 15,
-      delay: 0,
-    },
-    {
-      d: "M-200,200 Q100,300 400,200 T1000,200 Q1300,300 1600,200",
-      color: "#FF1B8D",
-      duration: 18,
-      delay: 0.5,
-    },
-    {
-      d: "M-200,250 Q100,150 400,250 T1000,250 Q1300,150 1600,250",
-      color: "#8B3DFF",
-      duration: 20,
-      delay: 1.5,
-    },
-    {
-      d: "M-200,300 Q100,400 400,300 T1000,300 Q1300,400 1600,300",
-      color: "#3DBFFF",
-      duration: 16,
-      delay: 0.3,
-    },
-    {
-      d: "M-200,350 Q100,250 400,350 T1000,350 Q1300,250 1600,350",
-      color: "#5C8EFF",
-      duration: 22,
-      delay: 0.5,
-    },
-  ];
   return (
     <section
       ref={refs.refHome}
-      className="relative flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-6 overflow-hidden"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center px-5 text-center sm:px-8"
     >
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-6 sm:mb-8 px-3 sm:px-4 py-1 rounded-full border border-[#FF4D7D]/30 bg-[#FF4D7D]/10 backdrop-blur-md"
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+        }}
+        className="flex w-full max-w-5xl flex-col items-center"
       >
-        <span className="text-[#FF4D7D] text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-          <span className="w-1.5 h-1.5 bg-[#FF4D7D] rounded-full animate-pulse" />
-          Available for new projects
-        </span>
+        {/* Availability badge */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: -12 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+          }}
+          className="mb-8 flex items-center gap-2 rounded-full border border-[color:var(--accent)]/30 bg-[color:var(--accent)]/10 px-4 py-1.5 backdrop-blur-md"
+        >
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--accent)]" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            Available for work — Remote / Frontend
+          </span>
+        </motion.div>
+
+        {/* Name */}
+        <motion.span
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { duration: 0.6 } },
+          }}
+          className="eyebrow mb-5"
+        >
+          Emanuel Pagés
+        </motion.span>
+
+        {/* Kinetic headline */}
+        <h1 className="flex flex-wrap justify-center text-5xl font-black leading-[0.95] tracking-tighter text-white sm:text-7xl md:text-[6.5rem]">
+          {HEADLINE.map((w, i) => (
+            <span
+              key={i}
+              className="mx-[0.18em] inline-block overflow-hidden py-1 align-bottom"
+            >
+              <motion.span
+                className={`inline-block ${
+                  w.accent
+                    ? "bg-gradient-to-r from-[color:var(--accent)] to-purple-400 bg-clip-text text-transparent"
+                    : ""
+                }`}
+                variants={{
+                  hidden: { y: "115%" },
+                  show: { y: 0, transition: { duration: 0.8, ease: EASE } },
+                }}
+              >
+                {w.t}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        {/* Subhead */}
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 16, filter: "blur(8px)" },
+            show: {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { duration: 0.8, ease: EASE },
+            },
+          }}
+          className="mt-8 max-w-2xl text-base font-light leading-relaxed text-gray-400 sm:text-lg md:text-xl"
+        >
+          Frontend engineer with{" "}
+          <span className="font-medium text-white">
+            10 years in digital marketing
+          </span>
+          . I turn designs into fast, accessible interfaces that don&apos;t just
+          look good — they move the metrics that matter.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+          }}
+          className="mt-10 flex flex-col items-center gap-5 sm:flex-row"
+        >
+          <MagneticButton
+            onClick={() => scrollTo("contact")}
+            data-cursor="hover"
+            className="rounded-full bg-[color:var(--accent)] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.4)]"
+          >
+            Let&apos;s talk
+          </MagneticButton>
+          <button
+            onClick={() => scrollTo("projects")}
+            data-cursor="hover"
+            className="group flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-white"
+          >
+            View work
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
+        </motion.div>
       </motion.div>
 
-      <motion.div
-        layout
-        transition={{ layout: { duration: 0.5, ease: "easeInOut" } }}
-        className="relative z-10 flex flex-col items-center w-full max-w-5xl gap-12 mx-auto"
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={titleSelection}
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-            transition={{ duration: 0.5, ease: "circOut" }}
-            className="text-center"
-          >
-            {titleSelection === "title" ? <Title /> : <TitleText />}
-          </motion.div>
-        </AnimatePresence>
-        <div className="flex flex-col items-center h-auto gap-6 md:flex-row">
-          {ContactMeButton.render()}
-          <div className="bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 flex gap-2">
-            {["title", "about"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setTitleSelection(tab)}
-                className={`px-4 sm:px-6 py-2 text-[10px] sm:text-xs rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
-                  titleSelection === tab
-                    ? "bg-[#FF4D7D] text-white shadow-[0_0_20px_rgba(255,77,125,0.4)]"
-                    : "text-gray-400 hover:text-white"
-                }`}
-              >
-                {tab === "title" ? "Hello" : "About"}
-              </button>
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      {/* Scroll cue */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute hidden md:block flex justify-center w-6 h-10 p-1 border-2 rounded-full bottom-10 border-white/20"
+        className="absolute bottom-10 hidden h-10 w-6 justify-center rounded-full border-2 border-white/20 p-1 md:flex"
       >
-        <div className="w-1 h-2 bg-[#FF4D7D] rounded-full mx-auto" />
+        <div className="mx-auto h-2 w-1 rounded-full bg-[color:var(--accent)]" />
       </motion.div>
     </section>
   );

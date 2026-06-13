@@ -1,13 +1,16 @@
-import { ButtonFactory } from "../../../components/Buttons/ButtonFactory";
-import { InputFactory } from "../../../components/Form/InputFactory";
 import { useState, useRef, JSX } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 import { LoadingDots } from "./LoadingDots";
 import PopUp from "./PopUp";
-import { motion } from "framer-motion";
+
+const inputBase =
+  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white placeholder:text-gray-500 outline-none transition-colors focus:border-[color:var(--accent)] focus:ring-1 focus:ring-[color:var(--accent)]/40";
 
 export const Form = () => {
-  const [buttonText, setButtonText] = useState<JSX.Element | string>("Send");
+  const [buttonText, setButtonText] = useState<JSX.Element | string>(
+    "Send message",
+  );
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -21,38 +24,6 @@ export const Form = () => {
     formDeliverOk:
       "The message has been successfully sent. I will get in touch with you shortly.",
   };
-
-  const NameInput = InputFactory.createInput(
-    "primary",
-    "Name",
-    "text",
-    "from_name",
-    fullName,
-    (e) => setFullName(e.target.value),
-  );
-
-  const EmailInput = InputFactory.createInput(
-    "primary",
-    "Email",
-    "email",
-    "reply_to",
-    email,
-    (e) => setEmail(e.target.value),
-  );
-
-  const MessageInput = InputFactory.createInput(
-    "secondary",
-    "Message",
-    "text",
-    "message",
-    message,
-    (e) => setMessage(e.target.value),
-  );
-
-  const SubmitButton = ButtonFactory.createButton({
-    type: "primary",
-    label: buttonText,
-  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,7 +40,6 @@ export const Form = () => {
       }, 3500);
       return;
     }
-
     setFormErrors(false);
     setButtonText(<LoadingDots />);
     sendEmail();
@@ -77,7 +47,6 @@ export const Form = () => {
 
   const sendEmail = () => {
     if (!form.current) return;
-
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAIL_SERVICE_ID,
@@ -86,36 +55,27 @@ export const Form = () => {
         import.meta.env.VITE_EMAILJS_API_KEY,
       )
       .then(
-        (response) => {
-          console.log("Email enviado:", response);
+        () => {
           setErrorManagement(errorManager.formDeliverOk);
           setEmail("");
           setFullName("");
           setMessage("");
-          setButtonText("Send");
+          setButtonText("Send message");
           setFormErrors(true);
-          setTimeout(() => {
-            setFormErrors(false);
-          }, 4000);
+          setTimeout(() => setFormErrors(false), 4000);
         },
         (error) => {
           console.log("Error:", error.status, "description:", error.text);
           setErrorManagement(errorManager.formDeliverError);
           setFormErrors(true);
-          setTimeout(() => {
-            setFormErrors(false);
-          }, 4000);
-          setButtonText("Send");
+          setTimeout(() => setFormErrors(false), 4000);
+          setButtonText("Send message");
         },
       );
   };
 
   return (
-    <form
-      className="flex flex-col w-full gap-5 sm:gap-6"
-      ref={form}
-      onSubmit={handleSubmit}
-    >
+    <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-5">
       {formErrors && errorManagement && (
         <PopUp
           message={errorManagement}
@@ -124,20 +84,41 @@ export const Form = () => {
           }
         />
       )}
-      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-        <div className="text-left">{NameInput.render()}</div>
-        <div className="text-left">{EmailInput.render()}</div>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <input
+          name="from_name"
+          type="text"
+          placeholder="Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          className={inputBase}
+        />
+        <input
+          name="reply_to"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className={inputBase}
+        />
       </div>
-      <div className="w-full text-left">{MessageInput.render()}</div>
-      <div className="flex justify-stretch sm:justify-end mt-6 sm:mt-4">
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full md:w-auto"
-        >
-          {SubmitButton.render()}
-        </motion.div>
-      </div>
+      <textarea
+        name="message"
+        rows={5}
+        placeholder="Tell me about your project…"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        className={`${inputBase} resize-none`}
+      />
+      <motion.button
+        type="submit"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        data-cursor="hover"
+        className="self-stretch rounded-full bg-[color:var(--accent)] px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.35)] sm:self-start"
+      >
+        {buttonText}
+      </motion.button>
     </form>
   );
 };

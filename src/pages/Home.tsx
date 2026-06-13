@@ -3,14 +3,16 @@ import Experience from "@/sections/Experience/Experience";
 import { Hero } from "@/sections/Hero/Hero";
 import Projects from "@/sections/Projects/Projects";
 import Skills from "@/sections/Skills/Skills";
+import Value from "@/sections/Value/Value";
 
 const Home = () => {
   return (
-    <main className="md:gap-20 flex flex-col justify-center items-center w-[100%]">
+    <main className="flex w-full flex-col items-center">
       <Hero />
+      <Value />
+      <Projects />
       <Skills />
       <Experience />
-      <Projects />
       <Contact />
     </main>
   );
