@@ -72,6 +72,92 @@
     "buttonText": "Docs"
   },
   {
+    "id": 11,
+    "title": "Epic Sound Studio",
+    "type": "Project",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwindcss",
+      "Framer Motion",
+      "Zustand",
+      "React Query"
+    ],
+    "description": "An open music streaming app built on the Audius network, with a custom waveform player, trending charts, artist and playlist pages.",
+    "longDescription": "Epic Sound Studio is a full music streaming web app built on top of the decentralized Audius network. It pairs a cinematic landing page with a streaming home (trending tracks and an underground trending chart), artist and playlist pages, search, and a custom audio player with waveform visualization powered by wavesurfer.js.\nBuilt with Next.js (App Router) and TypeScript, it uses TanStack React Query to fetch and cache data from the Audius API, Zustand for global player state, and Framer Motion for fluid transitions. The design leans into a bold neon-purple identity with custom variable fonts (Clash Display + Supreme).",
+    "insights": {
+      "purpose": {
+        "text": "The goal was to build a production-grade streaming experience on an open, artist-first network — proving that a polished, modern music UI can run entirely on the decentralized Audius API without a traditional backend of my own."
+      },
+      "designApproach": {
+        "text": "A bold neon-purple identity with strong typographic contrast and immersive motion. The app is organized feature-first (landing, home, player, playlist, artist, search), with a reusable player and waveform component, server data cached via React Query and playback state held in Zustand.",
+        "images": [
+          "/projects/epic-sound-studio/epic-player.png",
+          "/projects/epic-sound-studio/epic-more.png"
+        ]
+      },
+      "challenges": {
+        "text": "Working against a third-party decentralized API meant handling inconsistent data, loading states and rate limits gracefully, and keeping global playback in sync across pages. Integrating wavesurfer.js into the player while keeping interactions smooth and the bundle lean took careful state management.",
+        "images": [
+          "/projects/epic-sound-studio/epic-landing.png",
+          "/projects/epic-sound-studio/epic-player.png"
+        ]
+      }
+    },
+    "code": "https://github.com/emanuelpps/epic-sound-studio",
+    "deploy": "",
+    "frontImage": "/projects/epic-sound-studio/epic-landing.png",
+    "image": "/projects/epic-sound-studio/epic-more.png",
+    "image2": "/projects/epic-sound-studio/epic-player.png",
+    "gallery": [
+      "/projects/epic-sound-studio/epic-more.png"
+    ],
+    "buttonText": "Code"
+  },
+  {
+    "id": 12,
+    "title": "Creep.exe",
+    "type": "Project",
+    "stack": [
+      "Electron",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Phaser",
+      "Zustand"
+    ],
+    "description": "A horror-productivity desktop pet: a transparent, always-on-top pixel creature that escalates as you go idle and blackmails you back to focus.",
+    "longDescription": "Creep.exe is an Electron desktop app — a transparent, always-on-top overlay that renders an animated pixel-art creature (VELO) which watches you work. As your inactivity grows, VELO escalates through nine states (dormido, idle, alerta, inquieto, hambriento, agresivo, furioso, pre-liberado, liberado), each with its own spritesheet, ambient audio and threatening messages, blackmailing you back into focus. Everything runs locally, with no backend.\nA two-process Electron architecture splits a Node main process (window management, IPC, system idle tracking, local JSON persistence, and a local server for a companion Chrome website-blocker extension) from a React 19 + Vite renderer driven by a single Zustand store. The overlay uses click-through hit-testing so the mouse passes through except over the creature and its panels.",
+    "insights": {
+      "purpose": {
+        "text": "An experiment in 'horror productivity' — turning a desktop pet into an accountability device. The idea was to make focus emotionally sticky: a creature that reacts to your idle time and guilt-trips you back to work, all privately and offline."
+      },
+      "designApproach": {
+        "text": "A lo-fi horror identity: pixel-art sprites, CRT scanlines, glitch typography and an escalating red palette. Behaviour lives in hooks driven by a single Zustand state machine; each state maps to a spritesheet, phrase bank and audio loop. The transparent, always-on-top window with click-through hit-testing makes the creature feel like it lives on your desktop.",
+        "images": [
+          "/projects/creep-exe/creep-states.png",
+          "/projects/creep-exe/creep-overlay.png"
+        ]
+      },
+      "challenges": {
+        "text": "Bridging Electron's main and renderer processes cleanly (IPC contract, system idle polling, local persistence) while keeping the overlay click-through except over real content required careful mousemove hit-testing with elementFromPoint. Driving nine animated states, audio and a Chrome-extension blocker from a single store — without a backend — was the core engineering challenge.",
+        "images": [
+          "/projects/creep-exe/creep-hero.png",
+          "/projects/creep-exe/creep-overlay.png"
+        ]
+      }
+    },
+    "code": "https://github.com/emanuelpps/creep-exe",
+    "deploy": "",
+    "frontImage": "/projects/creep-exe/creep-hero.png",
+    "image": "/projects/creep-exe/creep-overlay.png",
+    "image2": "/projects/creep-exe/creep-hero.png",
+    "gallery": [
+      "/projects/creep-exe/creep-states.png"
+    ],
+    "buttonText": "Code"
+  },
+  {
     "id": 4,
     "title": "The Coffee Roastery",
     "type": "Project",
