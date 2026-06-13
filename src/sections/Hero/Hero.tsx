@@ -131,7 +131,7 @@ export const Hero = () => {
           <span className="relative mx-[0.14em] inline-block py-[0.08em]">
             <span className="inline-block overflow-hidden align-bottom">
               <motion.span
-                className="hero-shimmer font-editorial inline-block pr-[0.08em] italic"
+                className="hero-shimmer inline-block pr-[0.06em]"
                 variants={{
                   hidden: { y: "115%" },
                   show: { y: 0, transition: { duration: 0.9, ease: EASE } },

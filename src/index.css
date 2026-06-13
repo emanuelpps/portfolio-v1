@@ -262,11 +262,6 @@ html.lenis body {
     animation: hero-shimmer 5s linear infinite;
 }
 
-/* Editorial display serif for accent words (system stack — zero network cost) */
-.font-editorial {
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-}
-
 @media (prefers-reduced-motion: reduce) {
 
     *,
