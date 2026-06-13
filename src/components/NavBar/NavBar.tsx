@@ -58,20 +58,24 @@ const NavBar: React.FC = () => {
             : "w-full rounded-2xl border border-transparent bg-transparent md:w-[92%]"
         }`}
       >
-        <button
-          onClick={() => go("home")}
-          data-cursor="hover"
-          aria-label="Back to top"
-          className="flex-shrink-0"
-        >
-          <img
-            src={LogoEP}
-            alt="Emanuel Pagés"
-            className="h-10 w-10 rounded-xl border border-white/10 opacity-90 transition-opacity hover:opacity-100"
-          />
-        </button>
+        {/* Left — logo */}
+        <div className="flex flex-1 justify-start">
+          <button
+            onClick={() => go("home")}
+            data-cursor="hover"
+            aria-label="Back to top"
+            className="flex-shrink-0"
+          >
+            <img
+              src={LogoEP}
+              alt="Emanuel Pagés"
+              className="h-10 w-10 rounded-xl border border-white/10 opacity-90 transition-opacity hover:opacity-100"
+            />
+          </button>
+        </div>
 
-        <div className="hidden items-center gap-9 lg:flex">
+        {/* Center — links */}
+        <div className="hidden flex-1 items-center justify-center gap-9 lg:flex">
           {LINKS.map((l) => (
             <button
               key={l.to}
@@ -85,35 +89,38 @@ const NavBar: React.FC = () => {
           ))}
         </div>
 
-        <div className="hidden lg:block">
-          <MagneticButton
-            onClick={() => go("contact")}
-            data-cursor="hover"
-            className="rounded-full bg-[color:var(--accent)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_0_25px_rgba(255,77,125,0.35)] transition-transform"
-          >
-            Let&apos;s talk
-          </MagneticButton>
-        </div>
+        {/* Right — action / menu toggle */}
+        <div className="flex flex-1 items-center justify-end">
+          <div className="hidden lg:block">
+            <MagneticButton
+              onClick={() => go("contact")}
+              data-cursor="hover"
+              className="rounded-full bg-[color:var(--accent)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_0_25px_rgba(255,77,125,0.35)] transition-transform"
+            >
+              Let&apos;s talk
+            </MagneticButton>
+          </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          className="relative z-[120] flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-        >
-          <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-white"
-          />
-          <motion.span
-            animate={open ? { opacity: 0 } : { opacity: 1 }}
-            className="block h-0.5 w-6 bg-white"
-          />
-          <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-white"
-          />
-        </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            className="relative z-[120] flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          >
+            <motion.span
+              animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-white"
+            />
+            <motion.span
+              animate={open ? { opacity: 0 } : { opacity: 1 }}
+              className="block h-0.5 w-6 bg-white"
+            />
+            <motion.span
+              animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-white"
+            />
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
