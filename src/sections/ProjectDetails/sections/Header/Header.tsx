@@ -21,7 +21,7 @@ const Header = ({
   return (
     <header className="pt-20 md:pt-32 flex flex-col gap-10">
       <div className="space-y-4">
-        <div className="opacity-50 tracking-[0.5em] text-[10px] uppercase font-mono">
+        <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-[color:var(--accent)]">
           Project Showcase
         </div>
         <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white">

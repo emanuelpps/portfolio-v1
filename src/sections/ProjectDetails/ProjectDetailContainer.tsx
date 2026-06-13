@@ -27,7 +27,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
     // CAMBIO CLAVE: fixed inset-0 para cubrir toda la pantalla y z-index superior
     <div
       ref={scrollContainerRef} // El scroll ahora sucede aquí adentro
-      className="fixed inset-0 z-[9999] w-full h-screen bg-[#0F1724] overflow-y-auto overflow-x-hidden scroll-smooth"
+      className="fixed inset-0 z-[9999] w-full h-screen bg-[color:var(--bg)] overflow-y-auto overflow-x-hidden scroll-smooth"
     >
       {/* Fondo sutil para no perder la estética del portfolio */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,125,0.05)_0%,transparent_50%)] pointer-events-none" />
@@ -65,6 +65,8 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
                 viewport={{ once: true }}
                 key={i}
                 src={img}
+                alt={`${project.title} detail ${i + 1}`}
+                loading="lazy"
                 className="w-full rounded-[2.5rem] border border-white/5 shadow-2xl hover:border-white/10 transition-colors duration-500"
               />
             ))}
@@ -86,6 +88,8 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
                 viewport={{ once: true }}
                 key={i}
                 src={img}
+                alt={`${project.title} detail ${i + 1}`}
+                loading="lazy"
                 className="w-full rounded-[2.5rem] border border-white/5 shadow-2xl hover:border-white/10 transition-colors duration-500"
               />
             ))}

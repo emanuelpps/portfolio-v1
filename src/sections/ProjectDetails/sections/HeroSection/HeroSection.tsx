@@ -15,10 +15,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <div className="flex flex-col gap-16 w-full">
-      <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-[2.5rem] border border-white/5 bg-[#1a1c20] shadow-2xl">
+      <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-[2.5rem] border border-white/5 bg-[color:var(--bg-soft)] shadow-2xl">
         <img
           src={mainImageTwo}
           alt="Project Showcase"
+          loading="lazy"
           className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
         />
         <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />

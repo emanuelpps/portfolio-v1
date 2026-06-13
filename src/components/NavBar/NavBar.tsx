@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useMatch } from "react-router-dom";
 import LogoEP from "@/assets/images/epLogo.png";
 import { useScroll } from "@/hooks/UseScroll";
 import { getLenis } from "@/lib/SmoothScroll";
@@ -19,6 +20,7 @@ const NavBar: React.FC = () => {
   const { scrollTo } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const onProjectPage = useMatch("/project/:projectId");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -48,6 +50,10 @@ const NavBar: React.FC = () => {
     // allow the overlay to start closing before scrolling
     setTimeout(() => scrollTo(to), open ? 280 : 0);
   };
+
+  // The project-detail overlay is fullscreen with its own close button —
+  // hide the site nav while it is open.
+  if (onProjectPage) return null;
 
   return (
     <header className="fixed left-0 top-0 z-[100] flex w-full justify-center py-4 md:py-6">

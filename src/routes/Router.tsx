@@ -21,7 +21,7 @@ const AppRoutes = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-[#0F1724]"
+            className="fixed inset-0 z-50 overflow-y-auto bg-[color:var(--bg)]"
           >
             <ProjectDetails project={project} />
           </motion.div>
