@@ -271,3 +271,45 @@ html.lenis body {
         transition-duration: 0.001ms !important;
     }
 }
+
+/* ===== Accessibility & interaction polish ===== */
+
+/* On-brand keyboard focus ring (only for keyboard users) */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Snappier taps, no blue tap flash */
+a,
+button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: rgba(255, 77, 125, 0.3);
+    color: #fff;
+}
+
+/* Skip-to-content link for keyboard users */
+.skip-link {
+    position: fixed;
+    left: 50%;
+    top: -120px;
+    transform: translateX(-50%);
+    z-index: 300;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 0 0 12px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: top 0.25s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}

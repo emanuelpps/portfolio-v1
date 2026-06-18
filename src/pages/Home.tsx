@@ -7,7 +7,7 @@ import Value from "@/sections/Value/Value";
 
 const Home = () => {
   return (
-    <main className="flex w-full flex-col items-center">
+    <main id="main-content" className="flex w-full flex-col items-center">
       <Hero />
       <Value />
       <Projects />

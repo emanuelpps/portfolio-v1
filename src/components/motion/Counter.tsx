@@ -36,7 +36,7 @@ export function Counter({
   }, [inView, to, reducedMotion, mv]);
 
   return (
-    <motion.span ref={ref} className={className}>
+    <motion.span ref={ref} className={`tabular-nums ${className ?? ""}`}>
       {rounded}
     </motion.span>
   );

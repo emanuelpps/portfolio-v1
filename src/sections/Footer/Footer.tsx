@@ -36,7 +36,7 @@ const Footer = () => {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
           <p className="text-xs text-gray-500">© 2026 Emanuel Pagés</p>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-gray-500">
             Built with React, TypeScript &amp; Framer Motion.
           </p>
           <div className="flex items-center gap-6">

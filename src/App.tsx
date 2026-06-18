@@ -7,6 +7,9 @@ import { CustomCursor } from "@/components/motion/CustomCursor";
 function App() {
   return (
     <div className="grain relative min-h-screen w-full overflow-x-hidden bg-[color:var(--bg)]">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <Atmosphere />
       <CustomCursor />
       <Header />

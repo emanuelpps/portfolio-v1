@@ -46,7 +46,7 @@ export const Hero = () => {
       ref={refs.refHome}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-5 text-center sm:px-8"
+      className="relative flex min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-5 text-center sm:px-8"
     >
       {/* Cursor-reactive aurora spotlight */}
       <motion.div
