@@ -92,25 +92,25 @@
       "designApproach": {
         "text": "A bold neon-purple identity with strong typographic contrast and immersive motion. The app is organized feature-first (landing, home, player, playlist, artist, search), with a reusable player and waveform component, server data cached via React Query and playback state held in Zustand.",
         "images": [
-          "/projects/epic-sound-studio/epic-player.png",
-          "/projects/epic-sound-studio/epic-more.png"
+          "/projects/epic-sound-studio/epic-player.webp",
+          "/projects/epic-sound-studio/epic-more.webp"
         ]
       },
       "challenges": {
         "text": "Working against a third-party decentralized API meant handling inconsistent data, loading states and rate limits gracefully, and keeping global playback in sync across pages. Integrating wavesurfer.js into the player while keeping interactions smooth and the bundle lean took careful state management.",
         "images": [
-          "/projects/epic-sound-studio/epic-landing.png",
-          "/projects/epic-sound-studio/epic-player.png"
+          "/projects/epic-sound-studio/epic-landing.webp",
+          "/projects/epic-sound-studio/epic-player.webp"
         ]
       }
     },
     "code": "https://github.com/emanuelpps/epic-sound-studio",
     "deploy": "",
-    "frontImage": "/projects/epic-sound-studio/epic-landing.png",
-    "image": "/projects/epic-sound-studio/epic-more.png",
-    "image2": "/projects/epic-sound-studio/epic-player.png",
+    "frontImage": "/projects/epic-sound-studio/epic-landing.webp",
+    "image": "/projects/epic-sound-studio/epic-more.webp",
+    "image2": "/projects/epic-sound-studio/epic-player.webp",
     "gallery": [
-      "/projects/epic-sound-studio/epic-more.png"
+      "/projects/epic-sound-studio/epic-more.webp"
     ],
     "buttonText": "Code"
   },
@@ -135,25 +135,25 @@
       "designApproach": {
         "text": "A lo-fi horror identity: pixel-art sprites, CRT scanlines, glitch typography and an escalating red palette. Behaviour lives in hooks driven by a single Zustand state machine; each state maps to a spritesheet, phrase bank and audio loop. The transparent, always-on-top window with click-through hit-testing makes the creature feel like it lives on your desktop.",
         "images": [
-          "/projects/creep-exe/creep-states.png",
-          "/projects/creep-exe/creep-overlay.png"
+          "/projects/creep-exe/creep-states.webp",
+          "/projects/creep-exe/creep-overlay.webp"
         ]
       },
       "challenges": {
         "text": "Bridging Electron's main and renderer processes cleanly (IPC contract, system idle polling, local persistence) while keeping the overlay click-through except over real content required careful mousemove hit-testing with elementFromPoint. Driving nine animated states, audio and a Chrome-extension blocker from a single store — without a backend — was the core engineering challenge.",
         "images": [
-          "/projects/creep-exe/creep-hero.png",
-          "/projects/creep-exe/creep-overlay.png"
+          "/projects/creep-exe/creep-hero.webp",
+          "/projects/creep-exe/creep-overlay.webp"
         ]
       }
     },
     "code": "https://github.com/emanuelpps/creep-exe",
     "deploy": "",
-    "frontImage": "/projects/creep-exe/creep-hero.png",
-    "image": "/projects/creep-exe/creep-overlay.png",
-    "image2": "/projects/creep-exe/creep-hero.png",
+    "frontImage": "/projects/creep-exe/creep-hero.webp",
+    "image": "/projects/creep-exe/creep-overlay.webp",
+    "image2": "/projects/creep-exe/creep-hero.webp",
     "gallery": [
-      "/projects/creep-exe/creep-states.png"
+      "/projects/creep-exe/creep-states.webp"
     ],
     "buttonText": "Code"
   },
