@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import ExperienceItem, { ItemTypes } from "./ExperienceItem";
 import { SectionLabel, SectionHeading } from "@/components/ui/Section";
 
@@ -71,15 +70,8 @@ const EXPERIENCES = [
 ];
 
 const ExperienceContainer = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 80%", "end 20%"],
-  });
-  const pathHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
-    <div className="mx-auto w-full max-w-6xl px-5 sm:px-8" ref={containerRef}>
+    <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-8">
       <div className="mb-16">
         <SectionLabel index="04">Experience</SectionLabel>
         <SectionHeading>Ten years building for outcomes.</SectionHeading>
@@ -88,8 +80,11 @@ const ExperienceContainer = () => {
       <div className="relative">
         <div className="absolute left-1/2 top-0 hidden h-full w-[2px] -translate-x-1/2 bg-white/10 md:block" />
         <motion.div
-          className="absolute left-1/2 top-0 z-10 hidden w-[2px] -translate-x-1/2 bg-gradient-to-b from-[color:var(--accent)] to-purple-600 shadow-[0_0_15px_rgba(255,77,125,0.5)] md:block"
-          style={{ height: pathHeight }}
+          className="absolute left-1/2 top-0 z-10 hidden h-full w-[2px] -translate-x-1/2 origin-top bg-gradient-to-b from-[color:var(--accent)] to-purple-600 shadow-[0_0_15px_rgba(255,77,125,0.5)] md:block"
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
         />
         <div className="absolute left-3.5 top-0 h-full w-[2px] bg-white/10 md:hidden" />
         <div className="relative flex flex-col">
