@@ -10,10 +10,10 @@ const SkillCard = ({ name, Icon }: SkillCardProp) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-      transition={{ duration: 0.4 }}
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.85 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -5 }}
       className="relative group flex flex-col items-center justify-center p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-md transition-all duration-500 hover:border-[#FF4D7D]/30"
     >

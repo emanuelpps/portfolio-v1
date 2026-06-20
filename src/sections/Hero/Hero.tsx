@@ -161,8 +161,8 @@ export const Hero = () => {
 
         {/* Subhead */}
         <motion.p
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
           className="mt-9 max-w-2xl text-base font-light leading-relaxed text-gray-400 sm:text-lg md:text-xl"
         >

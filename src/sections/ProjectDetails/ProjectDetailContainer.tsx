@@ -1,16 +1,69 @@
 import React from "react";
-import Header from "./sections/Header/Header";
-import { ProjectTypes } from "../../types/ProjectTypes";
-import { HeroSection } from "./sections/HeroSection/HeroSection";
-import { GoUp } from "./components/GoUp";
-import { TitlesFactory } from "@/components/Titles/TitlesFactory";
-import { CloseButton } from "./sections/Header/components/CloseButton";
+import { Link } from "react-router-dom";
+import { FaGithub } from "react-icons/fa";
+import { GoArrowUpRight } from "react-icons/go";
+import { RiArrowLeftLine } from "react-icons/ri";
 import { motion } from "framer-motion";
+import { ProjectTypes } from "../../types/ProjectTypes";
+import { Reveal } from "@/components/motion/Reveal";
+import { AnimatedText } from "@/components/motion/AnimatedText";
+import { GoUp } from "./components/GoUp";
 
 interface ProjectDetailContainerProps {
   project: ProjectTypes;
   scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 }
+
+const Gallery = ({ images, title }: { images?: string[]; title: string }) => {
+  if (!images || images.length === 0) return null;
+  return (
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      {images.map((src, i) => (
+        <Reveal key={i} delay={i * 0.06} className={images.length === 1 ? "sm:col-span-2" : ""}>
+          <img
+            src={src}
+            alt={`${title} — view ${i + 1}`}
+            loading="lazy"
+            className="w-full rounded-2xl border border-white/10 object-cover shadow-2xl transition-colors duration-500 hover:border-[color:var(--accent)]/40"
+          />
+        </Reveal>
+      ))}
+    </div>
+  );
+};
+
+const CaseBlock = ({
+  index,
+  label,
+  text,
+  images,
+  title,
+}: {
+  index: string;
+  label: string;
+  text: string;
+  images?: string[];
+  title: string;
+}) => (
+  <section className="grid grid-cols-1 gap-8 border-t border-white/10 pt-16 lg:grid-cols-12 lg:gap-12">
+    <div className="lg:col-span-4">
+      <div className="lg:sticky lg:top-28">
+        <Reveal className="eyebrow flex items-center gap-3">
+          <span className="text-[color:var(--accent)]">({index})</span>
+          <span>{label}</span>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <p className="mt-5 text-lg font-light leading-relaxed text-gray-400">
+            {text}
+          </p>
+        </Reveal>
+      </div>
+    </div>
+    <div className="lg:col-span-8">
+      <Gallery images={images} title={title} />
+    </div>
+  </section>
+);
 
 const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
   project,
@@ -18,86 +71,198 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
 }) => {
   if (!project)
     return (
-      <p className="h-screen flex items-center justify-center">
-        Project Not Found
-      </p>
+      <div className="flex h-screen items-center justify-center text-white">
+        Project not found
+      </div>
     );
 
+  const { purpose, designApproach, challenges } = project.insights;
+  const paragraphs = project.longDescription
+    .split("\n")
+    .filter((p) => p.trim() !== "");
+
   return (
-    // CAMBIO CLAVE: fixed inset-0 para cubrir toda la pantalla y z-index superior
     <div
-      ref={scrollContainerRef} // El scroll ahora sucede aquí adentro
-      className="fixed inset-0 z-[9999] w-full h-screen bg-[color:var(--bg)] overflow-y-auto overflow-x-hidden scroll-smooth"
+      ref={scrollContainerRef}
+      className="fixed inset-0 z-[9999] h-screen w-full overflow-y-auto overflow-x-hidden bg-[color:var(--bg)]"
     >
-      {/* Fondo sutil para no perder la estética del portfolio */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,125,0.05)_0%,transparent_50%)] pointer-events-none" />
+      {/* ambient glow */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,125,0.10),transparent_60%)]" />
 
-      <div className="relative w-full max-w-[1400px] mx-auto px-4 md:px-10 pb-32 space-y-32">
-        <CloseButton />
-
-        <Header
-          title={project.title}
-          subtitle={project.description}
-          stack={project.stack}
-          deploy={project.deploy}
-          code={project.code}
-          buttonText={project.buttonText}
-        />
-
-        <HeroSection
-          mainImage={project.image}
-          mainImageTwo={project.image2}
-          longDescription={project.longDescription}
-          type={project.type}
-        />
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
-            {TitlesFactory.createTitle("tertiary", "Design Approach").render()}
-            <p className="text-gray-400 font-light leading-relaxed text-balance italic">
-              {project.insights.designApproach.text}
-            </p>
-          </div>
-          <div className="lg:col-span-8 space-y-20">
-            {project.insights.designApproach.images?.map((img, i) => (
-              <motion.img
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                key={i}
-                src={img}
-                alt={`${project.title} detail ${i + 1}`}
-                loading="lazy"
-                className="w-full rounded-[2.5rem] border border-white/5 shadow-2xl hover:border-white/10 transition-colors duration-500"
-              />
-            ))}
-          </div>
-        </section>
-
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
-            {TitlesFactory.createTitle("tertiary", "Challenges").render()}
-            <p className="text-gray-400 font-light leading-relaxed text-balance italic">
-              {project.insights.challenges.text}
-            </p>
-          </div>
-          <div className="lg:col-span-8 space-y-20">
-            {project.insights.challenges.images?.map((img, i) => (
-              <motion.img
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                key={i}
-                src={img}
-                alt={`${project.title} detail ${i + 1}`}
-                loading="lazy"
-                className="w-full rounded-[2.5rem] border border-white/5 shadow-2xl hover:border-white/10 transition-colors duration-500"
-              />
-            ))}
-          </div>
-        </section>
-
-        <GoUp scrollContainerRef={scrollContainerRef} />
+      {/* Sticky top bar */}
+      <div className="sticky top-0 z-30 border-b border-white/10 bg-[color:var(--bg)]/70 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+          <Link
+            to="/"
+            data-cursor="hover"
+            className="group flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-white"
+          >
+            <RiArrowLeftLine className="transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to work
+          </Link>
+          <span className="eyebrow hidden sm:block">{project.type}</span>
+          <Link
+            to="/"
+            aria-label="Close case study"
+            data-cursor="hover"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/70 transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+          >
+            ✕
+          </Link>
+        </div>
       </div>
+
+      <div className="relative mx-auto w-full max-w-6xl px-5 pb-32 sm:px-8">
+        {/* Hero */}
+        <header className="pt-16 sm:pt-24">
+          <Reveal className="eyebrow text-[color:var(--accent)]">
+            {project.type} — Case study
+          </Reveal>
+          <AnimatedText
+            el="h1"
+            text={project.title}
+            className="mt-4 flex flex-wrap text-4xl font-black leading-[1.02] tracking-tighter text-white sm:text-6xl md:text-7xl"
+          />
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-gray-400 sm:text-xl">
+              {project.description}
+            </p>
+          </Reveal>
+
+          {/* Meta: stack + links */}
+          <Reveal delay={0.15}>
+            <div className="mt-9 flex flex-col gap-6 border-y border-white/10 py-6 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-wider text-gray-400"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex shrink-0 items-center gap-6">
+                {project.code && (
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="group flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-300 transition-colors hover:text-white"
+                  >
+                    <FaGithub className="text-base" /> Repository
+                  </a>
+                )}
+                {project.deploy && (
+                  <a
+                    href={project.deploy}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="group flex items-center gap-1.5 rounded-full bg-[color:var(--accent)] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_24px_rgba(255,77,125,0.35)]"
+                  >
+                    {project.buttonText || "Live"}
+                    <GoArrowUpRight className="text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Hero showcase image */}
+          <Reveal variant="blurIn" delay={0.1} className="mt-12">
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl">
+              <img
+                src={project.image2}
+                alt={`${project.title} showcase`}
+                loading="lazy"
+                className="aspect-video w-full object-cover"
+              />
+            </div>
+          </Reveal>
+        </header>
+
+        {/* Overview */}
+        <section className="mt-24 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <Reveal className="eyebrow flex items-center gap-3 lg:sticky lg:top-28">
+              <span className="text-[color:var(--accent)]">(01)</span>
+              <span>Overview</span>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-8">
+            <div className="flex flex-col gap-6">
+              {paragraphs.map((para, i) => (
+                <Reveal key={i} delay={i * 0.05}>
+                  <p className="text-xl font-light leading-relaxed text-gray-200 sm:text-2xl">
+                    {para}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-24 flex flex-col gap-24">
+          {purpose?.text && (
+            <CaseBlock
+              index="02"
+              label="Purpose"
+              text={purpose.text}
+              title={project.title}
+            />
+          )}
+          {designApproach?.text && (
+            <CaseBlock
+              index="03"
+              label="Design approach"
+              text={designApproach.text}
+              images={designApproach.images}
+              title={project.title}
+            />
+          )}
+          {challenges?.text && (
+            <CaseBlock
+              index="04"
+              label="Challenges"
+              text={challenges.text}
+              images={challenges.images}
+              title={project.title}
+            />
+          )}
+        </div>
+
+        {/* Footer CTA */}
+        <section className="mt-28 flex flex-col items-center gap-6 border-t border-white/10 pt-16 text-center">
+          <span className="eyebrow">End of case study</span>
+          <AnimatedText
+            el="h2"
+            text="Like what you see?"
+            className="flex flex-wrap justify-center text-3xl font-black tracking-tight text-white sm:text-5xl"
+          />
+          <div className="mt-2 flex flex-col items-center gap-4 sm:flex-row">
+            <Link
+              to="/"
+              data-cursor="hover"
+              className="rounded-full border border-white/15 px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-white/40"
+            >
+              ← Back to all work
+            </Link>
+            <motion.a
+              href="mailto:emanuelpages.ps@gmail.com"
+              data-cursor="hover"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="rounded-full bg-[color:var(--accent)] px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.4)]"
+            >
+              Get in touch
+            </motion.a>
+          </div>
+        </section>
+      </div>
+
+      <GoUp scrollContainerRef={scrollContainerRef} />
     </div>
   );
 };

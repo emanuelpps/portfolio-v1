@@ -10,11 +10,11 @@ export const fadeUp: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: dur.base, ease: EASE } },
 };
 
+// Transform/opacity only — animating `filter: blur()` causes scroll/reveal jank.
 export const blurIn: Variants = {
-  hidden: { opacity: 0, filter: "blur(12px)", y: 16 },
+  hidden: { opacity: 0, y: 18 },
   show: {
     opacity: 1,
-    filter: "blur(0px)",
     y: 0,
     transition: { duration: dur.base, ease: EASE },
   },

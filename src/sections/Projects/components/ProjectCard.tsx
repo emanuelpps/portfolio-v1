@@ -17,13 +17,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       to={`/project/${project.id}`}
       state={project}
       data-cursor="hover"
-      className="group block"
+      aria-label={`${project.title} — view case study`}
+      className="group block h-full"
     >
-      <TiltCard className="relative overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--bg-soft)] transition-colors duration-500 group-hover:border-[color:var(--accent)]/40">
+      <TiltCard className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--bg-soft)] transition-colors duration-500 group-hover:border-[color:var(--accent)]/40">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={project.frontImage}
-            alt={project.title}
+            alt={`${project.title} preview`}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
@@ -46,28 +47,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
           </div>
         </div>
 
-        <div className="flex items-start justify-between gap-4 p-6">
-          <div className="min-w-0">
-            <p className="eyebrow mb-2">{project.type}</p>
-            <h3 className="text-2xl font-black tracking-tight text-white">
-              {project.title}
-            </h3>
-            <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-gray-400 line-clamp-2">
-              {project.description}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.stack.slice(0, 4).map((s) => (
-                <span
-                  key={s}
-                  className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] uppercase tracking-wider text-gray-400"
-                >
-                  {s}
-                </span>
-              ))}
+        <div className="flex flex-1 flex-col p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <p className="eyebrow mb-2">{project.type}</p>
+              <h3 className="text-2xl font-black tracking-tight text-white">
+                {project.title}
+              </h3>
+            </div>
+            <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/10 text-white transition-colors duration-300 group-hover:border-[color:var(--accent)] group-hover:bg-[color:var(--accent)]">
+              <GoArrowUpRight size={20} />
             </div>
           </div>
-          <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/10 text-white transition-colors duration-300 group-hover:border-[color:var(--accent)] group-hover:bg-[color:var(--accent)]">
-            <GoArrowUpRight size={20} />
+
+          <p className="mt-3 text-sm font-light leading-relaxed text-gray-400 line-clamp-2">
+            {project.description}
+          </p>
+
+          <div className="mt-auto flex flex-wrap gap-2 pt-5">
+            {project.stack.slice(0, 4).map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] uppercase tracking-wider text-gray-400"
+              >
+                {s}
+              </span>
+            ))}
           </div>
         </div>
       </TiltCard>
