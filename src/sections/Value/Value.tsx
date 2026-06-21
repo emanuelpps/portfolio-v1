@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Section, SectionLabel, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
 import { Counter } from "@/components/motion/Counter";
 import { fadeUp, stagger } from "@/lib/motion";
+import rawProjects from "@/data/Projects.json";
+import { ProjectTypes } from "@/types/ProjectTypes";
 
 const STATS: { to: number; suffix: string; label: string }[] = [
   { to: 10, suffix: "+", label: "Years in digital & product" },
@@ -10,6 +13,13 @@ const STATS: { to: number; suffix: string; label: string }[] = [
   { to: 2, suffix: "", label: "Open-source npm libraries" },
   { to: 9, suffix: "+", label: "Shipped projects" },
 ];
+
+const projects = rawProjects as ProjectTypes[];
+const epic = projects.find((p) => p.id === 11);
+const creep = projects.find((p) => p.id === 12);
+
+const productLink =
+  "font-medium text-white underline decoration-[color:var(--accent)]/40 underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]";
 
 const Value = () => {
   return (
@@ -26,6 +36,36 @@ const Value = () => {
           pixel-perfection.
         </p>
       </Reveal>
+
+      <div className="mt-8 max-w-3xl">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm sm:p-6">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            Also an indie hacker
+          </span>
+          <p className="mt-3 text-base font-light leading-relaxed text-gray-300 sm:text-lg">
+            Beyond client work, I design and ship my own products. Recent
+            builds:{" "}
+            <Link
+              to="/project/11"
+              state={epic}
+              data-cursor="hover"
+              className={productLink}
+            >
+              Epic Sound Studio
+            </Link>{" "}
+            (a music-streaming app) and{" "}
+            <Link
+              to="/project/12"
+              state={creep}
+              data-cursor="hover"
+              className={productLink}
+            >
+              Creep.exe
+            </Link>{" "}
+            (a horror desktop pet).
+          </p>
+        </div>
+      </div>
 
       <motion.div
         variants={stagger(0.1)}
