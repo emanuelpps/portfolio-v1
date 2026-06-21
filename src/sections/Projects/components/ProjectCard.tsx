@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
       aria-label={`${project.title} — view case study`}
       className="group block h-full"
     >
-      <TiltCard className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--bg-soft)] transition-colors duration-500 group-hover:border-[color:var(--accent)]/40">
+      <TiltCard className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--bg-soft)] shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)] transition-[border-color,box-shadow] duration-500 group-hover:border-[color:var(--accent)]/40 group-hover:shadow-[0_28px_80px_-24px_rgba(255,77,125,0.35)]">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={project.frontImage}

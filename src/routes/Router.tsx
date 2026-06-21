@@ -20,11 +20,12 @@ const AppRoutes = () => {
         {isProjectPage && (
           <motion.div
             key={location.pathname}
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-[color:var(--bg)]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
+            data-lenis-prevent
+            className="fixed inset-0 z-[60] overflow-y-auto overflow-x-hidden overscroll-contain bg-[color:var(--bg)]"
           >
             <Suspense fallback={null}>
               <ProjectDetails project={project} />

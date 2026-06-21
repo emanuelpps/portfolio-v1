@@ -1,28 +1,28 @@
 import { TfiArrowCircleUp } from "react-icons/tfi";
 import { motion } from "framer-motion";
 
-interface GoUpProps {
-  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
-}
-
-export const GoUp: React.FC<GoUpProps> = ({ scrollContainerRef }) => {
+export const GoUp = () => {
   const scrollToTop = () => {
-    scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    document
+      .querySelector("[data-lenis-prevent]")
+      ?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <motion.div
-      className="fixed bottom-5 right-2 md:right-10 z-[9999] cursor-pointer"
-      animate={{ y: [0, -8, 0] }}
+    <motion.button
+      type="button"
+      aria-label="Back to top"
+      onClick={scrollToTop}
+      className="fixed bottom-6 right-4 z-[70] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white/80 backdrop-blur-md transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] md:right-8"
+      animate={{ y: [0, -6, 0] }}
       transition={{
-        duration: 2,
+        duration: 2.4,
         repeat: Infinity,
         repeatType: "loop",
         ease: "easeInOut",
       }}
-      onClick={scrollToTop}
     >
-      <TfiArrowCircleUp className="text-3xl bg-black md:bg-transparent rounded-full text-white/90 md:hover:text-[#0F1724] md:hover:bg-white md:hover:rounded-full transition-all duration-300 " />
-    </motion.div>
+      <TfiArrowCircleUp className="text-2xl" />
+    </motion.button>
   );
 };

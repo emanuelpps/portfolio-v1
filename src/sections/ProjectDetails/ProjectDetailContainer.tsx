@@ -11,7 +11,6 @@ import { GoUp } from "./components/GoUp";
 
 interface ProjectDetailContainerProps {
   project: ProjectTypes;
-  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const Gallery = ({ images, title }: { images?: string[]; title: string }) => {
@@ -67,11 +66,10 @@ const CaseBlock = ({
 
 const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
   project,
-  scrollContainerRef,
 }) => {
   if (!project)
     return (
-      <div className="flex h-screen items-center justify-center text-white">
+      <div className="flex h-dvh items-center justify-center text-white">
         Project not found
       </div>
     );
@@ -82,10 +80,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
     .filter((p) => p.trim() !== "");
 
   return (
-    <div
-      ref={scrollContainerRef}
-      className="fixed inset-0 z-[9999] h-screen w-full overflow-y-auto overflow-x-hidden bg-[color:var(--bg)]"
-    >
+    <div className="relative w-full">
       {/* ambient glow */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,125,0.10),transparent_60%)]" />
 
@@ -262,7 +257,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
         </section>
       </div>
 
-      <GoUp scrollContainerRef={scrollContainerRef} />
+      <GoUp />
     </div>
   );
 };

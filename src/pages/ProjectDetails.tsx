@@ -1,36 +1,24 @@
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import ProjectDetailContainer from "../sections/ProjectDetails/ProjectDetailContainer";
 import { ProjectTypes } from "../types/ProjectTypes";
+import { getLenis } from "@/lib/SmoothScroll";
 
 interface ProjectDetailsProps {
   project: ProjectTypes;
 }
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
+    // Pause Lenis so the overlay's own scroll container handles the wheel.
+    const lenis = getLenis();
+    lenis?.stop();
     document.body.style.overflow = "hidden";
     return () => {
+      lenis?.start();
       document.body.style.overflow = "";
     };
   }, []);
 
-  return (
-    <motion.div
-      ref={containerRef}
-      initial={{ y: "100%", opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: "100%", opacity: 0 }}
-      transition={{ type: "tween", duration: 0.6 }}
-      className="fixed inset-0 z-50 bg-[color:var(--bg)] overflow-x-hidden overflow-y-auto"
-    >
-      <ProjectDetailContainer
-        project={project}
-        scrollContainerRef={containerRef}
-      />
-    </motion.div>
-  );
+  return <ProjectDetailContainer project={project} />;
 };
 
 export default ProjectDetails;
