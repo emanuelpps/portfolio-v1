@@ -5,7 +5,7 @@ import { ProjectTypes } from "@/types/ProjectTypes";
 import ProjectCard from "./ProjectCard";
 import { SectionLabel, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { EASE } from "@/lib/motion";
+import { fadeUp, stagger } from "@/lib/motion";
 
 const FILTERS = ["All", "Projects", "Libraries"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -81,21 +81,20 @@ export const ProjectsContainer = () => {
         </Reveal>
       </div>
 
-      <Reveal className="mt-14">
-        <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {filtered.map((p, i) => (
-            <motion.div
-              key={p.id}
-              layout
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: EASE }}
-            >
-              <ProjectCard project={p} index={i} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </Reveal>
+      <motion.div
+        layout
+        variants={stagger(0.06)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.04 }}
+        className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2"
+      >
+        {filtered.map((p, i) => (
+          <motion.div key={p.id} layout variants={fadeUp}>
+            <ProjectCard project={p} index={i} />
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 };
