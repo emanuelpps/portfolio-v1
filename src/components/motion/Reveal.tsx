@@ -7,7 +7,7 @@ export function Reveal({
   children,
   variant = "fadeUp",
   className,
-  amount = 0.3,
+  amount = 0.2,
   delay = 0,
 }: {
   children: ReactNode;

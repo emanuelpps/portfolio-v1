@@ -58,7 +58,7 @@ export const FormContainer = () => {
         </div>
       </div>
 
-      <div className="w-full rounded-3xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-2xl sm:p-8">
+      <div className="w-full rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
         <Form />
       </div>
     </div>

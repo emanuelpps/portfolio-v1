@@ -127,8 +127,8 @@ export const Hero = () => {
             </motion.span>
           </span>
 
-          {/* Last name — serif italic with animated sheen + drawn underline */}
-          <span className="relative mx-[0.14em] inline-block py-[0.08em]">
+          {/* Last name — animated sheen */}
+          <span className="mx-[0.14em] inline-block py-[0.08em]">
             <span className="inline-block overflow-hidden align-bottom">
               <motion.span
                 className="hero-shimmer inline-block pr-[0.06em]"
@@ -140,22 +140,6 @@ export const Hero = () => {
                 Pagés
               </motion.span>
             </span>
-            <svg
-              viewBox="0 0 220 14"
-              preserveAspectRatio="none"
-              className="absolute -bottom-1 left-0 h-3 w-full overflow-visible"
-            >
-              <motion.path
-                d="M3,9 C45,3 85,12 125,6 C158,1 192,8 217,4"
-                fill="none"
-                stroke="var(--accent)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 1.2, duration: 0.9, ease: EASE }}
-              />
-            </svg>
           </span>
         </motion.h1>
 

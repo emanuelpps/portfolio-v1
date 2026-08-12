@@ -1,7 +1,10 @@
 /** Fixed ambient background: soft accent/blue glows + a faint editorial grid. */
 export function Atmosphere() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      style={{ transform: "translateZ(0)", willChange: "transform" }}
+    >
       <div className="absolute -left-40 top-[-10%] h-[40rem] w-[40rem] rounded-full bg-[color:var(--accent-soft)] blur-[140px]" />
       <div className="absolute -right-40 top-[40%] h-[36rem] w-[36rem] rounded-full bg-blue-500/10 blur-[150px]" />
       <div

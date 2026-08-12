@@ -65,7 +65,7 @@ const ExperienceItem: FC<ExperienceTypeProps> = ({
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "circOut" }}
       >
-        <div className="group relative bg-white/[0.03] border border-white/10 backdrop-blur-xl p-5 sm:p-6 md:p-8 rounded-[1.5rem] sm:rounded-[2rem] hover:bg-white/[0.05] hover:border-[#FF4D7D]/40 transition-all duration-500 shadow-2xl">
+        <div className="group relative bg-white/[0.04] border border-white/10 p-5 sm:p-6 md:p-8 rounded-[1.5rem] sm:rounded-[2rem] hover:bg-white/[0.05] hover:border-[#FF4D7D]/40 transition-all duration-500 shadow-2xl">
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#FF4D7D]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative z-10">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-none mb-4">
