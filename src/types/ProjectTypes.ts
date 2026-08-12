@@ -4,6 +4,7 @@ export interface ProjectTypes {
   id: number;
   title: string;
   type: string;
+  status?: "in-development";
   stack: string[];
   description: string;
   longDescription: string;
@@ -17,16 +18,18 @@ export interface ProjectTypes {
   buttonText: string;
 }
 export interface InsightTypes {
+  // Every block renders its images when present; most older projects only
+  // carry them on designApproach and challenges.
   purpose: {
     text: string;
-    images: string[];
+    images?: string[];
   };
   designApproach: {
     text: string;
-    images: string[];
+    images?: string[];
   };
   challenges: {
     text: string;
-    images: string[];
+    images?: string[];
   };
 }

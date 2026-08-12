@@ -16,7 +16,6 @@ const STATS: { to: number; suffix: string; label: string }[] = [
 
 const projects = rawProjects as ProjectTypes[];
 const epic = projects.find((p) => p.id === 11);
-const creep = projects.find((p) => p.id === 12);
 
 const productLink =
   "font-medium text-white underline decoration-[color:var(--accent)]/40 underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]";
@@ -38,13 +37,12 @@ const Value = () => {
       </Reveal>
 
       <div className="mt-8 max-w-3xl">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm sm:p-6">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Also an indie hacker
           </span>
           <p className="mt-3 text-base font-light leading-relaxed text-gray-300 sm:text-lg">
-            Beyond client work, I design and ship my own products. Recent
-            builds:{" "}
+            Beyond client work, I design and ship my own products — like{" "}
             <Link
               to="/project/11"
               state={epic}
@@ -52,17 +50,8 @@ const Value = () => {
               className={productLink}
             >
               Epic Sound Studio
-            </Link>{" "}
-            (a music-streaming app) and{" "}
-            <Link
-              to="/project/12"
-              state={creep}
-              data-cursor="hover"
-              className={productLink}
-            >
-              Creep.exe
-            </Link>{" "}
-            (a horror desktop pet).
+            </Link>
+            , a music-streaming app built on the open Audius network.
           </p>
         </div>
       </div>

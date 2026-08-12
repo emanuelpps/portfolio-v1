@@ -115,47 +115,44 @@
     "buttonText": "Code"
   },
   {
-    "id": 12,
-    "title": "Creep.exe",
+    "id": 13,
+    "title": "Eckers RRHH Solutions",
     "type": "Project",
-    "stack": [
-      "Electron",
-      "React",
-      "TypeScript",
-      "Vite",
-      "Phaser",
-      "Zustand"
-    ],
-    "description": "A horror-productivity desktop pet: a transparent, always-on-top pixel creature that escalates as you go idle and blackmails you back to focus.",
-    "longDescription": "Creep.exe is an Electron desktop app — a transparent, always-on-top overlay that renders an animated pixel-art creature (VELO) which watches you work. As your inactivity grows, VELO escalates through nine states (dormido, idle, alerta, inquieto, hambriento, agresivo, furioso, pre-liberado, liberado), each with its own spritesheet, ambient audio and threatening messages, blackmailing you back into focus. Everything runs locally, with no backend.\nA two-process Electron architecture splits a Node main process (window management, IPC, system idle tracking, local JSON persistence, and a local server for a companion Chrome website-blocker extension) from a React 19 + Vite renderer driven by a single Zustand store. The overlay uses click-through hit-testing so the mouse passes through except over the creature and its panels.",
+    "stack": ["Next.js", "TypeScript", "Tailwindcss"],
+    "description": "Website for an HR consultancy in Argentina's Alto Valle, with two separate intake funnels: one for companies hiring and one for candidates.",
+    "longDescription": "Eckers RRHH Solutions is the website for a recruitment and HR consultancy based in General Roca, Río Negro. The landing page walks visitors through the firm's services, hiring process and regional story, and then splits them into two dedicated paths: one for companies that need to fill a vacancy, and one for professionals looking for their next role.\nIt is built with Next.js (App Router) and TypeScript, styled with Tailwind CSS. Each path has its own intake page: companies describe the position, location and urgency of the search, while candidates submit their profile, experience level, salary expectation, preferred contract type and a CV upload. Sections reveal as you scroll, and a floating WhatsApp button keeps the fastest contact channel one tap away on every page.",
     "insights": {
       "purpose": {
-        "text": "An experiment in 'horror productivity' — turning a desktop pet into an accountability device. The idea was to make focus emotionally sticky: a creature that reacts to your idle time and guilt-trips you back to work, all privately and offline."
+        "text": "The consultancy needed a presence that did more than describe the service — it had to qualify the people who get in touch. The goal was to turn two very different audiences, companies hiring and people looking for work, into two clear paths, each collecting exactly the information the team needs to start a search.",
+        "images": [
+          "/projects/eckers-solutions/eckers-about.webp",
+          "/projects/eckers-solutions/eckers-paths.webp"
+        ]
       },
       "designApproach": {
-        "text": "A lo-fi horror identity: pixel-art sprites, CRT scanlines, glitch typography and an escalating red palette. Behaviour lives in hooks driven by a single Zustand state machine; each state maps to a spritesheet, phrase bank and audio loop. The transparent, always-on-top window with click-through hit-testing makes the creature feel like it lives on your desktop.",
+        "text": "A calm corporate identity built on navy and cyan, generous white space and bold display type, so the site reads as trustworthy instead of loud. The homepage is structured like a funnel — value proposition, audience split, services, process, story, contact — and the two intake pages reuse the same form building blocks with their own fields. Everything is responsive-first with Tailwind, and content fades in on scroll to keep a long page feeling light.",
         "images": [
-          "/projects/creep-exe/creep-states.webp",
-          "/projects/creep-exe/creep-overlay.webp"
+          "/projects/eckers-solutions/eckers-services.webp",
+          "/projects/eckers-solutions/eckers-process.webp"
         ]
       },
       "challenges": {
-        "text": "Bridging Electron's main and renderer processes cleanly (IPC contract, system idle polling, local persistence) while keeping the overlay click-through except over real content required careful mousemove hit-testing with elementFromPoint. Driving nine animated states, audio and a Chrome-extension blocker from a single store — without a backend — was the core engineering challenge.",
+        "text": "The hard part was not the visuals but the forms: asking candidates for enough detail to be genuinely useful without turning the page into paperwork, handling CV uploads with format and size limits, and keeping the company form focused on what actually defines a search — role, location and urgency. Confidentiality is a real concern in a small regional market, so it also shaped the copy and how personal data is requested.",
         "images": [
-          "/projects/creep-exe/creep-hero.webp",
-          "/projects/creep-exe/creep-overlay.webp"
+          "/projects/eckers-solutions/eckers-candidatos.webp",
+          "/projects/eckers-solutions/eckers-empresas.webp"
         ]
       }
     },
-    "code": "https://github.com/emanuelpps/creep-exe",
-    "deploy": "",
-    "frontImage": "/projects/creep-exe/creep-hero.webp",
-    "image": "/projects/creep-exe/creep-overlay.webp",
-    "image2": "/projects/creep-exe/creep-hero.webp",
+    "code": "",
+    "deploy": "https://eckers-solutions.vercel.app/",
+    "frontImage": "/projects/eckers-solutions/eckers-hero.webp",
+    "image": "/projects/eckers-solutions/eckers-about.webp",
+    "image2": "/projects/eckers-solutions/eckers-hero.webp",
     "gallery": [
-      "/projects/creep-exe/creep-states.webp"
+      "/projects/eckers-solutions/eckers-about.webp"
     ],
-    "buttonText": "Code"
+    "buttonText": "Deploy"
   },
   {
     "id": 4,

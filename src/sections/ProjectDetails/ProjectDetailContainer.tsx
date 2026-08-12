@@ -13,18 +13,25 @@ interface ProjectDetailContainerProps {
   project: ProjectTypes;
 }
 
+/**
+ * Screenshots are wide and detail-heavy, so they run the full width of the
+ * case study instead of sitting in a narrow column — at half width the UI
+ * inside them is unreadable.
+ */
 const Gallery = ({ images, title }: { images?: string[]; title: string }) => {
   if (!images || images.length === 0) return null;
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    <div className="mt-12 flex flex-col gap-6 sm:gap-8">
       {images.map((src, i) => (
-        <Reveal key={i} delay={i * 0.06} className={images.length === 1 ? "sm:col-span-2" : ""}>
-          <img
-            src={src}
-            alt={`${title} — view ${i + 1}`}
-            loading="lazy"
-            className="w-full rounded-2xl border border-white/10 object-cover shadow-2xl transition-colors duration-500 hover:border-[color:var(--accent)]/40"
-          />
+        <Reveal key={i} delay={i * 0.06}>
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl transition-colors duration-500 hover:border-[color:var(--accent)]/40">
+            <img
+              src={src}
+              alt={`${title} — view ${i + 1}`}
+              loading="lazy"
+              className="block max-h-[85vh] w-full object-contain"
+            />
+          </div>
         </Reveal>
       ))}
     </div>
@@ -44,23 +51,23 @@ const CaseBlock = ({
   images?: string[];
   title: string;
 }) => (
-  <section className="grid grid-cols-1 gap-8 border-t border-white/10 pt-16 lg:grid-cols-12 lg:gap-12">
-    <div className="lg:col-span-4">
-      <div className="lg:sticky lg:top-28">
+  <section className="border-t border-white/10 pt-16">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
+      <div className="lg:col-span-4">
         <Reveal className="eyebrow flex items-center gap-3">
           <span className="text-[color:var(--accent)]">({index})</span>
           <span>{label}</span>
         </Reveal>
+      </div>
+      <div className="lg:col-span-8">
         <Reveal delay={0.05}>
-          <p className="mt-5 text-lg font-light leading-relaxed text-gray-400">
+          <p className="text-lg font-light leading-relaxed text-gray-400">
             {text}
           </p>
         </Reveal>
       </div>
     </div>
-    <div className="lg:col-span-8">
-      <Gallery images={images} title={title} />
-    </div>
+    <Gallery images={images} title={title} />
   </section>
 );
 
@@ -75,6 +82,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
     );
 
   const { purpose, designApproach, challenges } = project.insights;
+  const inDev = project.status === "in-development";
   const paragraphs = project.longDescription
     .split("\n")
     .filter((p) => p.trim() !== "");
@@ -124,6 +132,22 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
             </p>
           </Reveal>
 
+          {inDev && (
+            <Reveal delay={0.12}>
+              <div className="mt-8 flex items-start gap-3 rounded-2xl border border-amber-300/25 bg-amber-400/[0.06] px-5 py-4">
+                <span className="mt-1.5 h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-amber-400" />
+                <p className="text-sm font-light leading-relaxed text-amber-200/90">
+                  <span className="font-bold uppercase tracking-wider text-amber-300">
+                    Work in progress
+                  </span>{" "}
+                  — {project.title} is still under active development and isn&apos;t
+                  live yet, so there are no screenshots to show. The write-up below
+                  explains what it is and how it works.
+                </p>
+              </div>
+            </Reveal>
+          )}
+
           {/* Meta: stack + links */}
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-col gap-6 border-y border-white/10 py-6 md:flex-row md:items-center md:justify-between">
@@ -166,16 +190,18 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
           </Reveal>
 
           {/* Hero showcase image */}
-          <Reveal variant="blurIn" delay={0.1} className="mt-12">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl">
-              <img
-                src={project.image2}
-                alt={`${project.title} showcase`}
-                loading="lazy"
-                className="aspect-video w-full object-cover"
-              />
-            </div>
-          </Reveal>
+          {project.image2 && (
+            <Reveal variant="blurIn" delay={0.1} className="mt-12">
+              <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl">
+                <img
+                  src={project.image2}
+                  alt={`${project.title} showcase`}
+                  loading="lazy"
+                  className="aspect-video w-full object-cover"
+                />
+              </div>
+            </Reveal>
+          )}
         </header>
 
         {/* Overview */}
@@ -205,6 +231,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
               index="02"
               label="Purpose"
               text={purpose.text}
+              images={purpose.images}
               title={project.title}
             />
           )}
