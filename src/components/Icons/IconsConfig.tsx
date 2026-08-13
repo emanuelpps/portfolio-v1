@@ -27,10 +27,14 @@ import {
   SiTestinglibrary,
   SiGraphql,
   SiPostgresql,
+  SiClaude,
+  SiOpenai,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { VscAzureDevops } from "react-icons/vsc";
-import { TbBrandCss3 } from "react-icons/tb";
+// OpenCode has no brand icon in react-icons; it runs in the terminal, so a
+// terminal glyph stands in.
+import { TbBrandCss3, TbTerminal2 } from "react-icons/tb";
 import { GiBearFace } from "react-icons/gi";
 
 interface Skill {
@@ -166,6 +170,18 @@ const icons: IconsConfig = {
     },
   ],
   Tools: [
+    {
+      name: "Claude Code",
+      Icon: ({ size }) => <SiClaude size={size} color="#D97757" />,
+    },
+    {
+      name: "OpenCode",
+      Icon: ({ size }) => <TbTerminal2 size={size} color="#FFFFFF" />,
+    },
+    {
+      name: "Codex",
+      Icon: ({ size }) => <SiOpenai size={size} color="#FFFFFF" />,
+    },
     {
       name: "Figma",
       Icon: ({ size }) => <SiFigma size={size} color="#F24E1E" />,
