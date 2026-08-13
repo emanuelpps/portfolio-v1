@@ -9,7 +9,7 @@ const EXPERIENCES = [
     Period: "2026 — Present",
     ItemType: ItemTypes.Primary,
     description:
-      "Rebuilt the platform to be fully responsive across devices, hardening React + Tailwind components against edge cases and breakpoints. Partnered with design and product to ship a more consistent, scalable UI. Currently refining the ticketing platform.",
+      "Rebuilt the platform to be fully responsive across devices, hardening React + Tailwind components against edge cases and breakpoints. Partnered with design and product to ship a more consistent, scalable UI. Now working on the ticketing platform itself — refining the path from browsing an event to completing a purchase, and keeping every step of it dependable on any screen.",
   },
   {
     CompanyName: "The CodeMaker Lab",
@@ -17,7 +17,7 @@ const EXPERIENCES = [
     Period: "2024 — Present",
     ItemType: ItemTypes.Primary,
     description:
-      "Turn designs into production-ready interfaces, ship them, and keep them fast. Maintain and optimize client sites for performance, usability, and SEO — and present solutions directly to clients. Also build automations alongside the frontend work.",
+      "Turn designs into production-ready interfaces, ship them, and keep them fast. Maintain and optimize client sites for performance, usability, and SEO — and present solutions directly to clients. Beyond the frontend, build automations with n8n: workflows that move data between apps and APIs, lead capture wired into the CRM, and internal processes that used to be done by hand.",
   },
   {
     CompanyName: "EPAM Systems",
