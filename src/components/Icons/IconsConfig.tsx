@@ -29,6 +29,7 @@ import {
   SiPostgresql,
   SiClaude,
   SiOpenai,
+  SiN8N,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { VscAzureDevops } from "react-icons/vsc";
@@ -181,6 +182,10 @@ const icons: IconsConfig = {
     {
       name: "Codex",
       Icon: ({ size }) => <SiOpenai size={size} color="#FFFFFF" />,
+    },
+    {
+      name: "n8n",
+      Icon: ({ size }) => <SiN8N size={size} color="#EA4B71" />,
     },
     {
       name: "Figma",

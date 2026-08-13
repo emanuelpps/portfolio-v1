@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import icons from "@/components/Icons/IconsConfig";
 import SkillCard from "./SkillCard";
 import SkillsTabs from "./SkillsTabs";
-import { Marquee } from "@/components/motion/Marquee";
 import { SectionLabel, SectionHeading } from "@/components/ui/Section";
-import { Reveal } from "@/components/motion/Reveal";
 
 const SkillsContainer = () => {
   const [activeTab, setActiveTab] = useState<string>("Frontend");
-  const marqueeItems = icons["Frontend"];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,20 +23,6 @@ const SkillsContainer = () => {
         <SectionLabel index="03">Stack</SectionLabel>
         <SectionHeading>The tools I reach for.</SectionHeading>
       </div>
-
-      {/* Full-bleed marquee band */}
-      <Reveal className="mt-12">
-        <Marquee speed={28} className="border-y border-white/10 py-6">
-          {marqueeItems.map(({ name, Icon }) => (
-            <div key={name} className="flex items-center gap-3 text-white/40">
-              <Icon size={26} />
-              <span className="whitespace-nowrap text-sm font-bold uppercase tracking-[0.15em]">
-                {name}
-              </span>
-            </div>
-          ))}
-        </Marquee>
-      </Reveal>
 
       <div className="mx-auto mt-14 w-full max-w-[80rem] px-5 sm:px-8">
         <div className="mb-10 flex justify-center lg:justify-end">
