@@ -17,7 +17,7 @@ const EXPERIENCES = [
     Period: "2024 — Present",
     ItemType: ItemTypes.Primary,
     description:
-      "Turn designs into production-ready interfaces, ship them, and keep them fast. Maintain and optimize client sites for performance, usability, and SEO — and present solutions directly to clients.",
+      "Turn designs into production-ready interfaces, ship them, and keep them fast. Maintain and optimize client sites for performance, usability, and SEO — and present solutions directly to clients. Also build automations alongside the frontend work.",
   },
   {
     CompanyName: "EPAM Systems",
