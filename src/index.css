@@ -244,20 +244,27 @@ html.lenis body {
     font-weight: 700;
 }
 
-/* Slide-up reveal mask for kinetic headlines.
-   The mask has to clip its child so the word can start below it, but the
-   display type runs a line-height below 1, so the line box ends above the
-   font's descenders and the mask was shaving the tail off g, y, p and é.
-   Pad the box out to fit the ink, then pull the same amount back out with
-   negative margins so the type rhythm is unchanged. Children of this mask
-   must translate by more than 100% + these paddings to stay hidden — see
-   MASK_HIDDEN_Y in lib/motion. */
+/* How far glyph ink reaches past a tight line box. The display type runs a
+   line-height below 1, so the line box ends above the font's descenders and
+   anything that clips to that box eats the tail of g, y, p and é. Two
+   different things clip to it — the reveal mask and background-clip: text —
+   so they share one allowance. Both add it as padding and take it straight
+   back out with a negative margin, leaving the type rhythm untouched. */
+:root {
+    --ink-top: 0.16em;
+    /* 0.3em lands within a pixel of the deepest descender in this typeface,
+       which is too close to survive a font swap or a different weight. */
+    --ink-bottom: 0.38em;
+}
+
+/* Slide-up reveal mask for kinetic headlines. Children must translate by more
+   than 100% + --ink-bottom to stay hidden — see MASK_HIDDEN_Y in lib/motion. */
 .text-mask {
     overflow: hidden;
-    padding-top: 0.14em;
-    margin-top: -0.14em;
-    padding-bottom: 0.3em;
-    margin-bottom: -0.3em;
+    padding-top: var(--ink-top);
+    margin-top: calc(-1 * var(--ink-top));
+    padding-bottom: var(--ink-bottom);
+    margin-bottom: calc(-1 * var(--ink-bottom));
 }
 
 /* Animated sheen for the hero accent word */
@@ -279,6 +286,11 @@ html.lenis body {
     background-clip: text;
     color: transparent;
     animation: hero-shimmer 5s linear infinite;
+    /* The glyphs are painted by this gradient and nothing else, so ink that
+       falls outside the background's box renders as nothing at all. Without
+       this the descender of the g was simply missing, sliced flat. */
+    padding-bottom: var(--ink-bottom);
+    margin-bottom: calc(-1 * var(--ink-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {

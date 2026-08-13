@@ -26,7 +26,7 @@ export const blurIn: Variants = {
  * travelled past its own line box plus that padding — 110% used to leave the
  * tail of a descender showing before the reveal ran.
  */
-export const MASK_HIDDEN_Y = "150%";
+export const MASK_HIDDEN_Y = "170%";
 
 export const stagger = (gap = 0.08, delay = 0): Variants => ({
   hidden: {},
