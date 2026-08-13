@@ -9,7 +9,7 @@ const EXPERIENCES = [
     Period: "2026 — Present",
     ItemType: ItemTypes.Primary,
     description:
-      "Rebuilt the platform to be fully responsive across devices, hardening React + Tailwind components against edge cases and breakpoints. Partnered with design and product to ship a more consistent, scalable UI.",
+      "Rebuilt the platform to be fully responsive across devices, hardening React + Tailwind components against edge cases and breakpoints. Partnered with design and product to ship a more consistent, scalable UI. Currently refining the ticketing platform.",
   },
   {
     CompanyName: "The CodeMaker Lab",
