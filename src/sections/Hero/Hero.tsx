@@ -8,7 +8,7 @@ import {
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { useEnvironment } from "@/hooks/useEnvironment";
-import { EASE } from "@/lib/motion";
+import { EASE, MASK_HIDDEN_Y } from "@/lib/motion";
 
 export const Hero = () => {
   const { refs, scrollTo } = useAppScroll();
@@ -115,11 +115,11 @@ export const Hero = () => {
           style={{ fontSize: "clamp(3.2rem, 12vw, 9rem)" }}
           className="relative flex flex-wrap justify-center font-black leading-[0.92] tracking-tighter text-white"
         >
-          <span className="mx-[0.16em] inline-block overflow-hidden py-[0.08em] align-bottom">
+          <span className="text-mask mx-[0.16em] inline-block align-bottom">
             <motion.span
               className="inline-block"
               variants={{
-                hidden: { y: "115%" },
+                hidden: { y: MASK_HIDDEN_Y },
                 show: { y: 0, transition: { duration: 0.85, ease: EASE } },
               }}
             >
@@ -128,18 +128,16 @@ export const Hero = () => {
           </span>
 
           {/* Last name — animated sheen */}
-          <span className="mx-[0.14em] inline-block py-[0.08em]">
-            <span className="inline-block overflow-hidden align-bottom">
-              <motion.span
-                className="hero-shimmer inline-block pr-[0.06em]"
-                variants={{
-                  hidden: { y: "115%" },
-                  show: { y: 0, transition: { duration: 0.9, ease: EASE } },
-                }}
-              >
-                Pagés
-              </motion.span>
-            </span>
+          <span className="text-mask mx-[0.14em] inline-block align-bottom">
+            <motion.span
+              className="hero-shimmer inline-block pr-[0.06em]"
+              variants={{
+                hidden: { y: MASK_HIDDEN_Y },
+                show: { y: 0, transition: { duration: 0.9, ease: EASE } },
+              }}
+            >
+              Pagés
+            </motion.span>
           </span>
         </motion.h1>
 

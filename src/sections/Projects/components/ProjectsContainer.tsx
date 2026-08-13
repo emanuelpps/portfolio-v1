@@ -16,6 +16,11 @@ const matches = (p: ProjectTypes, f: Filter) =>
 export const ProjectsContainer = () => {
   const projects = rawProjects as ProjectTypes[];
   const [filter, setFilter] = useState<Filter>("All");
+  // Filtering unmounts and remounts cards. A `whileInView` trigger with
+  // `once: true` has already fired by then and never runs again, so those
+  // fresh cards would sit at the `hidden` variant — present in the DOM, and
+  // invisible. Once the grid has revealed, drive it with `animate` instead.
+  const [revealed, setRevealed] = useState(false);
 
   const counts = useMemo(
     () => ({
@@ -85,8 +90,13 @@ export const ProjectsContainer = () => {
         layout
         variants={stagger(0.06)}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.04 }}
+        {...(revealed
+          ? { animate: "show" }
+          : {
+              whileInView: "show",
+              viewport: { once: true, amount: 0.04 },
+              onViewportEnter: () => setRevealed(true),
+            })}
         className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2"
       >
         {filtered.map((p, i) => (

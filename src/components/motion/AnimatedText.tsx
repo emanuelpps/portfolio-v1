@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { EASE } from "@/lib/motion";
+import { EASE, MASK_HIDDEN_Y } from "@/lib/motion";
 
 /** Splits text into words and reveals them with an overflow mask + stagger. */
 export function AnimatedText({
@@ -27,11 +27,11 @@ export function AnimatedText({
       }}
     >
       {words.map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-bottom">
+        <span key={i} className="text-mask inline-block align-bottom">
           <motion.span
             className="inline-block"
             variants={{
-              hidden: { y: "110%" },
+              hidden: { y: MASK_HIDDEN_Y },
               show: { y: 0, transition: { duration: 0.7, ease: EASE } },
             }}
           >

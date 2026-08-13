@@ -20,6 +20,14 @@ export const blurIn: Variants = {
   },
 };
 
+/**
+ * Start offset for a word sitting inside a `.text-mask`.
+ * The mask is padded to fit descenders, so a word only clears it once it has
+ * travelled past its own line box plus that padding — 110% used to leave the
+ * tail of a descender showing before the reveal ran.
+ */
+export const MASK_HIDDEN_Y = "150%";
+
 export const stagger = (gap = 0.08, delay = 0): Variants => ({
   hidden: {},
   show: { transition: { staggerChildren: gap, delayChildren: delay } },

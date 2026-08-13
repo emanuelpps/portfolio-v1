@@ -244,6 +244,22 @@ html.lenis body {
     font-weight: 700;
 }
 
+/* Slide-up reveal mask for kinetic headlines.
+   The mask has to clip its child so the word can start below it, but the
+   display type runs a line-height below 1, so the line box ends above the
+   font's descenders and the mask was shaving the tail off g, y, p and é.
+   Pad the box out to fit the ink, then pull the same amount back out with
+   negative margins so the type rhythm is unchanged. Children of this mask
+   must translate by more than 100% + these paddings to stay hidden — see
+   MASK_HIDDEN_Y in lib/motion. */
+.text-mask {
+    overflow: hidden;
+    padding-top: 0.14em;
+    margin-top: -0.14em;
+    padding-bottom: 0.3em;
+    margin-bottom: -0.3em;
+}
+
 /* Animated sheen for the hero accent word */
 @keyframes hero-shimmer {
     to {
