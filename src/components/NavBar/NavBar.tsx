@@ -1,26 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMatch } from "react-router-dom";
-import LogoEP from "@/assets/images/epLogo.png";
-import { useScroll } from "@/hooks/UseScroll";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import { getLenis } from "@/lib/SmoothScroll";
-import { MagneticButton } from "@/components/motion/MagneticButton";
+import { EPMark } from "@/components/blueprint/EPMark";
 import { EASE } from "@/lib/motion";
 
-type SectionKey = "home" | "skills" | "experience" | "projects" | "contact";
-
-const LINKS: { label: string; to: SectionKey }[] = [
-  { label: "Work", to: "projects" },
-  { label: "Stack", to: "skills" },
-  { label: "Experience", to: "experience" },
-  { label: "Contact", to: "contact" },
+const LINKS: { index: string; label: string; id: string }[] = [
+  { index: "01", label: "Approach", id: "approach" },
+  { index: "02", label: "Work", id: "work" },
+  { index: "03", label: "Stack", id: "stack" },
+  { index: "04", label: "Record", id: "experience" },
+  { index: "05", label: "Contact", id: "contact" },
 ];
 
+/**
+ * The nav is the drawing's index, not a floating pill.
+ *
+ * It sits flush against the top edge on a single hairline and aligns its mark
+ * to the stem, so the vertical that runs down the page appears to start here.
+ * A rounded capsule hovering over the content would be the one element on the
+ * site with a radius that isn't the P's bowl.
+ */
 const NavBar: React.FC = () => {
-  const { scrollTo } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const onProjectPage = useMatch("/project/:projectId");
+
+  const ids = useMemo(() => LINKS.map((l) => l.id), []);
+  const active = useActiveSection(ids);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -29,7 +37,7 @@ const NavBar: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock scroll while the mobile menu is open.
+  // Lock scroll while the mobile index is open.
   useEffect(() => {
     const lenis = getLenis();
     if (open) {
@@ -45,85 +53,103 @@ const NavBar: React.FC = () => {
     };
   }, [open]);
 
-  const go = (to: SectionKey) => {
+  // Sections are addressed by id rather than through the scroll context: the
+  // index lists Approach, which has no ref of its own, and an id works for
+  // every entry without widening the context for one of them.
+  const go = (id: string) => {
     setOpen(false);
-    // allow the overlay to start closing before scrolling
-    setTimeout(() => scrollTo(to), open ? 280 : 0);
+    const jump = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const lenis = getLenis();
+      if (lenis) lenis.scrollTo(el, { offset: -80 });
+      else el.scrollIntoView({ behavior: "smooth" });
+    };
+    setTimeout(jump, open ? 260 : 0);
   };
 
-  // The project-detail overlay is fullscreen with its own close button —
-  // hide the site nav while it is open.
+  const toTop = () => {
+    setOpen(false);
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // The project sheet is a full-screen overlay with its own way out.
   if (onProjectPage) return null;
 
   return (
-    <header className="fixed left-0 top-0 z-[100] flex w-full justify-center py-4 md:py-6">
+    <>
       <nav
-        className={`flex items-center justify-between gap-6 px-4 py-2 transition-all duration-500 ease-in-out md:px-6 ${
-          scrolled
-            ? "w-[94%] rounded-full border border-white/10 bg-black/50 shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl md:w-[82%]"
-            : "w-full rounded-2xl border border-transparent bg-transparent md:w-[92%]"
+        aria-label="Sections"
+        className={`fixed left-0 top-0 z-[100] w-full transition-colors duration-500 ${
+          scrolled ? "border-b border-rule bg-ground" : "border-b border-transparent"
         }`}
       >
-        {/* Left — logo */}
-        <div className="flex flex-1 justify-start">
+        <div className="inset-stem flex h-16 items-center justify-between gap-6 md:h-20">
           <button
-            onClick={() => go("home")}
+            onClick={toTop}
             data-cursor="hover"
             aria-label="Back to top"
-            className="flex-shrink-0"
+            className="ml-[calc(var(--gutter)_*_-1)] flex h-10 items-center text-ink transition-opacity duration-300 hover:opacity-70"
           >
-            <img
-              src={LogoEP}
-              alt="Emanuel Pagés"
-              className="h-10 w-10 rounded-xl border border-white/10 opacity-90 transition-opacity hover:opacity-100"
-            />
+            <EPMark size={22} />
           </button>
-        </div>
 
-        {/* Center — links */}
-        <div className="hidden flex-1 items-center justify-center gap-9 lg:flex">
-          {LINKS.map((l) => (
-            <button
-              key={l.to}
-              onClick={() => go(l.to)}
-              data-cursor="hover"
-              className="group relative text-sm font-medium text-gray-300 transition-colors hover:text-white"
-            >
-              {l.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-[color:var(--accent)] transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
-        </div>
-
-        {/* Right — action / menu toggle */}
-        <div className="flex flex-1 items-center justify-end">
-          <div className="hidden lg:block">
-            <MagneticButton
-              onClick={() => go("contact")}
-              data-cursor="hover"
-              className="rounded-full bg-[color:var(--accent)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_0_25px_rgba(255,77,125,0.35)] transition-transform"
-            >
-              Let&apos;s talk
-            </MagneticButton>
+          <div className="hidden items-center gap-8 lg:flex">
+            {LINKS.map((l) => {
+              const isActive = active === l.id;
+              return (
+                <button
+                  key={l.id}
+                  onClick={() => go(l.id)}
+                  data-cursor="hover"
+                  aria-current={isActive ? "true" : undefined}
+                  className="mono group flex items-baseline gap-2 py-2 transition-colors duration-300"
+                >
+                  <span
+                    className={
+                      isActive ? "text-ink" : "text-ink-faint group-hover:text-ink-dim"
+                    }
+                  >
+                    {l.index}
+                  </span>
+                  <span
+                    className={
+                      isActive
+                        ? "text-ink"
+                        : "text-ink-dim group-hover:text-ink"
+                    }
+                  >
+                    {l.label}
+                  </span>
+                  {/* The active mark is a stroke, like every other state here. */}
+                  <span
+                    aria-hidden
+                    className={`ml-1 h-px w-4 self-center bg-ink transition-transform duration-500 ease-bp ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                    style={{ transformOrigin: "left" }}
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <button
             onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label={open ? "Close index" : "Open index"}
             aria-expanded={open}
-            className="relative z-[120] flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            data-cursor="hover"
+            className="relative z-[120] flex h-10 w-10 flex-col items-end justify-center gap-2 lg:hidden"
           >
             <motion.span
-              animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-white"
+              animate={open ? { rotate: 45, y: 4.5, width: 24 } : { rotate: 0, y: 0, width: 24 }}
+              className="block h-px bg-ink"
             />
             <motion.span
-              animate={open ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-0.5 w-6 bg-white"
-            />
-            <motion.span
-              animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-white"
+              animate={open ? { rotate: -45, y: -4.5, width: 24 } : { rotate: 0, y: 0, width: 14 }}
+              className="block h-px bg-ink"
             />
           </button>
         </div>
@@ -135,35 +161,33 @@ const NavBar: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="fixed inset-0 z-[110] flex flex-col items-center justify-center gap-8 bg-[color:var(--bg)]/95 backdrop-blur-2xl lg:hidden"
+            transition={{ duration: 0.3, ease: EASE }}
+            className="fixed inset-0 z-[110] flex flex-col justify-center bg-ground lg:hidden"
           >
-            {LINKS.map((l, i) => (
-              <motion.button
-                key={l.to}
-                onClick={() => go(l.to)}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.1 + i * 0.07, duration: 0.5, ease: EASE }}
-                className="text-4xl font-black tracking-tight text-white"
-              >
-                {l.label}
-              </motion.button>
-            ))}
-            <motion.button
-              onClick={() => go("contact")}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 + LINKS.length * 0.07, duration: 0.5, ease: EASE }}
-              className="mt-4 rounded-full bg-[color:var(--accent)] px-8 py-3 text-base font-bold text-white"
-            >
-              Let&apos;s talk
-            </motion.button>
+            <div className="from-stem border-t border-rule">
+              {LINKS.map((l, i) => (
+                <motion.button
+                  key={l.id}
+                  onClick={() => go(l.id)}
+                  initial={{ opacity: 0, x: -14 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -8 }}
+                  transition={{ delay: 0.06 + i * 0.05, duration: 0.4, ease: EASE }}
+                  className="invertible group flex w-full items-baseline gap-5 border-b border-rule px-[var(--gutter)] py-6 text-left"
+                >
+                  <span className="mono-sm text-ink-faint transition-colors group-hover:text-ground/60">
+                    {l.index}
+                  </span>
+                  <span className="display-md text-3xl text-ink transition-colors group-hover:text-ground">
+                    {l.label}
+                  </span>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 

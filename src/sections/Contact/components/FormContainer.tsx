@@ -1,22 +1,19 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { Form } from "./Form";
-import { SectionLabel } from "@/components/ui/Section";
-import { AnimatedText } from "@/components/motion/AnimatedText";
-import { Reveal } from "@/components/motion/Reveal";
+import { Cell, CellGrid } from "@/components/blueprint/Cell";
 
 const LINKS = [
   {
-    Icon: FaEnvelope,
+    key: "Email",
     label: "emanuelpages.ps@gmail.com",
     href: "mailto:emanuelpages.ps@gmail.com",
   },
   {
-    Icon: FaGithub,
+    key: "GitHub",
     label: "github.com/emanuelpps",
     href: "https://github.com/emanuelpps",
   },
   {
-    Icon: FaLinkedin,
+    key: "LinkedIn",
     label: "linkedin.com/in/emanuel-ps",
     href: "https://www.linkedin.com/in/emanuel-ps",
   },
@@ -24,43 +21,47 @@ const LINKS = [
 
 export const FormContainer = () => {
   return (
-    <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
-        <SectionLabel index="05">Contact</SectionLabel>
-        <AnimatedText
-          el="h2"
-          text="Let's build something that performs."
-          className="mt-4 flex flex-wrap text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl"
-        />
-        <Reveal variant="blurIn" className="mt-6 max-w-md">
-          <p className="text-lg font-light leading-relaxed text-gray-400">
-            Open to frontend roles and freelance projects. Tell me what
-            you&apos;re working on — I usually reply within a day.
-          </p>
-        </Reveal>
+    <CellGrid cols="grid-cols-1 lg:grid-cols-[minmax(0,22rem)_1fr]">
+      <Cell className="sm:p-10">
+        <p className="mono-sm text-ink-faint">Direct</p>
 
-        <div className="mt-10 flex flex-col gap-4">
-          {LINKS.map(({ Icon, label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
-              data-cursor="hover"
-              className="group flex items-center gap-3 text-gray-400 transition-colors hover:text-white"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white/60 transition-colors group-hover:border-[color:var(--accent)] group-hover:text-[color:var(--accent)]">
-                <Icon size={16} />
-              </span>
-              <span className="text-sm font-medium">{label}</span>
-            </a>
+        <p className="mt-6 text-base font-light leading-relaxed text-ink-dim">
+          Open to frontend roles and freelance projects. Tell me what
+          you&apos;re working on — I usually reply within a day.
+        </p>
+
+        <ul className="mt-10 flex flex-col">
+          {LINKS.map(({ key, label, href }) => (
+            <li key={key} className="border-b border-rule-soft last:border-b-0">
+              <a
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                data-cursor="hover"
+                className="group flex items-baseline gap-4 py-3.5"
+              >
+                <span className="mono-sm w-16 shrink-0 text-ink-faint">
+                  {key}
+                </span>
+                <span className="font-mono text-[0.8125rem] text-ink-dim transition-colors duration-300 group-hover:text-ink">
+                  {label}
+                </span>
+                <span
+                  aria-hidden
+                  className="mono ml-auto text-ink-faint transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  ↗
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </Cell>
 
-      <div className="w-full rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+      <Cell className="sm:p-10">
+        <p className="mono-sm mb-10 text-ink-faint">Message</p>
         <Form />
-      </div>
-    </div>
+      </Cell>
+    </CellGrid>
   );
 };

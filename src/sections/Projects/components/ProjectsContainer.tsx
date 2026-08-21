@@ -1,26 +1,50 @@
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import rawProjects from "@/data/Projects.json";
 import { ProjectTypes } from "@/types/ProjectTypes";
-import ProjectCard from "./ProjectCard";
-import { SectionLabel, SectionHeading } from "@/components/ui/Section";
-import { Reveal } from "@/components/motion/Reveal";
-import { fadeUp, stagger } from "@/lib/motion";
+import { useEnvironment } from "@/hooks/useEnvironment";
+import { EASE } from "@/lib/motion";
 
 const FILTERS = ["All", "Projects", "Libraries"] as const;
 type Filter = (typeof FILTERS)[number];
 
 const matches = (p: ProjectTypes, f: Filter) =>
-  f === "All" ? true : f === "Libraries" ? p.type === "Library" : p.type !== "Library";
+  f === "All"
+    ? true
+    : f === "Libraries"
+      ? p.type === "Library"
+      : p.type !== "Library";
 
+const projects = rawProjects as ProjectTypes[];
+
+/** Stable sheet numbers: a project keeps its number whatever the filter says. */
+const numberOf = (p: ProjectTypes) =>
+  String(projects.findIndex((x) => x.id === p.id) + 1).padStart(2, "0");
+
+/**
+ * The work, as an index rather than a gallery.
+ *
+ * A grid of cards asks you to look at ten pictures at once and shows you the
+ * screenshots instead of the work. A drawing index gives you the facts in one
+ * scan — number, name, kind, stack — and hands over the image only for the
+ * line you are actually reading. So the images live on the pointer: one
+ * preview, masked into the P's bowl, riding just off the cursor.
+ *
+ * On touch there is no pointer to ride, so the preview is not faked. Each row
+ * simply carries its own thumbnail.
+ */
 export const ProjectsContainer = () => {
-  const projects = rawProjects as ProjectTypes[];
+  const { hasFinePointer, reducedMotion } = useEnvironment();
+  const floats = hasFinePointer && !reducedMotion;
+
   const [filter, setFilter] = useState<Filter>("All");
-  // Filtering unmounts and remounts cards. A `whileInView` trigger with
-  // `once: true` has already fired by then and never runs again, so those
-  // fresh cards would sit at the `hidden` variant — present in the DOM, and
-  // invisible. Once the grid has revealed, drive it with `animate` instead.
-  const [revealed, setRevealed] = useState(false);
+  const [hovered, setHovered] = useState<ProjectTypes | null>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const px = useSpring(x, { stiffness: 320, damping: 34, mass: 0.5 });
+  const py = useSpring(y, { stiffness: 320, damping: 34, mass: 0.5 });
 
   const counts = useMemo(
     () => ({
@@ -28,83 +52,119 @@ export const ProjectsContainer = () => {
       Projects: projects.filter((p) => p.type !== "Library").length,
       Libraries: projects.filter((p) => p.type === "Library").length,
     }),
-    [projects],
+    [],
   );
 
   const filtered = projects.filter((p) => matches(p, filter));
 
-  return (
-    <div className="w-full">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <SectionLabel index="02">Selected work</SectionLabel>
-          <SectionHeading>Things I&apos;ve designed, built, and shipped.</SectionHeading>
-          <Reveal className="mt-5 max-w-2xl">
-            <p className="text-base font-light text-gray-400">
-              A mix of client products, experiments, and open-source tools.
-            </p>
-          </Reveal>
-        </div>
+  const track = (e: React.MouseEvent) => {
+    if (!floats) return;
+    x.set(e.clientX + 28);
+    y.set(e.clientY - 96);
+  };
 
-        {/* Filter tabs */}
-        <Reveal>
-          <div
-            role="tablist"
-            aria-label="Filter projects"
-            className="inline-flex gap-1 rounded-2xl border border-white/10 bg-black/40 p-1 backdrop-blur-xl"
-          >
-            {FILTERS.map((f) => {
-              const active = filter === f;
-              return (
-                <button
-                  key={f}
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setFilter(f)}
-                  data-cursor="hover"
-                  className={`relative rounded-xl px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-colors ${
-                    active ? "text-white" : "text-gray-500 hover:text-gray-300"
-                  }`}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="projectFilterPill"
-                      className="absolute inset-0 rounded-xl bg-[color:var(--accent)] shadow-[0_0_20px_rgba(255,77,125,0.35)]"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10">
-                    {f}{" "}
-                    <span className={active ? "text-white/70" : "text-gray-600"}>
-                      {counts[f]}
-                    </span>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
+  return (
+    <div className="w-full" onMouseMove={track}>
+      {/* Filter — the only place a bowl is allowed to carry state. */}
+      <div
+        role="tablist"
+        aria-label="Filter projects"
+        className="gut mb-10 flex flex-wrap gap-3"
+      >
+        {FILTERS.map((f) => {
+          const active = filter === f;
+          return (
+            <button
+              key={f}
+              role="tab"
+              aria-selected={active}
+              data-active={active}
+              data-cursor="hover"
+              onClick={() => setFilter(f)}
+              className="bowl invertible mono border border-rule py-2.5 pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
+            >
+              {f}
+              <span className="ml-2 opacity-50">{counts[f]}</span>
+            </button>
+          );
+        })}
       </div>
 
-      <motion.div
-        layout
-        variants={stagger(0.06)}
-        initial="hidden"
-        {...(revealed
-          ? { animate: "show" }
-          : {
-              whileInView: "show",
-              viewport: { once: true, amount: 0.04 },
-              onViewportEnter: () => setRevealed(true),
-            })}
-        className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2"
-      >
+      <div className="border-t border-rule">
         {filtered.map((p, i) => (
-          <motion.div key={p.id} layout variants={fadeUp}>
-            <ProjectCard project={p} index={i} />
+          <motion.div
+            key={p.id}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: i * 0.045 }}
+            className="border-b border-rule"
+          >
+            <Link
+              to={`/project/${p.id}`}
+              state={p}
+              data-cursor="hover"
+              onMouseEnter={() => setHovered(p)}
+              onMouseLeave={() => setHovered(null)}
+              className="invertible group flex flex-col gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[5rem_1fr_7rem_minmax(0,16rem)_2rem] md:items-baseline md:gap-6 md:py-8"
+            >
+              <span className="mono-sm text-ink-faint transition-colors group-hover:text-ground/60">
+                PRJ.{numberOf(p)}
+              </span>
+
+              <span className="display-md text-2xl text-ink transition-colors group-hover:text-ground sm:text-3xl md:text-[2rem]">
+                {p.title}
+              </span>
+
+              <span className="mono-sm text-ink-faint transition-colors group-hover:text-ground/60">
+                {p.type}
+              </span>
+
+              <span className="font-mono text-[0.75rem] leading-snug text-ink-dim transition-colors group-hover:text-ground/70">
+                {p.stack.slice(0, 4).join(" · ")}
+              </span>
+
+              <span
+                aria-hidden
+                className="mono hidden justify-self-end text-ink-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ground md:block"
+              >
+                ↗
+              </span>
+
+              {/* No pointer to ride, so the image comes to the row instead. */}
+              {!floats && (
+                <img
+                  src={p.frontImage}
+                  alt=""
+                  loading="lazy"
+                  className="bowl mt-2 h-40 w-full object-cover opacity-70 md:hidden"
+                />
+              )}
+            </Link>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
+
+      {floats && (
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              key={hovered.id}
+              style={{ x: px, y: py }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.28, ease: EASE }}
+              className="bowl pointer-events-none fixed left-0 top-0 z-[150] h-48 w-80 overflow-hidden border border-ink/30 bg-ground-2"
+            >
+              <img
+                src={hovered.frontImage}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </div>
   );
 };

@@ -1,18 +1,34 @@
 import { useScroll } from "@/hooks/UseScroll";
 import { FormContainer } from "./components/FormContainer";
+import { BpSection } from "@/components/blueprint/Section";
+import { EPMark } from "@/components/blueprint/EPMark";
 
 export const Contact = () => {
   const { refs } = useScroll();
+
   return (
-    <section
-      ref={refs.refContact}
+    <BpSection
       id="contact"
-      className="relative flex w-full items-center justify-center px-5 py-24 sm:px-8 sm:py-32"
+      index="05"
+      label="Contact"
+      title="Let's build something that performs."
+      aside="Sheet 05"
+      sectionRef={refs.refContact}
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--accent)]/10 blur-[150px] sm:h-[600px] sm:w-[600px]" />
-      <div className="relative z-10 w-full max-w-[80rem]">
+      <div className="mt-16 from-stem">
         <FormContainer />
+
+        {/* The document signs itself: the mark drawing its own three strokes,
+            the same geometry the whole page was laid out from. */}
+        <div className="flex items-center justify-center py-24 sm:py-32">
+          <EPMark
+            size={160}
+            traced
+            className="text-ink/25"
+            title="Emanuel Pagés"
+          />
+        </div>
       </div>
-    </section>
+    </BpSection>
   );
 };

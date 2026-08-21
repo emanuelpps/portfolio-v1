@@ -25,7 +25,7 @@ const AppRoutes = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 0.8, 0.25, 1] }}
             data-lenis-prevent
-            className="fixed inset-0 z-[60] overflow-y-auto overflow-x-hidden overscroll-contain bg-[color:var(--bg)]"
+            className="fixed inset-0 z-[60] overflow-y-auto overflow-x-hidden overscroll-contain bg-ground"
           >
             <Suspense fallback={null}>
               <ProjectDetails project={project} />

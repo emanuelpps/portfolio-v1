@@ -1,38 +1,70 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaGithub } from "react-icons/fa";
-import { GoArrowUpRight } from "react-icons/go";
-import { RiArrowLeftLine } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { ProjectTypes } from "../../types/ProjectTypes";
-import { Reveal } from "@/components/motion/Reveal";
-import { AnimatedText } from "@/components/motion/AnimatedText";
+import { Rule } from "@/components/blueprint/Rule";
+import { WipeText } from "@/components/blueprint/WipeText";
+import { SpecList } from "@/components/blueprint/SpecList";
+import { BowlLink } from "@/components/blueprint/BowlButton";
 import { GoUp } from "./components/GoUp";
+import { EASE } from "@/lib/motion";
 
 interface ProjectDetailContainerProps {
   project: ProjectTypes;
 }
 
 /**
- * Screenshots are wide and detail-heavy, so they run the full width of the
- * case study instead of sitting in a narrow column — at half width the UI
- * inside them is unreadable.
+ * Screenshots are plates on the sheet, and a plate is framed, not shaped.
+ *
+ * The bowl is the system's one radius, but at the width of a full-bleed UI
+ * screenshot its curve would eat a quarter of the image — so here it steps
+ * back to a numbered tab hanging off the frame instead. The language stays;
+ * it just stops being applied where it would destroy the content.
  */
+const Plate = ({
+  src,
+  n,
+  title,
+  index,
+}: {
+  src: string;
+  n: string;
+  title: string;
+  index: number;
+}) => (
+  <motion.figure
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.15 }}
+    transition={{ duration: 0.7, ease: EASE }}
+    className="relative"
+  >
+    <span className="bowl mono-sm absolute -top-px left-0 z-10 bg-ground py-1.5 pl-3 pr-5 text-ink-faint">
+      PL.{n}
+    </span>
+    <div className="overflow-hidden border border-rule bg-ground-2">
+      <img
+        src={src}
+        alt={`${title} — view ${index + 1}`}
+        loading="lazy"
+        className="block max-h-[85vh] w-full object-contain"
+      />
+    </div>
+  </motion.figure>
+);
+
 const Gallery = ({ images, title }: { images?: string[]; title: string }) => {
   if (!images || images.length === 0) return null;
   return (
-    <div className="mt-12 flex flex-col gap-6 sm:gap-8">
+    <div className="mt-12 flex flex-col gap-10">
       {images.map((src, i) => (
-        <Reveal key={i} delay={i * 0.06}>
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl transition-colors duration-500 hover:border-[color:var(--accent)]/40">
-            <img
-              src={src}
-              alt={`${title} — view ${i + 1}`}
-              loading="lazy"
-              className="block max-h-[85vh] w-full object-contain"
-            />
-          </div>
-        </Reveal>
+        <Plate
+          key={src}
+          src={src}
+          n={String(i + 1).padStart(2, "0")}
+          title={title}
+          index={i}
+        />
       ))}
     </div>
   );
@@ -51,23 +83,21 @@ const CaseBlock = ({
   images?: string[];
   title: string;
 }) => (
-  <section className="border-t border-white/10 pt-16">
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
-      <div className="lg:col-span-4">
-        <Reveal className="eyebrow flex items-center gap-3">
-          <span className="text-[color:var(--accent)]">({index})</span>
-          <span>{label}</span>
-        </Reveal>
+  <section className="pt-16">
+    <Rule tick />
+    <div className="inset-stem pt-6">
+      <div className="mono flex items-baseline gap-3 text-ink-dim">
+        <span className="text-ink">{index}</span>
+        <span aria-hidden className="text-rule">
+          /
+        </span>
+        <span>{label}</span>
       </div>
-      <div className="lg:col-span-8">
-        <Reveal delay={0.05}>
-          <p className="text-lg font-light leading-relaxed text-gray-400">
-            {text}
-          </p>
-        </Reveal>
-      </div>
+      <p className="mt-8 max-w-3xl text-lg font-light leading-relaxed text-ink-dim">
+        {text}
+      </p>
+      <Gallery images={images} title={title} />
     </div>
-    <Gallery images={images} title={title} />
   </section>
 );
 
@@ -76,8 +106,8 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
 }) => {
   if (!project)
     return (
-      <div className="flex h-dvh items-center justify-center text-white">
-        Project not found
+      <div className="flex h-dvh items-center justify-center">
+        <p className="mono text-ink-dim">Project not found</p>
       </div>
     );
 
@@ -87,202 +117,185 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
     .split("\n")
     .filter((p) => p.trim() !== "");
 
-  return (
-    <div className="relative w-full">
-      {/* ambient glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,125,0.10),transparent_60%)]" />
+  const specs = [
+    { key: "Type", value: project.type },
+    { key: "Stack", value: project.stack.join(" · ") },
+    ...(inDev ? [{ key: "Status", value: "In development" }] : []),
+  ];
 
-      {/* Sticky top bar */}
-      <div className="sticky top-0 z-30 border-b border-white/10 bg-[color:var(--bg)]/70 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+  return (
+    <div className="relative w-full pb-32">
+      {/* The page's stem is behind this overlay, so the sheet carries its own.
+          Static, not a progress track: this view scrolls in its own container
+          and the document-level progress would be reading the wrong thing. */}
+      <div
+        aria-hidden
+        className="stem-x pointer-events-none absolute inset-y-0 z-0 w-px bg-rule"
+      />
+
+      <div className="sticky top-0 z-30 border-b border-rule bg-ground">
+        <div className="inset-stem flex h-16 items-center justify-between gap-6">
           <Link
             to="/"
             data-cursor="hover"
-            className="group flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-white"
+            className="mono group flex items-center gap-3 text-ink-dim transition-colors hover:text-ink"
           >
-            <RiArrowLeftLine className="transition-transform duration-300 group-hover:-translate-x-1" />
-            Back to work
+            <span
+              aria-hidden
+              className="inline-block transition-transform duration-300 group-hover:-translate-x-1"
+            >
+              ←
+            </span>
+            Back to index
           </Link>
-          <span className="eyebrow hidden sm:block">{project.type}</span>
+
+          <span className="mono-sm hidden text-ink-faint sm:block">
+            {project.type} — Case study
+          </span>
+
           <Link
             to="/"
             aria-label="Close case study"
             data-cursor="hover"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/70 transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+            className="mono text-ink-dim transition-colors hover:text-ink"
           >
-            ✕
+            Close ✕
           </Link>
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-6xl px-5 pb-32 sm:px-8">
-        {/* Hero */}
-        <header className="pt-16 sm:pt-24">
-          <Reveal className="eyebrow text-[color:var(--accent)]">
-            {project.type} — Case study
-          </Reveal>
-          <AnimatedText
-            el="h1"
-            text={project.title}
-            className="mt-4 flex flex-wrap text-4xl font-black leading-[1.02] tracking-tighter text-white sm:text-6xl md:text-7xl"
-          />
-          <Reveal delay={0.1}>
-            <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-gray-400 sm:text-xl">
-              {project.description}
-            </p>
-          </Reveal>
+      <header className="relative z-10 pt-20">
+        <div className="inset-stem">
+          <h1 className="display mt-6 text-[clamp(2.5rem,9vw,6.5rem)] text-ink">
+            <span className="text-mask block">
+              <WipeText as="span">{project.title}</WipeText>
+            </span>
+          </h1>
+
+          <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-ink-dim sm:text-xl">
+            {project.description}
+          </p>
 
           {inDev && (
-            <Reveal delay={0.12}>
-              <div className="mt-8 flex items-start gap-3 rounded-2xl border border-amber-300/25 bg-amber-400/[0.06] px-5 py-4">
-                <span className="mt-1.5 h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-amber-400" />
-                <p className="text-sm font-light leading-relaxed text-amber-200/90">
-                  <span className="font-bold uppercase tracking-wider text-amber-300">
-                    Work in progress
-                  </span>{" "}
-                  — {project.title} is still under active development and isn&apos;t
-                  live yet, so there are no screenshots to show. The write-up below
-                  explains what it is and how it works.
-                </p>
-              </div>
-            </Reveal>
-          )}
-
-          {/* Meta: stack + links */}
-          <Reveal delay={0.15}>
-            <div className="mt-9 flex flex-col gap-6 border-y border-white/10 py-6 md:flex-row md:items-center md:justify-between">
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-wider text-gray-400"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex shrink-0 items-center gap-6">
-                {project.code && (
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="hover"
-                    className="group flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-300 transition-colors hover:text-white"
-                  >
-                    <FaGithub className="text-base" /> Repository
-                  </a>
-                )}
-                {project.deploy && (
-                  <a
-                    href={project.deploy}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="hover"
-                    className="group flex items-center gap-1.5 rounded-full bg-[color:var(--accent)] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_24px_rgba(255,77,125,0.35)]"
-                  >
-                    {project.buttonText || "Live"}
-                    <GoArrowUpRight className="text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                )}
-              </div>
+            <div className="bowl mt-10 flex max-w-2xl items-start gap-4 border border-ink/40 py-4 pl-5 pr-10">
+              <span className="mono-sm mt-1 shrink-0 text-ink">WIP</span>
+              <p className="text-sm font-light leading-relaxed text-ink-dim">
+                {project.title} is still under active development and isn&apos;t
+                live yet, so there are no screenshots to show. The write-up
+                below explains what it is and how it works.
+              </p>
             </div>
-          </Reveal>
-
-          {/* Hero showcase image */}
-          {project.image2 && (
-            <Reveal variant="blurIn" delay={0.1} className="mt-12">
-              <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[color:var(--bg-soft)] shadow-2xl">
-                <img
-                  src={project.image2}
-                  alt={`${project.title} showcase`}
-                  loading="lazy"
-                  className="aspect-video w-full object-cover"
-                />
-              </div>
-            </Reveal>
-          )}
-        </header>
-
-        {/* Overview */}
-        <section className="mt-24 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-4">
-            <Reveal className="eyebrow flex items-center gap-3 lg:sticky lg:top-28">
-              <span className="text-[color:var(--accent)]">(01)</span>
-              <span>Overview</span>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-8">
-            <div className="flex flex-col gap-6">
-              {paragraphs.map((para, i) => (
-                <Reveal key={i} delay={i * 0.05}>
-                  <p className="text-xl font-light leading-relaxed text-gray-200 sm:text-2xl">
-                    {para}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="mt-24 flex flex-col gap-24">
-          {purpose?.text && (
-            <CaseBlock
-              index="02"
-              label="Purpose"
-              text={purpose.text}
-              images={purpose.images}
-              title={project.title}
-            />
-          )}
-          {designApproach?.text && (
-            <CaseBlock
-              index="03"
-              label="Design approach"
-              text={designApproach.text}
-              images={designApproach.images}
-              title={project.title}
-            />
-          )}
-          {challenges?.text && (
-            <CaseBlock
-              index="04"
-              label="Challenges"
-              text={challenges.text}
-              images={challenges.images}
-              title={project.title}
-            />
           )}
         </div>
 
-        {/* Footer CTA */}
-        <section className="mt-28 flex flex-col items-center gap-6 border-t border-white/10 pt-16 text-center">
-          <span className="eyebrow">End of case study</span>
-          <AnimatedText
-            el="h2"
-            text="Like what you see?"
-            className="flex flex-wrap justify-center text-3xl font-black tracking-tight text-white sm:text-5xl"
+        <div className="mt-12">
+          <Rule />
+          <div className="inset-stem flex flex-col gap-8 py-8 lg:flex-row lg:items-start lg:justify-between">
+            <SpecList items={specs} className="max-w-xl" />
+
+            <div className="flex shrink-0 flex-wrap items-center gap-4">
+              {project.code && (
+                <BowlLink
+                  href={project.code}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-rule text-ink-dim"
+                >
+                  Repository
+                </BowlLink>
+              )}
+              {project.deploy && (
+                <BowlLink href={project.deploy} target="_blank" rel="noreferrer">
+                  {project.buttonText || "Live"}
+                </BowlLink>
+              )}
+            </div>
+          </div>
+          <Rule />
+        </div>
+
+        {project.image2 && (
+          <div className="inset-stem pt-12">
+            <Plate src={project.image2} n="00" title={project.title} index={0} />
+          </div>
+        )}
+      </header>
+
+      <section className="relative z-10 pt-20">
+        <Rule tick />
+        <div className="inset-stem pt-6">
+          <div className="mono flex items-baseline gap-3 text-ink-dim">
+            <span className="text-ink">01</span>
+            <span aria-hidden className="text-rule">
+              /
+            </span>
+            <span>Overview</span>
+          </div>
+          <div className="mt-8 flex max-w-3xl flex-col gap-6">
+            {paragraphs.map((para, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.05 }}
+                className="text-xl font-light leading-relaxed text-ink sm:text-2xl"
+              >
+                {para}
+              </motion.p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="relative z-10">
+        {purpose?.text && (
+          <CaseBlock
+            index="02"
+            label="Purpose"
+            text={purpose.text}
+            images={purpose.images}
+            title={project.title}
           />
-          <div className="mt-2 flex flex-col items-center gap-4 sm:flex-row">
+        )}
+        {designApproach?.text && (
+          <CaseBlock
+            index="03"
+            label="Design approach"
+            text={designApproach.text}
+            images={designApproach.images}
+            title={project.title}
+          />
+        )}
+        {challenges?.text && (
+          <CaseBlock
+            index="04"
+            label="Challenges"
+            text={challenges.text}
+            images={challenges.images}
+            title={project.title}
+          />
+        )}
+      </div>
+
+      <section className="relative z-10 pt-24">
+        <Rule tick />
+        <div className="inset-stem flex flex-col gap-8 pt-8">
+          <span className="mono-sm text-ink-faint">End of sheet</span>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               to="/"
               data-cursor="hover"
-              className="rounded-full border border-white/15 px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-white/40"
+              className="mono border-b border-rule pb-1 text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
             >
               ← Back to all work
             </Link>
-            <motion.a
-              href="mailto:emanuelpages.ps@gmail.com"
-              data-cursor="hover"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="rounded-full bg-[color:var(--accent)] px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.4)]"
-            >
+            <BowlLink href="mailto:emanuelpages.ps@gmail.com">
               Get in touch
-            </motion.a>
+            </BowlLink>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       <GoUp />
     </div>

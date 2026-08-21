@@ -1,12 +1,18 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useScroll } from "@/hooks/UseScroll";
 import { getLenis } from "@/lib/SmoothScroll";
-import { MagneticButton } from "@/components/motion/MagneticButton";
-import { AnimatedText } from "@/components/motion/AnimatedText";
+import { Rule } from "@/components/blueprint/Rule";
 
+const META = [
+  { key: "GitHub", href: "https://github.com/emanuelpps" },
+  { key: "LinkedIn", href: "https://www.linkedin.com/in/emanuel-ps" },
+  { key: "Email", href: "mailto:emanuelpages.ps@gmail.com" },
+];
+
+/**
+ * The title block at the foot of the sheet. Contact already closed the page
+ * with the mark drawing itself, so there is nothing left for a footer to do
+ * but state the facts in the annotation voice and offer a way back up.
+ */
 const Footer = () => {
-  const { scrollTo } = useScroll();
-
   const toTop = () => {
     const lenis = getLenis();
     if (lenis) lenis.scrollTo(0);
@@ -14,60 +20,35 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative z-10 w-full border-t border-white/10 px-5 py-20 sm:px-8">
-      <div className="mx-auto w-full max-w-[80rem]">
-        <div className="flex flex-col items-center gap-8 text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--accent)]">
-            Available for new projects
-          </span>
-          <AnimatedText
-            el="h2"
-            text="Let's create something impactful."
-            className="flex flex-wrap justify-center text-4xl font-black tracking-tight text-white sm:text-6xl"
-          />
-          <MagneticButton
-            onClick={() => scrollTo("contact")}
-            data-cursor="hover"
-            className="rounded-full bg-[color:var(--accent)] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.4)]"
-          >
-            Get in touch
-          </MagneticButton>
-        </div>
+    <footer className="relative z-10 w-full pt-16">
+      <Rule tick />
+      <div className="inset-stem flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
+        <p className="mono-sm text-ink-faint">© 2026 Emanuel Pagés</p>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-xs text-gray-500">© 2026 Emanuel Pagés</p>
-          <p className="text-xs text-gray-500">
-            Built with React, TypeScript &amp; Framer Motion.
-          </p>
-          <div className="flex items-center gap-6">
+        <p className="mono-sm text-ink-faint">
+          React · TypeScript · Tailwind · Framer Motion
+        </p>
+
+        <div className="flex flex-wrap items-center gap-6">
+          {META.map(({ key, href }) => (
             <a
-              href="https://github.com/emanuelpps"
-              target="_blank"
+              key={key}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               data-cursor="hover"
-              aria-label="GitHub"
-              className="text-gray-500 transition-colors hover:text-[color:var(--accent)]"
+              className="mono-sm text-ink-dim transition-colors duration-300 hover:text-ink"
             >
-              <FaGithub size={20} />
+              {key} ↗
             </a>
-            <a
-              href="https://www.linkedin.com/in/emanuel-ps"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="hover"
-              aria-label="LinkedIn"
-              className="text-gray-500 transition-colors hover:text-[#3DBFFF]"
-            >
-              <FaLinkedin size={20} />
-            </a>
-            <button
-              onClick={toTop}
-              data-cursor="hover"
-              className="text-xs font-bold uppercase tracking-wider text-gray-400 transition-colors hover:text-white"
-            >
-              Back to top ↑
-            </button>
-          </div>
+          ))}
+          <button
+            onClick={toTop}
+            data-cursor="hover"
+            className="mono-sm text-ink-dim transition-colors duration-300 hover:text-ink"
+          >
+            Top ↑
+          </button>
         </div>
       </div>
     </footer>

@@ -6,29 +6,37 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
-import { MagneticButton } from "@/components/motion/MagneticButton";
 import { useEnvironment } from "@/hooks/useEnvironment";
-import { EASE, MASK_HIDDEN_Y } from "@/lib/motion";
+import { WipeText } from "@/components/blueprint/WipeText";
+import { SpecList } from "@/components/blueprint/SpecList";
+import { BowlButton } from "@/components/blueprint/BowlButton";
+import { Rule } from "@/components/blueprint/Rule";
+import { EASE } from "@/lib/motion";
+
+const SPECS = [
+  { key: "Role", value: "Frontend Developer" },
+  { key: "Based", value: "Buenos Aires, AR" },
+  { key: "Focus", value: "React · TypeScript · Performance" },
+  { key: "Status", value: "Open to roles and freelance" },
+];
 
 export const Hero = () => {
   const { refs, scrollTo } = useAppScroll();
   const { hasFinePointer, reducedMotion } = useEnvironment();
   const interactive = hasFinePointer && !reducedMotion;
 
-  // Pointer position, normalized 0..1, smoothed.
+  // Pointer position, normalised and smoothed.
   const rawX = useMotionValue(0.5);
   const rawY = useMotionValue(0.5);
   const sX = useSpring(rawX, { stiffness: 60, damping: 20 });
   const sY = useSpring(rawY, { stiffness: 60, damping: 20 });
 
-  // Cursor spotlight that follows the pointer.
+  // The construction grid is always drawn but almost entirely masked out; only
+  // the patch under the pointer is let through. Nothing glows and nothing is
+  // tinted — the page simply shows more of its own scaffolding where you look.
   const spotX = useTransform(sX, (v) => `${v * 100}%`);
   const spotY = useTransform(sY, (v) => `${v * 100}%`);
-  const spotlight = useMotionTemplate`radial-gradient(42rem circle at ${spotX} ${spotY}, rgba(255,77,125,0.14), transparent 55%)`;
-
-  // Subtle parallax on the headline group.
-  const headX = useTransform(sX, [0, 1], [6, -6]);
-  const headY = useTransform(sY, [0, 1], [4, -4]);
+  const reveal = useMotionTemplate`radial-gradient(26rem circle at ${spotX} ${spotY}, #000 0%, transparent 68%)`;
 
   const onMove = (e: React.MouseEvent) => {
     if (!interactive || !refs.refHome.current) return;
@@ -36,172 +44,131 @@ export const Hero = () => {
     rawX.set((e.clientX - r.left) / r.width);
     rawY.set((e.clientY - r.top) / r.height);
   };
-  const onLeave = () => {
-    rawX.set(0.5);
-    rawY.set(0.5);
-  };
 
   return (
     <section
       ref={refs.refHome}
       onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      className="relative flex min-h-dvh w-full flex-col items-center justify-center overflow-hidden px-5 text-center sm:px-8"
+      className="relative flex min-h-dvh w-full flex-col justify-center overflow-hidden pb-20 pt-32"
     >
-      {/* Cursor-reactive aurora spotlight */}
+      {/* Construction grid, revealed only under the pointer. */}
       <motion.div
         aria-hidden
-        style={{ background: spotlight }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, var(--color-rule-soft) 1px, transparent 1px), linear-gradient(to bottom, var(--color-rule-soft) 1px, transparent 1px)",
+          backgroundSize: "5rem 5rem",
+          ...(interactive
+            ? { WebkitMaskImage: reveal, maskImage: reveal }
+            : { opacity: 0.5 }),
+        }}
         className="pointer-events-none absolute inset-0 z-0"
       />
 
-      {/* Editorial viewfinder frame + metadata */}
-      <div className="pointer-events-none absolute bottom-6 left-4 right-4 top-28 z-[1] hidden md:block">
-        <div className="absolute inset-0 rounded-2xl border border-white/[0.05]" />
+      {/* Sheet corners and edge annotation — the frame of a drawing. */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-6 top-24 z-[1] hidden md:block">
         {["left-0 top-0", "right-0 top-0", "left-0 bottom-0", "right-0 bottom-0"].map(
           (pos) => (
             <span
               key={pos}
-              className={`absolute ${pos} -m-[7px] text-sm leading-none text-[color:var(--accent)]/60`}
+              className={`absolute ${pos} -m-[7px] font-mono text-sm leading-none text-ink-faint`}
             >
               +
             </span>
           ),
         )}
-        <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.35em] text-white/20">
-          Portfolio — 2026
+        <span className="mono-sm absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-ink-faint">
+          Sheet 00 — Index
         </span>
-        <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.35em] text-white/20">
-          Frontend / Engineer
+        <span className="mono-sm absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 whitespace-nowrap text-ink-faint">
+          Rev. 2026
         </span>
       </div>
 
-      {/* Center content */}
-      <motion.div
-        style={{ x: headX, y: headY }}
-        className="relative z-10 flex w-full max-w-5xl flex-col items-center"
-      >
-        {/* Badge */}
+      <div className="relative z-10 inset-stem">
         <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6, ease: EASE }}
-          className="mb-8 flex items-center gap-2 rounded-full border border-[color:var(--accent)]/30 bg-[color:var(--accent)]/10 px-4 py-1.5 backdrop-blur-md"
-        >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[color:var(--accent)]" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            Available for work — Remote / Frontend
-          </span>
-        </motion.div>
-
-        {/* Role */}
-        <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.25, duration: 0.6 }}
-          className="eyebrow mb-5"
+          transition={{ duration: 0.6, ease: EASE }}
+          className="mono flex items-baseline gap-3 text-ink-dim"
         >
-          Design-focused Frontend Developer
-        </motion.span>
+          <span className="text-ink">00</span>
+          <span aria-hidden className="text-rule">
+            /
+          </span>
+          <span>Index</span>
+        </motion.div>
 
-        {/* Name — kinetic headline */}
-        <motion.h1
-          initial="hidden"
-          animate="show"
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.1, delayChildren: 0.35 } },
-          }}
-          style={{ fontSize: "clamp(3.2rem, 12vw, 9rem)" }}
-          className="relative flex flex-wrap justify-center font-black leading-[0.92] tracking-tighter text-white"
-        >
-          <span className="text-mask mx-[0.16em] inline-block align-bottom">
-            <motion.span
-              className="inline-block"
-              variants={{
-                hidden: { y: MASK_HIDDEN_Y },
-                show: { y: 0, transition: { duration: 0.85, ease: EASE } },
-              }}
-            >
+        {/* The name at drawing scale, in the mark's own thin monoline voice. */}
+        <h1 className="display mt-8 text-[clamp(3.25rem,15vw,12rem)] text-ink">
+          <span className="text-mask block">
+            <WipeText as="span" delay={0.15}>
               Emanuel
-            </motion.span>
+            </WipeText>
           </span>
-
-          {/* Last name — animated sheen */}
-          <span className="text-mask mx-[0.14em] inline-block align-bottom">
-            <motion.span
-              className="hero-shimmer inline-block pr-[0.06em]"
-              variants={{
-                hidden: { y: MASK_HIDDEN_Y },
-                show: { y: 0, transition: { duration: 0.9, ease: EASE } },
-              }}
-            >
+          <span className="text-mask block">
+            <WipeText as="span" delay={0.35}>
               Pagés
-            </motion.span>
+            </WipeText>
           </span>
-        </motion.h1>
+        </h1>
 
-        {/* Subhead */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
-          className="mt-9 max-w-2xl text-base font-light leading-relaxed text-gray-400 sm:text-lg md:text-xl"
+        {/* The bowl at architectural scale: the P's counter, holding the line
+            that says what this page is. Square left, closed right. */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.94 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.7 }}
+          style={{ transformOrigin: "left" }}
+          className="bowl mt-10 flex h-14 max-w-3xl items-center border border-rule pl-6 pr-12 sm:h-16"
         >
-          Blending{" "}
-          <span className="font-medium text-white">
-            10 years in digital marketing
-          </span>{" "}
-          with 3+ years of modern frontend development. I turn ideas into clean,
-          intuitive interfaces with a genuine eye for design and user
-          experience.
+          <p className="mono truncate text-ink-dim">
+            Frontend Developer — Buenos Aires
+          </p>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
+          className="mt-10 max-w-xl text-lg font-light leading-relaxed text-ink-dim sm:text-xl"
+        >
+          I build production React interfaces. Ten years running growth, SEO and
+          paid campaigns came first — which is why I start from what a page has
+          to do, then decide how it should look.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.05, duration: 0.7, ease: EASE }}
-          className="mt-10 flex flex-col items-center gap-5 sm:flex-row"
+          transition={{ duration: 0.8, ease: EASE, delay: 1 }}
+          className="mt-12 flex flex-wrap items-center gap-4"
         >
-          <MagneticButton
+          <BowlButton onClick={() => scrollTo("projects")}>
+            Selected work
+          </BowlButton>
+          <button
             onClick={() => scrollTo("contact")}
             data-cursor="hover"
-            className="rounded-full bg-[color:var(--accent)] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(255,77,125,0.4)]"
+            className="mono border-b border-rule pb-1 text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
           >
-            Let&apos;s talk
-          </MagneticButton>
-          <button
-            onClick={() => scrollTo("projects")}
-            data-cursor="hover"
-            className="group flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-white"
-          >
-            View work
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
+            Get in touch
           </button>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-      >
-        <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/30">
-          Scroll
-        </span>
+      {/* Title block, bottom right — where a drawing keeps its facts. */}
+      <div className="relative z-10 mt-20">
+        <Rule soft />
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex h-9 w-5 justify-center rounded-full border-2 border-white/20 p-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 1.1 }}
+          className="inset-stem pt-6"
         >
-          <div className="h-2 w-1 rounded-full bg-[color:var(--accent)]" />
+          <SpecList items={SPECS} className="max-w-md lg:ml-auto lg:max-w-lg" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

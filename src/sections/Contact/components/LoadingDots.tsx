@@ -1,31 +1,28 @@
 import { motion } from "framer-motion";
 
+/**
+ * Progress drawn as strokes rather than dots — a circle would be the only
+ * curve on the site that is not the P's bowl.
+ */
 export const LoadingDots = () => {
-  const dotTransition = {
-    repeat: Infinity,
-    duration: 1,
-    ease: "easeInOut",
-    repeatType: "loop" as const,
-  };
-
   return (
-    <div className="flex items-center gap-1">
-      <p className="text-white text-sm">Sending</p>
-      <motion.span
-        className="w-2 h-2 bg-white rounded-full"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ ...dotTransition, delay: 0 }}
-      />
-      <motion.span
-        className="w-2 h-2 bg-white rounded-full"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ ...dotTransition, delay: 0.2 }}
-      />
-      <motion.span
-        className="w-2 h-2 bg-white rounded-full"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ ...dotTransition, delay: 0.4 }}
-      />
-    </div>
+    <span className="flex items-center gap-2">
+      <span>Sending</span>
+      <span className="flex items-center gap-1">
+        {[0, 1, 2].map((i) => (
+          <motion.span
+            key={i}
+            className="block h-px w-3 bg-current"
+            animate={{ opacity: [0.25, 1, 0.25] }}
+            transition={{
+              repeat: Infinity,
+              duration: 1,
+              ease: "easeInOut",
+              delay: i * 0.2,
+            }}
+          />
+        ))}
+      </span>
+    </span>
   );
 };

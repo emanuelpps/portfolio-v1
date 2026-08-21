@@ -1,9 +1,5 @@
 import NavBar from "../../components/NavBar/NavBar";
 
-export const Header = () => {
-  return (
-    <header className="flex w-[100%] pt-5">
-      <NavBar />
-    </header>
-  );
-};
+// The nav positions itself against the viewport, so the header is just its
+// mount point — any padding here would push a fixed element nowhere.
+export const Header = () => <NavBar />;

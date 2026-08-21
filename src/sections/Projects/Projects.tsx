@@ -1,18 +1,23 @@
 import { ProjectsContainer } from "./components/ProjectsContainer";
 import { useScroll } from "@/hooks/UseScroll";
+import { BpSection } from "@/components/blueprint/Section";
 
 const Projects = () => {
   const { refs } = useScroll();
+
   return (
-    <section
-      ref={refs.refProjects}
+    <BpSection
       id="work"
-      className="w-full px-5 py-24 sm:px-8 sm:py-32"
+      index="02"
+      label="Work"
+      title="Things I've designed, built and shipped."
+      aside="Sheet 02"
+      sectionRef={refs.refProjects}
     >
-      <div className="mx-auto w-full max-w-[80rem]">
+      <div className="mt-16 from-stem">
         <ProjectsContainer />
       </div>
-    </section>
+    </BpSection>
   );
 };
 

@@ -1,6 +1,7 @@
-import { TfiArrowCircleUp } from "react-icons/tfi";
-import { motion } from "framer-motion";
-
+/**
+ * Back to the top of the case-study sheet. The overlay scrolls in its own
+ * container rather than the document, so this targets that container directly.
+ */
 export const GoUp = () => {
   const scrollToTop = () => {
     document
@@ -9,20 +10,14 @@ export const GoUp = () => {
   };
 
   return (
-    <motion.button
+    <button
       type="button"
       aria-label="Back to top"
       onClick={scrollToTop}
-      className="fixed bottom-6 right-4 z-[70] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white/80 backdrop-blur-md transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] md:right-8"
-      animate={{ y: [0, -6, 0] }}
-      transition={{
-        duration: 2.4,
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "easeInOut",
-      }}
+      data-cursor="hover"
+      className="bowl invertible mono stem-x fixed bottom-6 z-[70] border border-rule bg-ground py-3 pl-4 pr-6 text-ink-dim"
     >
-      <TfiArrowCircleUp className="text-2xl" />
-    </motion.button>
+      Top ↑
+    </button>
   );
 };
