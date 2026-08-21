@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <link
@@ -32,7 +33,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/ep-log.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0A0B0F" />
+    <meta name="theme-color" content="#0F1621" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link href="/src/index.css" rel="stylesheet" />
 
@@ -72,33 +73,74 @@
   <body>
     <div id="root">
       <style>
+        /* The first thing on screen is the mark drawing itself — the same
+           three strokes, in the same order, as the signature at the foot of
+           the page. No spinner: a rotating circle would be the one curve on
+           this site that isn't the P's bowl. */
         .boot {
           position: fixed;
           inset: 0;
           display: grid;
           place-items: center;
-          background: #0a0b0f;
+          background: #0f1621;
         }
-        .boot-dot {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          border: 2px solid rgba(255, 77, 125, 0.25);
-          border-top-color: #ff4d7d;
-          animation: boot-spin 0.8s linear infinite;
+        .boot svg {
+          width: 56px;
+          height: 56px;
+          animation: boot-breathe 2.4s ease-in-out 1.3s infinite;
         }
-        @keyframes boot-spin {
+        /* pathLength="1" normalises every stroke to a length of 1, so three
+           paths of very different real lengths can share one keyframe. */
+        .boot path {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 1;
+          animation: boot-draw 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .boot path:nth-child(2) {
+          animation-delay: 0.18s;
+        }
+        .boot path:nth-child(3) {
+          animation-delay: 0.36s;
+        }
+        @keyframes boot-draw {
           to {
-            transform: rotate(360deg);
+            stroke-dashoffset: 0;
+          }
+        }
+        @keyframes boot-breathe {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.45;
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          .boot-dot {
+          .boot svg {
             animation: none;
+          }
+          .boot path {
+            animation: none;
+            stroke-dashoffset: 0;
           }
         }
       </style>
-      <div class="boot"><div class="boot-dot"></div></div>
+      <div class="boot">
+        <svg
+          viewBox="0 0 160 160"
+          fill="none"
+          stroke="#f2f3f5"
+          stroke-width="9"
+          stroke-linecap="square"
+          role="img"
+          aria-label="Loading"
+        >
+          <path pathLength="1" d="M10 150 V10 H108 A35 35 0 0 1 108 80 H10" />
+          <path pathLength="1" d="M72 10 V150" />
+          <path pathLength="1" d="M10 150 H72" />
+        </svg>
+      </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
