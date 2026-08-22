@@ -1,48 +1,49 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
-import { EASE } from "@/lib/motion";
+import { EASE, MASK_HIDDEN_Y } from "@/lib/motion";
 
 /**
- * Text revealed by a hairline sweeping across it, leaving ink behind.
+ * Text revealed by sliding up out of a hard-edged mask.
  *
- * The clip and the travelling edge run off identical timing, which is what
- * sells the illusion that the line is what draws the letters. The bottom inset
- * is negative so descenders sit outside the clip and survive the wipe.
+ * As in DrawIn, the observed element is the mask and the animated element is
+ * its child. The child starts translated fully below the mask's clip, so its
+ * own intersection rect is empty — a viewport trigger sitting on it would wait
+ * forever for an animation only that trigger could start. The mask itself
+ * never moves, so it is always measurable.
+ *
+ * `trigger="mount"` is for anything above the fold, where a viewport trigger
+ * buys nothing and only adds a way for the reveal not to fire.
  */
 export function WipeText({
   as: Tag = "span",
+  trigger = "view",
   delay = 0,
-  duration = 1.1,
+  duration = 0.9,
   className = "",
   children,
 }: {
   as?: ElementType;
+  trigger?: "mount" | "view";
   delay?: number;
   duration?: number;
   className?: string;
   children: ReactNode;
 }) {
-  const transition = { duration, ease: EASE, delay };
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+  const show = trigger === "mount" || inView;
 
   return (
-    <Tag className={`relative inline-block ${className}`}>
+    <Tag ref={ref} className={`text-mask block ${className}`}>
       <motion.span
         className="block"
-        initial={{ clipPath: "inset(-20% 100% -30% 0)" }}
-        whileInView={{ clipPath: "inset(-20% 0% -30% 0)" }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={transition}
+        initial={{ y: MASK_HIDDEN_Y }}
+        animate={{ y: show ? "0%" : MASK_HIDDEN_Y }}
+        transition={{ duration, ease: EASE, delay }}
       >
         {children}
       </motion.span>
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute -top-[0.1em] bottom-[-0.2em] w-px bg-ink"
-        initial={{ left: "0%", opacity: 0 }}
-        whileInView={{ left: "100%", opacity: [0, 1, 1, 0] }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={transition}
-      />
     </Tag>
   );
 }

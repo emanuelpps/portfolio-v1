@@ -117,11 +117,7 @@ export const Hero = () => {
           an outlined pill here reads as nothing at all.
         */}
         <h1 className="display mt-8 text-[clamp(2.25rem,7.5vw,5.5rem)] text-ink sm:mt-10">
-          <span className="text-mask block">
-            <WipeText as="span" delay={0.1}>
-              I build
-            </WipeText>
-          </span>
+          <WipeText trigger="mount" delay={0.1}>I build</WipeText>
 
           <motion.span
             initial={{ scaleX: 0.9, opacity: 0 }}
@@ -133,16 +129,8 @@ export const Hero = () => {
             interfaces
           </motion.span>
 
-          <span className="text-mask block">
-            <WipeText as="span" delay={0.5}>
-              around what the
-            </WipeText>
-          </span>
-          <span className="text-mask block">
-            <WipeText as="span" delay={0.65}>
-              page has to do.
-            </WipeText>
-          </span>
+          <WipeText trigger="mount" delay={0.5}>around what the</WipeText>
+          <WipeText trigger="mount" delay={0.65}>page has to do.</WipeText>
         </h1>
 
         <motion.div

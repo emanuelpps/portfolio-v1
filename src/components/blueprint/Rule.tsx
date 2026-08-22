@@ -23,7 +23,7 @@ export function Rule({
 
   return (
     <div className={`relative from-stem h-px ${className}`}>
-      <DrawIn delay={delay} className={`h-px w-full ${color}`} />
+      <DrawIn delay={delay} className="h-px w-full" stroke={color} />
       {tick && (
         <span
           aria-hidden
@@ -31,22 +31,5 @@ export function Rule({
         />
       )}
     </div>
-  );
-}
-
-/** The vertical counterpart, used to divide a row of cells. */
-export function VRule({
-  delay = 0,
-  className = "",
-}: {
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <DrawIn
-      axis="y"
-      delay={delay}
-      className={`w-px bg-rule ${className}`}
-    />
   );
 }

@@ -167,9 +167,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
       <header className="relative z-10 pt-20">
         <div className="inset-stem">
           <h1 className="display mt-6 text-[clamp(2.5rem,9vw,6.5rem)] text-ink">
-            <span className="text-mask block">
-              <WipeText as="span">{project.title}</WipeText>
-            </span>
+            <WipeText trigger="mount">{project.title}</WipeText>
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-ink-dim sm:text-xl">

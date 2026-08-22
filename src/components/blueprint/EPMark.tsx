@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { EASE } from "@/lib/motion";
 
 /**
@@ -31,8 +32,14 @@ export function EPMark({
   className?: string;
   title?: string;
 }) {
+  // The svg is observed, not the paths. An undrawn path renders nothing, and
+  // hanging the trigger off it invites the same deadlock as DrawIn.
+  const ref = useRef<SVGSVGElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
+
   return (
     <svg
+      ref={ref}
       viewBox="0 0 160 160"
       width={size}
       height={size}
@@ -50,8 +57,7 @@ export function EPMark({
             key={d}
             d={d}
             initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            viewport={{ once: true, amount: 0.6 }}
+            animate={{ pathLength: inView ? 1 : 0 }}
             transition={{ duration: 1.1, ease: EASE, delay: i * 0.22 }}
           />
         ) : (
