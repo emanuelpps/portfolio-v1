@@ -25,7 +25,7 @@ export const FormContainer = () => {
       <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
         <p className="note text-ink-faint">Direct</p>
 
-        <p className="mt-6 text-base font-light leading-relaxed text-ink-dim">
+        <p className="mt-6 text-base leading-relaxed text-ink-2">
           Open to frontend roles and freelance projects. Tell me what
           you&apos;re working on — I usually reply within a day.
         </p>
@@ -38,12 +38,12 @@ export const FormContainer = () => {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
                 data-cursor="hover"
-                className="group flex items-baseline gap-4 py-3.5"
+                className="group flex min-h-11 items-center gap-4 py-3"
               >
                 <span className="note w-16 shrink-0 text-ink-faint">
                   {key}
                 </span>
-                <span className="note text-ink-dim transition-colors duration-300 group-hover:text-ink">
+                <span className="note text-ink-2 transition-colors duration-300 group-hover:text-ink">
                   {label}
                 </span>
                 <span

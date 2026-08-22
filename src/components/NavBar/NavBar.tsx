@@ -101,7 +101,7 @@ const NavBar: React.FC = () => {
                   onClick={() => go(l.id)}
                   data-cursor="hover"
                   aria-current={isActive ? "true" : undefined}
-                  className="note group relative py-2 transition-colors duration-300"
+                  className="note group relative inline-flex min-h-11 items-center transition-colors duration-300"
                 >
                   <span
                     className={
@@ -112,7 +112,7 @@ const NavBar: React.FC = () => {
                   </span>
                   <span
                     aria-hidden
-                    className={`absolute -bottom-0.5 left-0 h-px w-full bg-ink transition-transform duration-500 ease-bp ${
+                    className={`absolute bottom-2.5 left-0 h-px w-full bg-ink transition-transform duration-500 ease-bp ${
                       isActive ? "scale-x-100" : "scale-x-0"
                     }`}
                     style={{ transformOrigin: "left" }}

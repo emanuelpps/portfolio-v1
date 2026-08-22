@@ -71,7 +71,7 @@ const CaseBlock = ({
     <Rule tick />
     <div className="inset-stem pt-10">
       <h2 className="display-md text-3xl text-ink sm:text-4xl">{label}</h2>
-      <p className="mt-6 max-w-3xl text-lg font-light leading-relaxed text-ink-dim">
+      <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-2">
         {text}
       </p>
       <Gallery images={images} title={title} />
@@ -116,7 +116,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
           <Link
             to="/"
             data-cursor="hover"
-            className="note group flex items-center gap-3 text-ink-dim transition-colors hover:text-ink"
+            className="note group flex min-h-11 items-center gap-3 text-ink-dim transition-colors hover:text-ink"
           >
             <span
               aria-hidden
@@ -135,7 +135,7 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
             to="/"
             aria-label="Close case study"
             data-cursor="hover"
-            className="note text-ink-dim transition-colors hover:text-ink"
+            className="note inline-flex min-h-11 items-center text-ink-dim transition-colors hover:text-ink"
           >
             Close ✕
           </Link>
@@ -148,14 +148,14 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
             <WipeText trigger="mount">{project.title}</WipeText>
           </h1>
 
-          <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-ink-dim sm:text-xl">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
             {project.description}
           </p>
 
           {inDev && (
             <div className="bowl mt-10 flex max-w-2xl items-start gap-4 border border-ink/40 py-4 pl-5 pr-10">
               <span className="note mt-1 shrink-0 text-ink">In progress</span>
-              <p className="text-sm font-light leading-relaxed text-ink-dim">
+              <p className="text-sm leading-relaxed text-ink-2">
                 {project.title} is still under active development and isn&apos;t
                 live yet, so there are no screenshots to show. The write-up
                 below explains what it is and how it works.

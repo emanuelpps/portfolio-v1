@@ -137,7 +137,7 @@ function RoleRow({ role, n }: { role: Role; n: string }) {
               <p className="note mb-4 text-ink-faint md:hidden">
                 {role.title}
               </p>
-              <p className="max-w-2xl text-base font-light leading-relaxed text-ink-dim">
+              <p className="max-w-2xl text-base leading-relaxed text-ink-2">
                 {role.description}
               </p>
             </div>

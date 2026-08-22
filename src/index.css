@@ -182,7 +182,12 @@
     --color-ground-3: #131C29;
 
     --color-ink: #F2F3F5;
-    /* ~5.9:1 on --ground: AA for body copy, and only ever used for support text. */
+    /* Body copy. ~10:1 on --ground. Prose used to be set in --ink-dim, which is
+       why the whole page read grey: the only thing at full strength was the
+       headings, so nothing in between had any weight. */
+    --color-ink-2: #C3C9D1;
+    /* Labels and tertiary notes only. ~5.9:1 — AA, but not somewhere to put a
+       paragraph. */
     --color-ink-dim: #8B929C;
     --color-ink-faint: rgba(242, 243, 245, 0.28);
 
@@ -210,6 +215,34 @@
         --stem: 4.5rem;
         --gutter: 2rem;
     }
+}
+
+/* ===== Inversion, at page scale ==========================================
+   Inversion is the system's state gesture — hover, focus, active. This applies
+   it to a whole section by redefining the very tokens every utility is built
+   on, so an entire subtree flips with no component knowing about it.
+
+   It exists because nine sections opening the same way on the same ground is
+   what made the page feel flat. The last one arriving as white paper gives the
+   scroll somewhere to land. */
+
+[data-invert] {
+    --color-ground: #F2F3F5;
+    --color-ground-2: #E4E7EB;
+    --color-ground-3: #D8DDE3;
+
+    /* ~12:1 and ~6.3:1 on the light ground — the dark side's ratios mirrored,
+       not its values reused. */
+    --color-ink: #0F1621;
+    --color-ink-2: #2A3340;
+    --color-ink-dim: #55606E;
+    --color-ink-faint: rgba(15, 22, 33, 0.38);
+
+    --color-rule: rgba(15, 22, 33, 0.16);
+    --color-rule-soft: rgba(15, 22, 33, 0.08);
+
+    background-color: var(--color-ground);
+    color: var(--color-ink);
 }
 
 html {

@@ -9,6 +9,7 @@ const Projects = () => {
     <BpSection
       id="work"
       label="Work"
+      pace="loose"
       title="Things I've designed, built and shipped."
       sectionRef={refs.refProjects}
     >

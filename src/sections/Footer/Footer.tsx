@@ -20,7 +20,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative z-10 w-full pt-16">
+    <footer data-invert className="relative z-10 w-full pt-16">
+      {/* The page ends on paper: Contact inverts and the colophon stays there
+          rather than snapping back to the dark ground for four lines. */}
+      <div
+        aria-hidden
+        className="stem-x pointer-events-none absolute inset-y-0 z-0 w-px bg-rule"
+      />
       <Rule tick />
       <div className="inset-stem flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
         <p className="note text-ink-faint">© 2026 Emanuel Pagés</p>
@@ -37,7 +43,7 @@ const Footer = () => {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               data-cursor="hover"
-              className="note text-ink-dim transition-colors duration-300 hover:text-ink"
+              className="note inline-flex min-h-11 items-center text-ink-dim transition-colors duration-300 hover:text-ink"
             >
               {key} ↗
             </a>
@@ -45,7 +51,7 @@ const Footer = () => {
           <button
             onClick={toTop}
             data-cursor="hover"
-            className="note text-ink-dim transition-colors duration-300 hover:text-ink"
+            className="note inline-flex min-h-11 items-center text-ink-dim transition-colors duration-300 hover:text-ink"
           >
             Top ↑
           </button>

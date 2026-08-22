@@ -13,6 +13,7 @@ const Skills = () => {
     <BpSection
       id="stack"
       label="Stack"
+      pace="tight"
       title="The tools I reach for."
       sectionRef={refs.refSkills}
     >
@@ -39,7 +40,7 @@ const Skills = () => {
                     }}
                     className="flex items-baseline gap-4 border-b border-rule-soft py-2.5 last:border-b-0"
                   >
-                    <span className="note text-ink-dim">{item}</span>
+                    <span className="note text-ink-2">{item}</span>
                   </motion.li>
                 ))}
               </ul>

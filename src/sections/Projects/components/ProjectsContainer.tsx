@@ -77,7 +77,7 @@ export const ProjectsContainer = () => {
               data-active={active}
               data-cursor="hover"
               onClick={() => setFilter(f)}
-              className="bowl invertible note border border-rule py-2.5 pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
+              className="bowl invertible note inline-flex min-h-11 items-center border border-rule pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
             >
               {f}
               <span className="ml-2 opacity-50">{counts[f]}</span>
@@ -101,9 +101,9 @@ export const ProjectsContainer = () => {
               data-cursor="hover"
               onMouseEnter={() => setHovered(p)}
               onMouseLeave={() => setHovered(null)}
-              className="invertible group flex flex-col gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[1fr_7rem_minmax(0,15rem)_2rem] md:items-baseline md:gap-8 md:py-8"
+              className="invertible group flex min-h-[5.5rem] flex-col justify-center gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[1fr_7rem_minmax(0,15rem)_2rem] md:items-baseline md:gap-8 md:py-10"
             >
-              <span className="display-md text-3xl text-ink transition-colors group-hover:text-ground sm:text-4xl">
+              <span className="display-md text-[clamp(1.75rem,4.5vw,3.25rem)] text-ink transition-colors group-hover:text-ground">
                 {p.title}
               </span>
 

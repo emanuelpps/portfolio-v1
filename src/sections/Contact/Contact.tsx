@@ -10,6 +10,8 @@ export const Contact = () => {
     <BpSection
       id="contact"
       label="Contact"
+      pace="loose"
+      invert
       title="Let's build something that performs."
       sectionRef={refs.refContact}
     >
