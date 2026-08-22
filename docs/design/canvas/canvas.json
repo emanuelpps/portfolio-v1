@@ -1,0 +1,62 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "1 · Hero", "x": 0, "y": 0, "w": 1280, "h": 900 },
+    { "file": "Work.dc.html", "title": "2 · Work", "x": 1400, "y": 0, "w": 1280, "h": 1180 },
+    { "file": "Approach.dc.html", "title": "3 · Approach", "x": 2800, "y": 0, "w": 1280, "h": 900 },
+    { "file": "Stack.dc.html", "title": "4 · Stack", "x": 0, "y": 1320, "w": 1280, "h": 900 },
+    { "file": "Record.dc.html", "title": "5 · Record", "x": 1400, "y": 1320, "w": 1280, "h": 1000 },
+    { "file": "Contact.dc.html", "title": "6 · Contact", "x": 2800, "y": 1320, "w": 1280, "h": 1040 }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "x": -620,
+      "y": 0,
+      "w": 480,
+      "text": "LAS SEIS SECCIONES — B1 oscuro + B2 claro\n\nCada artboard tiene un chip «Theme» arriba: cambialo entre dark y light y vas a ver la MISMA sección en los dos modos. No son dos diseños, es uno con seis variables de color en la raíz — por eso claro y oscuro no se pueden despegar entre sí.\n\nLos dejé alternados a propósito (hero oscuro, work claro, approach oscuro…) para que veas los dos modos aplicados de verdad sin tener que ir tocando chip por chip.\n\nSISTEMA:\n· Archivo Black en versales para todo lo grande, Archivo para el resto.\n· Reglas de 3px entre secciones, de 1px dentro.\n· Sin acento cromático: solo #0F1621 y #F2F3F5.\n· El bowl de la P es el ÚNICO radio de todo el sitio: botones y filtros. Nada más se redondea.\n· El estado (hover, activo) es inversión: tinta y fondo cambian de lugar. No hay glow ni sombra porque la marca no tiene un tercer color para gastar."
+    },
+    {
+      "id": "n-hero",
+      "x": 0,
+      "y": -230,
+      "w": 420,
+      "text": "1 · HERO\n\nB1 tal cual lo elegiste. El bloque de la derecha es la página invertida con la marca calada.\n\nEse bloque vuelve una sola vez más en todo el sitio: al pie de Contact, como firma. Es lo que cierra el recorrido."
+    },
+    {
+      "id": "n-work",
+      "x": 1400,
+      "y": -230,
+      "w": 420,
+      "text": "2 · WORK — la más alta de las seis\n\nUn proyecto se MUESTRA (imagen real de Epic Sound Studio, no un placeholder), los otros se listan. Diez tarjetas te piden mirar diez fotos a la vez; un índice te da los hechos de un vistazo y gasta la única imagen de la página en la pieza que vale la pena parar a mirar.\n\nLa última fila está invertida: así se ve el hover."
+    },
+    {
+      "id": "n-approach",
+      "x": 2800,
+      "y": -230,
+      "w": 420,
+      "text": "3 · APPROACH\n\nLa frase se dice una sola vez y a tamaño. Es lo único que te separa de cualquier otro dev React, así que va como segundo elemento más grande del sitio — no como párrafo.\n\nLos números están escritos, no animados: un número que cuenta hacia arriba está pidiendo que le creas."
+    },
+    {
+      "id": "n-stack",
+      "x": 0,
+      "y": 1090,
+      "w": 420,
+      "text": "4 · STACK — la más apretada\n\nTipografía, no la grilla de logos de marca. Todo portfolio tiene los mismos veinte iconos de colores; como palabras dice lo mismo, se lee más rápido, no pesa nada y es tuyo y no de los vendors.\n\nVa pegada a Work a propósito: la sección más suelta seguida de la más densa. Ese contraste es lo que le da forma al scroll."
+    },
+    {
+      "id": "n-record",
+      "x": 1400,
+      "y": 1190,
+      "w": 420,
+      "text": "5 · RECORD\n\nUn libro mayor, no una línea de tiempo. Sin espina al medio, sin puntitos, sin gradiente.\n\nLo actual ya viene abierto porque es lo que la gente entra a chequear; el resto pliega, así diez años se leen como lista y no como muro."
+    },
+    {
+      "id": "n-contact",
+      "x": 2800,
+      "y": 1230,
+      "w": 420,
+      "text": "6 · CONTACT\n\nCampos con subrayado, no cajas. Un input con borde son cuatro trazos donde el formulario necesita uno, y los otros tres pelean con las reglas del resto de la página. El campo activo se marca engrosando su línea, no con un anillo.\n\nCierra con la marca sobre el mismo bloque del hero."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

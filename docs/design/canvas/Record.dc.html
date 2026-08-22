@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 1000px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 34px 40px 26px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;">Record</div>
+      <div style="font-size: 14px; font-weight: 600; color: var(--dim);">8 roles &middot; 2014 &mdash; present</div>
+    </div>
+
+    <!--
+      A ledger, not a timeline. No spine down the middle, no dots, no glowing
+      gradient: years in one column, the role in the next, and the current work
+      already open because that is the part anyone came to check. The rest
+      folds, so ten years reads as a list instead of a wall.
+    -->
+    <div style="flex-grow: 1;">
+      <sc-for list="{{roles}}" as="r" hint-placeholder-count="6">
+        <div style="border-bottom: 1px solid var(--hair); background: {{r.rowBg}}; color: {{r.rowInk}};">
+          <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 260px 30px; align-items: baseline; gap: 28px; padding: 22px 40px;">
+            <span style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; opacity: 0.7;">{{r.period}}</span>
+            <span style="font-family: 'Archivo Black', sans-serif; font-size: 27px; letter-spacing: -0.03em;">{{r.company}}</span>
+            <span style="font-size: 14px; font-weight: 600; opacity: 0.7;">{{r.title}}</span>
+            <span style="font-size: 22px; font-weight: 600; justify-self: end; line-height: 1;">{{r.sign}}</span>
+          </div>
+          <sc-if value="{{r.open}}" hint-placeholder-val="{{ true }}">
+            <div style="padding: 0 40px 26px 258px; font-size: 17px; line-height: 1.55; max-width: 900px; opacity: 0.82;">{{r.description}}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1280,"height":1000}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+const ROLES = [
+  { period: '2026 — Present', company: 'Dizizid', title: 'Frontend Developer', open: true,
+    description: 'Rebuilt the platform to be fully responsive, hardening React + Tailwind components against edge cases and breakpoints. Now working on the ticketing platform itself — refining the path from browsing an event to completing a purchase.' },
+  { period: '2024 — Present', company: 'The CodeMaker Lab', title: 'Frontend Developer', open: true, inverted: true,
+    description: 'Turn designs into production interfaces, ship them, and keep them fast. Beyond the frontend, build automations with n8n: workflows that move data between apps and APIs, and lead capture wired into the CRM.' },
+  { period: '2025', company: 'EPAM Systems', title: 'Associate Project Administrator' },
+  { period: '2023 — 2024', company: 'NoCountry', title: 'Frontend Developer' },
+  { period: '2022 — 2024', company: 'Duo Digital', title: 'Digital Marketing Manager' },
+  { period: '2014 — 2018', company: 'Dafiti Argentina', title: 'Marketing Analyst' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    const c = PALETTE[this.props.theme] || PALETTE.dark;
+    return {
+      c,
+      roles: ROLES.map((r) => ({
+        ...r,
+        sign: r.open ? '−' : '+',
+        rowBg: r.inverted ? c.ink : 'transparent',
+        rowInk: r.inverted ? c.bg : c.ink
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
