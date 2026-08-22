@@ -9,10 +9,8 @@ export const Contact = () => {
   return (
     <BpSection
       id="contact"
-      index="05"
       label="Contact"
       title="Let's build something that performs."
-      aside="Sheet 05"
       sectionRef={refs.refContact}
     >
       <div className="mt-16 from-stem">

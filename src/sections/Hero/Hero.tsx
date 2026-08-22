@@ -1,28 +1,22 @@
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useMotionTemplate,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
 import { useEnvironment } from "@/hooks/useEnvironment";
 import { WipeText } from "@/components/blueprint/WipeText";
 import { Cell, CellGrid } from "@/components/blueprint/Cell";
 import { BowlButton } from "@/components/blueprint/BowlButton";
+import { EPMark } from "@/components/blueprint/EPMark";
 import { EASE } from "@/lib/motion";
 
 /**
- * The facts, at full ink rather than as a grey footnote.
- *
- * Location is deliberately absent: the work is remote, so where the desk sits
- * is not a fact about the job. Availability says the thing a visitor is
- * actually checking for.
+ * Role is missing on purpose — it is the line directly under the name, and
+ * repeating it in a cell is the sort of filler that left this screen anonymous.
+ * Location is missing too: the work is remote, so where the desk sits is not a
+ * fact about the job.
  */
 const FACTS = [
-  { key: "Role", value: "Frontend Developer" },
   { key: "Focus", value: "React · TypeScript · Performance" },
-  { key: "Available", value: "Open to roles and freelance — remote" },
+  { key: "Currently", value: "Dizizid · The CodeMaker Lab" },
+  { key: "Available", value: "Open to roles and freelance, remote" },
 ];
 
 export const Hero = () => {
@@ -30,18 +24,14 @@ export const Hero = () => {
   const { hasFinePointer, reducedMotion } = useEnvironment();
   const interactive = hasFinePointer && !reducedMotion;
 
-  // Pointer position, normalised and smoothed.
+  // The drawing drifts a few pixels against the pointer — just enough parallax
+  // to separate the mark from the name sitting on top of it.
   const rawX = useMotionValue(0.5);
   const rawY = useMotionValue(0.5);
-  const sX = useSpring(rawX, { stiffness: 60, damping: 20 });
-  const sY = useSpring(rawY, { stiffness: 60, damping: 20 });
-
-  // The construction grid is always drawn but almost entirely masked out; only
-  // the patch under the pointer is let through. Nothing glows and nothing is
-  // tinted — the page simply shows more of its own scaffolding where you look.
-  const spotX = useTransform(sX, (v) => `${v * 100}%`);
-  const spotY = useTransform(sY, (v) => `${v * 100}%`);
-  const reveal = useMotionTemplate`radial-gradient(26rem circle at ${spotX} ${spotY}, #000 0%, transparent 68%)`;
+  const sX = useSpring(rawX, { stiffness: 45, damping: 22 });
+  const sY = useSpring(rawY, { stiffness: 45, damping: 22 });
+  const markX = useTransform(sX, [0, 1], [22, -22]);
+  const markY = useTransform(sY, [0, 1], [16, -16]);
 
   const onMove = (e: React.MouseEvent) => {
     if (!interactive || !refs.refHome.current) return;
@@ -54,90 +44,77 @@ export const Hero = () => {
     <section
       ref={refs.refHome}
       onMouseMove={onMove}
+      aria-label="Introduction"
       className="relative flex min-h-dvh w-full flex-col overflow-hidden pt-24 sm:pt-28"
     >
-      {/* Construction grid, revealed only under the pointer. */}
+      {/*
+        The mark at poster scale, bleeding off the right edge and running under
+        the name rather than politely beside it. Its stroke is held to a
+        constant device width, so blowing it up to forty rem keeps it a
+        monoline instead of turning it into a slab — and letting the two
+        overlap is what stops the screen from being a tidy stack of blocks.
+      */}
       <motion.div
         aria-hidden
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-rule-soft) 1px, transparent 1px), linear-gradient(to bottom, var(--color-rule-soft) 1px, transparent 1px)",
-          backgroundSize: "5rem 5rem",
-          ...(interactive
-            ? { WebkitMaskImage: reveal, maskImage: reveal }
-            : { opacity: 0.5 }),
-        }}
-        className="pointer-events-none absolute inset-0 z-0"
-      />
+        style={interactive ? { x: markX, y: markY } : undefined}
+        className="pointer-events-none absolute right-0 top-1/2 z-0 -translate-y-1/2 translate-x-[16%] text-ink/30 sm:translate-x-[10%]"
+      >
+        <EPMark
+          size="clamp(19rem, 46vw, 44rem)"
+          traced
+          trigger="mount"
+          hairline
+          weight={1.5}
+          title="Emanuel Pagés"
+        />
+      </motion.div>
 
-      {/* Sheet corners — the frame of a drawing. */}
-      <div className="pointer-events-none absolute inset-x-4 bottom-6 top-24 z-[1] hidden md:block">
-        {["left-0 top-0", "right-0 top-0", "left-0 bottom-0", "right-0 bottom-0"].map(
-          (pos) => (
-            <span
-              key={pos}
-              className={`absolute ${pos} -m-[7px] font-mono text-sm leading-none text-ink-faint`}
-            >
-              +
-            </span>
-          ),
-        )}
-      </div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+        className="note relative z-10 inset-stem flex items-center gap-2.5 self-end text-ink-dim"
+      >
+        {/* A dot would be the one circle on a site whose only curve is the P's
+            bowl, so the status light is a square. */}
+        <span aria-hidden className="block h-1.5 w-1.5 animate-pulse bg-ink" />
+        Available — remote
+      </motion.p>
 
       <div className="relative z-10 flex flex-1 flex-col justify-center inset-stem">
-        {/* The name is annotation. What he does is the headline — the other way
-            round is a hero that takes a full screen to say nothing. */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: EASE }}
-          className="flex flex-wrap items-center justify-between gap-4"
-        >
-          <p className="mono flex items-baseline gap-3">
-            <span className="text-ink-faint">00</span>
-            <span aria-hidden className="text-rule">
-              /
-            </span>
-            <span className="text-ink">Emanuel Pagés</span>
-          </p>
+        <h1 className="display text-[clamp(3.5rem,13vw,10rem)] text-ink">
+          <WipeText trigger="mount" delay={0.15}>
+            Emanuel
+          </WipeText>
 
-          <p className="mono flex items-center gap-2.5 text-ink-dim">
-            {/* A dot would be the one circle on a site whose only curve is the
-                P's bowl, so the status light is a square. */}
-            <span aria-hidden className="block h-1.5 w-1.5 animate-pulse bg-ink" />
-            Available — Remote
-          </p>
-        </motion.div>
-
-        {/*
-          The headline reads as one sentence in three registers: two thin
-          monoline lines with a solid one wedged between them. That middle line
-          is the P's bowl at architectural scale and filled rather than drawn —
-          the mark's own counter, inverted. It is what gives the screen mass;
-          an outlined pill here reads as nothing at all.
-        */}
-        <h1 className="display mt-8 text-[clamp(2.25rem,7.5vw,5.5rem)] text-ink sm:mt-10">
-          <WipeText trigger="mount" delay={0.1}>I build</WipeText>
-
+          {/* The P's bowl at architectural scale, filled rather than drawn. An
+              outlined pill at this size reads as nothing; solid, it is the
+              mark's own counter inverted, and it carries the screen's weight. */}
           <motion.span
-            initial={{ scaleX: 0.9, opacity: 0 }}
+            initial={{ scaleX: 0.88, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.45 }}
             style={{ transformOrigin: "left" }}
-            className="bowl my-1 inline-block bg-ink py-[0.06em] pl-[0.12em] pr-[0.7em] text-ground"
+            className="bowl mt-2 inline-block bg-ink pb-[0.12em] pl-[0.1em] pr-[0.62em] pt-[0.02em] text-ground"
           >
-            interfaces
+            Pagés
           </motion.span>
-
-          <WipeText trigger="mount" delay={0.5}>around what the</WipeText>
-          <WipeText trigger="mount" delay={0.65}>page has to do.</WipeText>
         </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.95 }}
-          className="mt-10 flex flex-wrap items-center gap-6"
+          transition={{ duration: 0.7, ease: EASE, delay: 0.8 }}
+          className="mt-8 text-xl font-light text-ink-dim sm:text-2xl"
+        >
+          Frontend Developer
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.95 }}
+          className="mt-12 flex flex-wrap items-center gap-7"
         >
           <BowlButton onClick={() => scrollTo("projects")}>
             Selected work
@@ -145,28 +122,26 @@ export const Hero = () => {
           <button
             onClick={() => scrollTo("contact")}
             data-cursor="hover"
-            className="mono border-b border-rule pb-1 text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
+            className="note border-b border-rule pb-1 text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
           >
             Get in touch
           </button>
         </motion.div>
       </div>
 
-      {/* The E's counters, at the foot of the sheet: three cells sharing their
+      {/* The E's counters at the foot of the screen: three cells sharing their
           dividing strokes, carrying the facts at full contrast. */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: EASE, delay: 1.05 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 1.1 }}
         className="relative z-10 mt-12 from-stem sm:mt-16"
       >
         <CellGrid cols="grid-cols-1 sm:grid-cols-3">
           {FACTS.map(({ key, value }) => (
             <Cell key={key} pad="px-[var(--gutter)] py-5 sm:py-6">
-              <p className="mono-sm text-ink-faint">{key}</p>
-              <p className="mt-3 font-mono text-[0.8125rem] leading-snug text-ink">
-                {value}
-              </p>
+              <p className="note text-ink-faint">{key}</p>
+              <p className="note mt-2 text-ink">{value}</p>
             </Cell>
           ))}
         </CellGrid>

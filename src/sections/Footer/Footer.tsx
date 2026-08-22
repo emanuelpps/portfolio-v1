@@ -23,9 +23,9 @@ const Footer = () => {
     <footer className="relative z-10 w-full pt-16">
       <Rule tick />
       <div className="inset-stem flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
-        <p className="mono-sm text-ink-faint">© 2026 Emanuel Pagés</p>
+        <p className="note text-ink-faint">© 2026 Emanuel Pagés</p>
 
-        <p className="mono-sm text-ink-faint">
+        <p className="note text-ink-faint">
           React · TypeScript · Tailwind · Framer Motion
         </p>
 
@@ -37,7 +37,7 @@ const Footer = () => {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               data-cursor="hover"
-              className="mono-sm text-ink-dim transition-colors duration-300 hover:text-ink"
+              className="note text-ink-dim transition-colors duration-300 hover:text-ink"
             >
               {key} ↗
             </a>
@@ -45,7 +45,7 @@ const Footer = () => {
           <button
             onClick={toTop}
             data-cursor="hover"
-            className="mono-sm text-ink-dim transition-colors duration-300 hover:text-ink"
+            className="note text-ink-dim transition-colors duration-300 hover:text-ink"
           >
             Top ↑
           </button>

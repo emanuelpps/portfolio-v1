@@ -37,15 +37,13 @@ const Value = () => {
   return (
     <BpSection
       id="approach"
-      index="01"
       label="Approach"
       title="A developer who thinks like a marketer."
-      aside="Sheet 01"
     >
       <div className="mt-16 from-stem">
         <CellGrid cols="grid-cols-1 lg:grid-cols-2">
           <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
-            <p className="mono-sm text-ink-faint">The edge</p>
+            <p className="note text-ink-faint">The edge</p>
             <p className="mt-6 text-lg font-light leading-relaxed text-ink-dim">
               Most frontend developers ship what is in the Figma. I ship what
               performs. A decade running growth, SEO and paid campaigns taught
@@ -56,7 +54,7 @@ const Value = () => {
           </Cell>
 
           <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
-            <p className="mono-sm text-ink-faint">Also an indie hacker</p>
+            <p className="note text-ink-faint">Also an indie hacker</p>
             <p className="mt-6 text-lg font-light leading-relaxed text-ink-dim">
               Beyond client work I design and ship my own products — like{" "}
               <Link

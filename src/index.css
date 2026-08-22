@@ -189,6 +189,7 @@
     --color-rule: rgba(242, 243, 245, 0.14);
     --color-rule-soft: rgba(242, 243, 245, 0.07);
 
+    --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
     --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
     --ease-bp: cubic-bezier(0.22, 1, 0.36, 1);
@@ -269,43 +270,51 @@ body {
     border-radius: 0 9999px 9999px 0;
 }
 
-/* ===== Monospace annotation =============================================
-   Indices, years, stacks, coordinates. Drafting-sheet annotation: the voice
-   the display type is deliberately too thin to speak in. */
-
-.mono {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    line-height: 1;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 400;
-}
+/* ===== Monospace ========================================================
+   Down to one job: the year column in the record, where the point is that the
+   dates line up. Mono was being used as a costume — every label, every index,
+   uppercase and tracked out — which is the fastest way to make a page look
+   like it was generated rather than designed. */
 
 .mono-sm {
     font-family: var(--font-mono);
-    font-size: 0.625rem;
-    line-height: 1;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
 }
 
 /* ===== Display type =====================================================
-   The mark is a thin monoline, so the display voice is thin too — the inverse
-   of the usual portfolio reflex to set headlines in black. Weight 200 is only
-   safe at size: below 3rem the strokes start dropping out on low-density
-   screens, so `display-md` steps the weight back up. */
+   A sharp, high-contrast serif against a compass-and-ruler mark. The thinness
+   the mark asks for arrives through the typeface's own hairlines rather than
+   through a light weight, so it survives at any size instead of dropping out
+   below 3rem the way ExtraLight geometric sans did.
+
+   Instrument Serif ships one weight, so scale and case do the work that weight
+   usually does. */
 
 .display {
-    font-weight: 200;
-    letter-spacing: -0.04em;
-    line-height: 0.92;
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.88;
 }
 
 .display-md {
-    font-weight: 300;
-    letter-spacing: -0.025em;
-    line-height: 1.02;
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    line-height: 1;
+}
+
+/* Annotation voice. Sentence case and normal tracking on purpose: uppercase
+   mono with 0.2em of letter-spacing on every label is the single most worn-out
+   gesture in this genre, and it was making the page read as a costume. */
+.note {
+    font-family: "Urbanist", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
 }
 
 /* ===== Inversion ========================================================

@@ -18,7 +18,7 @@ const fieldBase =
   "w-full border-0 border-b border-rule bg-transparent py-3 font-light text-ink " +
   "placeholder:text-ink-faint focus:outline-none";
 
-const labelBase = "mono mb-1 block text-ink-faint";
+const labelBase = "note mb-1 block text-ink-faint";
 
 function Field({
   label,

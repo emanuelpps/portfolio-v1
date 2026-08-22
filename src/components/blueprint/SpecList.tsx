@@ -23,10 +23,10 @@ export function SpecList({
     >
       {items.map(({ key, value }) => (
         <Fragment key={key}>
-          <dt className="mono-sm self-center whitespace-nowrap text-ink-faint">
+          <dt className="note self-center whitespace-nowrap text-ink-faint">
             {key}
           </dt>
-          <dd className="font-mono text-[0.8125rem] leading-snug text-ink-dim">
+          <dd className="note text-ink-dim">
             {value}
           </dd>
         </Fragment>

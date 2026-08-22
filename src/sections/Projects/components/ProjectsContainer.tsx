@@ -18,18 +18,14 @@ const matches = (p: ProjectTypes, f: Filter) =>
 
 const projects = rawProjects as ProjectTypes[];
 
-/** Stable sheet numbers: a project keeps its number whatever the filter says. */
-const numberOf = (p: ProjectTypes) =>
-  String(projects.findIndex((x) => x.id === p.id) + 1).padStart(2, "0");
-
 /**
  * The work, as an index rather than a gallery.
  *
  * A grid of cards asks you to look at ten pictures at once and shows you the
- * screenshots instead of the work. A drawing index gives you the facts in one
- * scan — number, name, kind, stack — and hands over the image only for the
- * line you are actually reading. So the images live on the pointer: one
- * preview, masked into the P's bowl, riding just off the cursor.
+ * screenshots instead of the work. An index gives you the facts in one scan —
+ * name, kind, stack — and hands over the image only for the line you are
+ * actually reading. So the images live on the pointer: one preview, masked
+ * into the P's bowl, riding just off the cursor.
  *
  * On touch there is no pointer to ride, so the preview is not faked. Each row
  * simply carries its own thumbnail.
@@ -81,7 +77,7 @@ export const ProjectsContainer = () => {
               data-active={active}
               data-cursor="hover"
               onClick={() => setFilter(f)}
-              className="bowl invertible mono border border-rule py-2.5 pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
+              className="bowl invertible note border border-rule py-2.5 pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
             >
               {f}
               <span className="ml-2 opacity-50">{counts[f]}</span>
@@ -105,27 +101,23 @@ export const ProjectsContainer = () => {
               data-cursor="hover"
               onMouseEnter={() => setHovered(p)}
               onMouseLeave={() => setHovered(null)}
-              className="invertible group flex flex-col gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[5rem_1fr_7rem_minmax(0,16rem)_2rem] md:items-baseline md:gap-6 md:py-8"
+              className="invertible group flex flex-col gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[1fr_7rem_minmax(0,15rem)_2rem] md:items-baseline md:gap-8 md:py-8"
             >
-              <span className="mono-sm text-ink-faint transition-colors group-hover:text-ground/60">
-                PRJ.{numberOf(p)}
-              </span>
-
-              <span className="display-md text-2xl text-ink transition-colors group-hover:text-ground sm:text-3xl md:text-[2rem]">
+              <span className="display-md text-3xl text-ink transition-colors group-hover:text-ground sm:text-4xl">
                 {p.title}
               </span>
 
-              <span className="mono-sm text-ink-faint transition-colors group-hover:text-ground/60">
+              <span className="note text-ink-faint transition-colors group-hover:text-ground/60">
                 {p.type}
               </span>
 
-              <span className="font-mono text-[0.75rem] leading-snug text-ink-dim transition-colors group-hover:text-ground/70">
+              <span className="note text-ink-dim transition-colors group-hover:text-ground/70">
                 {p.stack.slice(0, 4).join(" · ")}
               </span>
 
               <span
                 aria-hidden
-                className="mono hidden justify-self-end text-ink-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ground md:block"
+                className="note hidden justify-self-end text-ink-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ground md:block"
               >
                 ↗
               </span>

@@ -110,13 +110,13 @@ function RoleRow({ role, n }: { role: Role; n: string }) {
           {role.company}
         </span>
 
-        <span className="mono-sm hidden text-ink-dim transition-colors group-hover:text-ground/70 md:block">
+        <span className="note hidden text-ink-dim transition-colors group-hover:text-ground/70 md:block">
           {role.title}
         </span>
 
         <span
           aria-hidden
-          className="mono ml-auto shrink-0 text-ink-faint transition-colors group-hover:text-ground md:ml-0 md:justify-self-end"
+          className="note ml-auto shrink-0 text-ink-faint transition-colors group-hover:text-ground md:ml-0 md:justify-self-end"
         >
           {open ? "−" : "+"}
         </span>
@@ -134,7 +134,7 @@ function RoleRow({ role, n }: { role: Role; n: string }) {
             className="overflow-hidden"
           >
             <div className="px-[var(--gutter)] pb-8 md:pl-[calc(var(--gutter)_+_10.5rem)]">
-              <p className="mono-sm mb-4 text-ink-faint md:hidden">
+              <p className="note mb-4 text-ink-faint md:hidden">
                 {role.title}
               </p>
               <p className="max-w-2xl text-base font-light leading-relaxed text-ink-dim">
@@ -154,10 +154,8 @@ const Experience = () => {
   return (
     <BpSection
       id="experience"
-      index="04"
       label="Record"
       title="Ten years building for outcomes."
-      aside={`${ROLES.length} roles`}
       sectionRef={refs.refExperience}
     >
       <div className="mt-16 from-stem border-t border-rule">

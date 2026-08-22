@@ -29,7 +29,7 @@ const PopUp: React.FC<PopUpProps> = ({ message, type }) => {
           : "border-ink/60 bg-ground text-ink"
       }`}
     >
-      <span className="mono-sm mt-1 shrink-0 opacity-60">
+      <span className="note mt-1 shrink-0 opacity-60">
         {isSuccess ? "Sent" : "Error"}
       </span>
       <span className="text-sm font-light leading-snug">{message}</span>

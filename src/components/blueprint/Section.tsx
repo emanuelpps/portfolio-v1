@@ -3,27 +3,25 @@ import { Rule } from "./Rule";
 import { WipeText } from "./WipeText";
 
 /**
- * The section shell: an opening rule crossing the stem, the index in mono, and
- * the title in the thin display voice. Every section on the site opens with
- * exactly this, which is what makes the page scan as one drawing rather than a
- * stack of unrelated blocks.
+ * The section shell: a rule crossing the stem, then the title.
+ *
+ * There is no index and no eyebrow. Every heading on the page used to open
+ * `01 / Approach` above its own title — a number, a slash and a label saying
+ * what the title says anyway. The stem carries the section name now, running
+ * up the spine, so a section opens with the one thing it has to say.
  */
 export function BpSection({
   id,
-  index,
   label,
   title,
-  aside,
   sectionRef,
   className = "",
   children,
 }: {
   id?: string;
-  index: string;
+  /** Names the section for assistive tech; the spine shows it visually. */
   label: string;
   title?: string;
-  /** Optional mono note pinned to the right of the header row. */
-  aside?: ReactNode;
   sectionRef?: RefObject<HTMLDivElement | null>;
   className?: string;
   children: ReactNode;
@@ -32,28 +30,18 @@ export function BpSection({
     <section
       id={id}
       ref={sectionRef}
-      className={`relative w-full pt-20 sm:pt-28 ${className}`}
+      aria-label={label}
+      className={`relative w-full pt-24 sm:pt-32 ${className}`}
     >
       <Rule tick />
 
-      <header className="inset-stem pt-5">
-        <div className="flex items-baseline justify-between gap-6">
-          <div className="mono flex items-baseline gap-3 text-ink-dim">
-            <span className="text-ink">{index}</span>
-            <span aria-hidden className="text-rule">
-              /
-            </span>
-            <span>{label}</span>
-          </div>
-          {aside && <div className="mono-sm text-ink-faint">{aside}</div>}
-        </div>
-
-        {title && (
-          <h2 className="display-md mt-8 max-w-4xl text-[clamp(2rem,5.5vw,4rem)] text-ink">
+      {title && (
+        <header className="inset-stem pt-10 sm:pt-14">
+          <h2 className="display-md max-w-4xl text-[clamp(2rem,5.5vw,4rem)] text-ink">
             <WipeText>{title}</WipeText>
           </h2>
-        )}
-      </header>
+        </header>
+      )}
 
       {children}
     </section>

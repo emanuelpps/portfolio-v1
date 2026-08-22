@@ -23,7 +23,7 @@ export const FormContainer = () => {
   return (
     <CellGrid cols="grid-cols-1 lg:grid-cols-[minmax(0,22rem)_1fr]">
       <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
-        <p className="mono-sm text-ink-faint">Direct</p>
+        <p className="note text-ink-faint">Direct</p>
 
         <p className="mt-6 text-base font-light leading-relaxed text-ink-dim">
           Open to frontend roles and freelance projects. Tell me what
@@ -40,15 +40,15 @@ export const FormContainer = () => {
                 data-cursor="hover"
                 className="group flex items-baseline gap-4 py-3.5"
               >
-                <span className="mono-sm w-16 shrink-0 text-ink-faint">
+                <span className="note w-16 shrink-0 text-ink-faint">
                   {key}
                 </span>
-                <span className="font-mono text-[0.8125rem] text-ink-dim transition-colors duration-300 group-hover:text-ink">
+                <span className="note text-ink-dim transition-colors duration-300 group-hover:text-ink">
                   {label}
                 </span>
                 <span
                   aria-hidden
-                  className="mono ml-auto text-ink-faint transition-transform duration-300 group-hover:translate-x-1"
+                  className="note ml-auto text-ink-faint transition-transform duration-300 group-hover:translate-x-1"
                 >
                   ↗
                 </span>
@@ -59,7 +59,7 @@ export const FormContainer = () => {
       </Cell>
 
       <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
-        <p className="mono-sm mb-10 text-ink-faint">Message</p>
+        <p className="note mb-10 text-ink-faint">Message</p>
         <Form />
       </Cell>
     </CellGrid>
