@@ -8,16 +8,21 @@ import {
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
 import { useEnvironment } from "@/hooks/useEnvironment";
 import { WipeText } from "@/components/blueprint/WipeText";
-import { SpecList } from "@/components/blueprint/SpecList";
+import { Cell, CellGrid } from "@/components/blueprint/Cell";
 import { BowlButton } from "@/components/blueprint/BowlButton";
-import { Rule } from "@/components/blueprint/Rule";
 import { EASE } from "@/lib/motion";
 
-const SPECS = [
+/**
+ * The facts, at full ink rather than as a grey footnote.
+ *
+ * Location is deliberately absent: the work is remote, so where the desk sits
+ * is not a fact about the job. Availability says the thing a visitor is
+ * actually checking for.
+ */
+const FACTS = [
   { key: "Role", value: "Frontend Developer" },
-  { key: "Based", value: "Buenos Aires, AR" },
   { key: "Focus", value: "React · TypeScript · Performance" },
-  { key: "Status", value: "Open to roles and freelance" },
+  { key: "Available", value: "Open to roles and freelance — remote" },
 ];
 
 export const Hero = () => {
@@ -49,7 +54,7 @@ export const Hero = () => {
     <section
       ref={refs.refHome}
       onMouseMove={onMove}
-      className="relative flex min-h-dvh w-full flex-col justify-center overflow-hidden pb-20 pt-32"
+      className="relative flex min-h-dvh w-full flex-col overflow-hidden pt-24 sm:pt-28"
     >
       {/* Construction grid, revealed only under the pointer. */}
       <motion.div
@@ -65,7 +70,7 @@ export const Hero = () => {
         className="pointer-events-none absolute inset-0 z-0"
       />
 
-      {/* Sheet corners and edge annotation — the frame of a drawing. */}
+      {/* Sheet corners — the frame of a drawing. */}
       <div className="pointer-events-none absolute inset-x-4 bottom-6 top-24 z-[1] hidden md:block">
         {["left-0 top-0", "right-0 top-0", "left-0 bottom-0", "right-0 bottom-0"].map(
           (pos) => (
@@ -77,72 +82,74 @@ export const Hero = () => {
             </span>
           ),
         )}
-        <span className="mono-sm absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-ink-faint">
-          Sheet 00 — Index
-        </span>
-        <span className="mono-sm absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 whitespace-nowrap text-ink-faint">
-          Rev. 2026
-        </span>
       </div>
 
-      <div className="relative z-10 inset-stem">
+      <div className="relative z-10 flex flex-1 flex-col justify-center inset-stem">
+        {/* The name is annotation. What he does is the headline — the other way
+            round is a hero that takes a full screen to say nothing. */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="mono flex items-baseline gap-3 text-ink-dim"
+          className="flex flex-wrap items-center justify-between gap-4"
         >
-          <span className="text-ink">00</span>
-          <span aria-hidden className="text-rule">
-            /
-          </span>
-          <span>Index</span>
+          <p className="mono flex items-baseline gap-3">
+            <span className="text-ink-faint">00</span>
+            <span aria-hidden className="text-rule">
+              /
+            </span>
+            <span className="text-ink">Emanuel Pagés</span>
+          </p>
+
+          <p className="mono flex items-center gap-2.5 text-ink-dim">
+            {/* A dot would be the one circle on a site whose only curve is the
+                P's bowl, so the status light is a square. */}
+            <span aria-hidden className="block h-1.5 w-1.5 animate-pulse bg-ink" />
+            Available — Remote
+          </p>
         </motion.div>
 
-        {/* The name at drawing scale, in the mark's own thin monoline voice. */}
-        <h1 className="display mt-8 text-[clamp(3.25rem,15vw,12rem)] text-ink">
+        {/*
+          The headline reads as one sentence in three registers: two thin
+          monoline lines with a solid one wedged between them. That middle line
+          is the P's bowl at architectural scale and filled rather than drawn —
+          the mark's own counter, inverted. It is what gives the screen mass;
+          an outlined pill here reads as nothing at all.
+        */}
+        <h1 className="display mt-8 text-[clamp(2.25rem,7.5vw,5.5rem)] text-ink sm:mt-10">
           <span className="text-mask block">
-            <WipeText as="span" delay={0.15}>
-              Emanuel
+            <WipeText as="span" delay={0.1}>
+              I build
+            </WipeText>
+          </span>
+
+          <motion.span
+            initial={{ scaleX: 0.9, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+            style={{ transformOrigin: "left" }}
+            className="bowl my-1 inline-block bg-ink py-[0.06em] pl-[0.12em] pr-[0.7em] text-ground"
+          >
+            interfaces
+          </motion.span>
+
+          <span className="text-mask block">
+            <WipeText as="span" delay={0.5}>
+              around what the
             </WipeText>
           </span>
           <span className="text-mask block">
-            <WipeText as="span" delay={0.35}>
-              Pagés
+            <WipeText as="span" delay={0.65}>
+              page has to do.
             </WipeText>
           </span>
         </h1>
 
-        {/* The bowl at architectural scale: the P's counter, holding the line
-            that says what this page is. Square left, closed right. */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0.94 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1, ease: EASE, delay: 0.7 }}
-          style={{ transformOrigin: "left" }}
-          className="bowl mt-10 flex h-14 max-w-3xl items-center border border-rule pl-6 pr-12 sm:h-16"
-        >
-          <p className="mono truncate text-ink-dim">
-            Frontend Developer — Buenos Aires
-          </p>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
-          className="mt-10 max-w-xl text-lg font-light leading-relaxed text-ink-dim sm:text-xl"
-        >
-          I build production React interfaces. Ten years running growth, SEO and
-          paid campaigns came first — which is why I start from what a page has
-          to do, then decide how it should look.
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 1 }}
-          className="mt-12 flex flex-wrap items-center gap-4"
+          transition={{ duration: 0.8, ease: EASE, delay: 0.95 }}
+          className="mt-10 flex flex-wrap items-center gap-6"
         >
           <BowlButton onClick={() => scrollTo("projects")}>
             Selected work
@@ -157,18 +164,25 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Title block, bottom right — where a drawing keeps its facts. */}
-      <div className="relative z-10 mt-20">
-        <Rule soft />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 1.1 }}
-          className="inset-stem pt-6"
-        >
-          <SpecList items={SPECS} className="max-w-md lg:ml-auto lg:max-w-lg" />
-        </motion.div>
-      </div>
+      {/* The E's counters, at the foot of the sheet: three cells sharing their
+          dividing strokes, carrying the facts at full contrast. */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 1.05 }}
+        className="relative z-10 mt-12 from-stem sm:mt-16"
+      >
+        <CellGrid cols="grid-cols-1 sm:grid-cols-3">
+          {FACTS.map(({ key, value }) => (
+            <Cell key={key} pad="px-[var(--gutter)] py-5 sm:py-6">
+              <p className="mono-sm text-ink-faint">{key}</p>
+              <p className="mt-3 font-mono text-[0.8125rem] leading-snug text-ink">
+                {value}
+              </p>
+            </Cell>
+          ))}
+        </CellGrid>
+      </motion.div>
     </section>
   );
 };

@@ -37,13 +37,22 @@ export function CellGrid({
 }
 
 export function Cell({
+  pad = "px-[var(--gutter)] py-6 sm:py-8",
   className = "",
   children,
 }: {
+  /**
+   * Padding, replaced wholesale rather than layered over a default — two
+   * competing `p-*` utilities in one class list resolve by Tailwind's own sort
+   * order, not by which one the caller wrote last.
+   *
+   * The inline axis is the gutter, not a spacing step: a cell's first glyph has
+   * to land on the same vertical as every `.inset-stem` heading above it, or
+   * the page loses the single left edge the whole system is built on.
+   */
+  pad?: string;
   className?: string;
   children: ReactNode;
 }) {
-  return (
-    <div className={`bg-ground p-6 sm:p-8 ${className}`}>{children}</div>
-  );
+  return <div className={`bg-ground ${pad} ${className}`}>{children}</div>;
 }

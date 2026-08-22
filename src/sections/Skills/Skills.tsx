@@ -22,7 +22,7 @@ const Skills = () => {
       <div className="mt-16 from-stem">
         <CellGrid cols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {STACK.map((group, gi) => (
-            <Cell key={group.title} className="sm:p-8">
+            <Cell key={group.title}>
               <div className="flex items-baseline justify-between gap-4">
                 <h3 className="mono text-ink">{group.title}</h3>
                 <span className="mono-sm text-ink-faint">{group.note}</span>

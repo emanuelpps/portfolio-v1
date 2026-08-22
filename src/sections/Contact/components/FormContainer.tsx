@@ -22,7 +22,7 @@ const LINKS = [
 export const FormContainer = () => {
   return (
     <CellGrid cols="grid-cols-1 lg:grid-cols-[minmax(0,22rem)_1fr]">
-      <Cell className="sm:p-10">
+      <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
         <p className="mono-sm text-ink-faint">Direct</p>
 
         <p className="mt-6 text-base font-light leading-relaxed text-ink-dim">
@@ -58,7 +58,7 @@ export const FormContainer = () => {
         </ul>
       </Cell>
 
-      <Cell className="sm:p-10">
+      <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
         <p className="mono-sm mb-10 text-ink-faint">Message</p>
         <Form />
       </Cell>

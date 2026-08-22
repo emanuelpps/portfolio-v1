@@ -44,7 +44,7 @@ const Value = () => {
     >
       <div className="mt-16 from-stem">
         <CellGrid cols="grid-cols-1 lg:grid-cols-2">
-          <Cell className="sm:p-10">
+          <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
             <p className="mono-sm text-ink-faint">The edge</p>
             <p className="mt-6 text-lg font-light leading-relaxed text-ink-dim">
               Most frontend developers ship what is in the Figma. I ship what
@@ -55,7 +55,7 @@ const Value = () => {
             </p>
           </Cell>
 
-          <Cell className="sm:p-10">
+          <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
             <p className="mono-sm text-ink-faint">Also an indie hacker</p>
             <p className="mt-6 text-lg font-light leading-relaxed text-ink-dim">
               Beyond client work I design and ship my own products — like{" "}
