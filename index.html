@@ -31,17 +31,18 @@
     />
 
     <!--
-      Instrument Serif carries the display voice. The mark is a geometric
-      monoline drawn with a compass and a ruler; setting the name in a sharp,
-      high-contrast serif puts an author next to that engineer instead of
-      repeating it in a second geometric sans, which is what left the page
-      looking like it had no opinion.
+      Instrument Serif carries the display voice, self-hosted next to Urbanist
+      so the headline face is not a third-party request sitting on the critical
+      path. Only the regular latin cut is preloaded — it is the one that always
+      renders; latin-ext and italic are declared in CSS behind unicode-range
+      and font-style, so the browser fetches them only if a glyph needs them.
     -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/InstrumentSerif-Regular-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <meta charset="UTF-8" />

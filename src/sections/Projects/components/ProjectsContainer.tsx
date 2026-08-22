@@ -19,7 +19,63 @@ const matches = (p: ProjectTypes, f: Filter) =>
 const projects = rawProjects as ProjectTypes[];
 
 /**
- * The work, as an index rather than a gallery.
+ * One project is shown rather than listed.
+ *
+ * Before this, a visitor could scroll the entire home page and never see a
+ * single piece of work — an index is efficient, but a portfolio that shows no
+ * work is not a portfolio. Named by id so the choice is deliberate, with a
+ * positional fallback so removing that entry degrades instead of breaking.
+ */
+const FEATURED_ID = 11;
+const featured =
+  projects.find((p) => p.id === FEATURED_ID) ??
+  projects.find((p) => p.type !== "Library");
+
+const Featured = ({ project }: { project: ProjectTypes }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 18 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.15 }}
+    transition={{ duration: 0.7, ease: EASE }}
+    className="mb-20"
+  >
+    <Link
+      to={`/project/${project.id}`}
+      state={project}
+      data-cursor="hover"
+      className="group block"
+    >
+      {/* aspect-ratio rather than a bare lazy image: the box is reserved before
+          the file lands, so nothing below it jumps when it does. */}
+      <div className="aspect-[16/9] overflow-hidden border-y border-rule bg-ground-2">
+        <img
+          src={project.frontImage}
+          alt={`${project.title} — cover`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-[900ms] ease-bp group-hover:scale-[1.02]"
+        />
+      </div>
+
+      <div className="gut flex flex-col gap-6 py-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <p className="note text-ink-dim">Featured</p>
+          <h3 className="display-md mt-3 text-[clamp(2rem,5vw,3.5rem)] text-ink">
+            {project.title}
+          </h3>
+          <p className="mt-4 text-lg leading-relaxed text-ink-2">
+            {project.description}
+          </p>
+        </div>
+        <p className="note shrink-0 text-ink-dim lg:text-right">
+          {project.stack.slice(0, 4).join(" · ")}
+        </p>
+      </div>
+    </Link>
+  </motion.div>
+);
+
+/**
+ * The rest of the work, as an index rather than a gallery.
  *
  * A grid of cards asks you to look at ten pictures at once and shows you the
  * screenshots instead of the work. An index gives you the facts in one scan —
@@ -61,6 +117,8 @@ export const ProjectsContainer = () => {
 
   return (
     <div className="w-full" onMouseMove={track}>
+      {featured && <Featured project={featured} />}
+
       {/* Filter — the only place a bowl is allowed to carry state. */}
       <div
         role="tablist"
