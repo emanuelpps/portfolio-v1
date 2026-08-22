@@ -37,7 +37,7 @@ const Featured = ({ project }: { project: ProjectTypes }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.15 }}
     transition={{ duration: 0.7, ease: EASE }}
-    className="mb-20"
+    className="mb-14"
   >
     <Link
       to={`/project/${project.id}`}
@@ -56,13 +56,13 @@ const Featured = ({ project }: { project: ProjectTypes }) => (
         />
       </div>
 
-      <div className="gut flex flex-col gap-6 py-8 lg:flex-row lg:items-end lg:justify-between">
+      <div className="gut flex flex-col gap-6 py-7 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
           <p className="note text-ink-dim">Featured</p>
           <h3 className="display-md mt-3 text-[clamp(2rem,5vw,3.5rem)] text-ink">
             {project.title}
           </h3>
-          <p className="mt-4 text-lg leading-relaxed text-ink-2">
+          <p className="mt-3 text-lg leading-relaxed text-ink-2">
             {project.description}
           </p>
         </div>
@@ -123,7 +123,7 @@ export const ProjectsContainer = () => {
       <div
         role="tablist"
         aria-label="Filter projects"
-        className="gut mb-10 flex flex-wrap gap-3"
+        className="gut mb-8 flex flex-wrap gap-3"
       >
         {FILTERS.map((f) => {
           const active = filter === f;

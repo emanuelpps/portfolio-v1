@@ -37,7 +37,7 @@ export function CellGrid({
 }
 
 export function Cell({
-  pad = "px-[var(--gutter)] py-6 sm:py-8",
+  pad = "px-[var(--gutter)] py-5 sm:py-7",
   className = "",
   children,
 }: {

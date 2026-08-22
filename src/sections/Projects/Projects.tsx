@@ -13,7 +13,7 @@ const Projects = () => {
       title="Things I've designed, built and shipped."
       sectionRef={refs.refProjects}
     >
-      <div className="mt-16 from-stem">
+      <div className="mt-10 from-stem">
         <ProjectsContainer />
       </div>
     </BpSection>

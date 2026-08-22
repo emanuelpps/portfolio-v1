@@ -137,7 +137,7 @@ function RoleRow({ role, n }: { role: Role; n: string }) {
               <p className="note mb-4 text-ink-faint md:hidden">
                 {role.title}
               </p>
-              <p className="max-w-2xl text-base leading-relaxed text-ink-2">
+              <p className="max-w-2xl text-lg leading-relaxed text-ink-2">
                 {role.description}
               </p>
             </div>
@@ -158,7 +158,7 @@ const Experience = () => {
       title="Ten years building for outcomes."
       sectionRef={refs.refExperience}
     >
-      <div className="mt-16 from-stem border-t border-rule">
+      <div className="mt-10 from-stem border-t border-rule">
         {ROLES.map((role, i) => (
           <RoleRow
             key={role.company}

@@ -22,15 +22,15 @@ const LINKS = [
 export const FormContainer = () => {
   return (
     <CellGrid cols="grid-cols-1 lg:grid-cols-[minmax(0,22rem)_1fr]">
-      <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
+      <Cell pad="px-[var(--gutter)] py-7 sm:py-9">
         <p className="note text-ink-faint">Direct</p>
 
-        <p className="mt-6 text-base leading-relaxed text-ink-2">
+        <p className="mt-5 text-lg leading-relaxed text-ink-2">
           Open to frontend roles and freelance projects. Tell me what
           you&apos;re working on — I usually reply within a day.
         </p>
 
-        <ul className="mt-10 flex flex-col">
+        <ul className="mt-8 flex flex-col">
           {LINKS.map(({ key, label, href }) => (
             <li key={key} className="border-b border-rule-soft last:border-b-0">
               <a
@@ -58,8 +58,8 @@ export const FormContainer = () => {
         </ul>
       </Cell>
 
-      <Cell pad="px-[var(--gutter)] py-8 sm:py-12">
-        <p className="note mb-10 text-ink-faint">Message</p>
+      <Cell pad="px-[var(--gutter)] py-7 sm:py-9">
+        <p className="note mb-8 text-ink-faint">Message</p>
         <Form />
       </Cell>
     </CellGrid>

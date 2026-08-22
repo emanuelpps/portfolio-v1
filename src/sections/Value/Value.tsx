@@ -38,13 +38,13 @@ const inlineLink =
 const Value = () => {
   return (
     <BpSection id="approach" label="Approach">
-      <div className="inset-stem pt-10 sm:pt-14">
+      <div className="inset-stem pt-8 sm:pt-10">
         <blockquote className="display max-w-5xl text-[clamp(2rem,6vw,4.75rem)] text-ink">
           <WipeText>A developer who</WipeText>
           <WipeText delay={0.1}>thinks like a marketer.</WipeText>
         </blockquote>
 
-        <p className="mt-10 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
           Most frontend developers ship what is in the Figma. I ship what
           performs. A decade running growth, SEO and paid campaigns taught me
           how people actually behave on a page — so the interfaces I build are
@@ -53,11 +53,11 @@ const Value = () => {
         </p>
       </div>
 
-      <div className="mt-20 from-stem">
+      <div className="mt-12 from-stem">
         <CellGrid cols="grid-cols-1 lg:grid-cols-2">
           <Cell>
             <p className="note text-ink-dim">Also an indie hacker</p>
-            <p className="mt-5 text-lg leading-relaxed text-ink-2">
+            <p className="mt-4 text-lg leading-relaxed text-ink-2">
               Beyond client work I design and ship my own products — like{" "}
               <Link
                 to="/project/11"
@@ -74,7 +74,7 @@ const Value = () => {
 
           <Cell>
             <p className="note text-ink-dim">The record</p>
-            <dl className="mt-5 flex flex-col">
+            <dl className="mt-4 flex flex-col">
               {RECORD.map(({ key, value }) => (
                 <div
                   key={key}

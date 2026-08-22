@@ -15,12 +15,12 @@ export const Contact = () => {
       title="Let's build something that performs."
       sectionRef={refs.refContact}
     >
-      <div className="mt-16 from-stem">
+      <div className="mt-10 from-stem">
         <FormContainer />
 
         {/* The document signs itself: the mark drawing its own three strokes,
             the same geometry the whole page was laid out from. */}
-        <div className="flex items-center justify-center py-24 sm:py-32">
+        <div className="flex items-center justify-center py-20 sm:py-24">
           <EPMark
             size={160}
             traced

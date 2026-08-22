@@ -20,7 +20,7 @@ const Footer = () => {
   };
 
   return (
-    <footer data-invert className="relative z-10 w-full pt-16">
+    <footer data-invert className="relative z-10 w-full pt-10">
       {/* The page ends on paper: Contact inverts and the colophon stays there
           rather than snapping back to the dark ground for four lines. */}
       <div

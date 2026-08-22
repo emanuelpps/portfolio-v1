@@ -12,9 +12,9 @@ import { WipeText } from "./WipeText";
  * it, and the contrast between the two is what gives the scroll a shape.
  */
 const PACE = {
-  tight: "pt-16 sm:pt-20",
-  normal: "pt-24 sm:pt-32",
-  loose: "pt-32 sm:pt-48",
+  tight: "pt-12 sm:pt-16",
+  normal: "pt-16 sm:pt-24",
+  loose: "pt-24 sm:pt-32",
 } as const;
 
 const TITLE = {
@@ -72,7 +72,7 @@ export function BpSection({
       <Rule tick />
 
       {title && (
-        <header className="inset-stem relative z-10 pt-10 sm:pt-14">
+        <header className="inset-stem relative z-10 pt-8 sm:pt-10">
           <h2 className={`display-md max-w-4xl text-ink ${TITLE[pace]}`}>
             <WipeText>{title}</WipeText>
           </h2>

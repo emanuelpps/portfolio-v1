@@ -17,7 +17,7 @@ const Skills = () => {
       title="The tools I reach for."
       sectionRef={refs.refSkills}
     >
-      <div className="mt-16 from-stem">
+      <div className="mt-10 from-stem">
         <CellGrid cols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {STACK.map((group, gi) => (
             <Cell key={group.title}>
@@ -26,7 +26,7 @@ const Skills = () => {
                 <span className="note text-ink-faint">{group.note}</span>
               </div>
 
-              <ul className="mt-6 flex flex-col">
+              <ul className="mt-5 flex flex-col">
                 {group.items.map((item, i) => (
                   <motion.li
                     key={item}
@@ -48,7 +48,7 @@ const Skills = () => {
           ))}
         </CellGrid>
 
-        <p className="gut note py-8 text-ink-faint">
+        <p className="gut note py-6 text-ink-faint">
           In progress — <span className="text-ink-dim">{STUDYING}</span>
         </p>
       </div>
