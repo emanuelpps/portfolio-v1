@@ -101,6 +101,52 @@ ventana no baja de 1536px CSS, así que 390 y 1280 se verificaron montando la
 página en un iframe de ese ancho — las media queries responden al ancho del
 iframe, así que el layout es real.
 
+### La ficha de proyecto — hecho el 2026-09-02
+
+No tiene artboard: el canvas cubre las seis secciones de la home y nada más.
+Se diseñó contra el sistema, no contra una lámina.
+
+- **Dejó de ser una superposición.** `Router.tsx` tiene rutas reales y el
+  proyecto se resuelve **por id** contra `Projects.json`. Antes salía de
+  `location.state`, así que `/project/11` sólo existía si habías llegado
+  haciendo click: recargar, compartir el link o abrirlo en otra pestaña
+  aterrizaba en "Project not found". Se fueron con el overlay la pausa de
+  Lenis, el `body{overflow:hidden}`, el contenedor propio de scroll y el botón
+  `GoUp` (archivo borrado).
+- **`<title>` y meta description por proyecto.** La lógica salió de `App` —que
+  se renderiza en todas las rutas— y vive en `src/lib/useDocumentMeta.ts`, que
+  usa la ruta que está en pantalla. Sólo una ruta se renderiza a la vez, así
+  que la carrera desaparece en vez de resolverse por orden.
+- **El masthead ya no se esconde en la ficha.** Muestra nombre + marca y una
+  única salida nombrada; el índice de secciones no va, porque apunta a anclas
+  que en esta página no existen. La salida es `/#work`, y `Home` ahora atiende
+  el hash al montar (el salto nativo del navegador ocurre antes de que React
+  haya dibujado la sección, así que pega contra la nada).
+- **No se llaman "case study".** La palabra no aparece en la interfaz y el
+  namespace del diccionario es `project`. Las cuatro cabeceras se escribieron
+  en lenguaje llano: **What it is / Why I built it / How it's built / What was
+  hard**. Antes eran Overview / Purpose / Design approach / Challenges, que es
+  vocabulario de agencia — y bajo "Design approach" había un párrafo sobre
+  React Query.
+- **Estructura**: portada (título en `.display` en caja mixta, bajada, regla de
+  3px, franja de datos en celdas divididas por 1px con los enlaces adentro,
+  regla de 3px, lámina principal a sangre) → los cuatro bloques como libro
+  mayor (etiqueta en columna angosta, prosa en la ancha) → **el proyecto
+  siguiente**, en una fila idéntica a las del índice de Work. Se fue "End of
+  case study".
+- **Las capturas se deduplican en una sola pasada**, incluyendo `image2`. Epic
+  Sound Studio tiene cinco ranuras de imagen sobre tres archivos distintos.
+  *La primera versión de esto pasaba un `Set` compartido a cada bloque y lo
+  mutaba durante el render: bajo StrictMode la segunda pasada encontraba todo
+  ya visto y filtraba las tres. Mutar durante el render es el bug, no
+  StrictMode.*
+
+**Verificado en el navegador** (antes de que la extensión se desconectara): URL
+directa `/project/11`, `<title>` por proyecto, la franja de datos, el libro
+mayor y las tres capturas distintas, en modo claro. **Sin verificar todavía**:
+el cierre de la página (fila del siguiente proyecto + footer), el estado de id
+inexistente, el modo oscuro, el español y los anchos de móvil.
+
 ---
 
 ## La dirección elegida
@@ -183,13 +229,16 @@ de arriba lo pone en su lugar.
    en el sistema nuevo el separador entre secciones es una regla de 3px en
    tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:
    Work cierra en hairline y Approach abre en otra.
-3. **Traducir las fichas de proyecto.** La home está 100% en los dos idiomas;
-   las páginas `/project/:id` siguen solo en inglés. Falta reestructurar
-   `src/data/Projects.json` a campos por idioma (`description`,
-   `longDescription`, `insights.*`) y adaptar `ProjectDetailContainer`. La única
-   excepción ya hecha es la descripción del proyecto destacado, que vive en el
-   diccionario (`work.featuredDescription`) porque aparece en la home bajo un
-   título en español.
+3. **Traducir el contenido de las fichas.** Decidido el 2026-09-02: la
+   estructura y el diseño se hicieron primero, la traducción va después. Toda
+   la **interfaz** de la ficha ya es bilingüe (bloque `project` en los dos
+   diccionarios); lo que sigue en inglés es el **contenido de cada proyecto**:
+   2058 palabras entre `description`, `longDescription` e `insights.*`. Falta
+   reestructurar `src/data/Projects.json` a campos por idioma y leerlos según
+   `useLang()`. Hoy la costura se ve: cabeceras en español sobre párrafos en
+   inglés. La única excepción ya hecha es la descripción del proyecto
+   destacado, que vive en el diccionario (`work.featuredDescription`) porque
+   aparece en la home bajo un título en español.
 4. **Limpiar componentes muertos**: `src/components/Buttons/`,
    `src/components/Titles/`, `src/components/Form/` son del build anterior y no
    los usa nadie (`TertiaryButton` incluso referencia un `--accent` que no

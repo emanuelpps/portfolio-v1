@@ -41,3 +41,21 @@ const FEATURED_ID = 11;
 
 export const featured =
   projects.find((p) => p.id === FEATURED_ID) ?? projects.find((p) => !isLibrary(p));
+
+/**
+ * The sheet is reached by URL, not by handoff.
+ *
+ * `/project/11` used to work only if you had clicked your way there from the
+ * index: the route read the project out of the router's `location.state`, so a
+ * reload, a shared link or a new tab all landed on "Project not found". A case
+ * study whose link cannot be sent to anyone is not a case study, so the id in
+ * the address is the source of truth now.
+ */
+export const findProject = (id: string | undefined) =>
+  id === undefined ? undefined : projects.find((p) => String(p.id) === id);
+
+/** Wraps, so the last sheet leads back to the first rather than dead-ending. */
+export const nextProject = (current: ProjectTypes) => {
+  const i = projects.findIndex((p) => p.id === current.id);
+  return projects[(i + 1) % projects.length];
+};

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import AppRoutes from "./routes/Router";
 import Footer from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
@@ -12,22 +11,6 @@ import { useT } from "@/i18n";
  */
 function App() {
   const t = useT();
-
-  /**
-   * The tab title and the search snippet follow the language too — a page that
-   * is entirely in Spanish but announces itself as "Frontend Developer" in the
-   * tab strip is still half in English where it is most visible.
-   *
-   * The `og:` tags are deliberately left alone: they are read by scrapers that
-   * do not run JavaScript, so changing them here would only make the markup
-   * disagree with what actually gets shared.
-   */
-  useEffect(() => {
-    document.title = t.meta.title;
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute("content", t.meta.description);
-  }, [t]);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-ground">

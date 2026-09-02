@@ -91,6 +91,30 @@ export const es: Dict = {
     },
   },
 
+  project: {
+    metaTitle: "{title} — Emanuel Pagés",
+    back: "Volver al trabajo",
+    whatItIs: "Qué es",
+    whyIBuiltIt: "Por qué lo hice",
+    howItsBuilt: "Cómo está construido",
+    whatWasHard: "Qué fue difícil",
+    specs: {
+      type: "Tipo",
+      stack: "Stack",
+      status: "Estado",
+      links: "Enlaces",
+    },
+    repository: "Repositorio",
+    live: "Ver en vivo",
+    inDevelopment: "En desarrollo",
+    inDevelopmentNote:
+      "{title} sigue en desarrollo activo y todavía no está publicado, así que no hay capturas para mostrar. El texto de abajo explica qué es y cómo funciona.",
+    nextLabel: "Siguiente proyecto",
+    next: "Siguiente",
+    viewAlt: "{title} — vista {n}",
+    notFound: "Ese proyecto no está en el índice.",
+  },
+
   stack: {
     title: "Las herramientas con las que trabajo.",
     groups: {

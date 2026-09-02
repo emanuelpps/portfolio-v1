@@ -98,6 +98,40 @@ export const en = {
     },
   },
 
+  /**
+   * The project sheet.
+   *
+   * Its four headings are written the way someone would say them out loud.
+   * They used to read Overview / Purpose / Design approach / Challenges, which
+   * is the vocabulary of an agency case study — a client, a brief, a measured
+   * result — and none of that is what these are. "Design approach" was the
+   * clearest tell: under it sits a paragraph about React Query and Zustand,
+   * which is how the thing is built, not how it was designed.
+   */
+  project: {
+    metaTitle: "{title} — Emanuel Pagés",
+    back: "Back to work",
+    whatItIs: "What it is",
+    whyIBuiltIt: "Why I built it",
+    howItsBuilt: "How it's built",
+    whatWasHard: "What was hard",
+    specs: {
+      type: "Type",
+      stack: "Stack",
+      status: "Status",
+      links: "Links",
+    },
+    repository: "Repository",
+    live: "Live site",
+    inDevelopment: "In development",
+    inDevelopmentNote:
+      "{title} is still under active development and isn't live yet, so there are no screenshots to show. The write-up below explains what it is and how it works.",
+    nextLabel: "Next project",
+    next: "Next",
+    viewAlt: "{title} — view {n}",
+    notFound: "That project isn't in the index.",
+  },
+
   stack: {
     title: "The tools I reach for.",
     groups: {

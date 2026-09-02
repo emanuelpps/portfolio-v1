@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { getLenis } from "@/lib/SmoothScroll";
 import { jumpTo, jumpToTop } from "@/lib/scrollToId";
@@ -84,8 +84,58 @@ const NavBar: React.FC = () => {
     jumpToTop(e);
   };
 
-  // The project sheet is a full-screen overlay with its own way out.
-  if (onProjectPage) return null;
+  /**
+   * On a project sheet the masthead stays, but the index goes.
+   *
+   * It used to disappear entirely, because the sheet was an overlay carrying
+   * its own back link, close button and "Top ↑". The sheet is a page now, so
+   * the bar belongs to it too — minus the section links, which point at
+   * anchors that do not exist on this page and would take a visitor somewhere
+   * without saying so. One way out, named.
+   */
+  if (onProjectPage) {
+    return (
+      <nav
+        aria-label={t.nav.label}
+        className="fixed left-0 top-0 z-[100] h-16 w-full border-b-[3px] border-ink bg-ground lg:h-20"
+      >
+        <div className="flex h-full items-center justify-between gap-4 px-[var(--pad)]">
+          <Link
+            to="/"
+            data-cursor="hover"
+            className="group -ml-1 flex min-h-11 items-center gap-3 px-1"
+          >
+            <EPMark
+              size={20}
+              className="shrink-0 text-ink transition-opacity duration-300 group-hover:opacity-70"
+              title=""
+            />
+            <span className="display-md hidden text-[0.9375rem] uppercase tracking-[-0.01em] text-ink transition-opacity duration-300 group-hover:opacity-70 min-[360px]:inline">
+              Emanuel Pagés
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-2 sm:gap-4">
+            <LangToggle />
+            <ThemeToggle />
+            <Link
+              to="/#work"
+              data-cursor="hover"
+              className="note group ml-1 inline-flex min-h-11 items-center gap-2.5 text-ink-dim transition-colors duration-300 hover:text-ink sm:ml-2"
+            >
+              <span
+                aria-hidden
+                className="inline-block transition-transform duration-300 group-hover:-translate-x-1"
+              >
+                ←
+              </span>
+              <span className="hidden sm:inline">{t.project.back}</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <>
