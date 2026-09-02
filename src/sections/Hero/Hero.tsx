@@ -2,6 +2,7 @@ import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
 import { EPMark } from "@/components/blueprint/EPMark";
+import { MaskedLines } from "@/components/blueprint/MaskedLines";
 import { jumpTo } from "@/lib/scrollToId";
 import rawProjects from "@/data/Projects.json";
 import type { ProjectTypes } from "@/types/ProjectTypes";
@@ -93,18 +94,15 @@ export const Hero = () => {
               {/* The masthead carries the name visually; assistive tech should
                   still hear the whole claim from the page's one h1. */}
               <span className="sr-only">{t.hero.srName}</span>
-              {t.hero.roleLines.map((line, i) => (
-                <span key={line} className="line-mask">
-                  <motion.span
-                    className="block"
-                    initial={{ y: "115%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, ease: EASE, delay: 0.1 + i * 0.11 }}
-                  >
-                    {line}
-                  </motion.span>
-                </span>
-              ))}
+              {/* Above the fold, so it plays on mount: something already on
+                  screen at the first paint may never cross a viewport
+                  threshold again. */}
+              <MaskedLines
+                lines={t.hero.roleLines}
+                trigger="mount"
+                delay={0.1}
+                stagger={0.11}
+              />
             </h1>
 
             {/* 3px: the weight that separates sections. 1px divides inside one. */}

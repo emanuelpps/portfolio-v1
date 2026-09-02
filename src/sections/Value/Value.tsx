@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import { MaskedLines } from "@/components/blueprint/MaskedLines";
 import { counts, findProject } from "@/sections/Projects/work";
 import { fill, useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
@@ -89,21 +90,15 @@ const Value = () => {
       <blockquote className="gut py-12 sm:py-16 lg:py-20">
         {/* See --claim-size in index.css: the longest line is a different word
             in each language, so the size is tuned per language rather than
-            shared and left to break. */}
+            shared and left to break.
+
+            The reveal goes through MaskedLines because the first version hung
+            whileInView on each line inside its own mask, where the line starts
+            clipped to nothing and is therefore never reported visible. The
+            claim never appeared at all: between the rule and "The edge" there
+            was blank page. */}
         <p className="poster max-w-[68rem] text-[length:var(--claim-size)] text-ink">
-          {t.approach.quoteLines.map((line, i) => (
-            <span key={line} className="line-mask">
-              <motion.span
-                className="block"
-                initial={{ y: "115%" }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 1, ease: EASE, delay: i * 0.09 }}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
+          <MaskedLines lines={t.approach.quoteLines} />
         </p>
       </blockquote>
 
