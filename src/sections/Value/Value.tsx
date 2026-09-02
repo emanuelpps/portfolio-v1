@@ -109,7 +109,16 @@ const Value = () => {
 
       <div className="h-[3px] w-full bg-ink" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12">
+      {/* The block closes on a hairline, like every other section does. Without
+          it Approach was the one section that simply stopped: Work ends on the
+          last divider of its index, Stack on the last rule of its grid, Record
+          on the last row of the ledger — and then the air belongs to whatever
+          comes next. Here the air had nothing to belong to, so it read as a
+          hole at the foot of Approach rather than as the opening of Stack.
+
+          It sits on the wrapper rather than on the cells so that it is drawn at
+          the true bottom of the row whichever column turns out to be taller. */}
+      <div className="grid grid-cols-1 border-b border-rule lg:grid-cols-12">
         <motion.div
           variants={rise}
           initial="hidden"

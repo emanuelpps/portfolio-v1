@@ -319,6 +319,14 @@ Se cerró en tres pasos, midiendo cada uno:
 Lo que se pierde es la alineación de "LA VENTAJA" con "EN DIGITAL" en el borde
 superior. Vale el cambio: el bloque se lee como una unidad compuesta.
 
+**Y faltaba una regla.** Approach era la única sección que terminaba en nada:
+Work cierra en el último divisor de su índice, Stack en la última regla de su
+grilla, Record en la última fila del libro mayor — y recién ahí el aire pasa a
+ser de la sección siguiente. Acá el aire no tenía a quién pertenecer, así que
+los 80px de apertura de Stack se leían como un hueco al pie de Approach. La
+hairline de cierre va en el contenedor de la grilla, no en las celdas, para que
+se dibuje en el fondo real de la fila sea cual sea la columna más alta.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
