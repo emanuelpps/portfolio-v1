@@ -372,6 +372,18 @@ de Node 22+.
 Cualquier cosa que dependa de que una animación *arranque* se verifica con
 `cdp.mjs` o en un navegador de verdad. El arnés no puede desmentirte.
 
+Y hay un barrido listo para eso, **`docs/design/sweep.js`**: scrollea la página
+entera como la scrollea una persona y reporta todo lo que quedó sin revelarse
+—opacidad inline por debajo de 1, un translate que sobró, un path de SVG todavía
+sin dibujar—. Se corre con `--eval-file`:
+
+    node docs/design/cdp.mjs "http://localhost:5199/" --lang es --theme dark
+      --wait 500 --eval-file docs/design/sweep.js
+
+Pasado el 2026-09-02 sobre la home y las fichas, en los dos idiomas, los dos
+modos y a 390 y 1280: **nada trabado** más allá de la frase de Approach, que era
+el único caso.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se

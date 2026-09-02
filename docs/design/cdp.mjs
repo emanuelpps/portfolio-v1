@@ -22,7 +22,7 @@
  *                            [--theme dark]
  */
 import { spawn } from "node:child_process";
-import { writeFileSync, mkdtempSync } from "node:fs";
+import { writeFileSync, readFileSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -143,6 +143,11 @@ await sleep(Number(flag("wait", 2500)));
 
 const expr = flag("eval", null);
 if (expr) console.log(await evaluate(expr));
+
+/* Anything longer than a one-liner goes in a file — a shell cannot be trusted
+   with a page of JavaScript, and the quoting eats backslashes and quotes. */
+const evalFile = flag("eval-file", null);
+if (evalFile) console.log(await evaluate(readFileSync(evalFile, "utf8")));
 
 const shot = flag("shot", null);
 if (shot) {
