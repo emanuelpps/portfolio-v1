@@ -76,8 +76,6 @@ export const es: Dict = {
   work: {
     count: "{projects} proyectos · {libraries} librerías open source",
     featuredLabel: "Destacado",
-    featuredDescription:
-      "Una app de streaming de música construida sobre la red abierta Audius. Producto propio — mismo stack que el trabajo para clientes, sin brief, cada decisión mía.",
     featuredCta: "Ver el caso",
     filterLabel: "Filtrar proyectos",
     filters: {

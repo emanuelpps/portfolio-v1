@@ -11,8 +11,8 @@
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
 **Las seis secciones están en código**, contra sus artboards, junto con la base
 que necesitan (tipografías, paleta de dos modos, masthead) y la ficha de
-proyecto. El cascarón Blueprint ya no existe. Lo único que queda del plan
-original es traducir el contenido de las fichas.
+proyecto. El cascarón Blueprint ya no existe y las fichas están
+traducidas. El plan del rediseño está terminado.
 
 ### Bajado al código el 2026-09-01
 
@@ -246,6 +246,34 @@ y `FormContainer`, más las carpetas del build anterior `components/Buttons/`,
 `components/Titles/` y `components/Form/`. De `blueprint/` quedan las tres
 piezas que siguen vivas: `EPMark`, `DrawIn` y `BowlButton`.
 
+### La prosa de los proyectos, traducida — hecho el 2026-09-02
+
+- **Salió de `Projects.json`.** Un JSON no tiene idioma ni tipo, así que no
+  había dónde poner una traducción ni nada que atrapara una que faltara — esa
+  es la razón real por la que las fichas siguieron en inglés mientras el resto
+  del sitio ya era bilingüe.
+- **El corte es el mismo que ya usan `roles.ts` y `Stack.ts`:** `Projects.json`
+  guarda lo que no se traduce (id, nombre, tipo, stack, enlaces, imágenes) y la
+  prosa vive en `src/data/projectCopy.en.ts` y `projectCopy.es.ts`, con la
+  misma clave. `es` está tipado como `ProjectCopyMap`, **así que un proyecto o
+  un campo que exista en inglés y falte en español no compila**.
+- **Los campos se renombraron a como se llaman los bloques de la ficha**:
+  `description` → `blurb`, `longDescription` → `overview`, y
+  `insights.purpose/designApproach/challenges` → `why` / `build` / `hard`. Las
+  imágenes de esos bloques pasaron a `plates` en el JSON, con las mismas
+  claves.
+- **Se fue `work.featuredDescription`.** Era el único blurb de proyecto que
+  vivía en el diccionario, y existía sólo porque las fichas estaban en inglés.
+  El blurb del proyecto 11 se reescribió para decir las dos cosas que antes
+  estaban repartidas: qué es y que es producto propio.
+- **`state={project}` se fue de todos los links a fichas.** No hacía nada desde
+  que la ruta resuelve por id, y dejarlo sugería que importaba.
+- Lo que **no** se tocó: `image` y `gallery` en `Projects.json`. Guardan
+  capturas de Cloudinary que hoy no se muestran en ninguna parte (y una se
+  repite en siete proyectos, con pinta de relleno). Borrarlas tiraría imágenes
+  de las que no hay otra copia; mostrarlas es una decisión de contenido, no de
+  esta tanda.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
@@ -354,18 +382,18 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Traducir el contenido de las fichas.** Decidido el 2026-09-02: la
-   estructura y el diseño se hicieron primero, la traducción va después. Toda
-   la **interfaz** de la ficha ya es bilingüe (bloque `project` en los dos
-   diccionarios); lo que sigue en inglés es el **contenido de cada proyecto**:
-   2058 palabras entre `description`, `longDescription` e `insights.*`. Falta
-   reestructurar `src/data/Projects.json` a campos por idioma y leerlos según
-   `useLang()`. Hoy la costura se ve: cabeceras en español sobre párrafos en
-   inglés. La única excepción ya hecha es la descripción del proyecto
-   destacado, que vive en el diccionario (`work.featuredDescription`) porque
-   aparece en la home bajo un título en español.
-Y nada más. Las seis secciones, la ficha, el masthead y el colofón están
-reescritos y vistos; los componentes muertos están borrados.
+Del plan del rediseño, nada. Las seis secciones, la ficha, el masthead y el
+colofón están reescritos y vistos, los componentes muertos están borrados y la
+prosa de los proyectos está en los dos idiomas.
+
+Lo que quedó anotado al pasar, para cuando haya ganas:
+
+1. **`image` y `gallery` en `Projects.json`** guardan capturas que hoy no se
+   muestran en ninguna parte. Hay que decidir si entran en las fichas o se
+   borran — conviene mirarlas antes, porque una de ellas se repite en siete
+   proyectos y tiene pinta de relleno.
+2. **La ficha no tiene artboard.** Se diseñó contra el sistema. Si en algún
+   momento se vuelve al canvas, valdría la pena dibujarla ahí también.
 
 ---
 

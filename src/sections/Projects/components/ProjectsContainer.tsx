@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { ProjectTypes } from "@/types/ProjectTypes";
 import { useEnvironment } from "@/hooks/useEnvironment";
+import { useProjectCopy } from "@/data/projectCopy";
 import { useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
 import {
@@ -35,6 +36,7 @@ import {
  */
 const Featured = ({ project }: { project: ProjectTypes }) => {
   const t = useT();
+  const copy = useProjectCopy(project.id);
 
   return (
     <motion.div
@@ -45,7 +47,6 @@ const Featured = ({ project }: { project: ProjectTypes }) => {
     >
       <Link
         to={`/project/${project.id}`}
-        state={project}
         data-cursor="hover"
         className="group grid grid-cols-1 border-b-[3px] border-ink lg:grid-cols-12"
       >
@@ -81,13 +82,13 @@ const Featured = ({ project }: { project: ProjectTypes }) => {
             <h3 className="display mt-4 text-[clamp(1.875rem,4.2vw,2.875rem)] text-ink">
               {project.title}
             </h3>
-            {/* The one project blurb that lives in the dictionary rather than in
-                Projects.json. The detail sheets are still English-only, but this
-                paragraph sits on the home page under a Spanish heading, and a
-                single English sentence there reads as a bug rather than as
-                scope. */}
+            {/* This used to be the one project blurb kept in the dictionary,
+                because the sheets were English-only and a single English
+                sentence under a Spanish heading reads as a bug. The prose is
+                bilingual now, so it comes from the same place every other
+                project's does. */}
             <p className="mt-4 text-[1.0625rem] leading-[1.5] text-ink-2 sm:text-lg">
-              {t.work.featuredDescription}
+              {copy?.blurb}
             </p>
           </div>
 
@@ -195,7 +196,6 @@ export const ProjectsContainer = () => {
           <motion.div key={p.id} variants={row} className="border-b border-rule">
             <Link
               to={`/project/${p.id}`}
-              state={p}
               data-cursor="hover"
               onMouseEnter={() => setHovered(p)}
               onMouseLeave={() => setHovered(null)}

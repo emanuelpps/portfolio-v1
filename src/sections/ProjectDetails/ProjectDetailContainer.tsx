@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ProjectTypes } from "@/types/ProjectTypes";
 import { nextProject } from "@/sections/Projects/work";
+import { useProjectCopy } from "@/data/projectCopy";
 import { fill, useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
 
@@ -136,6 +137,9 @@ const Prose = ({ children }: { children: ReactNode }) => (
 
 const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
   const t = useT();
+  // Hooks run before the early return, so this asks for id 0 when there is no
+  // project — a lookup that simply misses, rather than a conditional hook.
+  const copy = useProjectCopy(project?.id ?? 0);
 
   if (!project) {
     return (
@@ -154,29 +158,28 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
     );
   }
 
-  const { purpose, designApproach, challenges } = project.insights;
   const inDev = project.status === "in-development";
   const next = nextProject(project);
 
   /* The lead plate is part of the same pass: on Epic Sound Studio `image2` and
      the first image of "How it's built" are the same file, so without this the
      sheet opens on a screenshot and then shows it again two blocks later. */
-  const [leadImages, purposeImages, buildImages, hardImages] = dedupe([
+  const [leadImages, whyImages, buildImages, hardImages] = dedupe([
     [project.image2].filter(Boolean),
-    purpose?.images,
-    designApproach?.images,
-    challenges?.images,
+    project.plates.why,
+    project.plates.build,
+    project.plates.hard,
   ]);
 
   /* Plates are numbered across the whole sheet, so the alt text of the second
      one reads "view 2" rather than restarting inside its own block. */
-  const plateStart = [leadImages, purposeImages, buildImages, hardImages].reduce<
+  const plateStart = [leadImages, whyImages, buildImages, hardImages].reduce<
     number[]
   >((acc, list) => [...acc, acc[acc.length - 1] + list.length], [0]);
 
-  const paragraphs = project.longDescription
+  const paragraphs = (copy?.overview ?? "")
     .split("\n")
-    .filter((p) => p.trim() !== "");
+    .filter((para) => para.trim() !== "");
 
   /* The facts, as cells of one strip divided by hairlines — the same row that
      closes the cover of the site. Built from what the project actually has, so
@@ -229,7 +232,7 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
             {project.title}
           </h1>
           <p className="mt-6 max-w-[46ch] text-[clamp(1.0625rem,1.7vw,1.5rem)] leading-[1.4] text-ink-2 sm:mt-8">
-            {project.description}
+            {copy?.blurb}
           </p>
 
           {inDev && (
@@ -288,20 +291,20 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
           ))}
         </Block>
 
-        {purpose?.text && (
+        {copy?.why && (
           <div className="pt-20 sm:pt-24">
             <Block
               label={t.project.whyIBuiltIt}
-              images={purposeImages}
+              images={whyImages}
               firstPlate={plateStart[1]}
               title={project.title}
             >
-              <Prose>{purpose.text}</Prose>
+              <Prose>{copy.why}</Prose>
             </Block>
           </div>
         )}
 
-        {designApproach?.text && (
+        {copy?.build && (
           <div className="pt-20 sm:pt-24">
             <Block
               label={t.project.howItsBuilt}
@@ -309,12 +312,12 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
               firstPlate={plateStart[2]}
               title={project.title}
             >
-              <Prose>{designApproach.text}</Prose>
+              <Prose>{copy.build}</Prose>
             </Block>
           </div>
         )}
 
-        {challenges?.text && (
+        {copy?.hard && (
           <div className="pt-20 sm:pt-24">
             <Block
               label={t.project.whatWasHard}
@@ -322,7 +325,7 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
               firstPlate={plateStart[3]}
               title={project.title}
             >
-              <Prose>{challenges.text}</Prose>
+              <Prose>{copy.hard}</Prose>
             </Block>
           </div>
         )}

@@ -3,28 +3,11 @@
     "id": 2,
     "title": "React Smart Hooks",
     "type": "Library",
-    "stack": ["React", "TypeScript", "React Testing Library"],
-    "description": "A lightweight, dependency-free library of custom React hooks with TypeScript support.",
-    "longDescription": "This library provides a set of useful and minimal custom hooks for React, written in TypeScript. It helps developers save time by reusing common logic like debouncing, localStorage handling, and toggling values. All hooks are tested with Vitest, tree-shakable, and free of dependencies. Built for performance and easy use in any React app.",
-    "insights": {
-      "purpose": {
-        "text": "The library was created to offer ready-to-use React hooks that simplify common tasks and reduce repetitive code, improving development speed and code quality."
-      },
-      "designApproach": {
-        "text": "Hooks are simple, reusable, and fully typed with TypeScript. They follow good design principles like single responsibility and modularity. Vitest is used to ensure 100% test coverage.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trqkhpjdlgujhwrqfflp",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0"
-        ]
-      },
-      "challenges": {
-        "text": "Balancing flexibility and simplicity was key. Also, testing hooks that interact with browser APIs like localStorage required good mocking strategies.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
-        ]
-      }
-    },
+    "stack": [
+      "React",
+      "TypeScript",
+      "React Testing Library"
+    ],
     "code": "https://github.com/emanuelpps/react-smart-hooks",
     "deploy": "https://www.npmjs.com/package/smart-hooks",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
@@ -33,34 +16,25 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Doc"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trqkhpjdlgujhwrqfflp",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
+      ]
+    }
   },
   {
     "id": 3,
     "title": "Helpers Utility Library",
     "type": "Library",
-    "stack": ["TypeScript", "Vitest"],
-    "description": "Lightweight TypeScript helper functions like deepClone, debounce, slugify, and more.",
-    "longDescription": "Helpers Kit is a small and fast utility library written in TypeScript. It includes useful helper functions like deepClone, debounce, getUniqueValues, and slugify. These tools help developers avoid writing the same logic many times. It works in both frontend and backend projects, and does not need any extra libraries.",
-    "insights": {
-      "purpose": {
-        "text": "The goal was to create a simple and reusable set of TypeScript functions that help developers solve common problems in any project."
-      },
-      "designApproach": {
-        "text": "All functions are written in TypeScript with strong typing. Each helper is made to be independent, easy to understand, and ready to test. The library does not use any external dependencies, which keeps it fast and clean.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3"
-        ]
-      },
-      "challenges": {
-        "text": "One of the main challenges was making sure the library works in different environments, like the browser and Node.js. Also, writing helpers that are both generic and fully type-safe took careful work with TypeScript’s advanced types.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
-        ]
-      }
-    },
+    "stack": [
+      "TypeScript",
+      "Vitest"
+    ],
     "code": "https://github.com/emanuelpps/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
@@ -69,7 +43,16 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Docs"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
+      ]
+    }
   },
   {
     "id": 11,
@@ -83,27 +66,6 @@
       "Zustand",
       "React Query"
     ],
-    "description": "An open music streaming app built on the Audius network, with a custom waveform player, trending charts, artist and playlist pages.",
-    "longDescription": "Epic Sound Studio is a full music streaming web app built on top of the decentralized Audius network. It pairs a cinematic landing page with a streaming home (trending tracks and an underground trending chart), artist and playlist pages, search, and a custom audio player with waveform visualization powered by wavesurfer.js.\nBuilt with Next.js (App Router) and TypeScript, it uses TanStack React Query to fetch and cache data from the Audius API, Zustand for global player state, and Framer Motion for fluid transitions. The design leans into a bold neon-purple identity with custom variable fonts (Clash Display + Supreme).",
-    "insights": {
-      "purpose": {
-        "text": "The goal was to build a production-grade streaming experience on an open, artist-first network — proving that a polished, modern music UI can run entirely on the decentralized Audius API without a traditional backend of my own."
-      },
-      "designApproach": {
-        "text": "A bold neon-purple identity with strong typographic contrast and immersive motion. The app is organized feature-first (landing, home, player, playlist, artist, search), with a reusable player and waveform component, server data cached via React Query and playback state held in Zustand.",
-        "images": [
-          "/projects/epic-sound-studio/epic-player.webp",
-          "/projects/epic-sound-studio/epic-more.webp"
-        ]
-      },
-      "challenges": {
-        "text": "Working against a third-party decentralized API meant handling inconsistent data, loading states and rate limits gracefully, and keeping global playback in sync across pages. Integrating wavesurfer.js into the player while keeping interactions smooth and the bundle lean took careful state management.",
-        "images": [
-          "/projects/epic-sound-studio/epic-landing.webp",
-          "/projects/epic-sound-studio/epic-player.webp"
-        ]
-      }
-    },
     "code": "https://github.com/emanuelpps/epic-sound-studio",
     "deploy": "",
     "frontImage": "/projects/epic-sound-studio/epic-landing.webp",
@@ -112,38 +74,26 @@
     "gallery": [
       "/projects/epic-sound-studio/epic-more.webp"
     ],
-    "buttonText": "Code"
+    "plates": {
+      "build": [
+        "/projects/epic-sound-studio/epic-player.webp",
+        "/projects/epic-sound-studio/epic-more.webp"
+      ],
+      "hard": [
+        "/projects/epic-sound-studio/epic-landing.webp",
+        "/projects/epic-sound-studio/epic-player.webp"
+      ]
+    }
   },
   {
     "id": 13,
     "title": "Eckers RRHH Solutions",
     "type": "Project",
-    "stack": ["Next.js", "TypeScript", "Tailwindcss"],
-    "description": "Website for an HR consultancy in Argentina's Alto Valle, with two separate intake funnels: one for companies hiring and one for candidates.",
-    "longDescription": "Eckers RRHH Solutions is the website for a recruitment and HR consultancy based in General Roca, Río Negro. The landing page walks visitors through the firm's services, hiring process and regional story, and then splits them into two dedicated paths: one for companies that need to fill a vacancy, and one for professionals looking for their next role.\nIt is built with Next.js (App Router) and TypeScript, styled with Tailwind CSS. Each path has its own intake page: companies describe the position, location and urgency of the search, while candidates submit their profile, experience level, salary expectation, preferred contract type and a CV upload. Sections reveal as you scroll, and a floating WhatsApp button keeps the fastest contact channel one tap away on every page.",
-    "insights": {
-      "purpose": {
-        "text": "The consultancy needed a presence that did more than describe the service — it had to qualify the people who get in touch. The goal was to turn two very different audiences, companies hiring and people looking for work, into two clear paths, each collecting exactly the information the team needs to start a search.",
-        "images": [
-          "/projects/eckers-solutions/eckers-about.webp",
-          "/projects/eckers-solutions/eckers-paths.webp"
-        ]
-      },
-      "designApproach": {
-        "text": "A calm corporate identity built on navy and cyan, generous white space and bold display type, so the site reads as trustworthy instead of loud. The homepage is structured like a funnel — value proposition, audience split, services, process, story, contact — and the two intake pages reuse the same form building blocks with their own fields. Everything is responsive-first with Tailwind, and content fades in on scroll to keep a long page feeling light.",
-        "images": [
-          "/projects/eckers-solutions/eckers-services.webp",
-          "/projects/eckers-solutions/eckers-process.webp"
-        ]
-      },
-      "challenges": {
-        "text": "The hard part was not the visuals but the forms: asking candidates for enough detail to be genuinely useful without turning the page into paperwork, handling CV uploads with format and size limits, and keeping the company form focused on what actually defines a search — role, location and urgency. Confidentiality is a real concern in a small regional market, so it also shaped the copy and how personal data is requested.",
-        "images": [
-          "/projects/eckers-solutions/eckers-candidatos.webp",
-          "/projects/eckers-solutions/eckers-empresas.webp"
-        ]
-      }
-    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwindcss"
+    ],
     "code": "",
     "deploy": "https://eckers-solutions.vercel.app/",
     "frontImage": "/projects/eckers-solutions/eckers-hero.webp",
@@ -152,7 +102,20 @@
     "gallery": [
       "/projects/eckers-solutions/eckers-about.webp"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "why": [
+        "/projects/eckers-solutions/eckers-about.webp",
+        "/projects/eckers-solutions/eckers-paths.webp"
+      ],
+      "build": [
+        "/projects/eckers-solutions/eckers-services.webp",
+        "/projects/eckers-solutions/eckers-process.webp"
+      ],
+      "hard": [
+        "/projects/eckers-solutions/eckers-candidatos.webp",
+        "/projects/eckers-solutions/eckers-empresas.webp"
+      ]
+    }
   },
   {
     "id": 4,
@@ -165,28 +128,6 @@
       "ReactRouter",
       "Framer Motion"
     ],
-    "description": "A coffee shop website focused on clean UI and visual storytelling. Built with React and Firebase.",
-    "longDescription": "I designed and developed a website for a coffee brand with a minimal and elegant approach. The site aims to convey warmth and quality through high-resolution imagery and a clean user interface.\nBuilt using React and Tailwindcss for responsive and fast development, it integrates Firebase for content management and user authentication.  Smooth animations powered by Framer Motion enhance user experience. The natural color palette emphasizes the earthy tones of freshly roasted coffee, evoking a handcrafted, premium feel.",
-    "insights": {
-      "purpose": {
-        "text": "The project was created to give a digital identity to a boutique coffee brand, combining modern web technologies with a narrative-driven design to connect with customers on a sensory level."
-      },
-      "designApproach": {
-        "text": "The design focused on minimalism, earthy colors, and immersive visuals. I used Tailwindcss for utility-first styling and Framer Motion to enhance interactivity without overwhelming the user.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/l2bhytxrzmmdvaqr5tpu",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rss0lqrqfp5zyhusa7do",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj"
-        ]
-      },
-      "challenges": {
-        "text": "Balancing performance with high-quality imagery was a key challenge. I had to optimize assets carefully to maintain fast load times while preserving the premium feel. Integrating smooth animations with route transitions also required fine-tuning with Framer Motion and React Router.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
-        ]
-      }
-    },
     "code": "https://github.com/emanuelpps/the-coffee-roastery",
     "deploy": "https://the-coffee-roastery.vercel.app/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
@@ -195,7 +136,17 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/l2bhytxrzmmdvaqr5tpu",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rss0lqrqfp5zyhusa7do",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
+      ]
+    }
   },
   {
     "id": 5,
@@ -208,27 +159,6 @@
       "Zustand",
       "Framer Motion"
     ],
-    "description": "Redesign and development of a software agency website using modern technologies and animations.",
-    "longDescription": "I was in charge of the complete redesign and development of The CodeMaker Lab's website, a software development agency. The original site had an outdated and unattractive look. I proposed a full visual overhaul, focusing on delivering a modern and professional experience. The site was built with Next.js and TypeScript, using Tailwindcss for styling, Zustand for global state management, and Framer Motion for smooth, engaging animations. The new design features bold typography, a vibrant and modern color palette, and intuitive navigation. The result is a visually impactful, user-friendly website aligned with the brand’s identity and goals.",
-    "insights": {
-      "purpose": {
-        "text": "This project was aimed at redefining the digital presence of The CodeMaker Lab by providing a modern, professional, and conversion-oriented website. The goal was to establish credibility and clearly communicate the services and expertise of the agency."
-      },
-      "designApproach": {
-        "text": "The new design was centered around strong visual hierarchy, impactful headlines, and vibrant color contrast to highlight key sections. The user interface was structured with responsiveness in mind, and animations were integrated to enrich user interaction without hindering performance.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jzpsksrspnrjb3wdtwim",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g"
-        ]
-      },
-      "challenges": {
-        "text": "A major challenge was balancing expressive animations with performance and usability. It also required careful management of shared state across components, for which Zustand proved lightweight and effective. Ensuring accessibility while pushing for a bold visual style also presented design tradeoffs that had to be resolved thoughtfully.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
-        ]
-      }
-    },
     "code": "",
     "deploy": "https://www.codemakerlab.com.ar/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
@@ -237,34 +167,27 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jzpsksrspnrjb3wdtwim",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
+      ]
+    }
   },
   {
     "id": 6,
     "title": "Actor Portfolio",
     "type": "Project",
-    "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
-    "description": "A personal website for an actor showcasing biography, performances, and photos.",
-    "longDescription": "This portfolio website was developed for a theater actor as part of a project at The CodeMaker Lab. The site includes the actor’s biography, a list of past performances, and a gallery of stage photos. Built with Next.js and TypeScript for performance and scalability, the layout was designed with Tailwindcss for a modern and responsive experience. The visual structure is minimal yet bold, using large, elegant typography and a monochrome palette to convey a professional and artistic presence. The website’s goal is to clearly highlight the actor’s career while maintaining a stylish and personal presentation.",
-    "insights": {
-      "purpose": {
-        "text": "This project aimed to create a digital portfolio that showcases the actor’s career and artistic identity, combining modern web technologies to present the content in an engaging, easy-to-navigate format."
-      },
-      "designApproach": {
-        "text": "The design emphasized bold typography and a clean, minimalist layout to highlight the actor’s work. The monochrome color scheme and large imagery were used to create a refined and professional look, while Tailwindcss enabled rapid development of responsive and scalable components.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nodxju0bvlzcccow6qfz",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky"
-        ]
-      },
-      "challenges": {
-        "text": "One challenge was ensuring that the website looked polished across various devices, especially given the importance of displaying large images and content in a clean, readable format. Another challenge was optimizing performance while maintaining high-quality visuals to create a seamless experience for users.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
-        ]
-      }
-    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwindcss",
+      "Framer Motion"
+    ],
     "code": "",
     "deploy": "https://mng-actor.vercel.app/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
@@ -273,68 +196,55 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nodxju0bvlzcccow6qfz",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
+      ]
+    }
   },
   {
     "id": 7,
     "title": "Personal Portfolio 2024",
     "type": "Project",
-    "stack": ["Next.js", "TypeScript", "Tailwindcss", "Framer Motion"],
-    "description": "My previous portfolio, developed in 2024. Redesigned annually to reflect my professional growth.",
-    "longDescription": "This was my personal portfolio for 2024. Every year I develop a new portfolio with renewed aesthetics and structure as part of my continuous improvement exercise. This version was built with Next.js, TailwindCSS, and TypeScript, focusing on simplicity, readability, and a clear presentation of my projects and experience.",
-    "insights": {
-      "purpose": {
-        "text": "This project was developed to maintain an up-to-date portfolio that reflects my progress and skills over time. Additionally, it serves as an opportunity to experiment with new technologies and design approaches."
-      },
-      "designApproach": {
-        "text": "The main idea behind this portfolio’s design was to maintain a clean and professional aesthetic, with a focus on readability and clear visualization of projects. I used TailwindCSS to achieve a responsive and agile design, and Framer Motion to add smooth interactivity and animations.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dupo8uwbjrejweobghvj",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kd3mcpimfoaygdmgnxdm"
-        ]
-      },
-      "challenges": {
-        "text": "One of the biggest challenges was balancing the simplicity of the design with interactivity, ensuring that the animations did not distract from key content. Also, since this is an annual version of the portfolio, I had to make sure not to overload the design with too many visual updates, maintaining consistency with previous versions.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zhl0f6j3tczgcuzedyfv",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kz9qraewc6xhfhbee39m"
-        ]
-      }
-    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwindcss",
+      "Framer Motion"
+    ],
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
     "deploy": "https://emanuelpps2024.vercel.app/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
     "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/qmuvw5jaltr25eopbain",
     "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zune0zn1hghyvezjsgpq",
     "gallery": [],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dupo8uwbjrejweobghvj",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kd3mcpimfoaygdmgnxdm"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zhl0f6j3tczgcuzedyfv",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kz9qraewc6xhfhbee39m"
+      ]
+    }
   },
   {
     "id": 8,
     "title": "EP Weather App",
     "type": "Project",
-    "stack": ["React Js", "JavaScript", "Fetch API", "Bootstrap", "CSS"],
-    "description": "Simple weather app developed in ReactJS with real-time data.",
-    "longDescription": "This web application allows users to check the current weather of any city using the OpenWeatherMap API. Developed as an exercise in API consumption with ReactJS, the interface is simple, responsive, and displays temperature, weather conditions, and other useful details.",
-    "insights": {
-      "purpose": {
-        "text": "The aim of this project was to create a functional web app to check the weather of any city worldwide, utilizing real-time data from the OpenWeatherMap API. It also served as a practice for improving skills in API consumption using ReactJS."
-      },
-      "designApproach": {
-        "text": "The app’s design is straightforward, focusing on clarity of information. It was built using Bootstrap to ensure the app is responsive and easy to use across both mobile and desktop devices.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wwpo6ufmy5mkfxbfljsh",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trcnsgqwtienkrwtx4ht"
-        ]
-      },
-      "challenges": {
-        "text": "A key challenge was ensuring the app functioned properly across various devices, especially when displaying large images and real-time data. Another challenge was optimizing performance while maintaining high-quality visuals for a smooth user experience.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/pqjszoozaxsej9pdxcmn",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dfijhbvfo9jrwdfuvgbo"
-        ]
-      }
-    },
+    "stack": [
+      "React Js",
+      "JavaScript",
+      "Fetch API",
+      "Bootstrap",
+      "CSS"
+    ],
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
     "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xe9d8ihrmmten9clwkdd",
@@ -343,7 +253,16 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wwpo6ufmy5mkfxbfljsh",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trcnsgqwtienkrwtx4ht"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/pqjszoozaxsej9pdxcmn",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dfijhbvfo9jrwdfuvgbo"
+      ]
+    }
   },
   {
     "id": 9,
@@ -357,27 +276,6 @@
       "JavaScript",
       "CSS"
     ],
-    "description": "Simple web app for a fictional pizza restaurant. Users can choose pizzas and make orders online.",
-    "longDescription": "Don Remolo Pizza is a small pizza ordering web app made for a fictional artisanal pizzeria. This project was a way to practice responsive design, reusable components, using a real-time database, and adding smooth animations to improve user experience. The menu and pizza data are stored in Firebase, and users can send their orders using a form connected to the same database.",
-    "insights": {
-      "purpose": {
-        "text": "This project was built to learn how to create an online pizza ordering experience. It uses a Firebase database to store the pizza products and the customer orders. The site also includes smooth animations and works well on mobile devices."
-      },
-      "designApproach": {
-        "text": "The design is clean, modern, and focused on a good user experience. Framer Motion was used for smooth animations, and Bootstrap helped make the layout responsive. The look and feel were made to feel like a cozy, handmade pizza shop.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za"
-        ]
-      },
-      "challenges": {
-        "text": "One challenge was to keep the animations smooth without making the site slow, especially on phones. Another important task was to make sure Firebase worked well both for showing pizza data and for saving customer orders, all in real-time.",
-        "images": [
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
-          "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
-        ]
-      }
-    },
     "code": "https://github.com/emanuelpps/donremolo",
     "deploy": "https://emanuelpps.github.io/don-remolo-pizza/",
     "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/suxicowfis1gnjnkbjx4",
@@ -386,6 +284,15 @@
     "gallery": [
       "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
     ],
-    "buttonText": "Deploy"
+    "plates": {
+      "build": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za"
+      ],
+      "hard": [
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
+        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
+      ]
+    }
   }
 ]

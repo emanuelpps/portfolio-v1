@@ -195,7 +195,6 @@ export const Hero = () => {
             >
               <Link
                 to={`/project/${project.id}`}
-                state={project}
                 data-cursor="hover"
                 className="invertible group flex h-full flex-col justify-center px-[var(--pad)] py-5 sm:py-6"
               >

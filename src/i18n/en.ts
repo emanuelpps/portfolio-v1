@@ -93,8 +93,6 @@ export const en = {
      *  beside it is the count, filled from the data rather than typed here. */
     count: "{projects} projects · {libraries} open-source libraries",
     featuredLabel: "Featured",
-    featuredDescription:
-      "A music-streaming app built on the open Audius network. My own product — same stack as client work, no brief, every decision mine.",
     featuredCta: "Read the case study",
     filterLabel: "Filter projects",
     filters: {
