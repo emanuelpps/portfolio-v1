@@ -9,9 +9,9 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**La portada, Work y Approach ya están en código**, junto con la base que
+**La portada, Work, Approach y Stack ya están en código**, junto con la base que
 necesitan (tipografías, paleta de dos modos, masthead) y la ficha de proyecto.
-Las otras tres —Stack, Record, Contact— heredan la tipografía y la paleta
+Las otras dos —Record y Contact— heredan la tipografía y la paleta
 nuevas, pero **todavía no se reescribieron contra sus artboards**.
 
 ### Bajado al código el 2026-09-01
@@ -169,6 +169,31 @@ inexistente, el modo oscuro, el español y los anchos de móvil.
   es la de indie hacker, con el único enlace inline de la página apuntando a la
   ficha de Epic Sound Studio, y el número de librerías derivado del índice.
 
+### Stack — hecho el 2026-09-02
+
+- **Sale de `BpSection`** y toma la cabecera común. El título-frase
+  ("Las herramientas con las que trabajo.") se borró del diccionario, igual que
+  el de Work.
+- **Los nombres se leen como tipografía corrida**, no como una lista con una
+  hairline debajo de cada entrada. Treinta y siete filas de una palabra cada una
+  son una columna de muñones; el ojo lee un grupo, y un grupo se lee más rápido
+  como una frase de nombres.
+- **Cada nombre es una unidad indivisible y los separadores cargan los cortes
+  de línea.** Unidos en un solo string el navegador partía adentro de un nombre:
+  "HTML 5" salía como "HTML" en una línea y "5" en la siguiente, que se lee como
+  dos entradas. Se vio en la primera captura.
+- **El conteo (37) se deriva de `src/data/Stack.ts`.** El artboard dice 42;
+  el dato manda. Y lo que se está estudiando, que era un párrafo suelto debajo
+  de la grilla, es una sola cláusula y va donde toda sección guarda su cláusula:
+  a la derecha de la cabecera.
+- **La grilla es de 3×2 con reglas de 1px.** Cada celda dibuja su borde derecho
+  e inferior y la que cierra una fila devuelve el derecho — cuál es esa celda
+  cambia con el breakpoint, así que la excepción se declara por breakpoint en
+  vez de quedar horneada en el marcado.
+- Es **la sección más apretada del sitio a propósito**: va inmediatamente
+  después de Work, que es la más suelta, y el contraste entre las dos es lo que
+  le da forma al scroll.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
@@ -267,12 +292,12 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Reescribir las tres secciones restantes** contra sus artboards:
-   Stack, Record, Contact. Hoy heredan la tipografía y la paleta nuevas y se ven
+1. **Reescribir las dos secciones restantes** contra sus artboards:
+   Record y Contact. Hoy heredan la tipografía y la paleta nuevas y se ven
    coherentes, pero conservan la estructura vieja. Los artboards ya tienen la
    definitiva (libro mayor en vez de línea de tiempo, campos subrayados en vez
    de cajas).
-2. **Unificar el peso de las reglas.** Las tres secciones que quedan abren con
+2. **Unificar el peso de las reglas.** Las dos secciones que quedan abren con
    una hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`);
    en el sistema nuevo el separador entre secciones es una regla de 3px en
    tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:

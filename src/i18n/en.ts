@@ -143,7 +143,9 @@ export const en = {
   },
 
   stack: {
-    title: "The tools I reach for.",
+    /** The count is derived from src/data/Stack.ts, never typed: a number
+     *  standing next to the list it counts has to be the list. */
+    note: "{count} entries · in progress: {studying}",
     groups: {
       frontend: { title: "Frontend", note: "Daily" },
       backend: { title: "Backend & data", note: "Working knowledge" },
@@ -152,8 +154,7 @@ export const en = {
       cloud: { title: "Cloud & ops", note: "Delivery" },
       tools: { title: "Tools & automation", note: "Everything else" },
     },
-    inProgress: "In progress — ",
-    studying: "Python Diploma — UTN",
+    studying: "Python Diploma, UTN",
   },
 
   record: {

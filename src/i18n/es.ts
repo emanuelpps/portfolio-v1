@@ -116,7 +116,9 @@ export const es: Dict = {
   },
 
   stack: {
-    title: "Las herramientas con las que trabajo.",
+    /** The count is derived from src/data/Stack.ts, never typed: a number
+     *  standing next to the list it counts has to be the list. */
+    note: "{count} entradas · en curso: {studying}",
     groups: {
       frontend: { title: "Frontend", note: "A diario" },
       backend: { title: "Backend y datos", note: "Conocimiento funcional" },
@@ -125,8 +127,7 @@ export const es: Dict = {
       cloud: { title: "Cloud y ops", note: "Entrega" },
       tools: { title: "Herramientas y automatización", note: "Todo lo demás" },
     },
-    inProgress: "En curso — ",
-    studying: "Diplomatura en Python — UTN",
+    studying: "Diplomatura en Python, UTN",
   },
 
   record: {
