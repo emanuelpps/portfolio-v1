@@ -133,6 +133,15 @@
        in the browser at 320 / 375 / 780 / 1024 / 1536. */
     --hero-size: clamp(2.5rem, 8.3vw, 8.25rem);
 
+    /* ===== Approach's claim ============================================
+       Sized per language for the same reason the cover is, and measured the
+       same way: the longest line is what a poster line is constrained by.
+       "WHO THINKS LIKE" is fifteen characters, "UN DESARROLLADOR" is sixteen —
+       one character, which at 100px is the difference between a line that
+       clears its column and a line the browser breaks in half. Verified in the
+       browser at 320 / 390 / 780 / 1280 / 1536 in both languages. */
+    --claim-size: clamp(2rem, 8vw, 6.5rem);
+
     /* Page margin. Every rule that spans the page starts here. */
     --pad: 1.25rem;
     /* The old grid separated "distance to the stem" from "distance from the
@@ -155,6 +164,7 @@
    margin the English one runs on. */
 :root[lang="es"] {
     --hero-size: clamp(1.75rem, 8.6vw, 2.375rem);
+    --claim-size: clamp(1.75rem, 7.4vw, 6rem);
 }
 
 @media (min-width: 640px) {

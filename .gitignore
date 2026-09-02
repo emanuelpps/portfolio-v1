@@ -33,3 +33,6 @@ dist-ssr
 
 # TypeScript incremental build state (local only)
 tsconfig.tsbuildinfo
+
+# Local screenshot harness (headless Chrome). Never shipped.
+public/__probe.html

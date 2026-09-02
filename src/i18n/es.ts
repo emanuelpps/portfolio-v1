@@ -55,22 +55,22 @@ export const es: Dict = {
   },
 
   approach: {
-    quoteLines: ["Un desarrollador que", "piensa como un marketer."],
+    note: "Por qué el frontend, después de diez años de growth",
+    quoteLines: ["Un desarrollador", "que piensa como", "un marketer"],
+    edgeLabel: "La ventaja",
     lead: "La mayoría de los desarrolladores frontend entregan lo que dice el Figma. Yo entrego lo que funciona. Diez años haciendo growth, SEO y campañas pagas me enseñaron cómo se comporta realmente la gente en una página — así que las interfaces que construyo están pensadas para claridad, velocidad y conversión, no solo para fidelidad al pixel.",
-    indieLabel: "También indie hacker",
-    indieBefore:
-      "Además del trabajo para clientes, diseño y publico mis propios productos — como ",
-    indieAfter:
-      ", una app de streaming de música construida sobre la red abierta Audius. Mismo stack, sin brief, cada decisión mía.",
-    recordLabel: "Los números",
     record: {
       digitalKey: "En digital",
-      digitalValue: "10 años — marketing, growth y SEO",
+      digitalFigure: "10 años",
+      digitalNote: "Marketing, growth y SEO",
       reactKey: "En React",
-      reactValue: "3 años publicando TypeScript en producción",
-      indexedKey: "Indexado",
-      indexedValue: "{projects} proyectos · {libraries} librerías open-source",
+      reactFigure: "3 años",
+      reactNote: "Publicando TypeScript en producción",
     },
+    indieLabel: "También indie hacker",
+    indieBefore:
+      "Diseño y publico mis propios productos, no solo trabajo para clientes — como ",
+    indieAfter: ", más {libraries} librerías open source en npm.",
   },
 
   work: {

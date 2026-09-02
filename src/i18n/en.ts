@@ -60,21 +60,31 @@ export const en = {
   },
 
   approach: {
-    quoteLines: ["A developer who", "thinks like a marketer."],
+    note: "Why the frontend, after ten years of growth",
+    /** Three lines, not two. The artboard breaks the claim where the sense
+     *  breaks, and at poster scale the line ending is punctuation. */
+    quoteLines: ["A developer", "who thinks like", "a marketer"],
+    edgeLabel: "The edge",
     lead: "Most frontend developers ship what is in the Figma. I ship what performs. A decade running growth, SEO and paid campaigns taught me how people actually behave on a page — so the interfaces I build are engineered for clarity, speed and conversion, not only for pixel fidelity.",
-    indieLabel: "Also an indie hacker",
-    indieBefore: "Beyond client work I design and ship my own products — like ",
-    indieAfter:
-      ", a music-streaming app built on the open Audius network. Same stack, no brief, every decision mine.",
-    recordLabel: "The record",
+    /**
+     * The figure is the loud part and the qualifier sits under it, rather than
+     * both being folded into one sentence at body size. There is no "Indexed —
+     * 10 projects · 2 libraries" row any more: Work's own heading counts the
+     * index now, and saying it twice on one page made it read as a claim
+     * rather than as a fact.
+     */
     record: {
       digitalKey: "In digital",
-      digitalValue: "10 years — marketing, growth and SEO",
+      digitalFigure: "10 years",
+      digitalNote: "Marketing, growth and SEO",
       reactKey: "In React",
-      reactValue: "3 years shipping production TypeScript",
-      indexedKey: "Indexed",
-      indexedValue: "{projects} projects · {libraries} open-source libraries",
+      reactFigure: "3 years",
+      reactNote: "Shipping production TypeScript",
     },
+    indieLabel: "Also an indie hacker",
+    indieBefore:
+      "I design and ship my own products, not just client work — like ",
+    indieAfter: ", plus {libraries} open-source libraries on npm.",
   },
 
   work: {

@@ -9,10 +9,10 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**La portada y Work ya están en código**, junto con la base que necesitan
-(tipografías, paleta de dos modos, masthead). Las otras cuatro secciones heredan
-la tipografía y la paleta nuevas, pero **todavía no se reescribieron contra sus
-artboards**.
+**La portada, Work y Approach ya están en código**, junto con la base que
+necesitan (tipografías, paleta de dos modos, masthead) y la ficha de proyecto.
+Las otras tres —Stack, Record, Contact— heredan la tipografía y la paleta
+nuevas, pero **todavía no se reescribieron contra sus artboards**.
 
 ### Bajado al código el 2026-09-01
 
@@ -147,6 +147,54 @@ mayor y las tres capturas distintas, en modo claro. **Sin verificar todavía**:
 el cierre de la página (fila del siguiente proyecto + footer), el estado de id
 inexistente, el modo oscuro, el español y los anchos de móvil.
 
+### Approach — hecho el 2026-09-02
+
+- **Sale de `BpSection`** y toma la cabecera que ahora tienen todas las
+  secciones: el nombre a escala de póster, la nota a la derecha
+  (`approach.note`), regla de 3px debajo.
+- **Tres bandas**: la cabecera, la frase, y un split de 7/5 con el argumento a
+  la izquierda y los números a la derecha. La frase pasa a **tres líneas** y a
+  versales, como el artboard; antes eran dos y en caja mixta.
+- **La frase se escala por idioma** (`--claim-size` en `index.css`), igual que
+  la portada. "WHO THINKS LIKE" tiene quince caracteres y "UN DESARROLLADOR"
+  dieciséis — a 100px esa letra de diferencia es lo que separa una línea que
+  despeja su columna de una que el navegador parte al medio. Se vio partida en
+  la primera captura.
+- **Los números se dicen, no se animan.** La cifra va a tamaño display y el
+  calificativo debajo, en vez de estar los dos plegados en una frase a tamaño
+  de cuerpo.
+- **Se fue la fila "Indexado — 10 proyectos · 2 librerías".** Ese conteo ahora
+  vive en la cabecera de Work; decirlo dos veces en la misma página lo hacía
+  leer como un argumento en vez de como un dato. La celda que queda en su lugar
+  es la de indie hacker, con el único enlace inline de la página apuntando a la
+  ficha de Epic Sound Studio, y el número de librerías derivado del índice.
+
+### Sobre cómo se verifica ahora
+
+La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
+maneja el Chrome instalado en modo headless (`--headless=new --screenshot`)
+contra un arnés local, **`public/__probe.html`**, que está en `.gitignore` y no
+debe llegar a producción.
+
+El arnés existe por una razón concreta: bajo tiempo virtual de headless el
+IntersectionObserver no dispara, así que todo lo que entra con `whileInView`
+se queda en `opacity: 0` y la captura sale vacía — 56 elementos invisibles en
+la primera prueba. El arnés monta el sitio en un iframe del ancho que se le
+pida (que además es la única forma de ver 390px en esta máquina, donde la
+ventana no baja de 1536) e **inyecta una hoja de estilo** que fuerza el estado
+final. La primera versión forzaba estilos inline y perdía la carrera contra
+framer-motion, que los reescribe en el frame siguiente; `!important` en una
+hoja gana.
+
+Uso:
+
+```bash
+chrome --headless=new --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=1 --run-all-compositor-stages-before-draw \
+  --virtual-time-budget=15000 --window-size=1280,940 --screenshot=out.png \
+  "http://localhost:5199/__probe.html?w=1280&h=940&sel=%23approach&theme=dark&lang=es"
+```
+
 ---
 
 ## La dirección elegida
@@ -219,12 +267,12 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Reescribir las cuatro secciones restantes** contra sus artboards: Approach,
+1. **Reescribir las tres secciones restantes** contra sus artboards:
    Stack, Record, Contact. Hoy heredan la tipografía y la paleta nuevas y se ven
    coherentes, pero conservan la estructura vieja. Los artboards ya tienen la
    definitiva (libro mayor en vez de línea de tiempo, campos subrayados en vez
    de cajas).
-2. **Unificar el peso de las reglas.** Las cuatro secciones que quedan abren con
+2. **Unificar el peso de las reglas.** Las tres secciones que quedan abren con
    una hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`);
    en el sistema nuevo el separador entre secciones es una regla de 3px en
    tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:
