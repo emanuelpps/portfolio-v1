@@ -158,7 +158,9 @@ export const en = {
   },
 
   record: {
-    title: "Ten years building for outcomes.",
+    /** The count is derived from src/data/roles.ts. 2014 is the year in the
+     *  last row of the ledger, so the span is checkable by scrolling to it. */
+    note: "{roles} roles · 2014 — present",
     roles: {
       dizizid: {
         period: "2026 — Present",

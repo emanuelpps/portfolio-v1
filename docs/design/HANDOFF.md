@@ -9,10 +9,10 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**La portada, Work, Approach y Stack ya están en código**, junto con la base que
+**La portada, Work, Approach, Stack y Record ya están en código**, junto con la base que
 necesitan (tipografías, paleta de dos modos, masthead) y la ficha de proyecto.
-Las otras dos —Record y Contact— heredan la tipografía y la paleta
-nuevas, pero **todavía no se reescribieron contra sus artboards**.
+Sólo queda Contact, que hereda la tipografía y la paleta nuevas pero
+**todavía no se reescribió contra su artboard**.
 
 ### Bajado al código el 2026-09-01
 
@@ -194,6 +194,23 @@ inexistente, el modo oscuro, el español y los anchos de móvil.
   después de Work, que es la más suelta, y el contraste entre las dos es lo que
   le da forma al scroll.
 
+### Record — hecho el 2026-09-02
+
+- **Sale de ** y toma la cabecera común; el título-frase
+  ("Diez años construyendo para resultados.") se borró del diccionario. La nota
+  de la derecha deriva el conteo de roles de ; 2014 es el año
+  de la última fila del libro mayor, así que el tramo se verifica scrolleando.
+- **Ya era un libro mayor y no una línea de tiempo** — eso no cambió. Lo que se
+  ajustó son las medidas contra el artboard: columna de años a 11,5rem (era 9),
+  columna de puesto a 16rem, y el nombre de la empresa a 27px.
+- **El año pasó de  a .** 30% es un valor para una
+  regla, no para una fecha que alguien está leyendo. Mismo arreglo que en el
+  índice de Work.
+- **La descripción se alinea con la columna de la empresa**, no con el margen de
+  la página: la sangría es la columna de años más el gap de la grilla.
+- Las filas siguen arrancando plegadas y el trabajo actual sigue abierto al
+  llegar, que es la parte que cualquiera vino a mirar.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
@@ -292,12 +309,11 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Reescribir las dos secciones restantes** contra sus artboards:
-   Record y Contact. Hoy heredan la tipografía y la paleta nuevas y se ven
+1. **Reescribir Contact** contra su artboard. Hoy heredan la tipografía y la paleta nuevas y se ven
    coherentes, pero conservan la estructura vieja. Los artboards ya tienen la
    definitiva (libro mayor en vez de línea de tiempo, campos subrayados en vez
    de cajas).
-2. **Unificar el peso de las reglas.** Las dos secciones que quedan abren con
+2. **Unificar el peso de las reglas.** La sección que queda abre con
    una hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`);
    en el sistema nuevo el separador entre secciones es una regla de 3px en
    tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:
