@@ -93,7 +93,7 @@ export const en = {
      *  beside it is the count, filled from the data rather than typed here. */
     count: "{projects} projects · {libraries} open-source libraries",
     featuredLabel: "Featured",
-    featuredCta: "Read the case study",
+    featuredCta: "See the project",
     filterLabel: "Filter projects",
     filters: {
       All: "All",

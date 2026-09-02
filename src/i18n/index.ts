@@ -25,13 +25,21 @@ export const LANG_KEY = "ep-lang";
 
 const DICTS: Record<Lang, Dict> = { en, es };
 
-/** Spanish for a Spanish-speaking browser, English for everyone else. */
+/**
+ * English, unless the visitor has said otherwise.
+ *
+ * This used to read `navigator.languages` and open in Spanish for a Spanish
+ * browser. That made the first screen an accident of whoever was looking: two
+ * recruiters saw two different sites and neither version had been chosen. The
+ * site is looking for work internationally, so it opens in the language that
+ * reaches furthest and offers the other one in the masthead, two letters wide.
+ *
+ * Kept as a function rather than a constant because the inline script in
+ * index.html has to make the same decision before the first paint, and one of
+ * the two moving is how they drift apart.
+ */
 export function detectLang(): Lang {
-  if (typeof navigator === "undefined") return "en";
-  const tags = navigator.languages?.length
-    ? navigator.languages
-    : [navigator.language];
-  return tags.some((tag) => tag?.toLowerCase().startsWith("es")) ? "es" : "en";
+  return "en";
 }
 
 export function readStoredLang(): Lang | null {

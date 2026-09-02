@@ -32,18 +32,15 @@
         } catch (e) {
           root.dataset.theme = "dark";
         }
+        // English unless the visitor has chosen otherwise. The browser's own
+        // language used to decide this, which meant a Spanish-speaking
+        // recruiter and an English-speaking one saw different first screens
+        // and neither was chosen on purpose. The site is looking for work
+        // internationally, so it opens in the language that reaches furthest
+        // and offers the other one in the masthead.
         try {
           var storedLang = localStorage.getItem("ep-lang");
-          if (storedLang === "en" || storedLang === "es") {
-            root.lang = storedLang;
-          } else {
-            var tags = navigator.languages || [navigator.language || "en"];
-            root.lang = Array.prototype.some.call(tags, function (tag) {
-              return tag && tag.toLowerCase().indexOf("es") === 0;
-            })
-              ? "es"
-              : "en";
-          }
+          root.lang = storedLang === "es" ? "es" : "en";
         } catch (e) {
           root.lang = "en";
         }

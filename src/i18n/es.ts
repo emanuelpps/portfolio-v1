@@ -14,7 +14,7 @@ export const es: Dict = {
   meta: {
     title: "Emanuel Pagés | Desarrollador Frontend",
     description:
-      "Desarrollador frontend que piensa como un marketer: diez años de growth y SEO antes de React, ahora construyendo interfaces rápidas y responsive en React y TypeScript.",
+      "Desarrollador frontend. Diez años de growth y SEO antes de React; ahora armo interfaces en React y TypeScript.",
   },
 
   nav: {
@@ -48,35 +48,35 @@ export const es: Dict = {
     roleLines: ["Desarrollador", "Frontend"],
     srName: "Emanuel Pagés — ",
     lead: "Un desarrollador que piensa como un marketer: diez años de growth y SEO antes de React.",
-    ctaWork: "Trabajos seleccionados",
+    ctaWork: "Ver el trabajo",
     ctaContact: "Hablemos",
     available: "Disponible — remoto",
-    projectsLabel: "Proyectos destacados",
+    projectsLabel: "Algunos proyectos",
   },
 
   approach: {
     note: "Por qué el frontend, después de diez años de growth",
     quoteLines: ["Un desarrollador", "que piensa como", "un marketer"],
-    edgeLabel: "La ventaja",
-    lead: "La mayoría de los desarrolladores frontend entregan lo que dice el Figma. Yo entrego lo que funciona. Diez años haciendo growth, SEO y campañas pagas me enseñaron cómo se comporta realmente la gente en una página — así que las interfaces que construyo están pensadas para claridad, velocidad y conversión, no solo para fidelidad al pixel.",
+    edgeLabel: "De dónde vengo",
+    lead: "Antes de programar pasé diez años haciendo growth, SEO y campañas pagas. Me quedó la costumbre de mirar cómo se comporta la gente en una página, no solo cómo queda. Cuando armo una interfaz pienso en que cargue rápido, se entienda y convierta.",
     record: {
       digitalKey: "En digital",
       digitalFigure: "10 años",
       digitalNote: "Marketing, growth y SEO",
       reactKey: "En React",
       reactFigure: "3 años",
-      reactNote: "Publicando TypeScript en producción",
+      reactNote: "TypeScript en producción",
     },
     indieLabel: "También indie hacker",
     indieBefore:
-      "Diseño y publico mis propios productos, no solo trabajo para clientes — como ",
+      "Además del trabajo para clientes armo cosas mías, como ",
     indieAfter: ", más {libraries} librerías open source en npm.",
   },
 
   work: {
     count: "{projects} proyectos · {libraries} librerías open source",
     featuredLabel: "Destacado",
-    featuredCta: "Ver el caso",
+    featuredCta: "Ver el proyecto",
     filterLabel: "Filtrar proyectos",
     filters: {
       All: "Todos",
@@ -137,49 +137,49 @@ export const es: Dict = {
         period: "2026 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Rehíce la plataforma para que fuera completamente responsive, endureciendo los componentes de React + Tailwind contra casos borde y breakpoints. Trabajé con diseño y producto para entregar una UI más consistente y escalable. Ahora estoy sobre la plataforma de ticketing en sí — afinando el camino que va de mirar un evento a completar la compra, y manteniendo cada paso confiable en cualquier pantalla.",
+          "Rehíce la plataforma para que ande en cualquier pantalla, peleándome con los casos borde de los componentes de React + Tailwind. Trabajé con diseño y producto para que la UI quedara pareja. Ahora estoy en la plataforma de ticketing: el camino que va de mirar un evento a terminar la compra.",
       },
       codemakerlab: {
         period: "2024 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Convierto diseños en interfaces listas para producción, las publico y las mantengo rápidas. Mantengo y optimizo sitios de clientes en performance, usabilidad y SEO — y presento las soluciones directamente a los clientes. Más allá del frontend, armo automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
+          "Paso diseños a código, los publico y después los mantengo. Sitios de clientes: performance, usabilidad y SEO, y presentar las soluciones yo mismo. Aparte del frontend armo automatizaciones con n8n — flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
       },
       epam: {
         period: "2025",
         title: "Associate Project Administrator",
         description:
-          "Me hice cargo de la integridad de datos de una plataforma cliente: validé flujos JSON en Retool, depuré queries de GraphQL y coordiné con equipos de Estados Unidos para mantener sincronizados los datos de backoffice y mobile.",
+          "Me tocó la integridad de datos de una plataforma: validar flujos JSON en Retool, depurar queries de GraphQL y coordinar con equipos de Estados Unidos para que backoffice y mobile no se desincronizaran.",
       },
       justina: {
         period: "2024",
         title: "Desarrollador Frontend",
         description:
-          "Entregué un producto web funcionando de punta a punta bajo la presión de tiempo de un hackathon.",
+          "Un producto web funcionando de punta a punta, en el tiempo que dura un hackathon.",
       },
       nocountry: {
         period: "2023 — 2024",
         title: "Desarrollador Frontend",
         description:
-          "Construí interfaces en React/Next.js a partir del diseño, integré APIs para datos dinámicos e impulsé code reviews y buenas prácticas en un equipo multidisciplinario.",
+          "Armé interfaces en React/Next.js a partir del diseño, integré APIs para datos dinámicos y empujé code reviews en un equipo multidisciplinario.",
       },
       duodigital: {
         period: "2022 — 2024",
         title: "Gerente de Marketing Digital",
         description:
-          "Generé leads y manejé todo el stack de growth — email, contenido, medios pagos, SEO y Google Ads — mientras construía y administraba los sitios en WordPress detrás de las campañas.",
+          "Generación de leads y el stack de growth completo: email, contenido, medios pagos, SEO y Google Ads. También armaba y mantenía los sitios en WordPress detrás de las campañas.",
       },
       vital: {
         period: "2021 — 2022",
         title: "Gerente de Marketing",
         description:
-          "Lideré el equipo de marketing y la estrategia SEM/SEO, gestioné presupuestos y optimicé el embudo del e-commerce para generar nuevos leads.",
+          "A cargo del equipo de marketing y de la estrategia SEM/SEO: presupuestos y el embudo del e-commerce.",
       },
       dafiti: {
         period: "2014 — 2018",
         title: "Analista de Marketing",
         description:
-          "Planifiqué y optimicé campañas de email y on-site a escala, segmentando audiencias y reportando performance a diario para cumplir los objetivos del negocio.",
+          "Campañas de email y on-site a escala: segmentar audiencias y reportar performance todos los días.",
       },
     },
   },

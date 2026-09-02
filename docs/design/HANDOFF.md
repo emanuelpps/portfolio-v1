@@ -384,6 +384,56 @@ Pasado el 2026-09-02 sobre la home y las fichas, en los dos idiomas, los dos
 modos y a 390 y 1280: **nada trabado** más allá de la frase de Approach, que era
 el único caso.
 
+### El castellano, reescrito — 2026-09-02
+
+Emanuel lo leyó y dijo lo que era: **no sonaba argentino, no sonaba a él, y
+sonaba agrandado.** Tenía razón, y el problema era mío: escribí un castellano
+más literario y más autocomplaciente que el inglés del que salía.
+
+Lo que estaba mal, concretamente:
+
+- **Se agrandaba a costa de terceros.** "La mayoría de los desarrolladores
+  frontend entregan lo que dice el Figma. Yo entrego lo que funciona." En
+  inglés pasa como posicionamiento; en castellano es una comparación para
+  quedar mejor.
+- **Calcos del inglés**: "manejar con elegancia" (handling gracefully),
+  "publicando TypeScript en producción" (shipping production TypeScript).
+- **Adjetivos de calidad sobre el trabajo propio**: "pulido", "de calidad
+  productiva", "impactante", "confiable y no gritón".
+- **Aforismos míos que él nunca dijo**: "un hook que hace de todo no lo usa
+  nadie", "menos superficie donde equivocarse".
+
+**El registro acordado**, y el criterio para cualquier texto nuevo: verbos de
+hacer —armé, hice, me tocó, quería ver si—, ningún adjetivo que se elogie solo,
+y ninguna comparación con otros desarrolladores. Se dice qué es la cosa y qué
+costó hacerla; si es buena lo decide quien la mira.
+
+Pasada sobre `src/i18n/es.ts` y `src/data/projectCopy.es.ts` completos.
+
+**Ojo con esto:** el inglés **no** se tocó, así que hoy los dos idiomas
+argumentan distinto — el inglés todavía se compara con otros desarrolladores y
+el castellano ya no. Hay que decidir si el inglés se alinea.
+
+### El default pasó a inglés — 2026-09-02
+
+Antes lo decidía `navigator.languages`: un reclutador hispanohablante y uno
+anglófono veían primeras pantallas distintas y ninguna de las dos estaba
+elegida. Ahora abre en inglés salvo que el visitante haya elegido español, y el
+switch del masthead ofrece el otro. Cambió en los dos lados que toman la
+decisión: el script inline de `index.html` y `detectLang()` en `src/i18n`.
+
+### Approach dejó de ser un split lateral — 2026-09-02
+
+El argumento va a ancho completo y las tres celdas abajo. Era un split de
+costado —7/5 primero, 6/6 después— y los dos quedaban rehenes del largo del
+párrafo: un párrafo nunca mide lo que tres celdas apiladas, así que la columna
+corta terminaba en un rectángulo de nada con una regla al costado. Cuando el
+párrafo se reescribió más corto, por razones que no tienen nada que ver con el
+layout, el hueco volvió de una.
+
+Apilado, el texto puede tener el largo que quiera. Ese es el punto: un texto no
+se escribe para llenar una caja.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se

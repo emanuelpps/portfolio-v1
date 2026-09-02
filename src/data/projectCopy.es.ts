@@ -6,110 +6,119 @@ import type { ProjectCopyMap } from "./projectCopy";
  * Tipado contra `ProjectCopyMap`, así que un proyecto o un campo que exista en
  * inglés y falte acá no compila.
  *
- * No es una traducción literal: el inglés original arrastra construcciones que
- * en castellano suenan a manual ("the app's design is straightforward"), y lo
- * que importa es que diga lo mismo, no que calque la sintaxis. Los nombres
- * propios —bibliotecas, APIs, empresas— no se traducen, y no hay acá ninguna
- * afirmación que no esté también en la versión en inglés.
+ * **No es una traducción literal, y hay una razón.** La primera versión sí lo
+ * era, y sonaba a otra persona: calcos del inglés ("manejar con elegancia",
+ * "publicando TypeScript en producción"), adjetivos de calidad sobre el
+ * trabajo propio ("pulido", "de calidad productiva", "impactante") y frases
+ * que se agrandaban a costa de terceros. En inglés eso pasa como
+ * posicionamiento; en castellano suena a chamuyo.
+ *
+ * El registro de acá es el que quedó acordado: verbos de hacer —armé, hice, me
+ * tocó, quería ver si—, ningún adjetivo que se elogie solo, y ninguna
+ * comparación con otros desarrolladores. Lo que hay que decir es qué es la
+ * cosa y qué costó hacerla; si es bueno lo decide quien lo mira.
+ *
+ * Los nombres propios —bibliotecas, APIs, empresas— no se traducen, y no hay
+ * acá ninguna afirmación que no esté también en la versión en inglés.
  */
 export const projectCopyEs: ProjectCopyMap = {
   2: {
     blurb:
-      "Una librería liviana de hooks de React, sin dependencias y tipada en TypeScript.",
+      "Una librería de hooks de React en TypeScript, sin dependencias.",
     overview:
-      "Un conjunto de hooks mínimos y reutilizables para React, escritos en TypeScript. Resuelven lógica que uno termina reescribiendo en cada proyecto —debounce, manejo de localStorage, alternar valores— para no volver a escribirla. Todos los hooks están testeados con Vitest, son tree-shakables y no arrastran ninguna dependencia.",
-    why: "La hice para tener hooks listos para usar que simplifiquen tareas comunes y saquen código repetido del medio: se avanza más rápido y queda menos superficie donde equivocarse.",
+      "Un conjunto de hooks para React escritos en TypeScript. Resuelven cosas que uno reescribe en cada proyecto: debounce, manejo de localStorage, alternar valores. Están testeados con Vitest, son tree-shakables y no traen dependencias.",
+    why: "La armé para dejar de copiar y pegar los mismos hooks de un proyecto a otro.",
     build:
-      "Cada hook es simple, reutilizable y está completamente tipado. Siguen responsabilidad única y modularidad, y Vitest cubre el 100% del código.",
-    hard: "El equilibrio entre flexibilidad y simplicidad fue lo difícil: un hook que hace de todo no lo usa nadie. Testear los que tocan APIs del navegador, como localStorage, también obligó a armar buenas estrategias de mocking.",
+      "Cada hook es independiente y está tipado. Vitest cubre el 100% del código.",
+    hard: "Encontrar el punto entre que sea flexible y que sea simple. Y testear los que tocan APIs del navegador, como localStorage, que necesitan mocks.",
   },
   3: {
     blurb:
-      "Funciones utilitarias en TypeScript —deepClone, debounce, slugify y algunas más—, livianas y sin dependencias.",
+      "Funciones utilitarias en TypeScript —deepClone, debounce, slugify— sin dependencias.",
     overview:
-      "Helpers Kit es una librería chica y rápida escrita en TypeScript. Incluye funciones como deepClone, debounce, getUniqueValues y slugify: las que uno vuelve a escribir en cada proyecto. Funciona igual en frontend y en backend, y no necesita ninguna librería extra.",
-    why: "El objetivo era tener un conjunto simple y reutilizable de funciones en TypeScript para problemas que aparecen en cualquier proyecto, sin tener que arrastrar una dependencia entera por tres funciones.",
+      "Helpers Kit es una librería chica escrita en TypeScript. Trae funciones como deepClone, debounce, getUniqueValues y slugify. Anda igual en frontend y en backend, y no necesita nada más.",
+    why: "Lo mismo que con los hooks: tener a mano las funciones que termino escribiendo en todos los proyectos, sin sumar una dependencia entera por tres funciones.",
     build:
-      "Todas las funciones están escritas en TypeScript con tipado estricto. Cada helper es independiente, fácil de leer y fácil de testear. La librería no usa dependencias externas, que es lo que la mantiene rápida y liviana.",
-    hard: "Lo más difícil fue asegurarme de que funcionara igual en distintos entornos, navegador y Node.js. Y escribir helpers que sean a la vez genéricos y seguros en tipos llevó bastante trabajo con los tipos avanzados de TypeScript.",
+      "Todo tipado, cada helper independiente y fácil de testear. Sin dependencias externas.",
+    hard: "Que funcionara igual en el navegador y en Node. Y que los helpers fueran genéricos sin perder el tipado, que me llevó bastante rato con los tipos avanzados de TypeScript.",
   },
   11: {
     blurb:
-      "Una app de streaming de música sobre la red abierta Audius. Producto propio: reproductor con forma de onda, charts de tendencias, páginas de artista y playlist.",
+      "Una app de streaming de música sobre la red abierta Audius. Proyecto propio: reproductor con forma de onda, charts de tendencias, páginas de artista y playlist.",
     overview:
-      "Epic Sound Studio es una app web completa de streaming construida sobre la red descentralizada Audius. Combina una portada cinematográfica con un home de streaming —tracks en tendencia y un chart underground—, páginas de artista y de playlist, búsqueda, y un reproductor propio con visualización de forma de onda hecha con wavesurfer.js.\nEstá construida con Next.js (App Router) y TypeScript. Usa TanStack React Query para pedir y cachear datos de la API de Audius, Zustand para el estado global del reproductor y Framer Motion para las transiciones. La identidad se apoya en un violeta neón fuerte y en fuentes variables propias (Clash Display + Supreme).",
-    why: "Quería construir una experiencia de streaming de calidad productiva sobre una red abierta y centrada en el artista — demostrando que una interfaz de música moderna y pulida puede funcionar enteramente sobre la API descentralizada de Audius, sin un backend propio.",
+      "Epic Sound Studio es una app de streaming construida sobre Audius, una red de música descentralizada y abierta. Tiene portada, un home con los tracks en tendencia y un chart underground, páginas de artista y de playlist, búsqueda, y un reproductor propio con forma de onda hecho con wavesurfer.js.\nEstá hecha con Next.js (App Router) y TypeScript. Los datos de la API de Audius pasan por TanStack React Query, el estado del reproductor vive en Zustand y las transiciones son de Framer Motion. La identidad va por un violeta neón, con Clash Display y Supreme.",
+    why: "Quería ver si podía armar una app de música completa sobre una API abierta, sin backend propio. Audius es descentralizada y pública, así que era buena excusa.",
     build:
-      "Identidad violeta neón con contraste tipográfico fuerte y movimiento envolvente. La app está organizada por feature (portada, home, reproductor, playlist, artista, búsqueda), con un componente de reproductor y forma de onda reutilizable, los datos del servidor cacheados con React Query y el estado de reproducción en Zustand.",
-    hard: "Trabajar contra una API descentralizada de terceros implicó manejar con elegancia datos inconsistentes, estados de carga y límites de request, y mantener la reproducción global sincronizada entre páginas. Integrar wavesurfer.js al reproductor sin que las interacciones se pusieran pesadas ni el bundle creciera de más llevó un manejo de estado cuidadoso.",
+      "Está organizada por feature —portada, home, reproductor, playlist, artista, búsqueda— con el reproductor y la forma de onda como componentes reutilizables. Los datos del servidor los cachea React Query; el estado de reproducción lo guarda Zustand.",
+    hard: "La API es de terceros y descentralizada, así que hay datos incompletos, estados de carga y límites de request para todos los gustos. Y mantener la reproducción sincronizada entre páginas. Meter wavesurfer.js en el reproductor sin que se pusiera pesado también llevó su tiempo.",
   },
   13: {
     blurb:
       "Sitio para una consultora de RRHH del Alto Valle, con dos embudos de captación separados: uno para empresas que buscan cubrir una vacante y otro para candidatos.",
     overview:
-      "Eckers RRHH Solutions es el sitio de una consultora de selección y recursos humanos con base en General Roca, Río Negro. La portada recorre los servicios, el proceso de búsqueda y la historia regional de la firma, y después separa a quien llega en dos caminos: uno para empresas que necesitan cubrir una vacante y otro para profesionales que buscan su próximo puesto.\nEstá construido con Next.js (App Router) y TypeScript, con Tailwind CSS. Cada camino tiene su propia página de captación: las empresas describen el puesto, la ubicación y la urgencia de la búsqueda; los candidatos cargan su perfil, nivel de experiencia, pretensión salarial, modalidad de contratación preferida y su CV. Las secciones aparecen al scrollear, y un botón flotante de WhatsApp deja el canal más rápido a un toque en cualquier página.",
-    why: "La consultora necesitaba una presencia que hiciera algo más que describir el servicio: tenía que calificar a quien escribe. La idea era convertir dos públicos muy distintos —empresas que contratan y personas que buscan trabajo— en dos caminos claros, cada uno pidiendo exactamente la información que el equipo necesita para arrancar una búsqueda.",
+      "Eckers RRHH Solutions es el sitio de una consultora de selección con base en General Roca, Río Negro. La portada recorre los servicios, el proceso de búsqueda y la historia de la firma, y después separa a quien llega en dos caminos: empresas que necesitan cubrir una vacante, y gente que está buscando trabajo.\nEstá hecho con Next.js (App Router), TypeScript y Tailwind. Cada camino tiene su propia página: las empresas describen el puesto, la ubicación y la urgencia; los candidatos cargan su perfil, la experiencia, la pretensión salarial, la modalidad y el CV. Hay un botón flotante de WhatsApp en todas las páginas, que es por donde más escriben.",
+    why: "El sitio tenía que hacer algo más que contar el servicio: tenía que ordenar a quien escribe. Son dos públicos muy distintos y a cada uno hay que pedirle cosas distintas para que el equipo pueda arrancar una búsqueda.",
     build:
-      "Una identidad corporativa serena sobre azul marino y cian, con aire generoso y tipografía display de peso, para que el sitio se lea confiable y no gritón. La portada está armada como un embudo —propuesta de valor, separación de públicos, servicios, proceso, historia, contacto— y las dos páginas de captación reutilizan los mismos bloques de formulario con sus propios campos. Todo responsive-first con Tailwind, y el contenido aparece al scrollear para que una página larga no se sienta pesada.",
-    hard: "Lo difícil no fue lo visual sino los formularios: pedirle al candidato el detalle suficiente para que sirva de verdad sin convertir la página en un trámite, manejar la carga del CV con límites de formato y tamaño, y mantener el formulario de empresas enfocado en lo que realmente define una búsqueda: puesto, ubicación y urgencia. La confidencialidad es una preocupación real en un mercado regional chico, así que también moldeó los textos y la forma de pedir datos personales.",
+      "Azul marino y cian, bastante aire y tipografía grande. La portada está armada como un embudo: propuesta, separación de públicos, servicios, proceso, historia, contacto. Las dos páginas de captación reutilizan los mismos bloques de formulario con sus propios campos.",
+    hard: "Los formularios, no lo visual. Pedirle al candidato lo suficiente para que sirva sin que parezca un trámite, manejar la carga del CV con límites de formato y tamaño, y dejar el de empresas en lo que define una búsqueda: puesto, ubicación y urgencia. En un mercado regional chico la confidencialidad importa, así que también cambió la forma de pedir los datos.",
   },
   4: {
     blurb:
-      "Sitio para una cafetería, enfocado en una interfaz limpia y en contar la marca con imágenes. Hecho con React y Firebase.",
+      "Sitio para una cafetería, con el peso puesto en las fotos y una interfaz sin ruido. React y Firebase.",
     overview:
-      "Diseñé y desarrollé el sitio de una marca de café con un enfoque mínimo y elegante. La idea era transmitir calidez y calidad a través de imágenes en alta resolución y una interfaz sin ruido.\nEstá construido con React y Tailwindcss, e integra Firebase para la gestión de contenido y la autenticación. Las animaciones son de Framer Motion. La paleta natural se apoya en los tonos tierra del café recién tostado, que es de donde sale la sensación artesanal.",
-    why: "El proyecto le dio identidad digital a una marca de café de barrio, combinando tecnologías web modernas con un diseño narrativo para conectar con el cliente por el lado sensorial.",
+      "Diseñé y desarrollé el sitio de una marca de café. La idea era que la calidez y la calidad se vieran en las fotos, no que estuvieran escritas.\nEstá hecho con React y Tailwindcss, y usa Firebase para el contenido y la autenticación. Las animaciones son de Framer Motion. La paleta va por los tonos tierra del café recién tostado.",
+    why: "La marca no tenía nada online. El sitio es lo primero que existe de ellos en internet.",
     build:
-      "El diseño se apoya en el minimalismo, los colores tierra y las imágenes grandes. Usé Tailwindcss para el estilado utility-first y Framer Motion para sumar interactividad sin abrumar.",
-    hard: "El equilibrio entre performance e imágenes de alta calidad fue el desafío principal: hubo que optimizar los assets con cuidado para mantener la carga rápida sin perder la sensación premium. Integrar las animaciones con las transiciones de ruta también necesitó ajuste fino entre Framer Motion y React Router.",
+      "Pocos elementos, colores tierra e imágenes grandes. Tailwindcss para el estilado y Framer Motion para el movimiento, sin pasarme.",
+    hard: "Las fotos pesaban. Hubo que optimizarlas bastante para que el sitio cargara rápido sin que se notara la diferencia. Y ajustar las animaciones para que no chocaran con las transiciones de ruta.",
   },
   5: {
     blurb:
-      "Rediseño y desarrollo del sitio de una agencia de software, con tecnologías modernas y animación.",
+      "Rediseño y desarrollo del sitio de una agencia de software.",
     overview:
-      "Estuve a cargo del rediseño y desarrollo completos del sitio de The CodeMaker Lab, una agencia de desarrollo de software. El sitio original tenía un aspecto desactualizado, así que propuse una renovación visual entera enfocada en una experiencia moderna y profesional. Está construido con Next.js y TypeScript, estilado con Tailwindcss, con Zustand para el estado global y Framer Motion para las animaciones. El diseño nuevo se apoya en tipografía de peso, una paleta vibrante y una navegación directa.",
-    why: "El proyecto redefinió la presencia digital de The CodeMaker Lab con un sitio moderno, profesional y orientado a la conversión. El objetivo era construir credibilidad y comunicar con claridad los servicios y la experiencia de la agencia.",
+      "Me tocó el rediseño y el desarrollo completos del sitio de The CodeMaker Lab. El que tenían estaba desactualizado, así que propuse rehacerlo entero. Next.js y TypeScript, Tailwindcss para el estilado, Zustand para el estado global y Framer Motion para el movimiento. El diseño nuevo va por tipografía grande, colores fuertes y navegación directa.",
+    why: "El sitio que tenían no mostraba lo que la agencia hace. Necesitaban algo que explicara los servicios sin que hubiera que preguntar.",
     build:
-      "El diseño se organizó alrededor de una jerarquía visual fuerte, titulares contundentes y contraste de color para marcar las secciones clave. La interfaz se estructuró pensando en responsive desde el principio, y las animaciones se integraron para enriquecer la interacción sin castigar la performance.",
-    hard: "El mayor desafío fue equilibrar animaciones expresivas con performance y usabilidad. También hubo que manejar con cuidado el estado compartido entre componentes, donde Zustand resultó liviano y efectivo. Sostener la accesibilidad mientras se empujaba un estilo visual audaz planteó decisiones de diseño que hubo que resolver una por una.",
+      "Jerarquía visual fuerte, titulares grandes y contraste de color para marcar las secciones. Responsive desde el principio, y las animaciones puestas donde no costaban performance.",
+    hard: "Que las animaciones no se comieran la performance. El estado compartido entre componentes también dio trabajo, y ahí Zustand resolvió bien. Y sostener la accesibilidad con un estilo tan cargado, que obligó a decidir cosas una por una.",
   },
   6: {
     blurb:
-      "Sitio personal de un actor: biografía, obras y galería de fotos de escena.",
+      "Sitio de un actor de teatro: biografía, obras y fotos de escena.",
     overview:
-      "Este portfolio lo desarrollé para un actor de teatro, como parte de un proyecto en The CodeMaker Lab. El sitio incluye su biografía, las obras en las que trabajó y una galería de fotos de escena. Está construido con Next.js y TypeScript, y maquetado con Tailwindcss. La estructura visual es mínima pero contundente: tipografía grande y elegante sobre una paleta monocroma, para transmitir presencia profesional y artística. El objetivo es que la carrera del actor se lea clara, en una presentación cuidada y personal.",
-    why: "El proyecto buscaba un portfolio digital que mostrara la carrera y la identidad artística del actor, presentando el contenido en un formato atractivo y fácil de recorrer.",
+      "Lo desarrollé para un actor de teatro, en The CodeMaker Lab. Tiene la biografía, las obras en las que trabajó y una galería de fotos de escena. Next.js y TypeScript, maquetado con Tailwindcss. Poca cosa en pantalla: tipografía grande, paleta monocroma y las fotos ocupando lugar.",
+    why: "El actor no tenía dónde mandar su trabajo cuando se lo pedían. El sitio es eso: un lugar al que mandar a alguien.",
     build:
-      "El diseño se apoya en tipografía de peso y una maqueta limpia para que el trabajo del actor sea lo que se ve. La paleta monocroma y las imágenes grandes construyen un aspecto refinado, y Tailwindcss permitió armar componentes responsive rápido.",
-    hard: "Un desafío fue que el sitio se viera cuidado en cualquier dispositivo, sobre todo por el peso que tienen las imágenes grandes en la composición. El otro fue optimizar la performance sin bajar la calidad visual, que era justamente el punto del sitio.",
+      "Tipografía grande y maqueta limpia, para que lo que se vea sea el trabajo del actor. Monocromo y fotos grandes. Tailwindcss para armar los componentes rápido.",
+    hard: "Que se viera bien en cualquier pantalla, teniendo las fotos el peso que tienen en la composición. Y que cargaran rápido sin bajarles la calidad, que era justamente el punto.",
   },
   7: {
     blurb:
-      "Mi portfolio anterior, de 2024. Lo rediseño cada año para que refleje dónde estoy parado.",
+      "Mi portfolio anterior, de 2024. Hago uno nuevo cada año.",
     overview:
-      "Este fue mi portfolio personal de 2024. Todos los años desarrollo uno nuevo, con estética y estructura renovadas, como ejercicio de mejora continua. Esta versión está construida con Next.js, TailwindCSS y TypeScript, enfocada en la simplicidad, la legibilidad y una presentación clara de los proyectos y la experiencia.",
-    why: "Lo desarrollé para mantener un portfolio al día que refleje mi progreso, y también como excusa para experimentar con tecnologías y enfoques de diseño nuevos.",
+      "Este fue mi portfolio de 2024. Todos los años hago uno nuevo, con otra estética y otra estructura; es la forma que encontré de obligarme a revisar en qué estoy. Esta versión es Next.js, TailwindCSS y TypeScript, con el foco puesto en que se lea fácil y en que los proyectos se vean.",
+    why: "Para tener el portfolio al día, y como excusa para probar cosas nuevas sin un cliente esperando del otro lado.",
     build:
-      "La idea detrás del diseño era sostener una estética limpia y profesional, con foco en la legibilidad y en que los proyectos se vean claros. Usé TailwindCSS para un diseño responsive y ágil, y Framer Motion para la interactividad.",
-    hard: "El desafío más grande fue equilibrar la simplicidad del diseño con la interactividad, cuidando que las animaciones no distrajeran del contenido. Y como es una versión anual, tuve que no sobrecargarlo de novedades visuales: mantener alguna continuidad con las versiones anteriores.",
+      "Estética limpia y foco en la legibilidad. TailwindCSS para el responsive y Framer Motion para el movimiento.",
+    hard: "Que las animaciones no taparan el contenido. Y como es una versión anual, no sobrecargarlo de novedades: que se notara la continuidad con las anteriores.",
   },
   8: {
-    blurb: "App de clima simple hecha en ReactJS, con datos en tiempo real.",
+    blurb: "App de clima hecha en ReactJS, con datos en tiempo real.",
     overview:
-      "Una aplicación web para consultar el clima actual de cualquier ciudad usando la API de OpenWeatherMap. La desarrollé como ejercicio de consumo de APIs con ReactJS: la interfaz es simple y responsive, y muestra temperatura, condiciones y algunos datos más.",
-    why: "El objetivo era una app funcional para consultar el clima de cualquier ciudad del mundo con datos en tiempo real de OpenWeatherMap, y de paso practicar consumo de APIs con ReactJS.",
+      "Una app para ver el clima de cualquier ciudad usando la API de OpenWeatherMap. La hice como ejercicio de consumo de APIs con ReactJS. La interfaz es simple y responsive: temperatura, condiciones y algunos datos más.",
+    why: "Practicar consumo de APIs con React. Es un ejercicio y no pretende ser otra cosa.",
     build:
-      "El diseño es directo y está enfocado en que la información se lea. Está construido con Bootstrap para que funcione bien tanto en mobile como en escritorio.",
-    hard: "El desafío fue que funcionara bien en dispositivos distintos, sobre todo al mostrar imágenes grandes y datos en tiempo real, y optimizar la performance sin bajar la calidad visual.",
+      "Directo, con la información como lo único importante en pantalla. Bootstrap para que ande en mobile y en escritorio.",
+    hard: "Nada demasiado difícil. Lo que más trabajo dio fueron los estados de carga y de error, que son los que hacen que una app así no parezca rota cuando la API tarda.",
   },
   9: {
     blurb:
-      "App web simple para una pizzería ficticia: se eligen las pizzas y se hace el pedido online.",
+      "App web para una pizzería ficticia: se eligen las pizzas y se hace el pedido.",
     overview:
-      "Don Remolo Pizza es una app chica de pedidos hecha para una pizzería artesanal ficticia. La usé para practicar diseño responsive, componentes reutilizables, base de datos en tiempo real y animación. El menú y los datos de las pizzas viven en Firebase, y los pedidos se envían con un formulario conectado a la misma base.",
-    why: "Lo construí para aprender a armar una experiencia de pedidos online de punta a punta. Usa una base de datos de Firebase para los productos y para los pedidos de los clientes.",
+      "Don Remolo Pizza es una app chica de pedidos para una pizzería inventada. La usé para practicar diseño responsive, componentes reutilizables, base de datos en tiempo real y animación. El menú y los datos de las pizzas están en Firebase, y los pedidos se mandan con un formulario a la misma base.",
+    why: "Quería armar un flujo de pedido completo, de elegir a confirmar, con una base de datos real atrás.",
     build:
-      "El diseño es limpio y moderno, enfocado en la experiencia de uso. Framer Motion se encarga de las animaciones y Bootstrap del layout responsive. La estética busca la sensación de una pizzería de barrio, hecha a mano.",
-    hard: "Un desafío fue mantener las animaciones fluidas sin volver el sitio lento, sobre todo en teléfonos. El otro fue que Firebase funcionara bien para las dos cosas a la vez: mostrar los datos de las pizzas y guardar los pedidos, en tiempo real.",
+      "Limpio y directo. Framer Motion para las animaciones y Bootstrap para el layout. La estética busca una pizzería de barrio.",
+    hard: "Que las animaciones no pusieran lento el sitio en teléfonos. Y que Firebase sirviera para las dos cosas a la vez: mostrar las pizzas y guardar los pedidos.",
   },
 };
