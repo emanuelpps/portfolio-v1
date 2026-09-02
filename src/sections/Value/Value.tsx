@@ -13,10 +13,19 @@ import { EASE } from "@/lib/motion";
  * head every section has now — the name at poster scale, the note on the
  * right, the 3px rule underneath.
  *
- * Below it the section is three bands: the claim, then a 7/5 split with the
+ * Below it the section is three bands: the claim, then a split with the
  * argument on the left and the record on the right. Nothing here is a card.
  * The divisions are rules, which is the only way this system has ever divided
  * anything.
+ *
+ * That split is 6/6, not the artboard's 7/5, and the left column centres its
+ * content. One paragraph will never be as tall as three stacked cells, so at
+ * 7/5 the argument ended 200px above the figures beside it and left a dark
+ * rectangle with a rule down one side. Widening the right column pulls the
+ * indie sentence onto two lines instead of three and narrowing the left one
+ * pushes the paragraph onto more; between them the gap fell to about 100px,
+ * and centring splits what is left evenly above and below, where it reads as
+ * the padding of a column rather than as the end of one.
  */
 
 const epic = findProject("11");
@@ -106,19 +115,26 @@ const Value = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
-          className="flex flex-col gap-5 border-b border-rule px-[var(--pad)] py-9 lg:col-span-7 lg:border-b-0 lg:border-r lg:py-11"
+          className="flex flex-col gap-5 border-b border-rule px-[var(--pad)] py-9 lg:col-span-6 lg:justify-center lg:border-b-0 lg:border-r lg:py-11"
         >
           <p className="label text-ink-dim">{t.approach.edgeLabel}</p>
-          <p className="max-w-[52ch] text-[clamp(1.0625rem,1.55vw,1.375rem)] leading-[1.48] text-ink-2">
+          {/* 22px on a 44-character measure, which is the artboard's setting
+              and not the one this had. At 19.8px across 52 characters the
+              paragraph ran six short lines and the column ended 200px above
+              the three cells beside it — a dark rectangle with a rule down one
+              side, which is what a hole looks like. The same words set at the
+              size they were drawn at, in a proper column, very nearly close
+              it. */}
+          <p className="max-w-[48ch] text-[clamp(1.0625rem,1.72vw,1.375rem)] leading-[1.5] text-ink-2">
             {t.approach.lead}
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:col-span-5">
+        <div className="flex flex-col lg:col-span-6">
           {record.map(({ key, figure, note }) => (
             <div
               key={key}
-              className="border-b border-rule px-[var(--pad)] py-6 sm:py-7"
+              className="border-b border-rule px-[var(--pad)] py-5 sm:py-6"
             >
               <p className="label text-ink-dim">{key}</p>
               <p className="display-md mt-2 text-[clamp(1.75rem,3.4vw,2.5rem)] text-ink">
@@ -128,7 +144,7 @@ const Value = () => {
             </div>
           ))}
 
-          <div className="px-[var(--pad)] py-6 sm:py-7">
+          <div className="px-[var(--pad)] py-5 sm:py-6">
             <p className="label text-ink-dim">{t.approach.indieLabel}</p>
             <p className="mt-2.5 text-[1.0625rem] leading-[1.5] text-ink-2">
               {t.approach.indieBefore}

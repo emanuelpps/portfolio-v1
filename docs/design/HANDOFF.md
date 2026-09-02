@@ -298,6 +298,27 @@ De paso se emparejó el hueco vertical del fold. El titular español, al ser má
 bajo, dejaba 117px entre la bajada y los botones contra los 63px del inglés;
 ahora son 107 y 95.
 
+### El hueco de Approach, cerrado el 2026-09-02
+
+El split de 7/5 del artboard dejaba **200px de rectángulo vacío** al pie de la
+columna izquierda, con la regla vertical marcándolo al costado. La causa es
+aritmética y el artboard la tiene igual: un párrafo nunca va a medir lo mismo
+que tres celdas apiladas.
+
+Se cerró en tres pasos, midiendo cada uno:
+
+1. **La bajada al tamaño del artboard** (22px, no los 19,8 que tenía) y en una
+   medida más angosta: más líneas, columna más alta. 200 → 126px.
+2. **El split pasa a 6/6.** La derecha más ancha mete la frase de indie hacker
+   en dos líneas en vez de tres, y la izquierda más angosta suma otra línea al
+   párrafo. 126 → 99px.
+3. **La izquierda centra su contenido** en `lg`. Los 99px que quedan se
+   reparten arriba y abajo, donde se leen como el relleno de una columna y no
+   como el final de una.
+
+Lo que se pierde es la alineación de "LA VENTAJA" con "EN DIGITAL" en el borde
+superior. Vale el cambio: el bloque se lee como una unidad compuesta.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
