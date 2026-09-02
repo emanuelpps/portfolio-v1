@@ -78,10 +78,14 @@ export const en = {
   },
 
   work: {
-    title: "Things I've designed, built and shipped.",
+    /** The heading is `nav.sections.work` — the masthead index and the heading
+     *  it lands on have to say the same word, and two strings drift. What sits
+     *  beside it is the count, filled from the data rather than typed here. */
+    count: "{projects} projects · {libraries} open-source libraries",
     featuredLabel: "Featured",
     featuredDescription:
       "A music-streaming app built on the open Audius network. My own product — same stack as client work, no brief, every decision mine.",
+    featuredCta: "Read the case study",
     filterLabel: "Filter projects",
     filters: {
       All: "All",

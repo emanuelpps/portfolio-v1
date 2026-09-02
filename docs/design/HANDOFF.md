@@ -1,6 +1,6 @@
 # Rediseño EP — dónde quedamos
 
-**Última sesión:** 2026-08-22
+**Última sesión:** 2026-09-02
 **Rama:** `feat/redesign-ep-identity`
 **Canvas de diseño:** https://claude.ai/code/artifact/66d11af8-47bc-4a34-bd1b-c32b20191990
 
@@ -9,9 +9,10 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**La portada ya está en código**, junto con la base que necesita (tipografías,
-paleta de dos modos, masthead). Las otras cinco secciones heredan la tipografía
-y la paleta nuevas, pero **todavía no se reescribieron contra sus artboards**.
+**La portada y Work ya están en código**, junto con la base que necesitan
+(tipografías, paleta de dos modos, masthead). Las otras cuatro secciones heredan
+la tipografía y la paleta nuevas, pero **todavía no se reescribieron contra sus
+artboards**.
 
 ### Bajado al código el 2026-09-01
 
@@ -59,6 +60,46 @@ Se verificó en Chrome a 320 / 390 / 780 / 1036 / 1292 / 1557 px, en ambos modos
   debajo de 1024px el titular tiene el ancho completo y arriba solo 8 de 12
   columnas. Medido, la línea más larga despeja su columna entre 7% y 13% en
   ambos idiomas.
+
+### Work — hecho el 2026-09-02
+
+- **Sale de `BpSection`.** La cabecera se arma como la portada: el nombre de la
+  sección a escala de póster a la izquierda, el conteo a la derecha, y la regla
+  de 3px debajo. Se van con ella la hairline dibujada al scrollear, el nombre
+  corriendo por el astil y el `WipeText` del título.
+- **El título ya no es una frase.** El artboard titula `Work` a secas, así que
+  `work.title` ("Cosas que diseñé, construí y publiqué.") se borró del
+  diccionario. El nombre se lee de `t.nav.sections.work` — el índice del
+  masthead y el título al que aterriza tienen que decir la misma palabra.
+- **El conteo sale de los datos**, no de un string: `src/sections/Projects/work.ts`
+  es ahora la única fuente de la lista, los conteos y el destacado, que antes se
+  calculaban por separado en cada componente.
+- **El destacado es un split de 7/5**, dividido por la misma regla de 3px, en vez
+  de una imagen a sangre con todo el texto debajo. El panel se alinea arriba, no
+  se estira: siete columnas a 16:10 crecen con el viewport y cinco columnas de
+  texto no, así que arriba de ~1400px la imagen abría 213px de hueco en el medio
+  del panel. Medido: la proporción del artboard se respeta intacta hasta 1400px
+  y de ahí en más el bloque deja de crecer (`lg:max-h-[28.5rem]`).
+- **El índice muestra tres nombres de stack, no cuatro.** El cuarto empujaba los
+  stacks largos a una segunda línea, y una celda envuelta en una fila cuyas otras
+  tres están sobre una sola línea de base es lo que hace que un índice deje de
+  leerse como un índice. El tipo pasó de `--ink-faint` (30%) a `--ink-dim`: se
+  separan por peso, como en el artboard.
+- **La cascada del índice se disparaba al montar**, muy arriba del viewport, así
+  que cuando llegabas scrolleando ya había terminado. Ahora escalona desde el
+  padre con `whileInView`.
+- **La miniatura al cursor se conserva** (decisión tomada contra el artboard, que
+  muestra el índice liso): la fila invierte y la imagen enmascarada en el bowl
+  sigue al puntero.
+- **Cambió el orden de la página.** `Home.tsx` y `SECTION_IDS` van ahora Hero →
+  Work → Approach → Stack → Record → Contact, como el diseño aprobado. Approach
+  corría segunda, o sea que se le pedía a alguien leer un párrafo sobre cómo
+  construye esta persona antes de mostrarle una sola cosa construida.
+
+Verificado en Chrome en claro y oscuro, en los dos idiomas. En esta máquina la
+ventana no baja de 1536px CSS, así que 390 y 1280 se verificaron montando la
+página en un iframe de ese ancho — las media queries responden al ancho del
+iframe, así que el layout es real.
 
 ---
 
@@ -132,15 +173,16 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Reescribir las cinco secciones restantes** contra sus artboards: Work,
-   Approach, Stack, Record, Contact. Hoy heredan la tipografía y la paleta
-   nuevas y se ven coherentes, pero conservan la estructura vieja. Los
-   artboards ya tienen la definitiva (índice en vez de galería, libro mayor en
-   vez de línea de tiempo, campos subrayados en vez de cajas).
-2. **Unificar el peso de las reglas.** Las secciones viejas abren con una
-   hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`); en
-   el sistema nuevo el separador entre secciones es una regla de 3px en tinta,
-   y 1px divide *dentro* de una sección.
+1. **Reescribir las cuatro secciones restantes** contra sus artboards: Approach,
+   Stack, Record, Contact. Hoy heredan la tipografía y la paleta nuevas y se ven
+   coherentes, pero conservan la estructura vieja. Los artboards ya tienen la
+   definitiva (libro mayor en vez de línea de tiempo, campos subrayados en vez
+   de cajas).
+2. **Unificar el peso de las reglas.** Las cuatro secciones que quedan abren con
+   una hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`);
+   en el sistema nuevo el separador entre secciones es una regla de 3px en
+   tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:
+   Work cierra en hairline y Approach abre en otra.
 3. **Traducir las fichas de proyecto.** La home está 100% en los dos idiomas;
    las páginas `/project/:id` siguen solo en inglés. Falta reestructurar
    `src/data/Projects.json` a campos por idioma (`description`,

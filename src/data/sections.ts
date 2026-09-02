@@ -8,8 +8,8 @@
  * headings from ever disagreeing about what a section is called.
  */
 export const SECTION_IDS = [
-  "approach",
   "work",
+  "approach",
   "stack",
   "experience",
   "contact",

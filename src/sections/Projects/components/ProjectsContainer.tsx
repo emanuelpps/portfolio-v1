@@ -1,86 +1,122 @@
-import { useMemo, useState } from "react";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  AnimatePresence,
+  type Variants,
+} from "framer-motion";
 import { Link } from "react-router-dom";
-import rawProjects from "@/data/Projects.json";
 import { ProjectTypes } from "@/types/ProjectTypes";
 import { useEnvironment } from "@/hooks/useEnvironment";
 import { useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
-
-const FILTERS = ["All", "Projects", "Libraries"] as const;
-type Filter = (typeof FILTERS)[number];
-
-const matches = (p: ProjectTypes, f: Filter) =>
-  f === "All"
-    ? true
-    : f === "Libraries"
-      ? p.type === "Library"
-      : p.type !== "Library";
-
-const projects = rawProjects as ProjectTypes[];
+import {
+  FILTERS,
+  counts,
+  featured,
+  matches,
+  projects,
+  type Filter,
+} from "../work";
 
 /**
- * One project is shown rather than listed.
+ * The featured piece, as a split rather than a banner.
  *
- * Before this, a visitor could scroll the entire home page and never see a
- * single piece of work — an index is efficient, but a portfolio that shows no
- * work is not a portfolio. Named by id so the choice is deliberate, with a
- * positional fallback so removing that entry degrades instead of breaking.
+ * It used to be a full-bleed 16:9 image with every word stacked underneath —
+ * which is the shape of a hero image, and it made the section open on a picture
+ * with no claim attached. Seven columns of image against five of type, divided
+ * by the same 3px rule that separates sections, reads as a cover: the picture
+ * and the argument for it arrive together.
+ *
+ * The whole block is one link, so the call to action is a `span` wearing the
+ * bowl rather than a control nested inside another control. One tab stop, one
+ * target, and the fill still inverts on hover because the group carries it.
  */
-const FEATURED_ID = 11;
-const featured =
-  projects.find((p) => p.id === FEATURED_ID) ??
-  projects.find((p) => p.type !== "Library");
-
 const Featured = ({ project }: { project: ProjectTypes }) => {
   const t = useT();
 
   return (
-  <motion.div
-    initial={{ opacity: 0, y: 18 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.15 }}
-    transition={{ duration: 0.7, ease: EASE }}
-    className="mb-14"
-  >
-    <Link
-      to={`/project/${project.id}`}
-      state={project}
-      data-cursor="hover"
-      className="group block"
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, ease: EASE }}
     >
-      {/* aspect-ratio rather than a bare lazy image: the box is reserved before
-          the file lands, so nothing below it jumps when it does. */}
-      <div className="aspect-[16/9] overflow-hidden border-y border-rule bg-ground-2">
-        <img
-          src={project.frontImage}
-          alt={`${project.title} — cover`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[900ms] ease-bp group-hover:scale-[1.02]"
-        />
-      </div>
+      <Link
+        to={`/project/${project.id}`}
+        state={project}
+        data-cursor="hover"
+        className="group grid grid-cols-1 border-b-[3px] border-ink lg:grid-cols-12"
+      >
+        {/* aspect-ratio rather than a bare lazy image: the box is reserved
+            before the file lands, so nothing below it jumps when it does.
 
-      <div className="gut flex flex-col gap-6 py-7 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-2xl">
-          <p className="note text-ink-dim">{t.work.featuredLabel}</p>
-          <h3 className="display-md mt-3 text-[clamp(2rem,5vw,3.5rem)] text-ink">
-            {project.title}
-          </h3>
-          {/* The one project blurb that lives in the dictionary rather than in
-              Projects.json. The detail sheets are still English-only, but this
-              paragraph sits on the home page under a Spanish heading, and a
-              single English sentence there reads as a bug rather than as scope. */}
-          <p className="mt-3 text-lg leading-relaxed text-ink-2">
-            {t.work.featuredDescription}
-          </p>
+            The cap is what keeps the split honest on a wide screen. Seven
+            columns at 16:10 grow with the viewport while five columns of type
+            do not, so past about 1400px the picture was setting a row height
+            the words could not reach and the panel opened a 200px hole in its
+            own middle. Measured, the ratio holds untouched to 1400 and the
+            block simply stops getting taller after that. */}
+        <div className="aspect-[16/10] overflow-hidden border-b-[3px] border-ink bg-ground-2 lg:col-span-7 lg:max-h-[28.5rem] lg:border-b-0 lg:border-r-[3px]">
+          <img
+            src={project.frontImage}
+            alt={`${project.title} — cover`}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-[900ms] ease-bp group-hover:scale-[1.02]"
+          />
         </div>
-        <p className="note shrink-0 text-ink-dim lg:text-right">
-          {project.stack.slice(0, 4).join(" · ")}
-        </p>
-      </div>
-    </Link>
-  </motion.div>
+
+        {/* Top-aligned, not spread. Pinning the footer to the bottom of a
+            column taller than its content puts the air in the middle, where it
+            reads as a mistake; letting the column simply end puts the same air
+            underneath, where it reads as margin. */}
+        <div className="flex flex-col gap-8 px-[var(--pad)] py-9 lg:col-span-5 lg:py-10">
+          <div>
+            {/* Caps and wide tracking, which the rest of the page avoids: this
+                is a field name sitting directly above the thing it names, and
+                it has to read as a label rather than as the first line of the
+                content. */}
+            <p className="label text-ink-dim">{t.work.featuredLabel}</p>
+            <h3 className="display mt-4 text-[clamp(1.875rem,4.2vw,2.875rem)] text-ink">
+              {project.title}
+            </h3>
+            {/* The one project blurb that lives in the dictionary rather than in
+                Projects.json. The detail sheets are still English-only, but this
+                paragraph sits on the home page under a Spanish heading, and a
+                single English sentence there reads as a bug rather than as
+                scope. */}
+            <p className="mt-4 text-[1.0625rem] leading-[1.5] text-ink-2 sm:text-lg">
+              {t.work.featuredDescription}
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start gap-5">
+            <p className="note text-ink-dim">
+              {project.stack.slice(0, 4).join(" · ")}
+            </p>
+            <span className="bowl inline-flex min-h-12 items-center border-2 border-ink bg-ink py-3 pl-7 pr-9 text-[0.9375rem] font-semibold text-ground transition-colors duration-300 ease-bp group-hover:bg-ground group-hover:text-ink">
+              {t.work.featuredCta}
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
+};
+
+/* The index arrives as one gesture rather than as ten. Staggering from the
+   parent instead of delaying each row by its own position matters once a filter
+   is applied: with a per-row delay, the ninth surviving row still waits out
+   eight rows that are no longer on the page. */
+const list: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05 } },
+};
+
+const row: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
 
 /**
@@ -108,15 +144,6 @@ export const ProjectsContainer = () => {
   const px = useSpring(x, { stiffness: 320, damping: 34, mass: 0.5 });
   const py = useSpring(y, { stiffness: 320, damping: 34, mass: 0.5 });
 
-  const counts = useMemo(
-    () => ({
-      All: projects.length,
-      Projects: projects.filter((p) => p.type !== "Library").length,
-      Libraries: projects.filter((p) => p.type === "Library").length,
-    }),
-    [],
-  );
-
   const filtered = projects.filter((p) => matches(p, filter));
 
   const track = (e: React.MouseEvent) => {
@@ -129,11 +156,14 @@ export const ProjectsContainer = () => {
     <div className="w-full" onMouseMove={track}>
       {featured && <Featured project={featured} />}
 
-      {/* Filter — the only place a bowl is allowed to carry state. */}
+      {/* Filter — the only place a bowl is allowed to carry state. The idle chip
+          is outlined in --edge rather than in the hairline the rules are drawn
+          in: this is the boundary of a control, and WCAG 1.4.11 asks it to hold
+          3:1 where a divider is free to whisper. */}
       <div
         role="tablist"
         aria-label={t.work.filterLabel}
-        className="gut mb-8 flex flex-wrap gap-3"
+        className="gut flex flex-wrap gap-3 py-6"
       >
         {FILTERS.map((f) => {
           const active = filter === f;
@@ -145,45 +175,53 @@ export const ProjectsContainer = () => {
               data-active={active}
               data-cursor="hover"
               onClick={() => setFilter(f)}
-              className="bowl invertible note inline-flex min-h-11 items-center border border-rule pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
+              className="bowl invertible note inline-flex min-h-11 items-center border-2 border-edge pl-5 pr-7 text-ink-2"
             >
               {t.work.filters[f]}
-              <span className="ml-2 opacity-50">{counts[f]}</span>
+              <span className="ml-2 opacity-60">{counts[f]}</span>
             </button>
           );
         })}
       </div>
 
-      <div className="border-t border-rule">
-        {filtered.map((p, i) => (
-          <motion.div
-            key={p.id}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: i * 0.045 }}
-            className="border-b border-rule"
-          >
+      <motion.div
+        variants={list}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+        className="border-t border-rule"
+      >
+        {filtered.map((p) => (
+          <motion.div key={p.id} variants={row} className="border-b border-rule">
             <Link
               to={`/project/${p.id}`}
               state={p}
               data-cursor="hover"
               onMouseEnter={() => setHovered(p)}
               onMouseLeave={() => setHovered(null)}
-              className="invertible group flex min-h-[5.5rem] flex-col justify-center gap-4 px-[var(--gutter)] py-7 md:grid md:grid-cols-[1fr_7rem_minmax(0,15rem)_2rem] md:items-baseline md:gap-8 md:py-10"
+              className="invertible group flex min-h-[5.5rem] flex-col justify-center gap-4 px-[var(--pad)] py-7 md:grid md:grid-cols-[minmax(0,1fr)_7.5rem_minmax(0,20rem)_2rem] md:items-baseline md:gap-8 md:py-8"
             >
-              <span className="display-md text-[clamp(1.75rem,4.5vw,3.25rem)] text-ink transition-colors group-hover:text-ground">
+              <span className="display-md text-[clamp(1.625rem,4vw,1.875rem)] text-ink transition-colors group-hover:text-ground">
                 {p.title}
               </span>
 
-              <span className="note text-ink-faint transition-colors group-hover:text-ground/60">
+              {/* Both annotations sit at the same value and separate by weight,
+                  the way the artboard does. They were split across --ink-dim
+                  and --ink-faint, and --ink-faint is 30% — fine for a rule,
+                  not for a word someone is meant to read. */}
+              <span className="note text-ink-dim transition-colors group-hover:text-ground/70">
                 {/* Falls back to the raw value: the kind is data, and a project
                     typed something the dictionary has never heard of should
                     still show what it is rather than nothing. */}
                 {t.work.types[p.type as keyof typeof t.work.types] ?? p.type}
               </span>
 
-              <span className="note text-ink-dim transition-colors group-hover:text-ground/70">
-                {p.stack.slice(0, 4).join(" · ")}
+              {/* Three names, not four. The fourth pushed the longest stacks onto
+                  a second line, and one wrapped cell in a row whose other three
+                  sit on a single baseline is what stops an index reading as an
+                  index. */}
+              <span className="note font-medium text-ink-dim transition-colors group-hover:text-ground/70">
+                {p.stack.slice(0, 3).join(" · ")}
               </span>
 
               <span
@@ -205,7 +243,7 @@ export const ProjectsContainer = () => {
             </Link>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {floats && (
         <AnimatePresence>
