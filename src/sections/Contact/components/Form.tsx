@@ -1,9 +1,10 @@
-import { useState, useRef, JSX, ReactNode } from "react";
+import { useState, useRef, ReactNode } from "react";
 import emailjs from "@emailjs/browser";
 import { AnimatePresence } from "framer-motion";
 import { LoadingDots } from "./LoadingDots";
 import PopUp from "./PopUp";
 import { BowlButton } from "@/components/blueprint/BowlButton";
+import { useT } from "@/i18n";
 
 /**
  * Fields are underlines, not boxes. A bordered input is four strokes where the
@@ -45,43 +46,42 @@ function Field({
   );
 }
 
+/**
+ * The status is held as a key, not as a sentence.
+ *
+ * Storing the resolved English string in state was fine while there was only
+ * one language; with two it would freeze whatever was current when the message
+ * fired, so a visitor who switched language mid-toast would be reading the
+ * previous one. The key is resolved at render, which is also why the submit
+ * button no longer keeps its own label in state.
+ */
+type Status = "errorFields" | "errorSend" | "ok" | null;
+
 export const Form = () => {
-  const [buttonText, setButtonText] = useState<JSX.Element | string>(
-    "Send message",
-  );
+  const t = useT();
+
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [formErrors, setFormErrors] = useState<boolean>(false);
-  const [errorManagement, setErrorManagement] = useState<string>();
+  const [status, setStatus] = useState<Status>(null);
   const [sending, setSending] = useState<boolean>(false);
   const form = useRef<HTMLFormElement>(null);
 
-  const errorManager = {
-    formError: "Please check the information in the form.",
-    formDeliverError: "There was a problem, and the form could not be sent.",
-    formDeliverOk:
-      "The message has been successfully sent. I will get in touch with you shortly.",
+  const flash = (next: Status, ms: number) => {
+    setStatus(next);
+    setTimeout(() => setStatus(null), ms);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    checkForm();
-  };
 
-  const checkForm = () => {
     if (!fullName || !email || !message) {
-      setFormErrors(true);
-      setErrorManagement(errorManager.formError);
-      setTimeout(() => {
-        setFormErrors(false);
-        setErrorManagement(undefined);
-      }, 3500);
+      flash("errorFields", 3500);
       return;
     }
-    setFormErrors(false);
+
+    setStatus(null);
     setSending(true);
-    setButtonText(<LoadingDots />);
     sendEmail();
   };
 
@@ -96,25 +96,27 @@ export const Form = () => {
       )
       .then(
         () => {
-          setErrorManagement(errorManager.formDeliverOk);
           setEmail("");
           setFullName("");
           setMessage("");
           setSending(false);
-          setButtonText("Send message");
-          setFormErrors(true);
-          setTimeout(() => setFormErrors(false), 4000);
+          flash("ok", 4000);
         },
         (error) => {
           console.log("Error:", error.status, "description:", error.text);
-          setErrorManagement(errorManager.formDeliverError);
           setSending(false);
-          setFormErrors(true);
-          setTimeout(() => setFormErrors(false), 4000);
-          setButtonText("Send message");
+          flash("errorSend", 4000);
         },
       );
   };
+
+  const statusText = status
+    ? {
+        errorFields: t.contact.form.errorFields,
+        errorSend: t.contact.form.errorSend,
+        ok: t.contact.form.ok,
+      }[status]
+    : null;
 
   return (
     <form
@@ -125,36 +127,32 @@ export const Form = () => {
     >
       <div aria-live="polite" role="status">
         <AnimatePresence>
-          {formErrors && errorManagement && (
+          {statusText && (
             <PopUp
               key="status"
-              message={errorManagement}
-              type={
-                errorManagement === errorManager.formDeliverOk
-                  ? "success"
-                  : "error"
-              }
+              message={statusText}
+              type={status === "ok" ? "success" : "error"}
             />
           )}
         </AnimatePresence>
       </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        <Field label="Name" htmlFor="from_name">
+        <Field label={t.contact.form.name} htmlFor="from_name">
           <input
             id="from_name"
             name="from_name"
             type="text"
             autoComplete="name"
             required
-            placeholder="Jane Doe"
+            placeholder={t.contact.form.namePlaceholder}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             className={`peer ${fieldBase}`}
           />
         </Field>
 
-        <Field label="Email" htmlFor="reply_to">
+        <Field label={t.contact.form.email} htmlFor="reply_to">
           <input
             id="reply_to"
             name="reply_to"
@@ -162,7 +160,7 @@ export const Form = () => {
             inputMode="email"
             autoComplete="email"
             required
-            placeholder="jane@company.com"
+            placeholder={t.contact.form.emailPlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={`peer ${fieldBase}`}
@@ -170,13 +168,13 @@ export const Form = () => {
         </Field>
       </div>
 
-      <Field label="Message" htmlFor="message">
+      <Field label={t.contact.form.message} htmlFor="message">
         <textarea
           id="message"
           name="message"
           rows={5}
           required
-          placeholder="Tell me about your project…"
+          placeholder={t.contact.form.messagePlaceholder}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className={`peer resize-none ${fieldBase}`}
@@ -189,7 +187,7 @@ export const Form = () => {
         aria-busy={sending}
         className="self-start"
       >
-        {buttonText}
+        {sending ? <LoadingDots /> : t.contact.form.send}
       </BowlButton>
     </form>
   );

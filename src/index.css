@@ -1,288 +1,231 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-BlackItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-BlackItalic.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
+/* ==========================================================================
+   Type — Archivo, self-hosted
+
+   Two cuts of one family. Archivo Black carries every display line; Archivo
+   carries everything you actually read. A grotesque was chosen over the serif
+   the previous build used for one reason: the display lines here are set at
+   poster scale in all caps, and a high-contrast serif drops its hairlines at
+   that size on a dark ground. Archivo Black holds its weight at 40px on a
+   phone and at 130px on a desktop, which is the whole job.
+
+   Served from /fonts rather than from Google so the headline face is not a
+   third-party connection sitting on the critical path. Archivo ships as a
+   variable font, so 400/500/600 cost one file instead of three.
+   ========================================================================== */
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-BoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Bold.woff2') format('woff2'),
-        url('/fonts/Urbanist-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Black.woff2') format('woff2'),
-        url('/fonts/Urbanist-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraBold.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraLight.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraLight.woff') format('woff');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Medium.woff2') format('woff2'),
-        url('/fonts/Urbanist-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Regular.woff2') format('woff2'),
-        url('/fonts/Urbanist-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-SemiBold.woff2') format('woff2'),
-        url('/fonts/Urbanist-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Light.woff2') format('woff2'),
-        url('/fonts/Urbanist-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-MediumItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-MediumItalic.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Italic.woff2') format('woff2'),
-        url('/fonts/Urbanist-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Thin.woff2') format('woff2'),
-        url('/fonts/Urbanist-Thin.woff') format('woff');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraLightItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraLightItalic.woff') format('woff');
-    font-weight: 200;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-LightItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-LightItalic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-SemiBoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-SemiBoldItalic.woff') format('woff');
-    font-weight: 600;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraBoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraBoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ThinItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ThinItalic.woff') format('woff');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-}
-
-/* Instrument Serif — self-hosted alongside Urbanist rather than pulled from
-   Google's CDN, so the display voice is not a third-party request on the
-   critical path. Split by unicode-range exactly as Google serves it: the
-   latin-ext file only downloads if a glyph outside latin is actually rendered.
-   Italic is declared but never fetched unless something renders italic. */
-
-@font-face {
-    font-family: 'Instrument Serif';
-    src: url('/fonts/InstrumentSerif-Regular-latin.woff2') format('woff2');
-    font-weight: 400;
+    font-family: "Archivo";
+    src: url("/fonts/Archivo-var-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-stretch: 100%;
     font-style: normal;
     font-display: swap;
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Instrument Serif';
-    src: url('/fonts/InstrumentSerif-Regular-latin-ext.woff2') format('woff2');
-    font-weight: 400;
+    font-family: "Archivo";
+    src: url("/fonts/Archivo-var-latin-ext.woff2") format("woff2");
+    font-weight: 400 700;
+    font-stretch: 100%;
     font-style: normal;
     font-display: swap;
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-    font-family: 'Instrument Serif';
-    src: url('/fonts/InstrumentSerif-Italic-latin.woff2') format('woff2');
+    font-family: "Archivo Black";
+    src: url("/fonts/ArchivoBlack-latin.woff2") format("woff2");
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
     font-display: swap;
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Instrument Serif';
-    src: url('/fonts/InstrumentSerif-Italic-latin-ext.woff2') format('woff2');
+    font-family: "Archivo Black";
+    src: url("/fonts/ArchivoBlack-latin-ext.woff2") format("woff2");
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
     font-display: swap;
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* ==========================================================================
-   EP / Blueprint
-   The logo is an E and a P fused into a single P. It is not used here as an
-   image — it is used as the grammar of the layout. Three of its traits become
-   structural rules, and everything else follows from them:
+   EP — one palette, two modes
 
-     1. the shared vertical stem   -> --stem, a rule that runs the whole page
-     2. the P's bowl               -> .bowl, the only radius in the system
-     3. the E's rectangular voids  -> cells divided by hairlines that touch
+   The mark is an E and a P fused into a single P. It is not used here as an
+   image, it is used as the grammar of the layout: the bowl of the P is the
+   only radius in the system, and the flat block the mark is knocked out of is
+   the only fill. There is no accent colour, because the mark does not have
+   one — hierarchy comes from scale, rule weight and inversion.
 
-   The palette is strictly monochrome, like the mark. Hierarchy comes from
-   stroke weight, scale and inversion — never from colour.
-   ========================================================================= */
+   Dark and light are not two stylesheets. They are the same six values
+   swapped, which is what stops the two modes from quietly drifting apart.
+   ========================================================================== */
 
 @theme {
+    /* --- dark, the default --- */
     --color-ground: #0F1621;
     --color-ground-2: #0B1119;
     --color-ground-3: #131C29;
 
+    /* Headings, and anything that has to be read first. ~16:1 */
     --color-ink: #F2F3F5;
-    /* Body copy. ~10:1 on --ground. Prose used to be set in --ink-dim, which is
-       why the whole page read grey: the only thing at full strength was the
-       headings, so nothing in between had any weight. */
-    --color-ink-2: #D2D7DE;
-    /* Labels and tertiary notes only. ~5.9:1 — AA, but not somewhere to put a
-       paragraph. */
-    --color-ink-dim: #8B929C;
-    --color-ink-faint: rgba(242, 243, 245, 0.28);
+    /* Body copy. ~12.5:1 — prose lives here, not in --ink-dim. */
+    --color-ink-2: #D5DAE1;
+    /* Labels and secondary notes. ~6:1, AA, but never a paragraph. */
+    --color-ink-dim: #8F98A4;
+    --color-ink-faint: rgba(242, 243, 245, 0.30);
 
-    --color-rule: rgba(242, 243, 245, 0.19);
+    /* Decorative division. Not a contrast surface. */
+    --color-rule: #3A4655;
     --color-rule-soft: rgba(242, 243, 245, 0.10);
+    /* The boundary of anything you can click. Held at 3:1 against the ground
+       on purpose: WCAG 1.4.11 governs the edge of a control, and the hairline
+       the rules are drawn in is far too quiet to carry a button. */
+    --color-edge: #6B7686;
 
-    --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --font-display: "Archivo Black", "Archivo", system-ui, sans-serif;
+    --font-sans: "Archivo", system-ui, -apple-system, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
     --ease-bp: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-:root {
-    /* Distance from the left viewport edge to the stem. Every horizontal rule
-       in the document starts here rather than at the screen edge. */
-    --stem: 1.25rem;
-    /* Breathing room between the stem and the first glyph of content. */
-    --gutter: 1.25rem;
-    --measure: 78rem;
-    --hair: 1px;
+/* --- light: the same six values, traded --- */
+:root[data-theme="light"] {
+    --color-ground: #ECEEF1;
+    --color-ground-2: #E2E5EA;
+    --color-ground-3: #D9DDE4;
+
+    --color-ink: #0F1621;
+    --color-ink-2: #333D4C;
+    --color-ink-dim: #5A6472;
+    --color-ink-faint: rgba(15, 22, 33, 0.34);
+
+    --color-rule: #B8BEC7;
+    --color-rule-soft: rgba(15, 22, 33, 0.10);
+    /* 3.7:1 on the paper ground — matched to the dark mode's 3.9:1 rather than
+       to the light mode's own hairline, so an outlined control carries the same
+       presence in both. */
+    --color-edge: #6E7784;
+
+    color-scheme: light;
 }
 
-@media (min-width: 768px) {
-    :root {
-        --stem: 4.5rem;
-        --gutter: 2rem;
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root {
+    /* ===== The cover headline ==========================================
+       Sized per language, because the longest word is what a poster line is
+       really constrained by and it is a different word in each: "DEVELOPER"
+       is nine characters, "DESARROLLADOR" is thirteen. One shared clamp would
+       either overflow the Spanish or waste a third of the column in English.
+
+       Both values are tuned so the longest line fills its column edge to edge
+       at every width — that flush-left, flush-right block is what makes this
+       read as a poster, far more than any particular point size does. Measured
+       in the browser at 320 / 375 / 780 / 1024 / 1536. */
+    --hero-size: clamp(2.5rem, 8.3vw, 8.25rem);
+
+    /* Page margin. Every rule that spans the page starts here. */
+    --pad: 1.25rem;
+    /* The old grid separated "distance to the stem" from "distance from the
+       stem to the first glyph". With the stem gone there is one margin, so
+       --gutter is kept as an alias rather than chased through every section
+       that still asks for it by name. */
+    --gutter: var(--pad);
+    --measure: 78rem;
+}
+
+/* "DESARROLLADOR" is 9.3em wide at this tracking; "DEVELOPER" is 6.3em. So the
+   Spanish cover is set smaller and still fills the same column.
+
+   It needs two ranges where English needs one, and the reason is the layout,
+   not the language: below 1024px the headline has the full page width, above it
+   only eight of twelve columns. One slope steep enough to fill a phone
+   overflows the desktop column; one gentle enough for the desktop leaves a
+   phone headline at 28px on a 390px screen. Measured across both ranges the
+   longest line now clears its column by 7-13% everywhere, which is the same
+   margin the English one runs on. */
+:root[lang="es"] {
+    --hero-size: clamp(1.75rem, 8.6vw, 2.375rem);
+}
+
+@media (min-width: 640px) {
+    :root[lang="es"] {
+        --hero-size: clamp(2.375rem, 5.75vw, 5.75rem);
     }
 }
 
-/* ===== Inversion, at page scale ==========================================
-   Inversion is the system's state gesture — hover, focus, active. This applies
-   it to a whole section by redefining the very tokens every utility is built
-   on, so an entire subtree flips with no component knowing about it.
+@media (min-width: 640px) {
+    :root {
+        --pad: 2rem;
+    }
+}
 
-   It exists because nine sections opening the same way on the same ground is
-   what made the page feel flat. The last one arriving as white paper gives the
-   scroll somewhere to land. */
+@media (min-width: 1024px) {
+    :root {
+        --pad: 2.5rem;
+    }
+}
+
+/* Rules and lists used to hang off the stem; now they start at the page edge
+   and the content inside them carries the margin. */
+.from-stem {
+    margin-left: 0;
+}
+
+.inset-stem {
+    padding-inline: var(--pad);
+}
+
+.gut {
+    padding-inline: var(--pad);
+}
+
+/* ===== Inversion, at page scale =========================================
+   Inversion is the system's only state gesture — hover, focus, active, and a
+   whole section arriving as the opposite of the one before it. Applied here by
+   redefining the tokens every utility is built on, so an entire subtree flips
+   and no component has to know about it.
+
+   It has to know which way to flip, so it is declared per mode rather than
+   hardcoded to light: under a light page, an inverted section is the dark one.
+   ========================================================================= */
+
+:root[data-theme="dark"] [data-invert] {
+    --color-ground: #ECEEF1;
+    --color-ground-2: #E2E5EA;
+    --color-ground-3: #D9DDE4;
+    --color-ink: #0F1621;
+    --color-ink-2: #333D4C;
+    --color-ink-dim: #5A6472;
+    --color-ink-faint: rgba(15, 22, 33, 0.34);
+    --color-rule: #B8BEC7;
+    --color-rule-soft: rgba(15, 22, 33, 0.10);
+    --color-edge: #79828F;
+}
+
+:root[data-theme="light"] [data-invert] {
+    --color-ground: #0F1621;
+    --color-ground-2: #0B1119;
+    --color-ground-3: #131C29;
+    --color-ink: #F2F3F5;
+    --color-ink-2: #D5DAE1;
+    --color-ink-dim: #8F98A4;
+    --color-ink-faint: rgba(242, 243, 245, 0.30);
+    --color-rule: #3A4655;
+    --color-rule-soft: rgba(242, 243, 245, 0.10);
+    --color-edge: #6B7686;
+}
 
 [data-invert] {
-    --color-ground: #F2F3F5;
-    --color-ground-2: #E4E7EB;
-    --color-ground-3: #D8DDE3;
-
-    /* ~12:1 and ~6.3:1 on the light ground — the dark side's ratios mirrored,
-       not its values reused. */
-    --color-ink: #0F1621;
-    --color-ink-2: #2A3340;
-    --color-ink-dim: #55606E;
-    --color-ink-faint: rgba(15, 22, 33, 0.38);
-
-    --color-rule: rgba(15, 22, 33, 0.22);
-    --color-rule-soft: rgba(15, 22, 33, 0.11);
-
     background-color: var(--color-ground);
     color: var(--color-ink);
 }
@@ -290,115 +233,110 @@
 html {
     background-color: var(--color-ground);
     scroll-behavior: auto;
+    /* Anything reached by a #hash has to clear the fixed masthead. */
+    scroll-padding-top: 6rem;
 }
 
 body {
     color: var(--color-ink);
     background-color: var(--color-ground);
     overflow-x: hidden;
-    font-family: "Urbanist", sans-serif;
-    font-optical-sizing: auto;
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
     -webkit-font-smoothing: antialiased;
-}
-
-/* ===== The stem =========================================================
-   Content hangs off the stem the way the E's bars hang off its spine. Rules
-   that span a section start at the stem; the text starts one gutter later. */
-
-/* The stem sits in the last pixel *before* --stem, not on it. Content anchored
-   with .from-stem starts exactly at --stem, so any cell with a fill would paint
-   straight over a stem drawn on that same pixel — the spine would vanish behind
-   every Approach, Stack and Contact grid on the page. Pulled back by one pixel,
-   the two butt against each other and neither has to yield. */
-.stem-x {
-    left: calc(var(--stem) - 1px);
-}
-
-.from-stem {
-    margin-left: var(--stem);
-}
-
-.inset-stem {
-    padding-left: calc(var(--stem) + var(--gutter));
-    padding-right: var(--gutter);
-}
-
-/* Gutter padding for content already sitting inside a .from-stem block, where
-   the left edge is the stem and only the breathing room is still needed. */
-.gut {
-    padding-inline: var(--gutter);
-}
-
-@media (min-width: 768px) {
-    .inset-stem {
-        padding-right: calc(var(--gutter) * 1.5);
-    }
+    /* The mode change is a deliberate, visible act, so it gets a transition —
+       but only on the page ground, never on every element, which would drag
+       the whole tree through a repaint. */
+    transition: background-color 0.4s var(--ease-bp), color 0.4s var(--ease-bp);
 }
 
 /* ===== The bowl =========================================================
    Square on the left, closed in a semicircle on the right — the P. The radius
    is deliberately absurd so the browser clamps it to exactly half the shorter
    axis, which keeps the curve true at any size. This is the only radius in
-   the system; nothing else in the site is allowed to round. */
+   the system; nothing else is allowed to round. */
 
 .bowl {
     border-radius: 0 9999px 9999px 0;
 }
 
-/* ===== Monospace ========================================================
-   Down to one job: the year column in the record, where the point is that the
-   dates line up. Mono was being used as a costume — every label, every index,
-   uppercase and tracked out — which is the fastest way to make a page look
-   like it was generated rather than designed. */
-
-.mono-sm {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    line-height: 1.2;
-    letter-spacing: 0.04em;
-}
-
 /* ===== Display type =====================================================
-   A sharp, high-contrast serif against a compass-and-ruler mark. The thinness
-   the mark asks for arrives through the typeface's own hairlines rather than
-   through a light weight, so it survives at any size instead of dropping out
-   below 3rem the way ExtraLight geometric sans did.
+   Poster setting: caps, tight tracking, lines that touch. Tracking is negative
+   because the default sidebearings of Archivo Black are drawn for text sizes;
+   at 90px they leave holes between the letters.
 
-   Instrument Serif ships one weight, so scale and case do the work that weight
-   usually does. */
+   `overflow-wrap` is the guard rail — a single long word set at 8vw is the
+   fastest way to produce a horizontal scrollbar on a 320px phone. */
+
+.poster {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.045em;
+    line-height: 0.84;
+    overflow-wrap: break-word;
+}
 
 .display {
     font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 0.88;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    overflow-wrap: break-word;
 }
 
 .display-md {
     font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: -0.012em;
-    line-height: 1;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    overflow-wrap: break-word;
 }
 
-/* Annotation voice. Sentence case and normal tracking on purpose: uppercase
+/* Annotation voice. Sentence case at normal tracking on purpose: uppercase
    mono with 0.2em of letter-spacing on every label is the single most worn-out
-   gesture in this genre, and it was making the page read as a costume. */
+   gesture in this genre, and it is what made the page read as a costume. */
 .note {
-    font-family: "Urbanist", sans-serif;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.005em;
     line-height: 1.45;
 }
 
-/* ===== Inversion ========================================================
-   With no accent colour, flipping ink and ground is the only state change
-   available that stays inside the system. Hover, active and focus all use it,
-   so they read as one gesture rather than three effects. */
+/* The one place caps and wide tracking earn their keep: a field name sitting
+   directly above the thing it names, where it has to read as a label and not
+   as the first line of the content. */
+.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.tnum {
+    font-variant-numeric: tabular-nums;
+}
+
+/* The record's year column, where the whole point is that the dates line up.
+   It used to be set in a monospace face; Archivo's tabular figures do the same
+   job without dragging a second typeface onto the page for six numbers. */
+.mono-sm {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+}
+
+/* ===== Inversion, at component scale ====================================
+   With no accent colour, trading ink and ground is the only state change that
+   stays inside the system. Hover, active and focus all use it, so they read as
+   one gesture rather than three effects. */
 
 .invertible {
-    transition: background-color 0.35s var(--ease-bp), color 0.35s var(--ease-bp);
+    transition: background-color 0.3s var(--ease-bp), color 0.3s var(--ease-bp),
+        border-color 0.3s var(--ease-bp);
 }
 
 .invertible:hover,
@@ -406,34 +344,30 @@ body {
 .invertible[data-active="true"] {
     background-color: var(--color-ink);
     color: var(--color-ground);
+    border-color: var(--color-ink);
 }
 
-/* ===== Film grain =======================================================
-   Kept from the previous build but dialled down: at blueprint scale the grain
-   is there to stop the flat ground from banding, not to be seen. */
+/* ===== Film grain — removed ==============================================
+   A fixed, full-viewport layer painting an feTurbulence SVG sat over every
+   pixel of this page at 2% opacity. Measured in the browser it was expensive
+   enough that a full-page rasterisation timed out repeatedly, and dropping it
+   made the same capture return immediately — which is the same repaint cost a
+   visitor pays on every scroll and on every theme change.
 
-.grain::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: 0.022;
-    will-change: transform;
-    transform: translateZ(0);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+   It was buying almost nothing: the grounds here are flat and dark or flat and
+   light, the texture in this design comes from the rules and the type, and at
+   2% nobody has ever seen it. */
 
 /* ===== Descender allowance ==============================================
-   The display type runs a line-height below 1, so the line box closes above
-   the font's descenders and anything clipping to it eats the tail of g, y, p
-   and é. The reveal masks clip to that box, so they carry the allowance as
-   padding and take it straight back out as negative margin — the type rhythm
-   is untouched, the descenders survive. */
+   Display type runs a line-height below 1, so the line box closes above the
+   font's descenders and anything clipping to it eats the tail of g, y, p and
+   é. A reveal mask clips to that box, so it carries the allowance as padding
+   and takes it straight back out as negative margin — the type rhythm is
+   untouched, the descenders survive. */
 
 :root {
     --ink-top: 0.16em;
-    --ink-bottom: 0.38em;
+    --ink-bottom: 0.34em;
 }
 
 .text-mask {
@@ -442,6 +376,20 @@ body {
     margin-top: calc(-1 * var(--ink-top));
     padding-bottom: var(--ink-bottom);
     margin-bottom: calc(-1 * var(--ink-bottom));
+}
+
+/* The poster lines are set in caps, which have no descenders — so they need
+   room above the cap line for the reveal to clear, and nothing below it.
+   Allowance on one side only is not a shortcut, it is the fix: two stacked
+   masks each cancelling padding on both sides do not cancel cleanly, because
+   adjacent negative margins collapse to the larger of the two rather than
+   summing. Measured in the browser, the two-sided version left 21px of extra
+   air between the lines and dragged the 3px rule 9px up into the type. */
+.line-mask {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.14em;
+    margin-top: -0.14em;
 }
 
 /* ===== Lenis ============================================================ */
@@ -478,11 +426,16 @@ html.lenis body {
     border-radius: 0;
 }
 
+/* On a filled block the ring is drawn in the ground colour instead, because an
+   ink outline on ink is not an outline. */
+.on-ink:focus-visible,
+:where(.on-ink) :where(a, button):focus-visible {
+    outline-color: var(--color-ground);
+}
+
 /* Form fields opt out of the ring and get their own indicator: a 2px line in
-   full ink drawn under the active field (see Form.tsx). An offset rectangle
-   around a control that is itself only an underline reads as a stray box, and
-   the drawn line is both higher contrast and the gesture the rest of the site
-   already uses. */
+   full ink under the active field. An offset rectangle around a control that
+   is itself only an underline reads as a stray box. */
 :where(input, textarea):focus-visible {
     outline: none;
 }
@@ -498,23 +451,33 @@ button {
     color: var(--color-ground);
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .skip-link {
     position: fixed;
-    left: var(--stem);
+    left: var(--pad);
     top: -120px;
     z-index: 300;
     background: var(--color-ink);
     color: var(--color-ground);
-    padding: 10px 20px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    padding: 12px 24px;
+    font-size: 0.8125rem;
+    font-weight: 600;
     transition: top 0.25s var(--ease-bp);
 }
 
 .skip-link:focus {
-    top: 0;
+    top: 0.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

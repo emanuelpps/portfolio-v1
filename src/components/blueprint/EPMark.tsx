@@ -53,6 +53,12 @@ export function EPMark({
   hairline?: boolean;
   weight?: number;
   className?: string;
+  /**
+   * The accessible name. Pass an empty string where the mark sits next to text
+   * that already names the link — an empty label on `role="img"` is worse than
+   * no label at all, since a screen reader still stops on it and announces
+   * nothing, so the mark is marked decorative instead.
+   */
   title?: string;
 }) {
   // The svg is observed, not the paths. An undrawn path renders nothing, and
@@ -66,8 +72,9 @@ export function EPMark({
       ref={ref}
       viewBox="0 0 160 160"
       style={{ width: size, height: size }}
-      role="img"
-      aria-label={title}
+      {...(title
+        ? ({ role: "img", "aria-label": title } as const)
+        : ({ "aria-hidden": true } as const))}
       className={className}
       fill="none"
       stroke="currentColor"

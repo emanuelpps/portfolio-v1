@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
  * viewport instead makes two sections match during every transition and the
  * index flickers between them.
  */
-export function useActiveSection(ids: string[]) {
+export function useActiveSection(ids: readonly string[]) {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {

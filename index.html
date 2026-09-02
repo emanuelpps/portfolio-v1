@@ -1,53 +1,78 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link
-      rel="preload"
-      href="/fonts/Urbanist-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Urbanist-Medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Urbanist-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Urbanist-Black.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--
-      Instrument Serif carries the display voice, self-hosted next to Urbanist
-      so the headline face is not a third-party request sitting on the critical
-      path. Only the regular latin cut is preloaded — it is the one that always
-      renders; latin-ext and italic are declared in CSS behind unicode-range
-      and font-style, so the browser fetches them only if a glyph needs them.
+      Mode and language both have to be on the element before the first pixel
+      is painted. React boots long after that, so a dark page would flash white
+      on every cold load, and a Spanish-speaking visitor would read English for
+      200ms before the page changed under them. This is the only blocking
+      script on the page.
+
+      Both follow the same rule: a stored choice wins, and with none the
+      visitor's own environment decides — the OS for the mode, the browser's
+      language list for the copy.
+    -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var storedTheme = localStorage.getItem("ep-theme");
+          var theme =
+            storedTheme === "light" || storedTheme === "dark"
+              ? storedTheme
+              : window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          root.dataset.theme = theme;
+          root.style.backgroundColor =
+            theme === "light" ? "#ECEEF1" : "#0F1621";
+        } catch (e) {
+          root.dataset.theme = "dark";
+        }
+        try {
+          var storedLang = localStorage.getItem("ep-lang");
+          if (storedLang === "en" || storedLang === "es") {
+            root.lang = storedLang;
+          } else {
+            var tags = navigator.languages || [navigator.language || "en"];
+            root.lang = Array.prototype.some.call(tags, function (tag) {
+              return tag && tag.toLowerCase().indexOf("es") === 0;
+            })
+              ? "es"
+              : "en";
+          }
+        } catch (e) {
+          root.lang = "en";
+        }
+      })();
+    </script>
+
+    <!--
+      Archivo carries the reading text and Archivo Black every display line,
+      both self-hosted so the headline face is not a third-party connection on
+      the critical path. Only the latin cuts are preloaded — they are the ones
+      that always render; latin-ext is declared in CSS behind a unicode-range,
+      so the browser fetches it only if a glyph actually needs it.
     -->
     <link
       rel="preload"
-      href="/fonts/InstrumentSerif-Regular-latin.woff2"
+      href="/fonts/ArchivoBlack-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Archivo-var-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
 
-    <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/ep-log.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0F1621" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link href="/src/index.css" rel="stylesheet" />
@@ -57,14 +82,14 @@
     <!-- Meta description -->
     <meta
       name="description"
-      content="Design-focused frontend developer blending 10 years in digital marketing with 3+ years building modern, responsive React & TypeScript web apps."
+      content="Frontend developer who thinks like a marketer: a decade of growth and SEO before React, now building fast, responsive React and TypeScript interfaces."
     />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Emanuel Pagés | Frontend Developer" />
     <meta
       property="og:description"
-      content="Design-focused frontend developer blending 10 years in digital marketing with 3+ years building modern React & TypeScript web apps."
+      content="Frontend developer who thinks like a marketer: a decade of growth and SEO before React, now building fast, responsive React and TypeScript interfaces."
     />
     <meta
       property="og:image"
@@ -78,7 +103,7 @@
     <meta name="twitter:title" content="Emanuel Pagés | Frontend Developer" />
     <meta
       name="twitter:description"
-      content="Design-focused frontend developer blending 10 years in digital marketing with 3+ years building modern React & TypeScript web apps."
+      content="Frontend developer who thinks like a marketer: a decade of growth and SEO before React, now building fast, responsive React and TypeScript interfaces."
     />
     <meta
       name="twitter:image"
@@ -88,20 +113,29 @@
   <body>
     <div id="root">
       <style>
-        /* The first thing on screen is the mark drawing itself — the same
-           three strokes, in the same order, as the signature at the foot of
-           the page. No spinner: a rotating circle would be the one curve on
-           this site that isn't the P's bowl. */
+        /* The first thing on screen is the mark drawing itself — the same three
+           strokes, in the same order, as the signature at the foot of the page.
+           No spinner: a rotating circle would be the one curve on this site
+           that isn't the P's bowl.
+
+           It reads the mode off the element the inline script above already
+           set, so the boot screen is never the wrong colour. */
         .boot {
           position: fixed;
           inset: 0;
           display: grid;
           place-items: center;
           background: #0f1621;
+          color: #f2f3f5;
+        }
+        :root[data-theme="light"] .boot {
+          background: #eceef1;
+          color: #0f1621;
         }
         .boot svg {
           width: 56px;
           height: 56px;
+          stroke: currentColor;
           animation: boot-breathe 2.4s ease-in-out 1.3s infinite;
         }
         /* pathLength="1" normalises every stroke to a length of 1, so three
@@ -145,7 +179,6 @@
         <svg
           viewBox="0 0 160 160"
           fill="none"
-          stroke="#f2f3f5"
           stroke-width="9"
           stroke-linecap="square"
           role="img"

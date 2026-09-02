@@ -103,14 +103,6 @@ const ProjectDetailContainer: React.FC<ProjectDetailContainerProps> = ({
 
   return (
     <div className="relative w-full pb-32">
-      {/* The page's stem is behind this overlay, so the sheet carries its own.
-          Static, not a progress track: this view scrolls in its own container
-          and the document-level progress would be reading the wrong thing. */}
-      <div
-        aria-hidden
-        className="stem-x pointer-events-none absolute inset-y-0 z-0 w-px bg-rule"
-      />
-
       <div className="sticky top-0 z-30 border-b border-rule bg-ground">
         <div className="inset-stem flex h-16 items-center justify-between gap-6">
           <Link

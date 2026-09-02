@@ -9,8 +9,56 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**Todavía no se bajó al código.** El repo sigue con el sistema anterior
-("Blueprint": monocromo + Instrument Serif + astil), que quedó descartado.
+**La portada ya está en código**, junto con la base que necesita (tipografías,
+paleta de dos modos, masthead). Las otras cinco secciones heredan la tipografía
+y la paleta nuevas, pero **todavía no se reescribieron contra sus artboards**.
+
+### Bajado al código el 2026-09-01
+
+- **Archivo + Archivo Black self-hosteadas** en `public/fonts/` (4 woff2,
+  ~100 kB). Urbanist e Instrument Serif borradas.
+- **Paleta de dos modos** en `src/index.css`: las seis variables sobre `:root`,
+  el modo claro como override en `:root[data-theme="light"]`. `[data-invert]`
+  se declara por modo, así que bajo página clara una sección invertida es la
+  oscura.
+- **Toggle claro/oscuro con persistencia** (`src/lib/theme.ts`,
+  `src/components/ThemeToggle.tsx`) + script inline en `index.html` que aplica
+  el modo antes del primer pixel, para que no haya flash.
+- **Portada** (`src/sections/Hero/Hero.tsx`): el rol como titular, el nombre en
+  el masthead, bloque de tinta con la marca calada, y la franja de tres
+  proyectos reales cerrando el fold.
+- **Masthead** (`src/components/NavBar/NavBar.tsx`): nombre + marca a la
+  izquierda, índice y toggle a la derecha, regla de 3px. Los links son `#href`
+  reales (`src/lib/scrollToId.ts`).
+- **Se eliminaron el astil y las cruces de registro** (`Stem`, `Crosshair`) y el
+  overlay de grano: pertenecían al sistema descartado, y el grano costaba un
+  repintado de página completa medido en el navegador.
+
+Se verificó en Chrome a 320 / 390 / 780 / 1036 / 1292 / 1557 px, en ambos modos.
+
+### Bilingüe ES/EN — hecho el 2026-09-01
+
+- **Diccionarios** en `src/i18n/en.ts` y `src/i18n/es.ts`. `en` define la forma
+  y `es` está tipado como `Dict`, así que **una clave que falte no compila**.
+- **Store** en `src/i18n/index.ts` (zustand) + `useT()`. La persistencia es
+  localStorage plano bajo `ep-lang`, no el middleware `persist`, porque el
+  script inline de `index.html` tiene que leer la misma clave.
+- **El idioma se resuelve antes del primer pixel**, en el mismo script inline
+  que ya resolvía el modo: elección guardada primero, si no `navigator.languages`.
+  Sin elección guardada no se escribe nada, así que quien nunca eligió sigue a
+  su navegador para siempre.
+- **Selector** en el nav (`src/components/LangToggle.tsx`), al lado del de modo.
+  Muestra el idioma **al que te lleva**, no en el que estás.
+- `<html lang>`, `<title>` y la meta description siguen al idioma.
+- Lo que **no** se traduce y por qué: los nombres propios (empresas, tecnologías)
+  viven en `src/data/roles.ts` y `src/data/Stack.ts` fuera de los diccionarios,
+  para que no puedan divergir entre idiomas.
+- **El titular de la portada se escala por idioma** (`--hero-size`):
+  "DESARROLLADOR" mide 9,3em contra los 6,3em de "DEVELOPER". El español necesita
+  dos tramos donde el inglés necesita uno — no por el idioma sino por el layout:
+  debajo de 1024px el titular tiene el ancho completo y arriba solo 8 de 12
+  columnas. Medido, la línea más larga despeja su columna entre 7% y 13% en
+  ambos idiomas.
 
 ---
 
@@ -84,16 +132,26 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Bajar el diseño al código.** Es el trabajo grande y no está empezado:
-   - Reemplazar los tokens de `src/index.css` por la paleta y las seis
-     variables de los dos modos.
-   - **Self-hostear Archivo y Archivo Black** (hoy están self-hosteadas
-     Urbanist e Instrument Serif; ambas quedan sin uso y se pueden borrar).
-   - Reescribir las seis secciones contra los artboards.
-   - Toggle claro/oscuro con persistencia.
-2. **Bilingüe con selector (ES/EN).** Decidido hace varias sesiones, nunca
-   arrancado: extraer todo el copy a un diccionario, store con zustand,
-   selector en el nav, persistencia y `<html lang>`.
+1. **Reescribir las cinco secciones restantes** contra sus artboards: Work,
+   Approach, Stack, Record, Contact. Hoy heredan la tipografía y la paleta
+   nuevas y se ven coherentes, pero conservan la estructura vieja. Los
+   artboards ya tienen la definitiva (índice en vez de galería, libro mayor en
+   vez de línea de tiempo, campos subrayados en vez de cajas).
+2. **Unificar el peso de las reglas.** Las secciones viejas abren con una
+   hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`); en
+   el sistema nuevo el separador entre secciones es una regla de 3px en tinta,
+   y 1px divide *dentro* de una sección.
+3. **Traducir las fichas de proyecto.** La home está 100% en los dos idiomas;
+   las páginas `/project/:id` siguen solo en inglés. Falta reestructurar
+   `src/data/Projects.json` a campos por idioma (`description`,
+   `longDescription`, `insights.*`) y adaptar `ProjectDetailContainer`. La única
+   excepción ya hecha es la descripción del proyecto destacado, que vive en el
+   diccionario (`work.featuredDescription`) porque aparece en la home bajo un
+   título en español.
+4. **Limpiar componentes muertos**: `src/components/Buttons/`,
+   `src/components/Titles/`, `src/components/Form/` son del build anterior y no
+   los usa nadie (`TertiaryButton` incluso referencia un `--accent` que no
+   existe en ninguna hoja).
 
 ---
 

@@ -6,13 +6,23 @@
  * the same twenty icons in the same six colours. Set as type it says exactly
  * as much, reads faster, weighs nothing, and belongs to this site instead of
  * to the vendors.
+ *
+ * The tool names are proper nouns and stay here untranslated. The group titles
+ * and their notes are copy, so they live in the dictionaries keyed by `id`.
  */
-export type StackGroup = { title: string; note: string; items: string[] };
+export type StackGroupId =
+  | "frontend"
+  | "backend"
+  | "native"
+  | "testing"
+  | "cloud"
+  | "tools";
+
+export type StackGroup = { id: StackGroupId; items: string[] };
 
 export const STACK: StackGroup[] = [
   {
-    title: "Frontend",
-    note: "Daily",
+    id: "frontend",
     items: [
       "TypeScript",
       "React",
@@ -31,8 +41,7 @@ export const STACK: StackGroup[] = [
     ],
   },
   {
-    title: "Backend & data",
-    note: "Working knowledge",
+    id: "backend",
     items: [
       "Node.js",
       "Express.js",
@@ -44,23 +53,19 @@ export const STACK: StackGroup[] = [
     ],
   },
   {
-    title: "Native",
-    note: "Mobile",
+    id: "native",
     items: ["React Native", "Expo", "NativeWind"],
   },
   {
-    title: "Testing",
-    note: "Coverage",
+    id: "testing",
     items: ["Vitest", "React Testing Library"],
   },
   {
-    title: "Cloud & ops",
-    note: "Delivery",
+    id: "cloud",
     items: ["AWS", "Azure DevOps"],
   },
   {
-    title: "Tools & automation",
-    note: "Everything else",
+    id: "tools",
     items: [
       "n8n",
       "Claude Code",
@@ -74,5 +79,3 @@ export const STACK: StackGroup[] = [
     ],
   },
 ];
-
-export const STUDYING = "Python Diploma — UTN";

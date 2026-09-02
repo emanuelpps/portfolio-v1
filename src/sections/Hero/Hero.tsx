@@ -1,168 +1,215 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useScroll as useAppScroll } from "@/hooks/UseScroll";
-import { useEnvironment } from "@/hooks/useEnvironment";
-import { WipeText } from "@/components/blueprint/WipeText";
-import { Cell, CellGrid } from "@/components/blueprint/Cell";
-import { BowlButton } from "@/components/blueprint/BowlButton";
 import { EPMark } from "@/components/blueprint/EPMark";
-import { Rule } from "@/components/blueprint/Rule";
+import { jumpTo } from "@/lib/scrollToId";
+import rawProjects from "@/data/Projects.json";
+import type { ProjectTypes } from "@/types/ProjectTypes";
+import { useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
 
 /**
- * Role is missing on purpose — it is the line directly under the name, and
- * repeating it in a cell is the sort of filler that left this screen anonymous.
- * Location is missing too: the work is remote, so where the desk sits is not a
- * fact about the job.
+ * The cover.
+ *
+ * What changed, and why:
+ *
+ *   The role is the headline now, not the name. A visitor arriving here is
+ *   deciding in about two seconds whether this person does the thing they need
+ *   done — and the previous cover answered "Emanuel Pagés" at 136px and
+ *   "Frontend Developer" at 20px underneath, which is the wrong way round for
+ *   everyone except people who already know him. The name is where a name
+ *   belongs on a poster: top left, in the masthead, at reading size.
+ *
+ *   The screen ends on real work. Three named projects sit on the bottom edge
+ *   of the fold, cut off just enough to say the page continues. They replaced
+ *   three cells reading "Focus", "Currently", "Available" — labels that
+ *   described the page instead of showing anything.
+ *
+ *   The right-hand block is the one piece of pure identity, and it appears
+ *   exactly twice on the whole site: here, and signing off at the foot of
+ *   Contact. Flat ink, mark knocked out of it in the ground colour, no accent —
+ *   because the mark has no third colour to spend.
  */
-const FACTS = [
-  { key: "Focus", value: "React · TypeScript · Performance" },
-  { key: "Currently", value: "Dizizid · The CodeMaker Lab" },
-  { key: "Available", value: "Open to roles and freelance, remote" },
-];
+
+const projects = rawProjects as ProjectTypes[];
+
+/** Epic Sound Studio, Eckers, Coffee Roastery — by id, so the choice is
+ *  deliberate, with a fill-in so a removed entry degrades instead of breaking. */
+const COVER_IDS = [11, 13, 4];
+
+const cover: ProjectTypes[] = (() => {
+  const picked = COVER_IDS.map((id) => projects.find((p) => p.id === id)).filter(
+    (p): p is ProjectTypes => Boolean(p),
+  );
+  if (picked.length === 3) return picked;
+  const rest = projects.filter(
+    (p) => p.type !== "Library" && !picked.includes(p),
+  );
+  return [...picked, ...rest].slice(0, 3);
+})();
+
+/* One load, staggered — rather than a dozen scattered micro-animations. Every
+   element arrives on the same 16px rise so the screen assembles as one gesture.
+   `MotionConfig reducedMotion="user"` in main.tsx drops the transform for
+   anyone who asked for less motion; nothing here is load-bearing. */
+const rise: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+};
+
+const sequence: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.12 } },
+};
 
 export const Hero = () => {
-  const { refs, scrollTo } = useAppScroll();
-  const { hasFinePointer, reducedMotion } = useEnvironment();
-  const interactive = hasFinePointer && !reducedMotion;
-
-  // A few pixels of drift against the pointer. The mark has its own framed
-  // space now, so this is life rather than the thing scrambling the letterform.
-  const rawX = useMotionValue(0.5);
-  const rawY = useMotionValue(0.5);
-  const sX = useSpring(rawX, { stiffness: 45, damping: 22 });
-  const sY = useSpring(rawY, { stiffness: 45, damping: 22 });
-  const markX = useTransform(sX, [0, 1], [7, -7]);
-  const markY = useTransform(sY, [0, 1], [5, -5]);
-
-  const onMove = (e: React.MouseEvent) => {
-    if (!interactive || !refs.refHome.current) return;
-    const r = refs.refHome.current.getBoundingClientRect();
-    rawX.set((e.clientX - r.left) / r.width);
-    rawY.set((e.clientY - r.top) / r.height);
-  };
+  const { refs } = useAppScroll();
+  const t = useT();
 
   return (
     <section
       ref={refs.refHome}
-      onMouseMove={onMove}
-      aria-label="Introduction"
-      className="relative flex min-h-dvh w-full flex-col overflow-hidden pt-20 sm:pt-24"
+      aria-labelledby="hero-title"
+      className="relative flex min-h-[100dvh] w-full flex-col pt-16 lg:pt-20"
     >
-      {/* Status sits on its own line across the top, above the rule that opens
-          the split — so the two columns below start from the same edge instead
-          of one of them carrying a stray label. */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
-        className="inset-stem pb-5"
-      >
-        <p className="note flex items-center gap-2.5 text-ink-dim">
-          {/* A dot would be the one circle on a site whose only curve is the
-              P's bowl, so the status light is a square. */}
-          <span aria-hidden className="block h-1.5 w-1.5 animate-pulse bg-ink" />
-          Available — remote
-        </p>
-      </motion.div>
-
-      <Rule tick />
-
-      <div className="inset-stem flex flex-1 flex-col justify-center py-10 sm:py-12">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-12">
+        <motion.div
+          variants={sequence}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col justify-between gap-10 px-[var(--pad)] py-10 sm:py-12 lg:col-span-8 lg:col-start-1 lg:row-start-1 lg:py-14"
+        >
           <div>
-            <h1 className="display text-[clamp(3rem,11vw,8.5rem)] text-ink">
-              <WipeText trigger="mount" delay={0.15}>
-                Emanuel
-              </WipeText>
-
-              {/* The P's bowl at architectural scale, filled rather than drawn.
-                  An outlined pill at this size reads as nothing; solid, it is
-                  the mark's own counter inverted. */}
-              <motion.span
-                initial={{ scaleX: 0.88, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 1, ease: EASE, delay: 0.45 }}
-                style={{ transformOrigin: "left" }}
-                className="bowl mt-1.5 inline-block bg-ink pb-[0.12em] pl-[0.1em] pr-[0.62em] pt-[0.02em] text-ground"
-              >
-                Pagés
-              </motion.span>
+            {/* The longest word sets the ceiling, and it is a different word in
+                each language: "DEVELOPER" is nine characters, "DESARROLLADOR"
+                is thirteen. So the size lives in --hero-size, tuned per
+                language in index.css, and both headlines fill their column
+                edge to edge — which is what makes this read as a poster, more
+                than any particular point size does. */}
+            <h1
+              id="hero-title"
+              className="poster text-[length:var(--hero-size)] text-ink"
+            >
+              {/* The masthead carries the name visually; assistive tech should
+                  still hear the whole claim from the page's one h1. */}
+              <span className="sr-only">{t.hero.srName}</span>
+              {t.hero.roleLines.map((line, i) => (
+                <span key={line} className="line-mask">
+                  <motion.span
+                    className="block"
+                    initial={{ y: "115%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1, ease: EASE, delay: 0.1 + i * 0.11 }}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
             </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.8 }}
-              className="mt-6 text-xl text-ink-2 sm:text-2xl"
-            >
-              Frontend Developer
-            </motion.p>
-
+            {/* 3px: the weight that separates sections. 1px divides inside one. */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.95 }}
-              className="mt-8 flex flex-wrap items-center gap-6"
+              variants={rise}
+              className="mt-6 h-[3px] w-full bg-ink sm:mt-8"
+            />
+
+            <motion.p
+              variants={rise}
+              className="mt-6 max-w-[40ch] text-pretty text-[clamp(1.0625rem,1.75vw,1.5rem)] font-medium leading-[1.35] text-ink-2 sm:mt-7"
             >
-              <BowlButton onClick={() => scrollTo("projects")}>
-                Selected work
-              </BowlButton>
-              <button
-                onClick={() => scrollTo("contact")}
-                data-cursor="hover"
-                className="note inline-flex min-h-11 items-center border-b border-rule text-ink-dim transition-colors duration-300 hover:border-ink hover:text-ink"
-              >
-                Get in touch
-              </button>
-            </motion.div>
+              {t.hero.lead}
+            </motion.p>
           </div>
 
-          {/*
-            The mark, drawn whole inside one of the E's own counters.
-
-            An earlier pass blew it up to forty rem, bled it off the right edge
-            and pinned its stroke to a hairline — which cropped away the bowl,
-            the single feature separating the shape from a plain E, and left the
-            rest as faint lines crossing the name. Framed, complete, and drawn
-            at the stroke ratio the real mark uses, it reads as the letterform.
-          */}
           <motion.div
-            style={interactive ? { x: markX, y: markY } : undefined}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
-            className="order-first grid aspect-square w-[clamp(8rem,26vw,14.5rem)] place-items-center border border-rule text-ink lg:order-last lg:justify-self-end"
+            variants={rise}
+            className="flex flex-wrap items-center gap-4"
           >
-            {/* Sized off the same clamp as its frame rather than a percentage
-                of it: a percentage height has to resolve against the grid
-                area, which is one more thing that can quietly fail. */}
-            <EPMark
-              size="clamp(5rem, 16vw, 9rem)"
-              traced
-              trigger="mount"
-              title="Emanuel Pagés"
-            />
+            {/* One primary action per screen. It is the only thing on the cover
+                wearing the bowl, so the hierarchy survives without colour —
+                and both are real links, so both can be opened in a new tab and
+                deep-linked to. */}
+            <a
+              href="#work"
+              onClick={(e) => jumpTo(e, "work")}
+              data-cursor="hover"
+              className="bowl inline-flex min-h-12 items-center border-2 border-ink bg-ink py-3 pl-7 pr-9 text-[0.9375rem] font-semibold text-ground transition-colors duration-300 ease-bp hover:bg-ground hover:text-ink"
+            >
+              {t.hero.ctaWork}
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => jumpTo(e, "contact")}
+              data-cursor="hover"
+              className="invertible inline-flex min-h-12 items-center border-2 border-edge px-7 py-3 text-[0.9375rem] font-semibold text-ink-2"
+            >
+              {t.hero.ctaContact}
+            </a>
+
+            {/* Not colour-only: the square is the punctuation, the words are the
+                information. A dot would be the one circle on a site whose only
+                curve is the P's bowl. */}
+            <p className="note flex w-full items-center gap-2.5 text-ink sm:ml-auto sm:w-auto">
+              <span aria-hidden className="block h-2.5 w-2.5 shrink-0 bg-ink" />
+              {t.hero.available}
+            </p>
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* The block, bled to the edges of its cell. Full height beside the
+            headline on a desktop; a band under it on a phone, where four
+            columns of solid ink would eat the fold. */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
+          className="on-ink grid h-[clamp(7.5rem,26vw,12rem)] place-items-center bg-ink lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:h-auto"
+        >
+          <EPMark
+            size="clamp(4.5rem, 17vw, 15rem)"
+            weight={11}
+            traced
+            trigger="mount"
+            className="text-ground"
+            title="Emanuel Pagés"
+          />
+        </motion.div>
       </div>
 
-      {/* The E's counters at the foot of the screen: three cells sharing their
-          dividing strokes, carrying the facts at full contrast. */}
-      <motion.div
+      {/* The fold closes on work, not on a scroll arrow. Cut by the viewport,
+          the row is its own invitation to keep going. */}
+      <motion.nav
+        aria-label={t.hero.projectsLabel}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: EASE, delay: 1.1 }}
-        className="from-stem"
+        transition={{ duration: 0.7, ease: EASE, delay: 0.75 }}
+        className="border-t-[3px] border-ink"
       >
-        <CellGrid cols="grid-cols-1 sm:grid-cols-3">
-          {FACTS.map(({ key, value }) => (
-            <Cell key={key} pad="px-[var(--gutter)] py-4 sm:py-5">
-              <p className="note text-ink-dim">{key}</p>
-              <p className="note mt-1.5 text-ink">{value}</p>
-            </Cell>
+        <ul className="grid grid-cols-1 sm:grid-cols-3">
+          {cover.map((project, i) => (
+            <li
+              key={project.id}
+              className={
+                i < 2 ? "border-b border-rule sm:border-b-0 sm:border-r" : ""
+              }
+            >
+              <Link
+                to={`/project/${project.id}`}
+                state={project}
+                data-cursor="hover"
+                className="invertible group flex h-full flex-col justify-center px-[var(--pad)] py-5 sm:py-6"
+              >
+                <span className="display-md text-[1.3125rem] text-ink transition-colors duration-300 group-hover:text-ground">
+                  {project.title}
+                </span>
+                <span className="note mt-1.5 text-ink-dim transition-colors duration-300 group-hover:text-ground">
+                  {project.stack.slice(0, 2).join(" · ")}
+                </span>
+              </Link>
+            </li>
           ))}
-        </CellGrid>
-      </motion.div>
+        </ul>
+      </motion.nav>
     </section>
   );
 };

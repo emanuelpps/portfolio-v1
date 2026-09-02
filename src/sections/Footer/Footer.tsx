@@ -1,5 +1,6 @@
 import { getLenis } from "@/lib/SmoothScroll";
 import { Rule } from "@/components/blueprint/Rule";
+import { useT } from "@/i18n";
 
 const META = [
   { key: "GitHub", href: "https://github.com/emanuelpps" },
@@ -13,6 +14,8 @@ const META = [
  * but state the facts in the annotation voice and offer a way back up.
  */
 const Footer = () => {
+  const t = useT();
+
   const toTop = () => {
     const lenis = getLenis();
     if (lenis) lenis.scrollTo(0);
@@ -23,17 +26,11 @@ const Footer = () => {
     <footer data-invert className="relative z-10 w-full pt-10">
       {/* The page ends on paper: Contact inverts and the colophon stays there
           rather than snapping back to the dark ground for four lines. */}
-      <div
-        aria-hidden
-        className="stem-x pointer-events-none absolute inset-y-0 z-0 w-px bg-rule"
-      />
       <Rule tick />
       <div className="inset-stem flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
-        <p className="note text-ink-faint">© 2026 Emanuel Pagés</p>
+        <p className="note text-ink-faint">{t.footer.copyright}</p>
 
-        <p className="note text-ink-faint">
-          React · TypeScript · Tailwind · Framer Motion
-        </p>
+        <p className="note text-ink-faint">{t.footer.builtWith}</p>
 
         <div className="flex flex-wrap items-center gap-6">
           {META.map(({ key, href }) => (
@@ -53,7 +50,7 @@ const Footer = () => {
             data-cursor="hover"
             className="note inline-flex min-h-11 items-center text-ink-dim transition-colors duration-300 hover:text-ink"
           >
-            Top ↑
+            {t.footer.top}
           </button>
         </div>
       </div>

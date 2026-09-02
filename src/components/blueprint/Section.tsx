@@ -60,15 +60,6 @@ export function BpSection({
       data-invert={invert ? "" : undefined}
       className={`relative w-full ${PACE[pace]} ${className}`}
     >
-      {/* An inverted section paints over the page's stem, so it carries its own
-          in the flipped rule colour and the spine appears continuous. */}
-      {invert && (
-        <div
-          aria-hidden
-          className="stem-x pointer-events-none absolute inset-y-0 z-0 w-px bg-rule"
-        />
-      )}
-
       <Rule tick />
 
       {title && (

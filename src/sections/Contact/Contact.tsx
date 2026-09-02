@@ -2,17 +2,19 @@ import { useScroll } from "@/hooks/UseScroll";
 import { FormContainer } from "./components/FormContainer";
 import { BpSection } from "@/components/blueprint/Section";
 import { EPMark } from "@/components/blueprint/EPMark";
+import { useT } from "@/i18n";
 
 export const Contact = () => {
   const { refs } = useScroll();
+  const t = useT();
 
   return (
     <BpSection
       id="contact"
-      label="Contact"
+      label={t.nav.sections.contact}
       pace="loose"
       invert
-      title="Let's build something that performs."
+      title={t.contact.title}
       sectionRef={refs.refContact}
     >
       <div className="mt-10 from-stem">

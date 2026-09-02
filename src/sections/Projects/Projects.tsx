@@ -1,16 +1,18 @@
 import { ProjectsContainer } from "./components/ProjectsContainer";
 import { useScroll } from "@/hooks/UseScroll";
 import { BpSection } from "@/components/blueprint/Section";
+import { useT } from "@/i18n";
 
 const Projects = () => {
   const { refs } = useScroll();
+  const t = useT();
 
   return (
     <BpSection
       id="work"
-      label="Work"
+      label={t.nav.sections.work}
       pace="loose"
-      title="Things I've designed, built and shipped."
+      title={t.work.title}
       sectionRef={refs.refProjects}
     >
       <div className="mt-10 from-stem">

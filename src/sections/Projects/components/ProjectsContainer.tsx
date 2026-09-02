@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import rawProjects from "@/data/Projects.json";
 import { ProjectTypes } from "@/types/ProjectTypes";
 import { useEnvironment } from "@/hooks/useEnvironment";
+import { useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
 
 const FILTERS = ["All", "Projects", "Libraries"] as const;
@@ -31,7 +32,10 @@ const featured =
   projects.find((p) => p.id === FEATURED_ID) ??
   projects.find((p) => p.type !== "Library");
 
-const Featured = ({ project }: { project: ProjectTypes }) => (
+const Featured = ({ project }: { project: ProjectTypes }) => {
+  const t = useT();
+
+  return (
   <motion.div
     initial={{ opacity: 0, y: 18 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -58,12 +62,16 @@ const Featured = ({ project }: { project: ProjectTypes }) => (
 
       <div className="gut flex flex-col gap-6 py-7 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <p className="note text-ink-dim">Featured</p>
+          <p className="note text-ink-dim">{t.work.featuredLabel}</p>
           <h3 className="display-md mt-3 text-[clamp(2rem,5vw,3.5rem)] text-ink">
             {project.title}
           </h3>
+          {/* The one project blurb that lives in the dictionary rather than in
+              Projects.json. The detail sheets are still English-only, but this
+              paragraph sits on the home page under a Spanish heading, and a
+              single English sentence there reads as a bug rather than as scope. */}
           <p className="mt-3 text-lg leading-relaxed text-ink-2">
-            {project.description}
+            {t.work.featuredDescription}
           </p>
         </div>
         <p className="note shrink-0 text-ink-dim lg:text-right">
@@ -72,7 +80,8 @@ const Featured = ({ project }: { project: ProjectTypes }) => (
       </div>
     </Link>
   </motion.div>
-);
+  );
+};
 
 /**
  * The rest of the work, as an index rather than a gallery.
@@ -89,6 +98,7 @@ const Featured = ({ project }: { project: ProjectTypes }) => (
 export const ProjectsContainer = () => {
   const { hasFinePointer, reducedMotion } = useEnvironment();
   const floats = hasFinePointer && !reducedMotion;
+  const t = useT();
 
   const [filter, setFilter] = useState<Filter>("All");
   const [hovered, setHovered] = useState<ProjectTypes | null>(null);
@@ -122,7 +132,7 @@ export const ProjectsContainer = () => {
       {/* Filter — the only place a bowl is allowed to carry state. */}
       <div
         role="tablist"
-        aria-label="Filter projects"
+        aria-label={t.work.filterLabel}
         className="gut mb-8 flex flex-wrap gap-3"
       >
         {FILTERS.map((f) => {
@@ -137,7 +147,7 @@ export const ProjectsContainer = () => {
               onClick={() => setFilter(f)}
               className="bowl invertible note inline-flex min-h-11 items-center border border-rule pl-5 pr-7 text-ink-dim data-[active=true]:border-ink"
             >
-              {f}
+              {t.work.filters[f]}
               <span className="ml-2 opacity-50">{counts[f]}</span>
             </button>
           );
@@ -166,7 +176,10 @@ export const ProjectsContainer = () => {
               </span>
 
               <span className="note text-ink-faint transition-colors group-hover:text-ground/60">
-                {p.type}
+                {/* Falls back to the raw value: the kind is data, and a project
+                    typed something the dictionary has never heard of should
+                    still show what it is rather than nothing. */}
+                {t.work.types[p.type as keyof typeof t.work.types] ?? p.type}
               </span>
 
               <span className="note text-ink-dim transition-colors group-hover:text-ground/70">

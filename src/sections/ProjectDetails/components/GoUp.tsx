@@ -15,7 +15,7 @@ export const GoUp = () => {
       aria-label="Back to top"
       onClick={scrollToTop}
       data-cursor="hover"
-      className="bowl invertible mono stem-x fixed bottom-6 z-[70] border border-rule bg-ground py-3 pl-4 pr-6 text-ink-dim"
+      className="bowl invertible note fixed bottom-6 left-[var(--pad)] z-[70] border-2 border-edge bg-ground py-3 pl-5 pr-7 text-ink-2"
     >
       Top ↑
     </button>

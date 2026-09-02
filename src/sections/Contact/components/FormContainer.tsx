@@ -1,5 +1,6 @@
 import { Form } from "./Form";
 import { Cell, CellGrid } from "@/components/blueprint/Cell";
+import { useT } from "@/i18n";
 
 const LINKS = [
   {
@@ -20,14 +21,15 @@ const LINKS = [
 ];
 
 export const FormContainer = () => {
+  const t = useT();
+
   return (
     <CellGrid cols="grid-cols-1 lg:grid-cols-[minmax(0,22rem)_1fr]">
       <Cell pad="px-[var(--gutter)] py-7 sm:py-9">
-        <p className="note text-ink-faint">Direct</p>
+        <p className="note text-ink-faint">{t.contact.directLabel}</p>
 
         <p className="mt-5 text-lg leading-relaxed text-ink-2">
-          Open to frontend roles and freelance projects. Tell me what
-          you&apos;re working on — I usually reply within a day.
+          {t.contact.lead}
         </p>
 
         <ul className="mt-8 flex flex-col">
@@ -59,7 +61,7 @@ export const FormContainer = () => {
       </Cell>
 
       <Cell pad="px-[var(--gutter)] py-7 sm:py-9">
-        <p className="note mb-8 text-ink-faint">Message</p>
+        <p className="note mb-8 text-ink-faint">{t.contact.messageLabel}</p>
         <Form />
       </Cell>
     </CellGrid>
