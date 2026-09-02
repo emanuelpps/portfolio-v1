@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>probe</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #ff00ff; }
+      iframe { display: block; border: 0; }
+    </style>
+  </head>
+  <body>
+    <iframe id="f"></iframe>
+    <script>
+      // Local screenshot harness. Loads the site in a same-origin iframe of a
+      // chosen width, forces every framer-motion element to its settled state
+      // (IntersectionObserver never fires under headless virtual time, so
+      // whileInView leaves the whole page at opacity 0), scrolls to a target
+      // and parks. Never shipped — see .gitignore.
+      const q = new URLSearchParams(location.search);
+      const w = +(q.get("w") || 1280);
+      const h = +(q.get("h") || 900);
+      const lang = q.get("lang");
+      const theme = q.get("theme") || "dark";
+
+      if (lang) localStorage.setItem("ep-lang", lang);
+      if (theme) localStorage.setItem("ep-theme", theme);
+
+      const f = document.getElementById("f");
+      f.style.width = w + "px";
+      f.style.height = h + "px";
+      f.src = q.get("url") || "/";
+
+      // A stylesheet, not a walk over inline styles: framer-motion rewrites its
+      // own inline styles on the next frame, so forcing them is a race that
+      // sometimes lost and left the page half invisible. `!important` beats an
+      // inline style, so this settles once and stays settled.
+      const settle = (d) => {
+        if (d.getElementById("__settle")) return;
+        const s = d.createElement("style");
+        s.id = "__settle";
+        s.textContent =
+          "*,*::before,*::after{opacity:1!important;transform:none!important;" +
+          "animation:none!important;transition:none!important;}";
+        d.head.appendChild(s);
+      };
+
+      f.addEventListener("load", () => {
+        const d = f.contentDocument;
+        const win = f.contentWindow;
+        setTimeout(() => {
+          d.documentElement.setAttribute("data-theme", theme);
+          settle(d);
+          const sel = q.get("sel");
+          if (sel) {
+            const el = d.querySelector(sel);
+            if (el) {
+              const y = el.getBoundingClientRect().top + win.scrollY;
+              d.documentElement.scrollTop = y + +(q.get("dy") || 0);
+            }
+          }
+          setTimeout(() => {
+            settle(d);
+            document.title = "READY";
+          }, 500);
+        }, 1200);
+      });
+    </script>
+  </body>
+</html>

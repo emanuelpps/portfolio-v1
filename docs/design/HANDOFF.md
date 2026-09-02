@@ -9,10 +9,10 @@
 ## Estado en una línea
 
 El diseño está **aprobado en canvas** (las seis secciones, en claro y oscuro).
-**La portada, Work, Approach, Stack y Record ya están en código**, junto con la base que
-necesitan (tipografías, paleta de dos modos, masthead) y la ficha de proyecto.
-Sólo queda Contact, que hereda la tipografía y la paleta nuevas pero
-**todavía no se reescribió contra su artboard**.
+**Las seis secciones están en código**, contra sus artboards, junto con la base
+que necesitan (tipografías, paleta de dos modos, masthead) y la ficha de
+proyecto. El cascarón Blueprint ya no existe. Lo único que queda del plan
+original es traducir el contenido de las fichas.
 
 ### Bajado al código el 2026-09-01
 
@@ -141,11 +141,11 @@ Se diseñó contra el sistema, no contra una lámina.
   ya visto y filtraba las tres. Mutar durante el render es el bug, no
   StrictMode.*
 
-**Verificado en el navegador** (antes de que la extensión se desconectara): URL
-directa `/project/11`, `<title>` por proyecto, la franja de datos, el libro
-mayor y las tres capturas distintas, en modo claro. **Sin verificar todavía**:
-el cierre de la página (fila del siguiente proyecto + footer), el estado de id
-inexistente, el modo oscuro, el español y los anchos de móvil.
+**Verificado.** Primero en el navegador antes de que la extensión se
+desconectara —URL directa `/project/11`, `<title>` por proyecto, la franja de
+datos, el libro mayor y las tres capturas distintas, en claro— y el resto con el
+arnés headless que se describe abajo: el cierre de la página (fila del siguiente
+proyecto + colofón), `/project/999`, oscuro, español y 390px.
 
 ### Approach — hecho el 2026-09-02
 
@@ -196,14 +196,14 @@ inexistente, el modo oscuro, el español y los anchos de móvil.
 
 ### Record — hecho el 2026-09-02
 
-- **Sale de ** y toma la cabecera común; el título-frase
+- **Sale de `BpSection`** y toma la cabecera común; el título-frase
   ("Diez años construyendo para resultados.") se borró del diccionario. La nota
-  de la derecha deriva el conteo de roles de ; 2014 es el año
+  de la derecha deriva el conteo de roles de `src/data/roles.ts`; 2014 es el año
   de la última fila del libro mayor, así que el tramo se verifica scrolleando.
 - **Ya era un libro mayor y no una línea de tiempo** — eso no cambió. Lo que se
   ajustó son las medidas contra el artboard: columna de años a 11,5rem (era 9),
   columna de puesto a 16rem, y el nombre de la empresa a 27px.
-- **El año pasó de  a .** 30% es un valor para una
+- **El año pasó de `--ink-faint` a `--ink-dim`.** 30% es un valor para una
   regla, no para una fecha que alguien está leyendo. Mismo arreglo que en el
   índice de Work.
 - **La descripción se alinea con la columna de la empresa**, no con el margen de
@@ -211,12 +211,49 @@ inexistente, el modo oscuro, el español y los anchos de móvil.
 - Las filas siguen arrancando plegadas y el trabajo actual sigue abierto al
   llegar, que es la parte que cualquiera vino a mirar.
 
+### Contact — hecho el 2026-09-02
+
+- **Sale de `BpSection`** y además **deja de invertirse**. Voltear la sección
+  entera a papel era un resto del sistema descartado; en el diseño aprobado la
+  página se queda en su modo hasta el final y el único bloque de tinta maciza
+  es aquel del que está calada la marca. Ese bloque aparece exactamente dos
+  veces en el sitio —la portada abre con él y esto cierra con él— y eso es lo
+  que hace que se lea como una firma y no como decoración.
+- **La línea de disponibilidad es `hero.available`.** La portada y el cierre
+  hacen el mismo claim, así que leen del mismo string en vez de dos que se
+  pueden despegar.
+- **Split de 5/7**: a la izquierda el titular en tres líneas, la bajada y los
+  tres enlaces directos; a la derecha el formulario. Los campos ya eran
+  subrayados; lo que se ajustó contra el artboard es el peso (2px), la etiqueta
+  (versales tracked, en `--ink-dim` en vez de `--ink-faint` al 30%) y el botón
+  de envío, que pasa a relleno.
+- **El colofón se separó de la inversión.** `Footer` ya no voltea la franja ni
+  abre con una hairline dibujada al scrollear: el bloque de tinta de arriba es
+  el divisor, y una regla debajo de un bloque de tinta maciza es una regla que
+  no ve nadie.
+- **Bug encontrado mirándolo:** el botón de envío salía relleno y **sin
+  etiqueta**, tinta sobre tinta. Agregarle `text-ground` a una base que ya
+  declara `text-ink` no gana: Tailwind ordena las utilidades de una misma
+  familia por su propio criterio, no por el orden en el atributo. Se resolvió
+  con una variante `filled` en `BowlButton`, que es donde la decisión se puede
+  leer.
+
+### Componentes muertos — borrados el 2026-09-02
+
+Con las seis secciones reescritas, el cascarón Blueprint dejó de tener quien lo
+use. Se borraron `BpSection`, `Rule`, `WipeText`, `Cell`/`CellGrid`, `SpecList`
+y `FormContainer`, más las carpetas del build anterior `components/Buttons/`,
+`components/Titles/` y `components/Form/`. De `blueprint/` quedan las tres
+piezas que siguen vivas: `EPMark`, `DrawIn` y `BowlButton`.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
 maneja el Chrome instalado en modo headless (`--headless=new --screenshot`)
-contra un arnés local, **`public/__probe.html`**, que está en `.gitignore` y no
-debe llegar a producción.
+contra un arnés local. La fuente vive en **`docs/design/probe.html`** y se copia
+a `public/__probe.html` sólo mientras se sacan capturas — todo lo que está en
+`public/` se publica, así que se borra al terminar; el `.gitignore` lo cubre por
+si queda olvidado.
 
 El arnés existe por una razón concreta: bajo tiempo virtual de headless el
 IntersectionObserver no dispara, así que todo lo que entra con `whileInView`
@@ -231,11 +268,19 @@ hoja gana.
 Uso:
 
 ```bash
+cp docs/design/probe.html public/__probe.html
+
 chrome --headless=new --disable-gpu --hide-scrollbars \
   --force-device-scale-factor=1 --run-all-compositor-stages-before-draw \
   --virtual-time-budget=15000 --window-size=1280,940 --screenshot=out.png \
   "http://localhost:5199/__probe.html?w=1280&h=940&sel=%23approach&theme=dark&lang=es"
+
+rm public/__probe.html
 ```
+
+Parámetros: `w`/`h` el tamaño del iframe, `sel` un selector al que scrollear,
+`dy` un desplazamiento extra, `url` para abrir otra ruta (`/project/11`),
+`theme` y `lang`.
 
 ---
 
@@ -309,16 +354,7 @@ de arriba lo pone en su lugar.
 
 ## Lo que falta
 
-1. **Reescribir Contact** contra su artboard. Hoy heredan la tipografía y la paleta nuevas y se ven
-   coherentes, pero conservan la estructura vieja. Los artboards ya tienen la
-   definitiva (libro mayor en vez de línea de tiempo, campos subrayados en vez
-   de cajas).
-2. **Unificar el peso de las reglas.** La sección que queda abre con
-   una hairline de 1px que se dibuja al entrar en viewport (`Rule` + `DrawIn`);
-   en el sistema nuevo el separador entre secciones es una regla de 3px en
-   tinta, y 1px divide *dentro* de una sección. Hoy se nota justo en la costura:
-   Work cierra en hairline y Approach abre en otra.
-3. **Traducir el contenido de las fichas.** Decidido el 2026-09-02: la
+1. **Traducir el contenido de las fichas.** Decidido el 2026-09-02: la
    estructura y el diseño se hicieron primero, la traducción va después. Toda
    la **interfaz** de la ficha ya es bilingüe (bloque `project` en los dos
    diccionarios); lo que sigue en inglés es el **contenido de cada proyecto**:
@@ -328,10 +364,8 @@ de arriba lo pone en su lugar.
    inglés. La única excepción ya hecha es la descripción del proyecto
    destacado, que vive en el diccionario (`work.featuredDescription`) porque
    aparece en la home bajo un título en español.
-4. **Limpiar componentes muertos**: `src/components/Buttons/`,
-   `src/components/Titles/`, `src/components/Form/` son del build anterior y no
-   los usa nadie (`TertiaryButton` incluso referencia un `--accent` que no
-   existe en ninguna hoja).
+Y nada más. Las seis secciones, la ficha, el masthead y el colofón están
+reescritos y vistos; los componentes muertos están borrados.
 
 ---
 

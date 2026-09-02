@@ -214,10 +214,11 @@ export const en = {
   },
 
   contact: {
-    title: "Let's build something that performs.",
-    directLabel: "Direct",
+    /** Three lines, broken where the sense breaks. The availability line to
+     *  the right of the heading is `hero.available` — the cover and the close
+     *  make the same claim, so they read from the same string. */
+    titleLines: ["Let's build", "something", "that performs"],
     lead: "Open to frontend roles and freelance projects. Tell me what you're working on — I usually reply within a day.",
-    messageLabel: "Message",
     form: {
       name: "Name",
       namePlaceholder: "Jane Doe",

@@ -16,10 +16,14 @@ import { useT } from "@/i18n";
  * replaces the global focus outline for these controls — see index.css.
  */
 const fieldBase =
-  "w-full border-0 border-b border-rule bg-transparent py-3 font-light text-ink " +
-  "placeholder:text-ink-faint focus:outline-none";
+  "w-full border-0 border-b-2 border-rule bg-transparent py-3 text-[1.0625rem] text-ink " +
+  "placeholder:text-ink-dim focus:outline-none";
 
-const labelBase = "note mb-1 block text-ink-faint";
+/* Caps and wide tracking earn their keep here: a field name sitting directly
+   above the thing it names has to read as a label, not as the first line of
+   the content. It was set in the annotation voice at 30% opacity, which is a
+   value for a rule rather than for a word. */
+const labelBase = "label mb-2.5 block text-ink-dim";
 
 function Field({
   label,
@@ -181,8 +185,12 @@ export const Form = () => {
         />
       </Field>
 
+      {/* Filled, not outlined: it is the one primary action on the screen,
+          and the outline is what every other control on the page already
+          wears. */}
       <BowlButton
         type="submit"
+        variant="filled"
         disabled={sending}
         aria-busy={sending}
         className="self-start"

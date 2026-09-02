@@ -15,16 +15,40 @@ import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from "reac
  * already doing the distinguishing here, so the type doesn't have to shout.
  */
 const base =
-  "bowl invertible inline-flex items-center border border-ink/60 py-3 pl-6 pr-8 " +
-  "text-[0.9375rem] font-medium text-ink disabled:cursor-not-allowed disabled:opacity-50";
+  "bowl invertible inline-flex items-center py-3 pl-6 pr-8 text-[0.9375rem] " +
+  "disabled:cursor-not-allowed disabled:opacity-50";
+
+/**
+ * Outline is the default; `filled` is for the one primary action on a screen.
+ *
+ * This is a variant rather than a class a caller appends, because appending
+ * `text-ground` to a base that already sets `text-ink` does not win: Tailwind
+ * orders utilities of the same family by its own sort, not by their order in
+ * the attribute. The send button came out as a filled bowl with an invisible
+ * label, ink on ink, and nothing about the markup said why.
+ */
+const VARIANT = {
+  outline: "border border-ink/60 font-medium text-ink",
+  filled: "border-2 border-ink bg-ink font-semibold text-ground",
+} as const;
+
+type Variant = keyof typeof VARIANT;
 
 export function BowlButton({
   children,
+  variant = "outline",
   className = "",
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode }) {
+}: ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+  variant?: Variant;
+}) {
   return (
-    <button className={`${base} ${className}`} data-cursor="hover" {...rest}>
+    <button
+      className={`${base} ${VARIANT[variant]} ${className}`}
+      data-cursor="hover"
+      {...rest}
+    >
       {children}
     </button>
   );
@@ -32,11 +56,19 @@ export function BowlButton({
 
 export function BowlLink({
   children,
+  variant = "outline",
   className = "",
   ...rest
-}: AnchorHTMLAttributes<HTMLAnchorElement> & { children: ReactNode }) {
+}: AnchorHTMLAttributes<HTMLAnchorElement> & {
+  children: ReactNode;
+  variant?: Variant;
+}) {
   return (
-    <a className={`${base} ${className}`} data-cursor="hover" {...rest}>
+    <a
+      className={`${base} ${VARIANT[variant]} ${className}`}
+      data-cursor="hover"
+      {...rest}
+    >
       {children}
     </a>
   );

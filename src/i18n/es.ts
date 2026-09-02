@@ -187,10 +187,8 @@ export const es: Dict = {
   },
 
   contact: {
-    title: "Construyamos algo que funcione.",
-    directLabel: "Directo",
+    titleLines: ["Construyamos", "algo que", "funcione"],
     lead: "Abierto a puestos frontend y proyectos freelance. Contame en qué estás trabajando — suelo responder dentro del día.",
-    messageLabel: "Mensaje",
     form: {
       name: "Nombre",
       namePlaceholder: "Juan Pérez",
