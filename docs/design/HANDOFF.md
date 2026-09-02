@@ -327,6 +327,51 @@ los 80px de apertura de Stack se leían como un hueco al pie de Approach. La
 hairline de cierre va en el contenedor de la grilla, no en las celdas, para que
 se dibuje en el fondo real de la fila sea cual sea la columna más alta.
 
+### La frase de Approach no se dibujaba — 2026-09-02
+
+Entre la regla de 3px y "La ventaja" había **página en blanco**: la frase nunca
+aparecía. Lo reportó Emanuel; ninguna captura lo había mostrado.
+
+**La causa.** Una línea se revela sacándola de abajo de una máscara con
+`overflow: hidden`, así que en su estado inicial está recortada a cero. Un
+elemento con área de intersección cero **nunca es reportado visible por el
+IntersectionObserver**, así que un `whileInView` colgado de esa misma línea
+espera por sí mismo para siempre.
+
+Es el mismo bug que el commit `46ccaa4` de agosto —que se comió el titular de la
+portada y todas las reglas de sección— y que dejó escrita la regla: **el elemento
+observado y el animado tienen que ser distintos.** Se rompió al escribir la
+frase de Approach.
+
+**El arreglo no es puntual.** Como ya pasó dos veces, el patrón vive ahora en
+`src/components/blueprint/MaskedLines.tsx`: el observador está en el envoltorio
+—que nunca se recorta— y las líneas de adentro sólo llevan variants, sin poder
+tener disparador propio. La portada y Approach lo usan; la portada con
+`trigger="mount"`, porque está sobre el fold.
+
+### Por qué el arnés no lo agarró, y qué se hizo al respecto
+
+**`probe.html` fuerza las animaciones a su estado final** — tiene que hacerlo,
+porque bajo `--virtual-time-budget` el IntersectionObserver no dispara nunca y
+sin forzar sale todo invisible. El costo es que es **ciego exactamente a esto**:
+una animación que en un navegador real no arranca nunca, en una captura del
+arnés se ve perfecta. Así fue como una frase que no existía en pantalla pasó dos
+revisiones.
+
+Así que ahora hay una segunda herramienta, **`docs/design/cdp.mjs`**, que maneja
+el Chrome instalado por DevTools Protocol en **tiempo real**: no fuerza nada, el
+IntersectionObserver funciona, se scrollea como scrollea una persona, y lo que
+vuelve es lo que ve un visitante. Sin dependencias — usa el `WebSocket` nativo
+de Node 22+.
+
+    node docs/design/cdp.mjs "http://localhost:5199/"
+      --lang es --theme dark --scroll "#approach" --wait 3000
+      --shot out.png --eval "document.title"
+
+**Regla de acá en adelante:** el arnés sirve para composición, medidas y anchos.
+Cualquier cosa que dependa de que una animación *arranque* se verifica con
+`cdp.mjs` o en un navegador de verdad. El arnés no puede desmentirte.
+
 ### Sobre cómo se verifica ahora
 
 La extensión de Chrome dejó de conectar a mitad de sesión. En su lugar se
