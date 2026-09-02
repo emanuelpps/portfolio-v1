@@ -55,11 +55,8 @@ Se verificó en Chrome a 320 / 390 / 780 / 1036 / 1292 / 1557 px, en ambos modos
   viven en `src/data/roles.ts` y `src/data/Stack.ts` fuera de los diccionarios,
   para que no puedan divergir entre idiomas.
 - **El titular de la portada se escala por idioma** (`--hero-size`):
-  "DESARROLLADOR" mide 9,3em contra los 6,3em de "DEVELOPER". El español necesita
-  dos tramos donde el inglés necesita uno — no por el idioma sino por el layout:
-  debajo de 1024px el titular tiene el ancho completo y arriba solo 8 de 12
-  columnas. Medido, la línea más larga despeja su columna entre 7% y 13% en
-  ambos idiomas.
+  "DESARROLLADOR" mide 9,3em contra los 6,3em de "DEVELOPER". Ver más abajo:
+  el criterio con el que se eligen esos tamaños cambió el 2026-09-02.
 
 ### Work — hecho el 2026-09-02
 
@@ -273,6 +270,33 @@ piezas que siguen vivas: `EPMark`, `DrawIn` y `BowlButton`.
   repite en siete proyectos, con pinta de relleno). Borrarlas tiraría imágenes
   de las que no hay otra copia; mostrarlas es una decisión de contenido, no de
   esta tanda.
+
+### El titular de la portada, ajustado el 2026-09-02
+
+La primera versión hacía que las dos líneas llenaran su columna de punta a
+punta, que es la regla de manual de un póster. La aritmética de esa regla acá es
+brutal: llenar la misma medida con 9,3em de palabra en vez de 6,3em obliga a
+componerla **31% más chica**. A 1280 la portada medía 106px en inglés y 74px en
+español — cambiar de idioma cambiaba de un tercio el tamaño de la cosa más
+grande de la página, y se leía como dos diseños distintos.
+
+La regla se relaja a propósito: **el español, que es el restringido, llena su
+columna, y el inglés se sostiene 10% por encima** en vez de donde lo pondría el
+llenado. A 1280 quedan 78,5px y 86,3px. El inglés llena el 71% de su columna en
+vez del 83%, o sea que carga más aire a la derecha — una portada con un margen
+derecho ancho es mejor que una portada donde el idioma cambia la composición.
+
+**El corte se mudó de 640 a 1024**, que es donde el layout efectivamente cambia:
+debajo el titular tiene el ancho completo, arriba ocho de doce columnas. El
+corte anterior no medía nada en particular, y por eso la diferencia entre
+idiomas era del 16% en un teléfono y del 31% en un escritorio.
+
+Medido: el español llena entre 94% y 97% de su columna en 320 / 390 / 1024 /
+1280, y la relación entre los dos idiomas se sostiene en 1,10 en todos.
+
+De paso se emparejó el hueco vertical del fold. El titular español, al ser más
+bajo, dejaba 117px entre la bajada y los botones contra los 63px del inglés;
+ahora son 107 y 95.
 
 ### Sobre cómo se verifica ahora
 

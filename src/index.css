@@ -123,15 +123,30 @@
 :root {
     /* ===== The cover headline ==========================================
        Sized per language, because the longest word is what a poster line is
-       really constrained by and it is a different word in each: "DEVELOPER"
-       is nine characters, "DESARROLLADOR" is thirteen. One shared clamp would
-       either overflow the Spanish or waste a third of the column in English.
+       constrained by and it is a different word in each: "DEVELOPER" is nine
+       characters and 6.3em wide, "DESARROLLADOR" is thirteen and 9.3em.
 
-       Both values are tuned so the longest line fills its column edge to edge
-       at every width — that flush-left, flush-right block is what makes this
-       read as a poster, far more than any particular point size does. Measured
-       in the browser at 320 / 375 / 780 / 1024 / 1536. */
-    --hero-size: clamp(2.5rem, 8.3vw, 8.25rem);
+       The first version made both lines fill their column edge to edge, which
+       is the textbook poster rule — and the arithmetic of that rule is brutal
+       here. Filling the same measure with 9.3em of word instead of 6.3em means
+       setting it 31% smaller, so at 1280 the cover read 106px in English and
+       74px in Spanish. Switching language changed the size of the largest
+       thing on the page by a third, and it looked like two designs.
+
+       So the rule is relaxed on purpose: the Spanish, the constrained one,
+       fills its column, and the English is held 10% above it rather than
+       wherever filling would put it. The two sizes are now within 10% of each
+       other and the English simply carries more air to its right. A poster
+       where the language changes the composition is worse than a poster with
+       a wide right margin.
+
+       The split is at 1024, not 640, because that is where the layout actually
+       changes: below it the headline has the full page width, above it eight
+       of twelve columns. The old split sat at 640 and measured nothing in
+       particular, which is why the gap between the languages was 16% on a
+       phone and 31% on a desktop. Measured at 320 / 390 / 768 / 1024 / 1280 /
+       1536 in both languages. */
+    --hero-size: clamp(1.9375rem, 10vw, 6rem);
 
     /* ===== Approach's claim ============================================
        Sized per language for the same reason the cover is, and measured the
@@ -152,24 +167,22 @@
     --measure: 78rem;
 }
 
-/* "DESARROLLADOR" is 9.3em wide at this tracking; "DEVELOPER" is 6.3em. So the
-   Spanish cover is set smaller and still fills the same column.
-
-   It needs two ranges where English needs one, and the reason is the layout,
-   not the language: below 1024px the headline has the full page width, above it
-   only eight of twelve columns. One slope steep enough to fill a phone
-   overflows the desktop column; one gentle enough for the desktop leaves a
-   phone headline at 28px on a 390px screen. Measured across both ranges the
-   longest line now clears its column by 7-13% everywhere, which is the same
-   margin the English one runs on. */
+/* The Spanish is the constrained one, so it sets the pace: these slopes put
+   "DESARROLLADOR" at 94-97% of its column at the tightest width of each range,
+   and the English above runs 10% larger on the same schedule. */
 :root[lang="es"] {
-    --hero-size: clamp(1.75rem, 8.6vw, 2.375rem);
+    --hero-size: clamp(1.75rem, 9.1vw, 5.5rem);
     --claim-size: clamp(1.75rem, 7.4vw, 6rem);
 }
 
-@media (min-width: 640px) {
+/* Eight of twelve columns instead of the full width, so both slopes drop. */
+@media (min-width: 1024px) {
+    :root {
+        --hero-size: clamp(3.85rem, 6.74vw, 8.75rem);
+    }
+
     :root[lang="es"] {
-        --hero-size: clamp(2.375rem, 5.75vw, 5.75rem);
+        --hero-size: clamp(3.5rem, 6.13vw, 8rem);
     }
 }
 
