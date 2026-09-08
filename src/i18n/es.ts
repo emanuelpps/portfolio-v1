@@ -9,6 +9,14 @@ import type { Dict } from "./index";
  * el índice de abajo y la regla escrita en `work.ts`. No hay ningún claim acá
  * que no esté también en inglés, ni ninguno que no se pueda ir a chequear.
  *
+ * El registro es el mismo que está escrito arriba de `projectCopy.es.ts`:
+ * verbos de hacer, ningún adjetivo que se elogie solo, y nada de calcos del
+ * inglés. Vale para todo el archivo. Lo que se coló la primera vez fue el
+ * ledger de abajo, que llegó como una traducción de los bullets del CV inglés
+ * —"empujé code reviews", "campañas a escala", "generación de leads"— y sonaba
+ * a otra persona porque lo era: la mitad de las filas hablaban y la otra mitad
+ * eran frases nominales de currículum.
+ *
  * Tipado contra `Dict`, así que si falta una clave no compila.
  */
 export const es: Dict = {
@@ -123,10 +131,10 @@ export const es: Dict = {
     note: "{count} entradas · en curso: {studying}",
     groups: {
       frontend: { title: "Frontend", note: "A diario" },
-      backend: { title: "Backend y datos", note: "Conocimiento funcional" },
+      backend: { title: "Backend y datos", note: "Me manejo" },
       native: { title: "Nativo", note: "Mobile" },
       testing: { title: "Testing", note: "Cobertura" },
-      cloud: { title: "Cloud y ops", note: "Entrega" },
+      cloud: { title: "Cloud y ops", note: "Para publicar" },
       tools: { title: "Herramientas y automatización", note: "Todo lo demás" },
     },
     studying: "Diplomatura en Python, UTN",
@@ -134,56 +142,64 @@ export const es: Dict = {
 
   record: {
     /** The count is derived from src/data/roles.ts. 2014 is the year in the
-     *  last row of the ledger, so the span is checkable by scrolling to it. */
+     *  last row of the ledger, so the span is checkable by scrolling to it.
+     *
+     *  Las ocho filas hablan en primera persona y en pasado —o en presente,
+     *  las dos que siguen abiertas—, de punta a punta. Es la regla que
+     *  mantiene el ledger sonando a una sola persona: en el momento en que una
+     *  fila se escribe como "A cargo de…" vuelve a ser un CV, y un CV al lado
+     *  de siete párrafos que hablan se nota de lejos. El título del puesto en
+     *  EPAM queda en inglés porque es el título real, y es lo que se puede ir
+     *  a verificar. */
     note: "{roles} roles · 2014 — actualidad",
     roles: {
       dizizid: {
         period: "2026 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Rehíce la plataforma para que ande en cualquier pantalla, peleándome con los casos borde de los componentes de React + Tailwind. Trabajé con diseño y producto para que la UI quedara pareja. Ahora estoy en la plataforma de ticketing: el camino que va de mirar un evento a terminar la compra.",
+          "Rehíce la plataforma para que funcione en cualquier pantalla y corregí los componentes de React y Tailwind donde se rompían. Lo trabajé junto a diseño y producto, para que la interfaz fuera la misma en todos lados. Ahora estoy en el ticketing: el camino que va de mirar un evento a terminar la compra.",
       },
       codemakerlab: {
         period: "2024 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Paso diseños a código, los publico y después los mantengo. Sitios de clientes: performance, usabilidad y SEO, y presentar las soluciones yo mismo. Aparte del frontend armo automatizaciones con n8n — flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
+          "Paso diseños a código, los publico y después los mantengo. A los sitios de clientes los cuido de performance, usabilidad y SEO, y las soluciones se las presento yo. Aparte del frontend armo automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
       },
       epam: {
         period: "2025",
         title: "Associate Project Administrator",
         description:
-          "Me tocó la integridad de datos de una plataforma: validar flujos JSON en Retool, depurar queries de GraphQL y coordinar con equipos de Estados Unidos para que backoffice y mobile no se desincronizaran.",
+          "Me ocupé de la integridad de datos de una plataforma: validaba flujos JSON en Retool, depuraba queries de GraphQL y coordinaba con equipos de Estados Unidos para que el backoffice y la app mostraran lo mismo.",
       },
       justina: {
         period: "2024",
         title: "Desarrollador Frontend",
         description:
-          "Un producto web funcionando de punta a punta, en el tiempo que dura un hackathon.",
+          "Armé un producto web completo, de punta a punta, en lo que dura un hackathon.",
       },
       nocountry: {
         period: "2023 — 2024",
         title: "Desarrollador Frontend",
         description:
-          "Armé interfaces en React/Next.js a partir del diseño, integré APIs para datos dinámicos y empujé code reviews en un equipo multidisciplinario.",
+          "Armé interfaces en React y Next.js a partir del diseño, integré las APIs que traían los datos e impulsé los code reviews en un equipo multidisciplinario.",
       },
       duodigital: {
         period: "2022 — 2024",
         title: "Gerente de Marketing Digital",
         description:
-          "Generación de leads y el stack de growth completo: email, contenido, medios pagos, SEO y Google Ads. También armaba y mantenía los sitios en WordPress detrás de las campañas.",
+          "Traía los leads y manejaba todo el growth: email, contenido, medios pagos, SEO y Google Ads. Los sitios en WordPress que estaban detrás de las campañas también los armaba y los mantenía yo.",
       },
       vital: {
         period: "2021 — 2022",
         title: "Gerente de Marketing",
         description:
-          "A cargo del equipo de marketing y de la estrategia SEM/SEO: presupuestos y el embudo del e-commerce.",
+          "Llevaba el equipo de marketing y la estrategia de SEM y SEO: manejaba los presupuestos y el embudo del e-commerce.",
       },
       dafiti: {
         period: "2014 — 2018",
         title: "Analista de Marketing",
         description:
-          "Campañas de email y on-site a escala: segmentar audiencias y reportar performance todos los días.",
+          "Hacía campañas de email y de on-site para una base grande: segmentaba audiencias y reportaba la performance todos los días.",
       },
     },
   },
@@ -200,8 +216,8 @@ export const es: Dict = {
       messagePlaceholder: "Contame sobre tu proyecto…",
       send: "Enviar mensaje",
       errorFields: "Revisá los datos del formulario.",
-      errorSend: "Hubo un problema y el formulario no se pudo enviar.",
-      ok: "El mensaje se envió correctamente. Me pongo en contacto a la brevedad.",
+      errorSend: "Algo falló y el mensaje no se envió.",
+      ok: "El mensaje se envió. Te respondo apenas lo lea.",
     },
   },
 
