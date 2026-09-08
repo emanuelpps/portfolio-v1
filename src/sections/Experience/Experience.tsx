@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ROLES, type Role } from "@/data/roles";
-import { fill, useT, type Dict } from "@/i18n";
+import { useT, type Dict } from "@/i18n";
 import { EASE } from "@/lib/motion";
 
 /**
@@ -116,9 +116,7 @@ const Experience = () => {
         >
           {t.nav.sections.experience}
         </h2>
-        <p className="note text-ink-dim">
-          {fill(t.record.note, { roles: ROLES.length })}
-        </p>
+        <p className="note text-ink-dim">{t.record.note}</p>
       </motion.header>
 
       <div className="h-[3px] w-full bg-ink" />

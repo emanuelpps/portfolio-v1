@@ -141,8 +141,8 @@ export const es: Dict = {
   },
 
   record: {
-    /** The count is derived from src/data/roles.ts. 2014 is the year in the
-     *  last row of the ledger, so the span is checkable by scrolling to it.
+    /** Sin cuenta, a diferencia del resto de los encabezados. Ver la nota en
+     *  `en.ts`: "8 roles" contaba filas, no roles.
      *
      *  Las ocho filas hablan en primera persona y en pasado —o en presente,
      *  las dos que siguen abiertas—, de punta a punta. Es la regla que
@@ -151,55 +151,55 @@ export const es: Dict = {
      *  de siete párrafos que hablan se nota de lejos. El título del puesto en
      *  EPAM queda en inglés porque es el título real, y es lo que se puede ir
      *  a verificar. */
-    note: "{roles} roles · 2014 — actualidad",
+    note: "2014 — actualidad",
     roles: {
       dizizid: {
         period: "2026 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Rehíce la plataforma para que funcione en cualquier pantalla y corregí los componentes de React y Tailwind donde se rompían. Lo trabajé junto a diseño y producto, para que la interfaz fuera la misma en todos lados. Ahora estoy en el ticketing: el camino que va de mirar un evento a terminar la compra.",
+          "Rehíce la plataforma para que funcione bien en cualquier pantalla y arreglé los componentes de React y Tailwind que se rompían. Lo hice con diseño y producto, para que la interfaz se vea igual en todos lados. Ahora estoy trabajando en el ticketing: el camino que va desde mirar un evento hasta terminar la compra.",
       },
       codemakerlab: {
         period: "2024 — Actualidad",
         title: "Desarrollador Frontend",
         description:
-          "Paso diseños a código, los publico y después los mantengo. A los sitios de clientes los cuido de performance, usabilidad y SEO, y las soluciones se las presento yo. Aparte del frontend armo automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
+          "Paso diseños a código y los publico. Después mantengo y optimizo los sitios de los clientes: performance, usabilidad y SEO. Las soluciones se las presento yo. Aparte del frontend armo automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
       },
       epam: {
         period: "2025",
         title: "Associate Project Administrator",
         description:
-          "Me ocupé de la integridad de datos de una plataforma: validaba flujos JSON en Retool, depuraba queries de GraphQL y coordinaba con equipos de Estados Unidos para que el backoffice y la app mostraran lo mismo.",
+          "Me encargué de la integridad de datos de una plataforma: validaba flujos JSON en Retool, depuraba queries de GraphQL y coordinaba con equipos de Estados Unidos para que el backoffice y la app mostraran los mismos datos.",
       },
       justina: {
         period: "2024",
         title: "Desarrollador Frontend",
         description:
-          "Armé un producto web completo, de punta a punta, en lo que dura un hackathon.",
+          "Armé un producto web entero en lo que dura un hackathon.",
       },
       nocountry: {
         period: "2023 — 2024",
         title: "Desarrollador Frontend",
         description:
-          "Armé interfaces en React y Next.js a partir del diseño, integré las APIs que traían los datos e impulsé los code reviews en un equipo multidisciplinario.",
+          "Armé interfaces en React y Next.js a partir del diseño, integré las APIs que traían los datos e hice code reviews en un equipo multidisciplinario.",
       },
       duodigital: {
         period: "2022 — 2024",
         title: "Gerente de Marketing Digital",
         description:
-          "Traía los leads y manejaba todo el growth: email, contenido, medios pagos, SEO y Google Ads. Los sitios en WordPress que estaban detrás de las campañas también los armaba y los mantenía yo.",
+          "Me encargaba de conseguir leads y de todo el growth: email, contenido, medios pagos, SEO y Google Ads. También armaba y mantenía los sitios en WordPress de las campañas.",
       },
       vital: {
         period: "2021 — 2022",
         title: "Gerente de Marketing",
         description:
-          "Llevaba el equipo de marketing y la estrategia de SEM y SEO: manejaba los presupuestos y el embudo del e-commerce.",
+          "Estaba a cargo del equipo de marketing y de la estrategia de SEM y SEO: manejaba los presupuestos y el embudo del e-commerce.",
       },
       dafiti: {
         period: "2014 — 2018",
         title: "Analista de Marketing",
         description:
-          "Hacía campañas de email y de on-site para una base grande: segmentaba audiencias y reportaba la performance todos los días.",
+          "Hacía campañas de email y de on-site: segmentaba audiencias y reportaba resultados todos los días.",
       },
     },
   },

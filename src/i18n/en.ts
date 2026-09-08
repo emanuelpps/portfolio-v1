@@ -162,9 +162,16 @@ export const en = {
   },
 
   record: {
-    /** The count is derived from src/data/roles.ts. 2014 is the year in the
-     *  last row of the ledger, so the span is checkable by scrolling to it. */
-    note: "{roles} roles · 2014 — present",
+    /** No count here, unlike every other section header, and that is the
+     *  point. It used to read "8 roles", which is not what the ledger holds:
+     *  eight rows, but only five distinct job titles — Frontend Developer
+     *  appears four times. A recruiter reads that line as a claim about
+     *  seniority and then counts four of the same title, which makes the
+     *  number look padded rather than accurate.
+     *
+     *  The span is the honest figure and the one that means something: 2014 is
+     *  the year in the last row, so it can be checked by scrolling to it. */
+    note: "2014 — present",
     roles: {
       dizizid: {
         period: "2026 — Present",
