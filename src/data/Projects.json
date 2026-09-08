@@ -10,22 +10,13 @@
     ],
     "code": "https://github.com/emanuelpps/react-smart-hooks",
     "deploy": "https://www.npmjs.com/package/smart-hooks",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/t8fb7shotvwv8tgxtygf",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ukctdji0fki6gzjwu2v4",
+    "frontImage": "/projects/react-smart-hooks/npm.webp",
+    "image": "/projects/react-smart-hooks/npm.webp",
+    "image2": "/projects/react-smart-hooks/npm.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/react-smart-hooks/npm.webp"
     ],
-    "plates": {
-      "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trqkhpjdlgujhwrqfflp",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/x7e171lt6ryeqhrlizo0"
-      ],
-      "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/o5bdjp6svopc9fwdlqum",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/sj8hce1wraeaw8gickbk"
-      ]
-    }
+    "plates": {}
   },
   {
     "id": 3,
@@ -37,22 +28,13 @@
     ],
     "code": "https://github.com/emanuelpps/ts-helpers-kit",
     "deploy": "https://www.npmjs.com/package/ts-helpers-kit",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wybgoxopaxtyjeawqzwl",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hiofmygmttwrrqxzrxdc",
+    "frontImage": "/projects/ts-helpers-kit/npm.webp",
+    "image": "/projects/ts-helpers-kit/npm.webp",
+    "image2": "/projects/ts-helpers-kit/npm.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/ts-helpers-kit/npm.webp"
     ],
-    "plates": {
-      "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cqqadrygsuzmlmmdmdp5",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/n3u8278xduultqri2yj3"
-      ],
-      "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ggsvjsevou0hlzle38g2",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rlpy4lzuvuqgblsp6beo"
-      ]
-    }
+    "plates": {}
   },
   {
     "id": 11,
@@ -67,21 +49,21 @@
       "React Query"
     ],
     "code": "https://github.com/emanuelpps/epic-sound-studio",
-    "deploy": "",
-    "frontImage": "/projects/epic-sound-studio/epic-landing.webp",
-    "image": "/projects/epic-sound-studio/epic-more.webp",
-    "image2": "/projects/epic-sound-studio/epic-player.webp",
+    "deploy": "https://epic-sound-studio-seven.vercel.app/",
+    "frontImage": "/projects/epic-sound-studio/player.webp",
+    "image": "/projects/epic-sound-studio/player.webp",
+    "image2": "/projects/epic-sound-studio/player.webp",
     "gallery": [
-      "/projects/epic-sound-studio/epic-more.webp"
+      "/projects/epic-sound-studio/player.webp"
     ],
     "plates": {
-      "build": [
-        "/projects/epic-sound-studio/epic-player.webp",
-        "/projects/epic-sound-studio/epic-more.webp"
+      "why": [
+        "/projects/epic-sound-studio/landing.webp",
+        "/projects/epic-sound-studio/more.webp"
       ],
-      "hard": [
-        "/projects/epic-sound-studio/epic-landing.webp",
-        "/projects/epic-sound-studio/epic-player.webp"
+      "build": [
+        "/projects/epic-sound-studio/player.webp",
+        "/projects/epic-sound-studio/trending.webp"
       ]
     }
   },
@@ -96,24 +78,23 @@
     ],
     "code": "",
     "deploy": "https://eckers-solutions.vercel.app/",
-    "frontImage": "/projects/eckers-solutions/eckers-hero.webp",
-    "image": "/projects/eckers-solutions/eckers-about.webp",
-    "image2": "/projects/eckers-solutions/eckers-hero.webp",
+    "frontImage": "/projects/eckers-solutions/cover.webp",
+    "image": "/projects/eckers-solutions/cover.webp",
+    "image2": "/projects/eckers-solutions/cover.webp",
     "gallery": [
-      "/projects/eckers-solutions/eckers-about.webp"
+      "/projects/eckers-solutions/cover.webp"
     ],
     "plates": {
       "why": [
-        "/projects/eckers-solutions/eckers-about.webp",
-        "/projects/eckers-solutions/eckers-paths.webp"
+        "/projects/eckers-solutions/paths.webp",
+        "/projects/eckers-solutions/about.webp"
       ],
       "build": [
-        "/projects/eckers-solutions/eckers-services.webp",
-        "/projects/eckers-solutions/eckers-process.webp"
+        "/projects/eckers-solutions/services.webp",
+        "/projects/eckers-solutions/process.webp"
       ],
       "hard": [
-        "/projects/eckers-solutions/eckers-candidatos.webp",
-        "/projects/eckers-solutions/eckers-empresas.webp"
+        "/projects/eckers-solutions/contact.webp"
       ]
     }
   },
@@ -130,21 +111,21 @@
     ],
     "code": "https://github.com/emanuelpps/the-coffee-roastery",
     "deploy": "https://the-coffee-roastery.vercel.app/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mpuxljlcp2k8iwdwotcx",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dkwdyjqxsgc3sv1if1da",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/eqazboqimi07hp0fv72h",
+    "frontImage": "/projects/coffee-roastery/cover.webp",
+    "image": "/projects/coffee-roastery/cover.webp",
+    "image2": "/projects/coffee-roastery/cover.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/coffee-roastery/cover.webp"
     ],
     "plates": {
+      "why": [
+        "/projects/coffee-roastery/collection.webp"
+      ],
       "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/l2bhytxrzmmdvaqr5tpu",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rss0lqrqfp5zyhusa7do",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/tseubo8xzt1tlzf1vgjj"
+        "/projects/coffee-roastery/about.webp"
       ],
       "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gxwydfbhneur1p6vdk7u",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/i7hmhsrh7n3ywksqgkg9"
+        "/projects/coffee-roastery/contact.webp"
       ]
     }
   },
@@ -161,20 +142,22 @@
     ],
     "code": "",
     "deploy": "https://www.codemakerlab.com.ar/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jm2b7e48wpfisjdloapk",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zocvox7fvk8bm6scyn6a",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dinkt6juwmjj0zebtkzn",
+    "frontImage": "/projects/codemaker-lab/cover.webp",
+    "image": "/projects/codemaker-lab/cover.webp",
+    "image2": "/projects/codemaker-lab/cover.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/codemaker-lab/cover.webp"
     ],
     "plates": {
+      "why": [
+        "/projects/codemaker-lab/services.webp"
+      ],
       "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/jzpsksrspnrjb3wdtwim",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ziqnyhufoiaiyejp882g"
+        "/projects/codemaker-lab/plans.webp",
+        "/projects/codemaker-lab/about.webp"
       ],
       "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dzobwpeweyoq8ebnvlud",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/mjsabvlanxq0gad4ppt2"
+        "/projects/codemaker-lab/contact.webp"
       ]
     }
   },
@@ -190,20 +173,22 @@
     ],
     "code": "",
     "deploy": "https://mng-actor.vercel.app/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/hkhtxbhchexjiccmvetn",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/cafega86gxbpp8mcpi7b",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/v1748202383/mjtttgvtivnpvvedtiuh",
+    "frontImage": "/projects/actor-portfolio/cover.webp",
+    "image": "/projects/actor-portfolio/cover.webp",
+    "image2": "/projects/actor-portfolio/cover.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/actor-portfolio/cover.webp"
     ],
     "plates": {
+      "why": [
+        "/projects/actor-portfolio/about.webp"
+      ],
       "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/nodxju0bvlzcccow6qfz",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/keictaukkymirxcdaxky"
+        "/projects/actor-portfolio/experience.webp",
+        "/projects/actor-portfolio/gallery.webp"
       ],
       "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/e4gy8hehdt1qyxpm4i49",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/vhhqtxhwk505ghu6yi6o"
+        "/projects/actor-portfolio/sizesheet.webp"
       ]
     }
   },
@@ -219,18 +204,22 @@
     ],
     "code": "https://github.com/emanuelpps/emanuelpps-portfolio",
     "deploy": "https://emanuelpps2024.vercel.app/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/ryhv6mnd6mwxnd6obmo6",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/qmuvw5jaltr25eopbain",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zune0zn1hghyvezjsgpq",
-    "gallery": [],
+    "frontImage": "/projects/portfolio-2024/cover.webp",
+    "image": "/projects/portfolio-2024/cover.webp",
+    "image2": "/projects/portfolio-2024/cover.webp",
+    "gallery": [
+      "/projects/portfolio-2024/cover.webp"
+    ],
     "plates": {
+      "why": [
+        "/projects/portfolio-2024/experience.webp"
+      ],
       "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dupo8uwbjrejweobghvj",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kd3mcpimfoaygdmgnxdm"
+        "/projects/portfolio-2024/skills.webp",
+        "/projects/portfolio-2024/projects.webp"
       ],
       "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/zhl0f6j3tczgcuzedyfv",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kz9qraewc6xhfhbee39m"
+        "/projects/portfolio-2024/contact.webp"
       ]
     }
   },
@@ -247,22 +236,13 @@
     ],
     "code": "https://github.com/emanuelpps/EP-WeatherAPP",
     "deploy": "https://emanuelpps.github.io/EP-WeatherAPP/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/xe9d8ihrmmten9clwkdd",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/kj00eyjoeubhg63wqxws",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/klhlhrrisjagablm2knp",
+    "frontImage": "/projects/ep-weather/cover.webp",
+    "image": "/projects/ep-weather/cover.webp",
+    "image2": "/projects/ep-weather/cover.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/ep-weather/cover.webp"
     ],
-    "plates": {
-      "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/wwpo6ufmy5mkfxbfljsh",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/trcnsgqwtienkrwtx4ht"
-      ],
-      "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/pqjszoozaxsej9pdxcmn",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dfijhbvfo9jrwdfuvgbo"
-      ]
-    }
+    "plates": {}
   },
   {
     "id": 9,
@@ -278,20 +258,15 @@
     ],
     "code": "https://github.com/emanuelpps/donremolo",
     "deploy": "https://emanuelpps.github.io/don-remolo-pizza/",
-    "frontImage": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/suxicowfis1gnjnkbjx4",
-    "image": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/gqiv70jm8fjonkkg4wqj",
-    "image2": "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z8nn7dxelpcyezl8jd6y",
+    "frontImage": "/projects/don-remolo/cover.webp",
+    "image": "/projects/don-remolo/cover.webp",
+    "image2": "/projects/don-remolo/cover.webp",
     "gallery": [
-      "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/uoavxaduhfas9v0mhh0d"
+      "/projects/don-remolo/cover.webp"
     ],
     "plates": {
       "build": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/dvp4fyu2exxwekbpo9xg",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/y5tmf0iwzbp3hrjq02za"
-      ],
-      "hard": [
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/z74g7cl7mi2ylnclzi2m",
-        "https://res.cloudinary.com/dkgoszhfr/image/upload/f_auto,q_auto/rs9tdtijtnj7x51qdip6"
+        "/projects/don-remolo/menu.webp"
       ]
     }
   }
