@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ProjectsContainer } from "./components/ProjectsContainer";
-import { counts } from "./work";
+import { BUILT_PROJECTS, counts } from "./work";
 import { useScroll } from "@/hooks/UseScroll";
 import { fill, useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
@@ -46,14 +46,32 @@ const Projects = () => {
         >
           {t.nav.sections.work}
         </h2>
-        {/* Counted from the data. The one number on this page a visitor can
-            check by scrolling it. */}
-        <p className="note text-ink-dim">
-          {fill(t.work.count, {
-            projects: counts.Projects,
-            libraries: counts.Libraries,
-          })}
-        </p>
+        {/* The counts come from the index and from the rule in work.ts, never
+            from a sentence someone typed. The second line is what makes the
+            first one honest: ten entries is an edit, not the whole account,
+            and the link is there so the claim can be checked. */}
+        <div className="note text-ink-dim sm:text-right">
+          <p>
+            {fill(t.work.count, {
+              shown: counts.Projects,
+              built: BUILT_PROJECTS,
+              libraries: counts.Libraries,
+            })}
+          </p>
+          <p className="mt-1 text-ink-dim">
+            {t.work.countNoteBefore}
+            <a
+              href="https://github.com/emanuelpps"
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="hover"
+              className="underline decoration-from-font underline-offset-2 hover:text-ink"
+            >
+              {t.work.countNoteLink}
+            </a>
+            .
+          </p>
+        </div>
       </motion.header>
 
       <div className="h-[3px] w-full bg-ink" />

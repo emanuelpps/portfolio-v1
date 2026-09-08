@@ -89,9 +89,15 @@ export const en = {
 
   work: {
     /** The heading is `nav.sections.work` — the masthead index and the heading
-     *  it lands on have to say the same word, and two strings drift. What sits
-     *  beside it is the count, filled from the data rather than typed here. */
-    count: "{projects} projects · {libraries} open-source libraries",
+     *  it lands on have to say the same word, and two strings drift. Beside it
+     *  is the count: `shown` and `libraries` come from the index below,
+     *  `built` from `work.ts`, which is where the counting rule is written
+     *  down. Nothing here is a number typed into a sentence. */
+    count:
+      "{shown} of {built} projects · {libraries} open-source libraries",
+    /** Split so "GitHub" can be the link that lets you check the number. */
+    countNoteBefore: "These are the ones I'd show first — the rest are on ",
+    countNoteLink: "GitHub",
     featuredLabel: "Featured",
     featuredCta: "See the project",
     filterLabel: "Filter projects",

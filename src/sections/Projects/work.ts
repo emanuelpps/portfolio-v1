@@ -20,6 +20,28 @@ const isLibrary = (p: ProjectTypes) => p.type === "Library";
 export const matches = (p: ProjectTypes, f: Filter) =>
   f === "All" ? true : f === "Libraries" ? isLibrary(p) : !isLibrary(p);
 
+/**
+ * Everything he has actually built, which the index below is a selection from.
+ *
+ * The index is ten entries because ten is what a stranger will read. The
+ * account is bigger than that, and leaving it out made the work look thinner
+ * than it is — so the header says "8 of 34" and the number has to be one he
+ * can stand behind when someone opens the profile and starts counting.
+ *
+ * Counted by hand from github.com/emanuelpps on 2026-09-07, from all 91 repos
+ * on the account, public and private. What counts is a built application, site
+ * or shipped library. What does not: forks (11), repos with nothing in them
+ * (12), technical challenges for a hiring process (4), course drills and
+ * language exercises, scaffolds and `test-`/`prueba-` spikes, GitHub's own
+ * tutorial repos, and second repos of an app already counted once.
+ *
+ * The rule is written out rather than the number alone because the number goes
+ * stale, and a number nobody can re-derive gets rounded up the next time it is
+ * touched. Re-run the rule, don't guess. Libraries are counted separately and
+ * come from the index, which holds both of them.
+ */
+export const BUILT_PROJECTS = 34;
+
 export const counts: Record<Filter, number> = {
   All: projects.length,
   Projects: projects.filter((p) => !isLibrary(p)).length,

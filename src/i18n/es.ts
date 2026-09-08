@@ -5,8 +5,9 @@ import type { Dict } from "./index";
  *
  * El voseo aparece donde el texto se dirige a alguien ("contame"), no en todo
  * el archivo: el resto es primera persona, que es como está escrito el inglés.
- * Las cifras son las mismas que se pueden verificar bajando por la página, y
- * no hay ningún claim acá que no esté también en la versión en inglés.
+ * Las cifras son las mismas de la versión en inglés y salen del mismo lado:
+ * el índice de abajo y la regla escrita en `work.ts`. No hay ningún claim acá
+ * que no esté también en inglés, ni ninguno que no se pueda ir a chequear.
  *
  * Tipado contra `Dict`, así que si falta una clave no compila.
  */
@@ -74,7 +75,10 @@ export const es: Dict = {
   },
 
   work: {
-    count: "{projects} proyectos · {libraries} librerías open source",
+    count:
+      "{shown} de {built} proyectos · {libraries} librerías open source",
+    countNoteBefore: "Estos son los que mostraría primero; el resto está en ",
+    countNoteLink: "GitHub",
     featuredLabel: "Destacado",
     featuredCta: "Ver el proyecto",
     filterLabel: "Filtrar proyectos",
