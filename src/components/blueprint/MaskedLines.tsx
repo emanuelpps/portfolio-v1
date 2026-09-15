@@ -1,4 +1,5 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
+import { useRef } from "react";
 import { EASE } from "@/lib/motion";
 
 /**
@@ -21,6 +22,19 @@ import { EASE } from "@/lib/motion";
  * So the observer lives here, on the wrapper, which is never clipped. The
  * lines inside it only carry variants and cannot be given a trigger of their
  * own.
+ *
+ * The third time it ate the claim again, and only ever after a language
+ * switch. The reveal used to be `whileInView`, which holds "show" in a
+ * one-shot gesture: once the observer has fired it is disconnected, and the
+ * state it set exists nowhere a component can read. Changing language changes
+ * every line, so React unmounts all of them and mounts new ones — which
+ * inherit `initial="hidden"` and then wait for a trigger that already fired
+ * and will never fire again. They park at 115% under their own mask and stay
+ * there. The Approach claim went blank; the hero, whose `animate` is a plain
+ * prop, did not, and that is the whole difference.
+ *
+ * So the in-view state is held in `animate` rather than in a gesture. A prop
+ * is inherited by whatever mounts later; a fired gesture is not.
  *
  * `trigger="mount"` is required wherever the lines sit above the fold or bleed
  * off an edge: a viewport trigger needs a share of the element on screen, and
@@ -50,14 +64,16 @@ export function MaskedLines({
     show: { y: 0, transition: { duration: 1, ease: EASE } },
   };
 
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
     <motion.span
+      ref={ref}
       className="block"
       variants={group}
       initial="hidden"
-      {...(trigger === "mount"
-        ? { animate: "show" }
-        : { whileInView: "show", viewport: { once: true, amount: 0.3 } })}
+      animate={trigger === "mount" || inView ? "show" : "hidden"}
     >
       {lines.map((text) => (
         <span key={text} className="line-mask">
