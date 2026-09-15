@@ -157,7 +157,8 @@ const Value = () => {
             >
               {epic?.title ?? "Epic Sound Studio"}
             </Link>
-            {fill(t.approach.indieAfter, { libraries: counts.Libraries })}
+            {fill(t.approach.indieAfter, { libraries: counts.Libraries })}{" "}
+            {t.approach.indieNow}
           </p>
         </div>
       </div>

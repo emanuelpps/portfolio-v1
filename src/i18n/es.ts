@@ -56,7 +56,7 @@ export const es: Dict = {
   hero: {
     roleLines: ["Desarrollador", "Frontend"],
     srName: "Emanuel Pagés — ",
-    lead: "Un desarrollador que piensa como un marketer: diez años de growth y SEO antes de React.",
+    lead: "Pienso como un marketer y construyo como un ingeniero: diez años de growth y SEO antes de React.",
     ctaWork: "Ver el trabajo",
     ctaContact: "Hablemos",
     available: "Disponible — remoto",
@@ -64,10 +64,10 @@ export const es: Dict = {
   },
 
   approach: {
-    note: "Por qué el frontend, después de diez años de growth",
-    quoteLines: ["Un desarrollador", "que piensa como", "un marketer"],
+    note: "Cómo llegué al frontend después de diez años de growth",
+    quoteLines: ["Pienso como", "un marketer,", "construyo como", "un ingeniero"],
     edgeLabel: "De dónde vengo",
-    lead: "Antes de programar pasé diez años haciendo growth, SEO y campañas pagas. Me quedó la costumbre de mirar cómo se comporta la gente en una página, no solo cómo queda. Cuando armo una interfaz pienso en que cargue rápido, se entienda y convierta.",
+    lead: "Antes de programar pasé diez años haciendo growth, SEO y campañas pagas. Me quedó la costumbre de mirar cómo se comporta la gente en una página, no solo cómo se ve. Cuando armo una interfaz pienso en que cargue rápido, se entienda y convierta.",
     record: {
       digitalKey: "En digital",
       digitalFigure: "10 años",
@@ -80,6 +80,7 @@ export const es: Dict = {
     indieBefore:
       "Además del trabajo para clientes armo cosas mías, como ",
     indieAfter: ", más {libraries} librerías open source en npm.",
+    indieNow: "Ahora estoy desarrollando un desktop pet para Windows.",
   },
 
   work: {
@@ -134,18 +135,18 @@ export const es: Dict = {
       backend: { title: "Backend y datos", note: "Me manejo" },
       native: { title: "Nativo", note: "Mobile" },
       testing: { title: "Testing", note: "Cobertura" },
-      cloud: { title: "Cloud y ops", note: "Para publicar" },
+      cloud: { title: "Cloud y ops", note: "Para deployar" },
       tools: { title: "Herramientas y automatización", note: "Todo lo demás" },
     },
-    studying: "Diplomatura en Python, UTN",
+    studying: "Tecnicatura Superior en Programación",
   },
 
   record: {
     /** Sin cuenta, a diferencia del resto de los encabezados. Ver la nota en
      *  `en.ts`: "8 roles" contaba filas, no roles.
      *
-     *  Las ocho filas hablan en primera persona y en pasado —o en presente,
-     *  las dos que siguen abiertas—, de punta a punta. Es la regla que
+     *  Las ocho filas hablan en primera persona y en pasado —salvo Dizizid,
+     *  la única que sigue abierta—, de punta a punta. Es la regla que
      *  mantiene el ledger sonando a una sola persona: en el momento en que una
      *  fila se escribe como "A cargo de…" vuelve a ser un CV, y un CV al lado
      *  de siete párrafos que hablan se nota de lejos. El título del puesto en
@@ -160,10 +161,10 @@ export const es: Dict = {
           "Rehíce la plataforma para que funcione bien en cualquier pantalla y arreglé los componentes de React y Tailwind que se rompían. Lo hice con diseño y producto, para que la interfaz se vea igual en todos lados. Ahora estoy trabajando en el ticketing: el camino que va desde mirar un evento hasta terminar la compra.",
       },
       codemakerlab: {
-        period: "2024 — Actualidad",
+        period: "2024 — 2026",
         title: "Desarrollador Frontend",
         description:
-          "Paso diseños a código y los publico. Después mantengo y optimizo los sitios de los clientes: performance, usabilidad y SEO. Las soluciones se las presento yo. Aparte del frontend armo automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
+          "Pasaba diseños a código y los publicaba. Después mantenía y optimizaba los sitios de los clientes: performance, usabilidad y SEO. Las soluciones se las presentaba yo. Aparte del frontend armé automatizaciones con n8n: flujos que mueven datos entre apps y APIs, captura de leads conectada al CRM, y procesos internos que antes se hacían a mano.",
       },
       epam: {
         period: "2025",
@@ -187,25 +188,25 @@ export const es: Dict = {
         period: "2022 — 2024",
         title: "Gerente de Marketing Digital",
         description:
-          "Me encargaba de conseguir leads y de todo el growth: email, contenido, medios pagos, SEO y Google Ads. También armaba y mantenía los sitios en WordPress de las campañas.",
+          "Trabajaba sobre todo en SEO, SEM y campañas pagas en social ads, y en el posicionamiento de negocios en Google Maps. Alrededor de eso iba el resto del growth: conseguir leads, email, contenido y Google Ads. Los sitios en WordPress de las campañas los armaba y los mantenía yo.",
       },
       vital: {
         period: "2021 — 2022",
         title: "Gerente de Marketing",
         description:
-          "Estaba a cargo del equipo de marketing y de la estrategia de SEM y SEO: manejaba los presupuestos y el embudo del e-commerce.",
+          "Estaba a cargo del equipo de marketing y de la estrategia de SEM y SEO: manejaba los presupuestos y el embudo del e-commerce. Trabajé el SEO de la tienda, llevaba las campañas de SEM y de social ads, y pensaba las ideas creativas de lo que salía en redes.",
       },
       dafiti: {
         period: "2014 — 2018",
         title: "Analista de Marketing",
         description:
-          "Hacía campañas de email y de on-site: segmentaba audiencias y reportaba resultados todos los días.",
+          "Empecé analizando el e-commerce: miraba la performance y las ventas, y reordenaba los banners del sitio según lo que decían los números. De ahí pasé al email marketing: armaba las campañas, mejoré el flujo de remarketing y sumé campañas de push notifications. Cada semana y cada mes escribía los reportes que contaban cómo venía cada campaña.",
       },
     },
   },
 
   contact: {
-    titleLines: ["Construyamos", "algo que", "funcione"],
+    titleLines: ["Armemos algo", "que funcione", "de verdad"],
     lead: "Abierto a puestos frontend y proyectos freelance. Contame en qué estás trabajando — suelo responder dentro del día.",
     form: {
       name: "Nombre",

@@ -52,7 +52,7 @@ export const en = {
      *  word in each language sets how large this is allowed to get. */
     roleLines: ["Frontend", "Developer"],
     srName: "Emanuel Pagés — ",
-    lead: "A developer who thinks like a marketer — a decade of growth and SEO before React.",
+    lead: "I think like a marketer and build like an engineer — a decade of growth and SEO before React.",
     ctaWork: "Selected work",
     ctaContact: "Get in touch",
     available: "Available — remote",
@@ -61,9 +61,12 @@ export const en = {
 
   approach: {
     note: "Why the frontend, after ten years of growth",
-    /** Three lines, not two. The artboard breaks the claim where the sense
-     *  breaks, and at poster scale the line ending is punctuation. */
-    quoteLines: ["A developer", "who thinks like", "a marketer"],
+    /** Four lines, one clause each. The claim is two halves — how he thinks
+     *  and how he builds — and it ends on the engineering half on purpose:
+     *  a developer reading "thinks like a marketer" alone hears a marketer.
+     *  At poster scale the line ending is punctuation, so the break falls
+     *  where the sense breaks. */
+    quoteLines: ["I think like", "a marketer,", "I build like", "an engineer"],
     edgeLabel: "The edge",
     lead: "Most frontend developers ship what is in the Figma. I ship what performs. A decade running growth, SEO and paid campaigns taught me how people actually behave on a page — so the interfaces I build are engineered for clarity, speed and conversion, not only for pixel fidelity.",
     /**
@@ -85,6 +88,7 @@ export const en = {
     indieBefore:
       "I design and ship my own products, not just client work — like ",
     indieAfter: ", plus {libraries} open-source libraries on npm.",
+    indieNow: "Right now I am building a desktop pet for Windows.",
   },
 
   work: {
@@ -158,7 +162,7 @@ export const en = {
       cloud: { title: "Cloud & ops", note: "Delivery" },
       tools: { title: "Tools & automation", note: "Everything else" },
     },
-    studying: "Python Diploma, UTN",
+    studying: "Higher Technical Degree in Programming",
   },
 
   record: {
@@ -180,10 +184,10 @@ export const en = {
           "Rebuilt the platform to be fully responsive across devices, hardening React + Tailwind components against edge cases and breakpoints. Partnered with design and product to ship a more consistent, scalable UI. Now working on the ticketing platform itself — refining the path from browsing an event to completing a purchase, and keeping every step of it dependable on any screen.",
       },
       codemakerlab: {
-        period: "2024 — Present",
+        period: "2024 — 2026",
         title: "Frontend Developer",
         description:
-          "Turn designs into production-ready interfaces, ship them, and keep them fast. Maintain and optimize client sites for performance, usability, and SEO — and present solutions directly to clients. Beyond the frontend, build automations with n8n: workflows that move data between apps and APIs, lead capture wired into the CRM, and internal processes that used to be done by hand.",
+          "Turned designs into production-ready interfaces, shipped them, and kept them fast. Maintained and optimized client sites for performance, usability, and SEO — and presented solutions directly to clients. Beyond the frontend, built automations with n8n: workflows that moved data between apps and APIs, lead capture wired into the CRM, and internal processes that used to be done by hand.",
       },
       epam: {
         period: "2025",
@@ -207,19 +211,19 @@ export const en = {
         period: "2022 — 2024",
         title: "Digital Marketing Manager",
         description:
-          "Generated leads and ran the full growth stack — email, content, paid media, SEO, and Google Ads — while building and managing the WordPress sites behind the campaigns.",
+          "Worked mostly in SEO, SEM, and paid social campaigns, plus local positioning for client businesses on Google Maps. The rest of the growth stack sat around that: lead generation, email, content, and Google Ads. Built and maintained the WordPress sites behind the campaigns.",
       },
       vital: {
         period: "2021 — 2022",
         title: "Marketing Manager",
         description:
-          "Led the marketing team and SEM/SEO strategy, managed budgets, and optimized the e-commerce funnel to generate new leads.",
+          "Led the marketing team and SEM/SEO strategy, managed budgets, and optimized the e-commerce funnel to generate new leads. Worked the store SEO directly, ran the SEM and paid social campaigns, and came up with the creative ideas behind what went out on social.",
       },
       dafiti: {
         period: "2014 — 2018",
         title: "Marketing Analyst",
         description:
-          "Planned and optimized email and on-site campaigns at scale, segmenting audiences and reporting performance daily to hit business goals.",
+          "Started on the e-commerce site itself: read performance and sales, then reordered the store banners to match what the numbers said. Moved from there into email marketing — built the campaigns, improved the remarketing flow, and added push notification campaigns. Wrote the weekly and monthly reports that told the business how each campaign was performing.",
       },
     },
   },
