@@ -1,36 +1,33 @@
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-import ProjectDetailContainer from "../sections/ProjectDetails/ProjectDetailContainer";
-import { ProjectTypes } from "../types/ProjectTypes";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ProjectDetailContainer from "@/sections/ProjectDetails/ProjectDetailContainer";
+import { findProject } from "@/sections/Projects/work";
+import { useProjectCopy } from "@/data/projectCopy";
+import { getLenis } from "@/lib/SmoothScroll";
+import { useDocumentMeta } from "@/lib/useDocumentMeta";
+import { fill, useT } from "@/i18n";
 
-interface ProjectDetailsProps {
-  project: ProjectTypes;
-}
-const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+const ProjectDetails = () => {
+  const { projectId } = useParams();
+  const project = findProject(projectId);
+  const copy = useProjectCopy(project?.id ?? 0);
+  const t = useT();
 
+  // A new sheet opens at its own top. The router keeps the scroll position
+  // across a navigation, so without this you arrive at a project two thirds of
+  // the way down it.
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+  }, [projectId]);
 
-  return (
-    <motion.div
-      ref={containerRef}
-      initial={{ y: "100%", opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: "100%", opacity: 0 }}
-      transition={{ type: "tween", duration: 0.6 }}
-      className="fixed inset-0 z-50 bg-[#0F1724] overflow-x-hidden overflow-y-auto"
-    >
-      <ProjectDetailContainer
-        project={project}
-        scrollContainerRef={containerRef}
-      />
-    </motion.div>
+  useDocumentMeta(
+    project ? fill(t.project.metaTitle, { title: project.title }) : t.meta.title,
+    copy?.blurb ?? t.meta.description,
   );
+
+  return <ProjectDetailContainer project={project} />;
 };
 
 export default ProjectDetails;

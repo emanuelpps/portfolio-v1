@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 900px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 34px 40px 26px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;">Stack</div>
+      <div style="font-size: 14px; font-weight: 600; color: var(--dim);">42 entries &middot; in progress: Python Diploma, UTN</div>
+    </div>
+
+    <!--
+      Set as type, not as a wall of brand logos. Every portfolio has the same
+      twenty coloured icons in the same grid; as words it says exactly as much,
+      reads faster, weighs nothing, and belongs to this page instead of to the
+      vendors. Density is the point here — this section is deliberately the
+      tightest on the site, right after Work, which is the loosest.
+    -->
+    <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr));">
+      <sc-for list="{{groups}}" as="g" hint-placeholder-count="6">
+        <div style="padding: 26px 32px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <span style="font-family: 'Archivo Black', sans-serif; font-size: 22px; letter-spacing: -0.02em;">{{g.title}}</span>
+            <span style="font-size: 12px; font-weight: 600; color: var(--dim);">{{g.note}}</span>
+          </div>
+          <div style="font-size: 16px; font-weight: 500; line-height: 1.75; color: var(--body); text-wrap: pretty;">{{g.items}}</div>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"light"},"$preview":{"width":1280,"height":900}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+const GROUPS = [
+  { title: 'Frontend', note: 'Daily', items: 'TypeScript · React · Next.js · JavaScript · HTML 5 · CSS 3 · TailwindCSS · Sass · CSS Modules · Styled Components · Redux · Zustand · Framer Motion · Bootstrap' },
+  { title: 'Backend & data', note: 'Working knowledge', items: 'Node.js · Express.js · GraphQL · PostgreSQL · MongoDB · Firebase · Python' },
+  { title: 'Native', note: 'Mobile', items: 'React Native · Expo · NativeWind' },
+  { title: 'Testing', note: 'Coverage', items: 'Vitest · React Testing Library' },
+  { title: 'Cloud & ops', note: 'Delivery', items: 'AWS · Azure DevOps' },
+  { title: 'Tools & automation', note: 'Everything else', items: 'n8n · Claude Code · OpenCode · Codex · Figma · Retool · Jira · Notion · Trello' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    return { c: PALETTE[this.props.theme] || PALETTE.light, groups: GROUPS };
+  }
+}
+</script>
+</body>
+</html>

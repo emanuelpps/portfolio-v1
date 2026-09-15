@@ -1,177 +1,436 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-BlackItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-BlackItalic.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
+/* ==========================================================================
+   Type — Archivo, self-hosted
+
+   Two cuts of one family. Archivo Black carries every display line; Archivo
+   carries everything you actually read. A grotesque was chosen over the serif
+   the previous build used for one reason: the display lines here are set at
+   poster scale in all caps, and a high-contrast serif drops its hairlines at
+   that size on a dark ground. Archivo Black holds its weight at 40px on a
+   phone and at 130px on a desktop, which is the whole job.
+
+   Served from /fonts rather than from Google so the headline face is not a
+   third-party connection sitting on the critical path. Archivo ships as a
+   variable font, so 400/500/600 cost one file instead of three.
+   ========================================================================== */
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-BoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Bold.woff2') format('woff2'),
-        url('/fonts/Urbanist-Bold.woff') format('woff');
-    font-weight: bold;
+    font-family: "Archivo";
+    src: url("/fonts/Archivo-var-latin.woff2") format("woff2");
+    font-weight: 400 700;
+    font-stretch: 100%;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Black.woff2') format('woff2'),
-        url('/fonts/Urbanist-Black.woff') format('woff');
-    font-weight: 900;
+    font-family: "Archivo";
+    src: url("/fonts/Archivo-var-latin-ext.woff2") format("woff2");
+    font-weight: 400 700;
+    font-stretch: 100%;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraBold.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraBold.woff') format('woff');
-    font-weight: bold;
+    font-family: "Archivo Black";
+    src: url("/fonts/ArchivoBlack-latin.woff2") format("woff2");
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraLight.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraLight.woff') format('woff');
-    font-weight: 200;
+    font-family: "Archivo Black";
+    src: url("/fonts/ArchivoBlack-latin-ext.woff2") format("woff2");
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Medium.woff2') format('woff2'),
-        url('/fonts/Urbanist-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+/* ==========================================================================
+   EP — one palette, two modes
+
+   The mark is an E and a P fused into a single P. It is not used here as an
+   image, it is used as the grammar of the layout: the bowl of the P is the
+   only radius in the system, and the flat block the mark is knocked out of is
+   the only fill. There is no accent colour, because the mark does not have
+   one — hierarchy comes from scale, rule weight and inversion.
+
+   Dark and light are not two stylesheets. They are the same six values
+   swapped, which is what stops the two modes from quietly drifting apart.
+   ========================================================================== */
+
+@theme {
+    /* --- dark, the default --- */
+    --color-ground: #0F1621;
+    --color-ground-2: #0B1119;
+    --color-ground-3: #131C29;
+
+    /* Headings, and anything that has to be read first. ~16:1 */
+    --color-ink: #F2F3F5;
+    /* Body copy. ~12.5:1 — prose lives here, not in --ink-dim. */
+    --color-ink-2: #D5DAE1;
+    /* Labels and secondary notes. ~6:1, AA, but never a paragraph. */
+    --color-ink-dim: #8F98A4;
+    --color-ink-faint: rgba(242, 243, 245, 0.30);
+
+    /* Decorative division. Not a contrast surface. */
+    --color-rule: #3A4655;
+    --color-rule-soft: rgba(242, 243, 245, 0.10);
+    /* The boundary of anything you can click. Held at 3:1 against the ground
+       on purpose: WCAG 1.4.11 governs the edge of a control, and the hairline
+       the rules are drawn in is far too quiet to carry a button. */
+    --color-edge: #6B7686;
+
+    --font-display: "Archivo Black", "Archivo", system-ui, sans-serif;
+    --font-sans: "Archivo", system-ui, -apple-system, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+    --ease-bp: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Regular.woff2') format('woff2'),
-        url('/fonts/Urbanist-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+/* --- light: the same six values, traded --- */
+:root[data-theme="light"] {
+    --color-ground: #ECEEF1;
+    --color-ground-2: #E2E5EA;
+    --color-ground-3: #D9DDE4;
+
+    --color-ink: #0F1621;
+    --color-ink-2: #333D4C;
+    --color-ink-dim: #5A6472;
+    --color-ink-faint: rgba(15, 22, 33, 0.34);
+
+    --color-rule: #B8BEC7;
+    --color-rule-soft: rgba(15, 22, 33, 0.10);
+    /* 3.7:1 on the paper ground — matched to the dark mode's 3.9:1 rather than
+       to the light mode's own hairline, so an outlined control carries the same
+       presence in both. */
+    --color-edge: #6E7784;
+
+    color-scheme: light;
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-SemiBold.woff2') format('woff2'),
-        url('/fonts/Urbanist-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+:root[data-theme="dark"] {
+    color-scheme: dark;
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Light.woff2') format('woff2'),
-        url('/fonts/Urbanist-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+:root {
+    /* ===== The cover headline ==========================================
+       Sized per language, because the longest word is what a poster line is
+       constrained by and it is a different word in each: "DEVELOPER" is nine
+       characters and 6.3em wide, "DESARROLLADOR" is thirteen and 9.3em.
+
+       The first version made both lines fill their column edge to edge, which
+       is the textbook poster rule — and the arithmetic of that rule is brutal
+       here. Filling the same measure with 9.3em of word instead of 6.3em means
+       setting it 31% smaller, so at 1280 the cover read 106px in English and
+       74px in Spanish. Switching language changed the size of the largest
+       thing on the page by a third, and it looked like two designs.
+
+       So the rule is relaxed on purpose: the Spanish, the constrained one,
+       fills its column, and the English is held 10% above it rather than
+       wherever filling would put it. The two sizes are now within 10% of each
+       other and the English simply carries more air to its right. A poster
+       where the language changes the composition is worse than a poster with
+       a wide right margin.
+
+       The split is at 1024, not 640, because that is where the layout actually
+       changes: below it the headline has the full page width, above it eight
+       of twelve columns. The old split sat at 640 and measured nothing in
+       particular, which is why the gap between the languages was 16% on a
+       phone and 31% on a desktop. Measured at 320 / 390 / 768 / 1024 / 1280 /
+       1536 in both languages. */
+    --hero-size: clamp(1.9375rem, 10vw, 6rem);
+
+    /* ===== Approach's claim ============================================
+       Sized per language for the same reason the cover is, and measured the
+       same way: the longest line is what a poster line is constrained by.
+       The claim is now four shorter lines: "CONSTRUYO COMO" is fourteen
+       characters, "I THINK LIKE" is twelve, where the old three-line version
+       ran to sixteen and fifteen. The slopes below were measured against those
+       longer lines and are left as they are — they cannot break, only leave
+       the block short of its column. Re-measure here if the claim grows again.
+       Verified in the browser at 320 / 390 / 780 / 1280 / 1536 in both
+       languages, on the sixteen-character version. */
+    --claim-size: clamp(2rem, 8vw, 6.5rem);
+
+    /* Page margin. Every rule that spans the page starts here. */
+    --pad: 1.25rem;
+    /* The old grid separated "distance to the stem" from "distance from the
+       stem to the first glyph". With the stem gone there is one margin, so
+       --gutter is kept as an alias rather than chased through every section
+       that still asks for it by name. */
+    --gutter: var(--pad);
+    --measure: 78rem;
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-MediumItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-MediumItalic.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
+/* The Spanish is the constrained one, so it sets the pace: these slopes put
+   "DESARROLLADOR" at 94-97% of its column at the tightest width of each range,
+   and the English above runs 10% larger on the same schedule. */
+:root[lang="es"] {
+    --hero-size: clamp(1.75rem, 9.1vw, 5.5rem);
+    --claim-size: clamp(1.75rem, 7.4vw, 6rem);
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Italic.woff2') format('woff2'),
-        url('/fonts/Urbanist-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+/* Eight of twelve columns instead of the full width, so both slopes drop. */
+@media (min-width: 1024px) {
+    :root {
+        --hero-size: clamp(3.85rem, 6.74vw, 8.75rem);
+    }
+
+    :root[lang="es"] {
+        --hero-size: clamp(3.5rem, 6.13vw, 8rem);
+    }
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-Thin.woff2') format('woff2'),
-        url('/fonts/Urbanist-Thin.woff') format('woff');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
+@media (min-width: 640px) {
+    :root {
+        --pad: 2rem;
+    }
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraLightItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraLightItalic.woff') format('woff');
-    font-weight: 200;
-    font-style: italic;
-    font-display: swap;
+@media (min-width: 1024px) {
+    :root {
+        --pad: 2.5rem;
+    }
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-LightItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-LightItalic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
+/* Rules and lists used to hang off the stem; now they start at the page edge
+   and the content inside them carries the margin. */
+.from-stem {
+    margin-left: 0;
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-SemiBoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-SemiBoldItalic.woff') format('woff');
-    font-weight: 600;
-    font-style: italic;
-    font-display: swap;
+.inset-stem {
+    padding-inline: var(--pad);
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ExtraBoldItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ExtraBoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
+.gut {
+    padding-inline: var(--pad);
 }
 
-@font-face {
-    font-family: 'Urbanist';
-    src: url('/fonts/Urbanist-ThinItalic.woff2') format('woff2'),
-        url('/fonts/Urbanist-ThinItalic.woff') format('woff');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
+/* ===== Inversion, at page scale =========================================
+   Inversion is the system's only state gesture — hover, focus, active, and a
+   whole section arriving as the opposite of the one before it. Applied here by
+   redefining the tokens every utility is built on, so an entire subtree flips
+   and no component has to know about it.
+
+   It has to know which way to flip, so it is declared per mode rather than
+   hardcoded to light: under a light page, an inverted section is the dark one.
+   ========================================================================= */
+
+:root[data-theme="dark"] [data-invert] {
+    --color-ground: #ECEEF1;
+    --color-ground-2: #E2E5EA;
+    --color-ground-3: #D9DDE4;
+    --color-ink: #0F1621;
+    --color-ink-2: #333D4C;
+    --color-ink-dim: #5A6472;
+    --color-ink-faint: rgba(15, 22, 33, 0.34);
+    --color-rule: #B8BEC7;
+    --color-rule-soft: rgba(15, 22, 33, 0.10);
+    --color-edge: #79828F;
 }
 
+:root[data-theme="light"] [data-invert] {
+    --color-ground: #0F1621;
+    --color-ground-2: #0B1119;
+    --color-ground-3: #131C29;
+    --color-ink: #F2F3F5;
+    --color-ink-2: #D5DAE1;
+    --color-ink-dim: #8F98A4;
+    --color-ink-faint: rgba(242, 243, 245, 0.30);
+    --color-rule: #3A4655;
+    --color-rule-soft: rgba(242, 243, 245, 0.10);
+    --color-edge: #6B7686;
+}
+
+[data-invert] {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+}
 
 html {
-    height: 100%;
-    background-color: #0F1621;
+    background-color: var(--color-ground);
+    scroll-behavior: auto;
+    /* Anything reached by a #hash has to clear the fixed masthead. */
+    scroll-padding-top: 6rem;
 }
 
 body {
-    font-family: "Urbanist", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    color: var(--color-ink);
+    background-color: var(--color-ground);
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    /* The mode change is a deliberate, visible act, so it gets a transition —
+       but only on the page ground, never on every element, which would drag
+       the whole tree through a repaint. */
+    transition: background-color 0.4s var(--ease-bp), color 0.4s var(--ease-bp);
+}
+
+/* ===== The bowl =========================================================
+   Square on the left, closed in a semicircle on the right — the P. The radius
+   is deliberately absurd so the browser clamps it to exactly half the shorter
+   axis, which keeps the curve true at any size. This is the only radius in
+   the system; nothing else is allowed to round. */
+
+.bowl {
+    border-radius: 0 9999px 9999px 0;
+}
+
+/* ===== Display type =====================================================
+   Poster setting: caps, tight tracking, lines that touch. Tracking is negative
+   because the default sidebearings of Archivo Black are drawn for text sizes;
+   at 90px they leave holes between the letters.
+
+   `overflow-wrap` is the guard rail — a single long word set at 8vw is the
+   fastest way to produce a horizontal scrollbar on a 320px phone. */
+
+.poster {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.045em;
+    line-height: 0.84;
+    overflow-wrap: break-word;
+}
+
+.display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    overflow-wrap: break-word;
+}
+
+.display-md {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    overflow-wrap: break-word;
+}
+
+/* Annotation voice. Sentence case at normal tracking on purpose: uppercase
+   mono with 0.2em of letter-spacing on every label is the single most worn-out
+   gesture in this genre, and it is what made the page read as a costume. */
+.note {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.45;
+}
+
+/* The one place caps and wide tracking earn their keep: a field name sitting
+   directly above the thing it names, where it has to read as a label and not
+   as the first line of the content. */
+.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.tnum {
+    font-variant-numeric: tabular-nums;
+}
+
+/* The record's year column, where the whole point is that the dates line up.
+   It used to be set in a monospace face; Archivo's tabular figures do the same
+   job without dragging a second typeface onto the page for six numbers. */
+.mono-sm {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+}
+
+/* ===== Inversion, at component scale ====================================
+   With no accent colour, trading ink and ground is the only state change that
+   stays inside the system. Hover, active and focus all use it, so they read as
+   one gesture rather than three effects. */
+
+.invertible {
+    transition: background-color 0.3s var(--ease-bp), color 0.3s var(--ease-bp),
+        border-color 0.3s var(--ease-bp);
+}
+
+.invertible:hover,
+.invertible:focus-visible,
+.invertible[data-active="true"] {
+    background-color: var(--color-ink);
+    color: var(--color-ground);
+    border-color: var(--color-ink);
+}
+
+/* ===== Film grain — removed ==============================================
+   A fixed, full-viewport layer painting an feTurbulence SVG sat over every
+   pixel of this page at 2% opacity. Measured in the browser it was expensive
+   enough that a full-page rasterisation timed out repeatedly, and dropping it
+   made the same capture return immediately — which is the same repaint cost a
+   visitor pays on every scroll and on every theme change.
+
+   It was buying almost nothing: the grounds here are flat and dark or flat and
+   light, the texture in this design comes from the rules and the type, and at
+   2% nobody has ever seen it. */
+
+/* ===== Descender allowance ==============================================
+   Display type runs a line-height below 1, so the line box closes above the
+   font's descenders and anything clipping to it eats the tail of g, y, p and
+   é. A reveal mask clips to that box, so it carries the allowance as padding
+   and takes it straight back out as negative margin — the type rhythm is
+   untouched, the descenders survive. */
+
+:root {
+    --ink-top: 0.16em;
+    --ink-bottom: 0.34em;
+}
+
+.text-mask {
+    overflow: hidden;
+    padding-top: var(--ink-top);
+    margin-top: calc(-1 * var(--ink-top));
+    padding-bottom: var(--ink-bottom);
+    margin-bottom: calc(-1 * var(--ink-bottom));
+}
+
+/* The poster lines are set in caps, which have no descenders — so they need
+   room above the cap line for the reveal to clear, and nothing below it.
+   Allowance on one side only is not a shortcut, it is the fix: two stacked
+   masks each cancelling padding on both sides do not cancel cleanly, because
+   adjacent negative margins collapse to the larger of the two rather than
+   summing. Measured in the browser, the two-sided version left 21px of extra
+   air between the lines and dragged the 3px rule 9px up into the type. */
+.line-mask {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.14em;
+    margin-top: -0.14em;
+}
+
+/* ===== Lenis ============================================================ */
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -181,4 +440,78 @@ body {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* ===== Accessibility ====================================================
+   Focus has to be unmistakable precisely because there is no accent colour to
+   lean on, so it gets full-strength ink and real offset. */
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 0;
+}
+
+/* On a filled block the ring is drawn in the ground colour instead, because an
+   ink outline on ink is not an outline. */
+.on-ink:focus-visible,
+:where(.on-ink) :where(a, button):focus-visible {
+    outline-color: var(--color-ground);
+}
+
+/* Form fields opt out of the ring and get their own indicator: a 2px line in
+   full ink under the active field. An offset rectangle around a control that
+   is itself only an underline reads as a stray box. */
+:where(input, textarea):focus-visible {
+    outline: none;
+}
+
+a,
+button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--color-ink);
+    color: var(--color-ground);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.skip-link {
+    position: fixed;
+    left: var(--pad);
+    top: -120px;
+    z-index: 300;
+    background: var(--color-ink);
+    color: var(--color-ground);
+    padding: 12px 24px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: top 0.25s var(--ease-bp);
+}
+
+.skip-link:focus {
+    top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
 }

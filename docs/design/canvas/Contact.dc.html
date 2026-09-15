@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 1040px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 34px 40px 26px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;">Contact</div>
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;">
+        <span style="width: 11px; height: 11px; background: var(--ink); display: block;"></span>
+        Available &mdash; remote
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); border-bottom: 3px solid var(--ink);">
+
+      <div style="grid-column: span 5; padding: 34px 36px; border-right: 1px solid var(--hair); display: flex; flex-direction: column; gap: 26px;">
+        <div style="font-family: 'Archivo Black', sans-serif; font-size: 42px; line-height: 0.94; letter-spacing: -0.04em; text-transform: uppercase;">Let&rsquo;s build<br>something<br>that performs</div>
+        <div style="font-size: 17px; line-height: 1.55; color: var(--body);">
+          Open to frontend roles and freelance projects. Tell me what you&rsquo;re
+          working on &mdash; I usually reply within a day.
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <sc-for list="{{links}}" as="l" hint-placeholder-count="3">
+            <div style="display: flex; align-items: center; gap: 18px; padding: 13px 0; border-top: 1px solid var(--hair);">
+              <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); width: 78px; flex-shrink: 0;">{{l.key}}</span>
+              <span style="font-size: 15px; font-weight: 500;">{{l.value}}</span>
+              <span style="margin-left: auto; font-size: 15px; font-weight: 600; color: var(--dim);">&#8599;</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- Fields are underlines, not boxes. A bordered input is four strokes
+           where the form needs one, and the other three fight the rules the
+           rest of the page is built from. -->
+      <div style="grid-column: span 7; padding: 34px 36px; display: flex; flex-direction: column; gap: 26px;">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px;">
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);">Name *</span>
+            <div style="border-bottom: 2px solid var(--hair); padding-bottom: 11px; font-size: 17px; color: var(--dim);">Jane Doe</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);">Email *</span>
+            <div style="border-bottom: 2px solid var(--ink); padding-bottom: 11px; font-size: 17px;">jane@company.com</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);">Message *</span>
+          <div style="border-bottom: 2px solid var(--hair); padding-bottom: 74px; font-size: 17px; color: var(--dim);">Tell me about your project&hellip;</div>
+        </div>
+        <div style="background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; padding: 15px 34px 15px 30px; border-radius: 0 999px 999px 0; align-self: flex-start;">Send message</div>
+      </div>
+    </div>
+
+    <!-- The document signs itself with the mark, on the block it has occupied
+         since the hero. -->
+    <div style="flex-grow: 1; background: {{c.ink}}; display: grid; place-items: center;">
+      <svg viewBox="0 0 160 160" width="150" height="150" fill="none" stroke="{{c.bg}}" stroke-width="11" stroke-linecap="square">
+        <path d="M10 150 V10 H108 A35 35 0 0 1 108 80 H10"></path>
+        <path d="M72 10 V150"></path>
+        <path d="M10 150 H72"></path>
+      </svg>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; font-size: 13px; font-weight: 500; color: var(--dim);">
+      <span>&copy; 2026 Emanuel Pag&eacute;s</span>
+      <span>React &middot; TypeScript &middot; Tailwind</span>
+      <span style="color: var(--ink); font-weight: 600;">Back to top &#8593;</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"light"},"$preview":{"width":1280,"height":1040}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+const LINKS = [
+  { key: 'Email', value: 'emanuelpages.ps@gmail.com' },
+  { key: 'GitHub', value: 'github.com/emanuelpps' },
+  { key: 'LinkedIn', value: 'linkedin.com/in/emanuel-ps' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    return { c: PALETTE[this.props.theme] || PALETTE.light, links: LINKS };
+  }
+}
+</script>
+</body>
+</html>

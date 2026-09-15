@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 1180px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 34px 40px 26px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;">Work</div>
+      <div style="font-size: 14px; font-weight: 600; color: var(--dim);">10 projects &middot; 2 open-source libraries</div>
+    </div>
+
+    <!-- One project is SHOWN, the rest are listed. A grid of ten cards asks you
+         to look at ten pictures at once; an index gives you the facts in one
+         scan and spends the page's only image on the piece worth stopping at. -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); border-bottom: 3px solid var(--ink);">
+      <div style="grid-column: span 7; aspect-ratio: 16 / 10; border-right: 3px solid var(--ink); overflow: hidden;">
+        <img src="./epic.webp" alt="Epic Sound Studio" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div style="grid-column: span 5; padding: 34px 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);">Featured</div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 46px; line-height: 0.92; letter-spacing: -0.035em; margin-top: 14px;">Epic Sound Studio</div>
+          <div style="font-size: 18px; line-height: 1.5; color: var(--body); margin-top: 18px;">
+            A music-streaming app built on the open Audius network. My own product
+            &mdash; same stack as client work, no brief, every decision mine.
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="font-size: 13px; font-weight: 600; color: var(--dim);">Next.js &middot; TypeScript &middot; Audius API &middot; Tailwind</div>
+          <div style="background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; padding: 14px 34px 14px 30px; border-radius: 0 999px 999px 0; align-self: flex-start;">Read the case study</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; padding: 22px 40px 18px 40px;">
+      <div style="background: var(--ink); color: var(--bg); font-size: 13px; font-weight: 600; padding: 11px 26px 11px 22px; border-radius: 0 999px 999px 0;">All 10</div>
+      <div style="border: 2px solid var(--hair); color: var(--body); font-size: 13px; font-weight: 600; padding: 9px 24px 9px 20px; border-radius: 0 999px 999px 0;">Projects 8</div>
+      <div style="border: 2px solid var(--hair); color: var(--body); font-size: 13px; font-weight: 600; padding: 9px 24px 9px 20px; border-radius: 0 999px 999px 0;">Libraries 2</div>
+    </div>
+
+    <div style="flex-grow: 1; border-top: 1px solid var(--hair);">
+      <sc-for list="{{rows}}" as="row" hint-placeholder-count="5">
+        <!-- The last row carries the inverted state, standing in for hover:
+             ink and ground trade places. No glow, no shadow — the mark has no
+             third colour to spend on a hover. -->
+        <div style="border-bottom: 1px solid var(--hair); background: {{row.rowBg}}; color: {{row.rowInk}}; display: grid; grid-template-columns: minmax(0, 1fr) 120px 260px 40px; align-items: baseline; gap: 28px; padding: 24px 40px;">
+          <span style="font-family: 'Archivo Black', sans-serif; font-size: 30px; letter-spacing: -0.03em;">{{row.title}}</span>
+          <span style="font-size: 13px; font-weight: 600; opacity: 0.62;">{{row.type}}</span>
+          <span style="font-size: 13px; font-weight: 500; opacity: 0.62;">{{row.stack}}</span>
+          <span style="font-size: 18px; font-weight: 600; justify-self: end;">&#8599;</span>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"light"},"$preview":{"width":1280,"height":1180}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+const ROWS = [
+  { title: 'Eckers RRHH Solutions', type: 'Project', stack: 'React · TypeScript · Tailwind' },
+  { title: 'The Coffee Roastery', type: 'Project', stack: 'React · Tailwind · Framer Motion' },
+  { title: 'React Smart Hooks', type: 'Library', stack: 'React · TypeScript · Vitest' },
+  { title: 'Helpers Utility Library', type: 'Library', stack: 'TypeScript · Vitest' },
+  { title: 'The CodeMaker Lab', type: 'Project', stack: 'Next.js · TypeScript · SEO', hovered: true }
+];
+class Component extends DCLogic {
+  renderVals() {
+    const c = PALETTE[this.props.theme] || PALETTE.light;
+    return {
+      c,
+      rows: ROWS.map((r) => ({
+        ...r,
+        rowBg: r.hovered ? c.ink : 'transparent',
+        rowInk: r.hovered ? c.bg : c.ink
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

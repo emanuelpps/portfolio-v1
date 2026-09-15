@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<!--
+  One palette, two modes. The theme sets six custom properties on the root and
+  every element below reads them — so light and dark are the same design, not
+  two skins that can drift apart. Flip it with the Theme chip above the board.
+-->
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 900px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 26px 40px; border-bottom: 3px solid var(--ink);">
+      <span style="font-family: 'Archivo Black', sans-serif; font-size: 15px; letter-spacing: -0.01em;">EMANUEL PAG&Eacute;S</span>
+      <div style="display: flex; gap: 30px; font-size: 13px; font-weight: 600; color: var(--dim);">
+        <span>Work</span><span>Approach</span><span>Stack</span><span>Record</span>
+        <span style="color: var(--ink);">Contact</span>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));">
+
+      <!-- The flat field the poster hangs on. The mark has no accent colour, so
+           the block is the page inverted and the mark is knocked back out of
+           it in the ground colour. -->
+      <div style="grid-column: 9 / span 4; background: {{c.ink}}; display: grid; place-items: center;">
+        <svg viewBox="0 0 160 160" width="230" height="230" fill="none" stroke="{{c.bg}}" stroke-width="11" stroke-linecap="square">
+          <path d="M10 150 V10 H108 A35 35 0 0 1 108 80 H10"></path>
+          <path d="M72 10 V150"></path>
+          <path d="M10 150 H72"></path>
+        </svg>
+      </div>
+
+      <div style="grid-column: 1 / span 8; grid-row: 1; padding: 48px 40px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 118px; line-height: 0.84; letter-spacing: -0.045em; text-transform: uppercase;">
+            Frontend<br>developer
+          </div>
+          <div style="height: 3px; background: var(--ink); margin: 30px 0 26px 0;"></div>
+          <div style="font-size: 25px; font-weight: 500; line-height: 1.32; max-width: 620px; color: var(--body);">
+            A developer who thinks like a marketer &mdash; a decade of growth and
+            SEO before React.
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <!-- The one curve on the site is the P's bowl: square left, closed
+               right. It is the only radius the mark has, so it is the only one
+               anything here gets. -->
+          <div style="background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; padding: 15px 34px 15px 30px; border-radius: 0 999px 999px 0;">Selected work</div>
+          <div style="border: 2px solid var(--hair); font-weight: 600; font-size: 14px; padding: 13px 28px; color: var(--body);">Get in touch</div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600;">
+            <span style="width: 11px; height: 11px; background: var(--ink); display: block;"></span>
+            Available &mdash; remote
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top: 3px solid var(--ink); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));">
+      <div style="padding: 22px 40px; border-right: 1px solid var(--hair);">
+        <div style="font-family: 'Archivo Black', sans-serif; font-size: 21px; letter-spacing: -0.02em;">Epic Sound Studio</div>
+        <div style="font-size: 13px; font-weight: 500; color: var(--dim); margin-top: 5px;">Next.js &middot; Audius API</div>
+      </div>
+      <div style="padding: 22px 40px; border-right: 1px solid var(--hair);">
+        <div style="font-family: 'Archivo Black', sans-serif; font-size: 21px; letter-spacing: -0.02em;">Eckers RRHH</div>
+        <div style="font-size: 13px; font-weight: 500; color: var(--dim); margin-top: 5px;">React &middot; TypeScript</div>
+      </div>
+      <div style="padding: 22px 40px;">
+        <div style="font-family: 'Archivo Black', sans-serif; font-size: 21px; letter-spacing: -0.02em;">Coffee Roastery</div>
+        <div style="font-size: 13px; font-weight: 500; color: var(--dim); margin-top: 5px;">React &middot; Tailwind</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1280,"height":900}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+class Component extends DCLogic {
+  renderVals() {
+    return { c: PALETTE[this.props.theme] || PALETTE.dark };
+  }
+}
+</script>
+</body>
+</html>

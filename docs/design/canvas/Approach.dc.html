@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: currentColor; }
+  </style>
+</helmet>
+
+<div style="--bg: {{c.bg}}; --ink: {{c.ink}}; --body: {{c.body}}; --dim: {{c.dim}}; --hair: {{c.hair}}; width: 1280px; height: 900px; background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; overflow: hidden;">
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 34px 40px 26px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase;">Approach</div>
+      <div style="font-size: 14px; font-weight: 600; color: var(--dim);">Why the frontend, after ten years of growth</div>
+    </div>
+
+    <!-- The claim gets said once, at size. It is the one sentence that explains
+         what separates him from any other React developer, so it is set as the
+         second-largest thing on the site rather than as a paragraph. -->
+    <div style="padding: 54px 40px 46px 40px; border-bottom: 3px solid var(--ink);">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 104px; line-height: 0.86; letter-spacing: -0.05em; text-transform: uppercase; max-width: 1080px;">
+        A developer<br>who thinks like<br>a marketer
+      </div>
+    </div>
+
+    <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));">
+
+      <div style="grid-column: span 7; padding: 34px 40px; border-right: 1px solid var(--hair); display: flex; flex-direction: column; gap: 22px;">
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);">The edge</div>
+        <div style="font-size: 22px; line-height: 1.48; color: var(--body);">
+          Most frontend developers ship what is in the Figma. I ship what
+          performs. A decade running growth, SEO and paid campaigns taught me how
+          people actually behave on a page &mdash; so the interfaces I build are
+          engineered for clarity, speed and conversion, not only pixel fidelity.
+        </div>
+      </div>
+
+      <!-- Figures are stated, never counted up. A number that animates is
+           asking to be believed; every one of these is verifiable by scrolling. -->
+      <div style="grid-column: span 5; display: flex; flex-direction: column;">
+        <div style="padding: 22px 36px; border-bottom: 1px solid var(--hair);">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);">In digital</div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 40px; letter-spacing: -0.03em; margin-top: 6px;">10 years</div>
+        </div>
+        <div style="padding: 22px 36px; border-bottom: 1px solid var(--hair);">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);">In React</div>
+          <div style="font-family: 'Archivo Black', sans-serif; font-size: 40px; letter-spacing: -0.03em; margin-top: 6px;">3 years</div>
+        </div>
+        <div style="padding: 22px 36px; flex-grow: 1;">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);">Also an indie hacker</div>
+          <div style="font-size: 17px; line-height: 1.5; color: var(--body); margin-top: 10px;">
+            I design and ship my own products, not just client work &mdash; two of
+            them are open-source libraries on npm.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1280,"height":900}}'>
+const PALETTE = {
+  dark:  { bg: '#0f1621', ink: '#f2f3f5', body: '#d5dae1', dim: '#8f98a4', hair: '#3a4655' },
+  light: { bg: '#eceef1', ink: '#0f1621', body: '#333d4c', dim: '#5a6472', hair: '#b8bec7' }
+};
+class Component extends DCLogic {
+  renderVals() { return { c: PALETTE[this.props.theme] || PALETTE.dark }; }
+}
+</script>
+</body>
+</html>

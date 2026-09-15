@@ -1,4 +1,5 @@
 import { createContext, useRef, RefObject, ReactNode } from "react";
+import { getLenis } from "@/lib/SmoothScroll";
 
 type ScrollContextType = {
   refs: {
@@ -33,7 +34,11 @@ export const ScrollProvider = ({ children }: { children: ReactNode }) => {
       contact: refContact,
     };
 
-    sectionMap[section]?.current?.scrollIntoView({ behavior: "smooth" });
+    const el = sectionMap[section]?.current;
+    if (!el) return;
+    const lenis = getLenis();
+    if (lenis) lenis.scrollTo(el, { offset: -80 });
+    else el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

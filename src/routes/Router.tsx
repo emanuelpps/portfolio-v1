@@ -1,34 +1,38 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
-import { useMatch } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import ProjectDetails from "../pages/ProjectDetails";
-import { ProjectTypes } from "../types/ProjectTypes";
 
-const AppRoutes = () => {
-  const location = useLocation();
-  const isProjectPage = useMatch("/project/:projectId");
-  const project = location.state as ProjectTypes;
+// Code-split the project sheet — it is only needed once a project is opened.
+const ProjectDetails = lazy(() => import("../pages/ProjectDetails"));
 
-  return (
-    <>
-      <Home />
-      <AnimatePresence>
-        {isProjectPage && (
-          <motion.div
-            key={location.pathname}
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-[#0F1724]"
-          >
-            <ProjectDetails project={project} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
+/**
+ * Two real routes, where there used to be one page and an overlay.
+ *
+ * The sheet was a fixed, full-screen layer painted over a home page that kept
+ * rendering underneath it, scrolling in its own container with Lenis stopped
+ * and the body locked. That is why it needed a "Top ↑" button of its own, why
+ * it could not name itself in the tab strip, and — the real cost — why the
+ * project came out of `location.state` rather than out of the URL: opening
+ * `/project/11` in a new tab, reloading it, or sending it to anyone landed on
+ * "Project not found".
+ *
+ * An unknown path falls through to the home page. This is a one-page site with
+ * exactly one other kind of address; a 404 screen here would be a room nobody
+ * has a reason to be standing in.
+ */
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route
+      path="/project/:projectId"
+      element={
+        <Suspense fallback={null}>
+          <ProjectDetails />
+        </Suspense>
+      }
+    />
+    <Route path="*" element={<Home />} />
+  </Routes>
+);
 
 export default AppRoutes;
