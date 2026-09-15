@@ -123,15 +123,24 @@ export const Hero = () => {
             variants={rise}
             className="flex flex-wrap items-center gap-4"
           >
-            {/* One primary action per screen. It is the only thing on the cover
-                wearing the bowl, so the hierarchy survives without colour —
-                and both are real links, so both can be opened in a new tab and
-                deep-linked to. */}
+            {/* The pair is a P lying on its side: the square button is the
+                stem, the bowl is the bowl, and they have to come in that order
+                to read as one. They used to come the other way round, which
+                put the only curve on the cover in the middle of the pair,
+                where it read as a stray rounded corner rather than as the
+                mark.
+
+                That moves the bowl off the primary action, so the fill is left
+                carrying the hierarchy on its own — which it can: a solid block
+                of ink beside an outline is not a subtle difference, and it is
+                the same block the mark is knocked out of. One primary action
+                per screen either way, and both are real links, so both can be
+                opened in a new tab and deep-linked to. */}
             <a
               href="#work"
               onClick={(e) => jumpTo(e, "work")}
               data-cursor="hover"
-              className="bowl inline-flex min-h-12 items-center border-2 border-ink bg-ink py-3 pl-7 pr-9 text-[0.9375rem] font-semibold text-ground transition-colors duration-300 ease-bp hover:bg-ground hover:text-ink"
+              className="inline-flex min-h-12 items-center border-2 border-ink bg-ink px-7 py-3 text-[0.9375rem] font-semibold text-ground transition-colors duration-300 ease-bp hover:bg-ground hover:text-ink"
             >
               {t.hero.ctaWork}
             </a>
@@ -139,7 +148,7 @@ export const Hero = () => {
               href="#contact"
               onClick={(e) => jumpTo(e, "contact")}
               data-cursor="hover"
-              className="invertible inline-flex min-h-12 items-center border-2 border-edge px-7 py-3 text-[0.9375rem] font-semibold text-ink-2"
+              className="bowl invertible inline-flex min-h-12 items-center border-2 border-edge py-3 pl-7 pr-9 text-[0.9375rem] font-semibold text-ink-2"
             >
               {t.hero.ctaContact}
             </a>
