@@ -4,7 +4,6 @@ import { useT } from "@/i18n";
 const META = [
   { key: "GitHub", href: "https://github.com/emanuelpps" },
   { key: "LinkedIn", href: "https://www.linkedin.com/in/emanuel-ps" },
-  { key: "Email", href: "mailto:emanuelpages.ps@gmail.com" },
 ];
 
 /**

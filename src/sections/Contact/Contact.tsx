@@ -20,12 +20,12 @@ import { EASE } from "@/lib/motion";
  * drift apart.
  */
 
+/* No email address here, and none in the footer either. The form beside this
+   list is the way in: it posts through EmailJS, so the address lives in a
+   template on their side and never ships to the browser. A mailto is a
+   published address — it is in the markup whether or not a person ever reads
+   it, and the scrapers read it first. */
 const LINKS = [
-  {
-    key: "Email",
-    label: "emanuelpages.ps@gmail.com",
-    href: "mailto:emanuelpages.ps@gmail.com",
-  },
   {
     key: "GitHub",
     label: "github.com/emanuelpps",
