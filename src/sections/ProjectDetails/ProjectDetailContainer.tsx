@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ProjectTypes } from "@/types/ProjectTypes";
 import { nextProject } from "@/sections/Projects/work";
 import { useProjectCopy } from "@/data/projectCopy";
+import { PLATE_SIZES, plateRatio } from "@/data/plateSizes";
 import { fill, useT } from "@/i18n";
 import { EASE } from "@/lib/motion";
 
@@ -28,20 +29,35 @@ import { EASE } from "@/lib/motion";
  *
  * The bowl is the system's one radius, but at the width of a full-bleed UI
  * screenshot its curve would eat a quarter of the image, so a plate is simply
- * ruled off above and below and bled to the edges. `object-contain` on a
- * ground: these are screenshots of different shapes, and cropping a UI to fill
- * a box cuts off the very thing the picture is there to show.
+ * ruled off above and below and bled to the edges. Nothing is cropped: these
+ * are screenshots of different shapes, and cutting a UI to fit a box cuts off
+ * the very thing the picture is there to show.
+ *
+ * It used to be `max-h-[82vh] object-contain`, which made every plate the same
+ * 1.91-wide box no matter what shape the picture was — and not one screenshot
+ * on this site is that shape. Everything narrower was letterboxed inside it:
+ * 104px of dead ground down each side of an Epic Sound plate, 344px down each
+ * side of CodeMaker's services page. The picture was being framed by the box
+ * after all, and the box was wrong.
+ *
+ * Now the image fills the width it is given and its height simply follows. The
+ * intrinsic size comes from the generated map so the browser can reserve the
+ * right space before the file arrives, instead of laying the page out twice.
  */
 const Plate = ({
   src,
   title,
   index,
+  grow,
 }: {
   src: string;
   title: string;
   index: number;
+  /** This plate's share of its row, as a fraction of 1. */
+  grow: number;
 }) => {
   const t = useT();
+  const [w, h] = PLATE_SIZES[src] ?? [1600, 1000];
 
   return (
     <motion.figure
@@ -49,15 +65,112 @@ const Plate = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: EASE }}
-      className="border-y border-rule bg-ground-2"
+      /* Grow by this plate's share of the row, from a basis of zero: that is
+         the whole of the row arithmetic. Two plates divide the page between
+         them in proportion to how wide each picture is, and land on the same
+         height.
+
+         The shares are normalised to sum to 1 rather than passed as the raw
+         ratios, because flexbox treats a line whose grow factors add up to
+         less than 1 as a request for only that fraction of the free space. A
+         lone plate at ratio 0.87 asked for 87% of the page and got it —
+         CodeMaker's services shot came out 1098px wide inside a 1262px row,
+         with the missing 164px reappearing as exactly the gap this layout
+         exists to remove. */
+      style={{ flexGrow: grow, flexBasis: 0 }}
+      className="min-w-0 border-y border-rule bg-ground-2"
     >
       <img
         src={src}
         alt={fill(t.project.viewAlt, { title, n: index + 1 })}
         loading="lazy"
-        className="block max-h-[82vh] w-full object-contain"
+        width={w}
+        height={h}
+        className="block h-auto w-full"
       />
     </motion.figure>
+  );
+};
+
+/**
+ * How wide a row is allowed to get before it stops being worth pairing.
+ *
+ * Two pictures in a row share a height, and that height is the page width
+ * divided by the sum of their ratios — so the wider the pair, the shorter the
+ * row. Past 3.0 the pair starts reading as a strip rather than as two
+ * screenshots: Eckers' `process` plate is 3.41 wide on its own, and beside
+ * anything at all it would be 185px tall. At the limit a row is around 420px,
+ * which is the shortest a screenshot can be and still show what it is of.
+ */
+const PAIR_LIMIT = 3.0;
+
+/**
+ * Group a block's plates into rows of one or two.
+ *
+ * Pairing is what closes the gap the old layout left at the sides, but it is
+ * not the lever it first looks like: most blocks on this site carry a single
+ * screenshot, and a single plate now fills the width on its own. So this is
+ * greedy and unclever on purpose — take two when two fit, otherwise take one —
+ * and the three tall singles it leaves behind (CodeMaker's services page is the
+ * worst, at 1450px) are left to run as tall as they are. A picture that runs
+ * past the fold costs a scroll; a picture cropped to fit costs the picture.
+ */
+function rows(images: string[]): string[][] {
+  const out: string[][] = [];
+  for (let i = 0; i < images.length; ) {
+    const pair =
+      i + 1 < images.length &&
+      plateRatio(images[i]) + plateRatio(images[i + 1]) <= PAIR_LIMIT;
+    out.push(pair ? [images[i], images[i + 1]] : [images[i]]);
+    i += pair ? 2 : 1;
+  }
+  return out;
+}
+
+/**
+ * The plates of one block, as rows.
+ *
+ * Stacked on a phone, where half of 390px is not a screenshot of anything.
+ */
+const Plates = ({
+  images,
+  title,
+  firstPlate,
+}: {
+  images: string[];
+  title: string;
+  firstPlate: number;
+}) => {
+  const grouped = rows(images);
+
+  /* Where each row starts in the sheet's numbering, worked out up front rather
+     than by a counter the render increments. Same reason the image lists are
+     deduped in one pass before anything draws: a render that mutates as it
+     goes is a render that means something different the second time. */
+  const starts = grouped.map((_, i) =>
+    grouped.slice(0, i).reduce((n, row) => n + row.length, firstPlate),
+  );
+
+  return (
+    <div className="mt-12 flex flex-col gap-px sm:mt-16">
+      {grouped.map((row, i) => {
+        const total = row.reduce((sum, src) => sum + plateRatio(src), 0);
+
+        return (
+          <div key={row.join()} className="flex flex-col gap-px sm:flex-row">
+            {row.map((src, j) => (
+              <Plate
+                key={src}
+                src={src}
+                title={title}
+                index={starts[i] + j}
+                grow={plateRatio(src) / total}
+              />
+            ))}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
@@ -119,11 +232,7 @@ const Block = ({
       </div>
 
       {images.length > 0 && (
-        <div className="mt-12 flex flex-col gap-px sm:mt-16">
-          {images.map((src, i) => (
-            <Plate key={src} src={src} title={title} index={firstPlate + i} />
-          ))}
-        </div>
+        <Plates images={images} title={title} firstPlate={firstPlate} />
       )}
     </section>
   );
@@ -270,9 +379,9 @@ const ProjectDetailContainer = ({ project }: { project?: ProjectTypes }) => {
 
         <div className="h-[3px] w-full bg-ink" />
 
-        {leadImages.map((src, i) => (
-          <Plate key={src} src={src} title={project.title} index={i} />
-        ))}
+        {leadImages.length > 0 && (
+          <Plates images={leadImages} title={project.title} firstPlate={0} />
+        )}
       </header>
 
       <div className="pt-20 sm:pt-28">
