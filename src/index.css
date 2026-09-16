@@ -372,6 +372,30 @@ body {
     border-color: var(--color-ink);
 }
 
+/* The words go with the block, in every state that moves the block.
+
+   The fill above is set here; the colour of the words inside it was set per
+   span in the markup, with `group-hover:`. That covers exactly one of the three
+   states this class has. So tabbing to a row filled it with ink and left its
+   title at ink, and the row you had just navigated to was the one row on the
+   page you could not read — twenty-one of them, every project in the index and
+   every company in the record.
+
+   Inheriting is the half that cannot be forgotten. A span that names its own
+   colour is overridden for as long as the block is inverted, whichever state
+   inverted it, and a component written next year is covered without being
+   told. `:where()` holds the specificity at the parent's own, which is exactly
+   enough to beat a utility class and nothing more.
+
+   Hover is deliberately not in this list. It already has its other half, and
+   that half is graded — the title goes to full ground and the annotations to
+   70% — where this is flat. Flat is right for focus, which has one job and
+   should not be whispering any part of it. */
+.invertible:focus-visible :where(*),
+.invertible[data-active="true"] :where(*) {
+    color: inherit;
+}
+
 /* Hover is gated on a pointer that can actually hover, and it has to be —
    this rule does not work on its own.
 
