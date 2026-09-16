@@ -67,11 +67,19 @@ export const Hero = () => {
   const { refs } = useAppScroll();
   const t = useT();
 
+  /* The cover is sized in `svh`, not `dvh`. `dvh` is the viewport as it is
+     right now, and on a phone that is a moving number: the address bar
+     retracts as you scroll down and comes back as you scroll up, so a cover
+     sized in `dvh` grows and shrinks under your thumb and drags every section
+     below it along. The fold is only a composition at one moment anyway — the
+     first paint, before anything has been scrolled — and at that moment the
+     address bar is showing, which is exactly what `svh` measures. The cut-off
+     row of projects lands where it was drawn to land, and then stops moving. */
   return (
     <section
       ref={refs.refHome}
       aria-labelledby="hero-title"
-      className="relative flex min-h-[100dvh] w-full flex-col pt-16 lg:pt-20"
+      className="relative flex min-h-[100svh] w-full flex-col pt-16 lg:pt-20"
     >
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-12">
         <motion.div
