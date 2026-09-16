@@ -365,12 +365,37 @@ body {
         border-color 0.3s var(--ease-bp);
 }
 
-.invertible:hover,
 .invertible:focus-visible,
 .invertible[data-active="true"] {
     background-color: var(--color-ink);
     color: var(--color-ground);
     border-color: var(--color-ink);
+}
+
+/* Hover is gated on a pointer that can actually hover, and it has to be —
+   this rule does not work on its own.
+
+   Inverting a row is two halves: the block takes the ink, and the words inside
+   it take the ground. The block is this rule; the words are `group-hover:` on
+   each span, and Tailwind v4 compiles every `hover:` and `group-hover:`
+   utility inside `@media (hover: hover)`. Written bare, this half ran on a
+   phone and the other half never did.
+
+   A touch browser synthesises `:hover` on tap and holds it until you touch
+   something else. So on a phone the fill arrived, the text did not turn over,
+   and the row went ink on ink — a solid white bar with its own title invisible
+   inside it, and it stayed that way after the finger lifted. Every project row,
+   the cover's three links, the record's accordions and the index sheet are
+   `.invertible`, so dragging a thumb down the page lit them one after another
+   and none of them went out again.
+
+   The two halves belong under one condition. This is that condition. */
+@media (hover: hover) {
+    .invertible:hover {
+        background-color: var(--color-ink);
+        color: var(--color-ground);
+        border-color: var(--color-ink);
+    }
 }
 
 /* ===== Film grain — removed ==============================================
