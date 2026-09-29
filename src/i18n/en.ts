@@ -88,7 +88,7 @@ export const en = {
     indieBefore:
       "I design and ship my own products, not just client work — like ",
     indieAfter: ", plus {libraries} open-source libraries on npm.",
-    indieNow: "Right now I am building a desktop pet for Windows.",
+    indieNow: "Right now I am building something new.",
   },
 
   work: {
