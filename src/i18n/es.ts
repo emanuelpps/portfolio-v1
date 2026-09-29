@@ -80,7 +80,7 @@ export const es: Dict = {
     indieBefore:
       "Además del trabajo para clientes armo cosas mías, como ",
     indieAfter: ", más {libraries} librerías open source en npm.",
-    indieNow: "Ahora estoy desarrollando un desktop pet para Windows.",
+    indieNow: "Ahora mismo estoy construyendo algo nuevo.",
   },
 
   work: {
